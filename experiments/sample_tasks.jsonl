@@ -1,0 +1,3 @@
+{"id":"code-001","task":"Fix a failing Python unit test by inspecting the code, making a minimal edit, and running verification.","expected_modules":["memory","code_agent","verifier"]}
+{"id":"search-001","task":"Answer a technical research question requiring external evidence and cross-checking sources.","expected_modules":["memory","search_agent","critic_agent","verifier"]}
+{"id":"research-001","task":"Design baselines and ablations for an agent-level attention runtime with memory and gates.","expected_modules":["memory","search_agent","critic_agent","aggregator"]}

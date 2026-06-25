@@ -1,0 +1,518 @@
+[
+  {
+    "event_id": 1,
+    "step": 0,
+    "kind": "start",
+    "payload": {
+      "goal": "Summarize research papers with evidence sources and propose ablations"
+    },
+    "timestamp": 1782397924.3674326
+  },
+  {
+    "event_id": 2,
+    "step": 1,
+    "kind": "memory_retrieval",
+    "payload": {
+      "items": [
+        {
+          "key": "research paper evidence sources citations cross check route",
+          "value": "For research answers, retrieve primary sources, cluster by method, then ask critic to find gaps.",
+          "usefulness": 0.78,
+          "failures": 0
+        }
+      ]
+    },
+    "timestamp": 1782397924.3674705
+  },
+  {
+    "event_id": 3,
+    "step": 1,
+    "kind": "route",
+    "payload": {
+      "decisions": [
+        {
+          "module_id": "search_agent",
+          "score": 0.6505,
+          "semantic_match": 0.2,
+          "reliability": 0.72,
+          "cost_penalty": 0.126,
+          "risk_penalty": 0.0875
+        },
+        {
+          "module_id": "memory",
+          "score": 0.3651,
+          "semantic_match": 0.0526,
+          "reliability": 0.66,
+          "cost_penalty": 0.027,
+          "risk_penalty": 0.0375
+        }
+      ]
+    },
+    "timestamp": 1782397924.3675396
+  },
+  {
+    "event_id": 4,
+    "step": 1,
+    "kind": "execute",
+    "payload": {
+      "outputs": [
+        {
+          "module_id": "search_agent",
+          "content": "Identified external-evidence need around: evidence, research, sources.",
+          "confidence": 0.72,
+          "evidence": [
+            "external_search_required"
+          ],
+          "failure_signal": null
+        },
+        {
+          "module_id": "memory",
+          "content": "Reused 1 retrieved trajectory memories.",
+          "confidence": 0.68,
+          "evidence": [
+            "research paper evidence sources citations cross check route"
+          ],
+          "failure_signal": null
+        }
+      ]
+    },
+    "timestamp": 1782397924.3675625
+  },
+  {
+    "event_id": 5,
+    "step": 1,
+    "kind": "state_update",
+    "payload": {
+      "goal": "Summarize research papers with evidence sources and propose ablations",
+      "step": 1,
+      "confidence": 0.324,
+      "risk": 0.1276,
+      "budget_used": 0.85,
+      "selected_modules": [
+        "search_agent",
+        "memory",
+        "search_agent",
+        "aggregator",
+        "aggregator",
+        "critic_agent",
+        "aggregator",
+        "search_agent"
+      ],
+      "failure_signals": [],
+      "memory_reads": [
+        "research paper evidence sources citations cross check route",
+        "research paper evidence sources citations cross check route",
+        "research paper evidence sources citations cross check route",
+        "research paper evidence sources citations cross check route"
+      ],
+      "memory_writes": [
+        "Summarize research papers with evidence sources and propose ablations route search_agent -> memory -> search_agent -> aggregator -> aggregator -> critic_agent -> aggregator -> search_agent"
+      ],
+      "final_answer": null
+    },
+    "timestamp": 1782397924.3675687
+  },
+  {
+    "event_id": 6,
+    "step": 1,
+    "kind": "halt_gate",
+    "payload": {
+      "halt": false,
+      "reason": "continue"
+    },
+    "timestamp": 1782397924.3675718
+  },
+  {
+    "event_id": 7,
+    "step": 2,
+    "kind": "memory_retrieval",
+    "payload": {
+      "items": [
+        {
+          "key": "research paper evidence sources citations cross check route",
+          "value": "For research answers, retrieve primary sources, cluster by method, then ask critic to find gaps.",
+          "usefulness": 0.78,
+          "failures": 0
+        }
+      ]
+    },
+    "timestamp": 1782397924.3676436
+  },
+  {
+    "event_id": 8,
+    "step": 2,
+    "kind": "route",
+    "payload": {
+      "decisions": [
+        {
+          "module_id": "search_agent",
+          "score": 0.5174,
+          "semantic_match": 0.2069,
+          "reliability": 0.72,
+          "cost_penalty": 0.126,
+          "risk_penalty": 0.0875
+        },
+        {
+          "module_id": "aggregator",
+          "score": 0.4917,
+          "semantic_match": 0.0667,
+          "reliability": 0.7,
+          "cost_penalty": 0.045,
+          "risk_penalty": 0.025
+        }
+      ]
+    },
+    "timestamp": 1782397924.3677022
+  },
+  {
+    "event_id": 9,
+    "step": 2,
+    "kind": "execute",
+    "payload": {
+      "outputs": [
+        {
+          "module_id": "search_agent",
+          "content": "Identified external-evidence need around: evidence, research, sources.",
+          "confidence": 0.72,
+          "evidence": [
+            "external_search_required"
+          ],
+          "failure_signal": null
+        },
+        {
+          "module_id": "aggregator",
+          "content": "Aggregated active module outputs into a concise state update.",
+          "confidence": 0.7,
+          "evidence": [],
+          "failure_signal": null
+        }
+      ]
+    },
+    "timestamp": 1782397924.3677223
+  },
+  {
+    "event_id": 10,
+    "step": 2,
+    "kind": "state_update",
+    "payload": {
+      "goal": "Summarize research papers with evidence sources and propose ablations",
+      "step": 2,
+      "confidence": 0.5022,
+      "risk": 0.0519,
+      "budget_used": 1.8,
+      "selected_modules": [
+        "search_agent",
+        "memory",
+        "search_agent",
+        "aggregator",
+        "aggregator",
+        "critic_agent",
+        "aggregator",
+        "search_agent"
+      ],
+      "failure_signals": [],
+      "memory_reads": [
+        "research paper evidence sources citations cross check route",
+        "research paper evidence sources citations cross check route",
+        "research paper evidence sources citations cross check route",
+        "research paper evidence sources citations cross check route"
+      ],
+      "memory_writes": [
+        "Summarize research papers with evidence sources and propose ablations route search_agent -> memory -> search_agent -> aggregator -> aggregator -> critic_agent -> aggregator -> search_agent"
+      ],
+      "final_answer": null
+    },
+    "timestamp": 1782397924.3677263
+  },
+  {
+    "event_id": 11,
+    "step": 2,
+    "kind": "halt_gate",
+    "payload": {
+      "halt": false,
+      "reason": "continue"
+    },
+    "timestamp": 1782397924.3677278
+  },
+  {
+    "event_id": 12,
+    "step": 3,
+    "kind": "memory_retrieval",
+    "payload": {
+      "items": [
+        {
+          "key": "research paper evidence sources citations cross check route",
+          "value": "For research answers, retrieve primary sources, cluster by method, then ask critic to find gaps.",
+          "usefulness": 0.78,
+          "failures": 0
+        }
+      ]
+    },
+    "timestamp": 1782397924.3677554
+  },
+  {
+    "event_id": 13,
+    "step": 3,
+    "kind": "route",
+    "payload": {
+      "decisions": [
+        {
+          "module_id": "aggregator",
+          "score": 0.485,
+          "semantic_match": 0.2,
+          "reliability": 0.7,
+          "cost_penalty": 0.045,
+          "risk_penalty": 0.025
+        },
+        {
+          "module_id": "critic_agent",
+          "score": 0.354,
+          "semantic_match": 0.05,
+          "reliability": 0.7,
+          "cost_penalty": 0.081,
+          "risk_penalty": 0.05
+        }
+      ]
+    },
+    "timestamp": 1782397924.3678346
+  },
+  {
+    "event_id": 14,
+    "step": 3,
+    "kind": "execute",
+    "payload": {
+      "outputs": [
+        {
+          "module_id": "aggregator",
+          "content": "Aggregated active module outputs into a concise state update.",
+          "confidence": 0.7,
+          "evidence": [],
+          "failure_signal": null
+        },
+        {
+          "module_id": "critic_agent",
+          "content": "Critiqued current trajectory; unresolved signals: no explicit failures.",
+          "confidence": 0.66,
+          "evidence": [],
+          "failure_signal": null
+        }
+      ]
+    },
+    "timestamp": 1782397924.3678486
+  },
+  {
+    "event_id": 15,
+    "step": 3,
+    "kind": "state_update",
+    "payload": {
+      "goal": "Summarize research papers with evidence sources and propose ablations",
+      "step": 3,
+      "confidence": 0.5912,
+      "risk": 0.02,
+      "budget_used": 2.5,
+      "selected_modules": [
+        "search_agent",
+        "memory",
+        "search_agent",
+        "aggregator",
+        "aggregator",
+        "critic_agent",
+        "aggregator",
+        "search_agent"
+      ],
+      "failure_signals": [],
+      "memory_reads": [
+        "research paper evidence sources citations cross check route",
+        "research paper evidence sources citations cross check route",
+        "research paper evidence sources citations cross check route",
+        "research paper evidence sources citations cross check route"
+      ],
+      "memory_writes": [
+        "Summarize research papers with evidence sources and propose ablations route search_agent -> memory -> search_agent -> aggregator -> aggregator -> critic_agent -> aggregator -> search_agent"
+      ],
+      "final_answer": null
+    },
+    "timestamp": 1782397924.3678532
+  },
+  {
+    "event_id": 16,
+    "step": 3,
+    "kind": "halt_gate",
+    "payload": {
+      "halt": false,
+      "reason": "continue"
+    },
+    "timestamp": 1782397924.3678548
+  },
+  {
+    "event_id": 17,
+    "step": 4,
+    "kind": "memory_retrieval",
+    "payload": {
+      "items": [
+        {
+          "key": "research paper evidence sources citations cross check route",
+          "value": "For research answers, retrieve primary sources, cluster by method, then ask critic to find gaps.",
+          "usefulness": 0.78,
+          "failures": 0
+        }
+      ]
+    },
+    "timestamp": 1782397924.367883
+  },
+  {
+    "event_id": 18,
+    "step": 4,
+    "kind": "route",
+    "payload": {
+      "decisions": [
+        {
+          "module_id": "aggregator",
+          "score": 0.3292,
+          "semantic_match": 0.1842,
+          "reliability": 0.7,
+          "cost_penalty": 0.045,
+          "risk_penalty": 0.025
+        },
+        {
+          "module_id": "search_agent",
+          "score": 0.3134,
+          "semantic_match": 0.1429,
+          "reliability": 0.72,
+          "cost_penalty": 0.126,
+          "risk_penalty": 0.0875
+        }
+      ]
+    },
+    "timestamp": 1782397924.3679428
+  },
+  {
+    "event_id": 19,
+    "step": 4,
+    "kind": "execute",
+    "payload": {
+      "outputs": [
+        {
+          "module_id": "aggregator",
+          "content": "Aggregated active module outputs into a concise state update.",
+          "confidence": 0.7,
+          "evidence": [],
+          "failure_signal": null
+        },
+        {
+          "module_id": "search_agent",
+          "content": "Identified external-evidence need around: evidence, research, sources.",
+          "confidence": 0.72,
+          "evidence": [
+            "external_search_required"
+          ],
+          "failure_signal": null
+        }
+      ]
+    },
+    "timestamp": 1782397924.3679595
+  },
+  {
+    "event_id": 20,
+    "step": 4,
+    "kind": "state_update",
+    "payload": {
+      "goal": "Summarize research papers with evidence sources and propose ablations",
+      "step": 4,
+      "confidence": 0.6492,
+      "risk": 0.02,
+      "budget_used": 3.45,
+      "selected_modules": [
+        "search_agent",
+        "memory",
+        "search_agent",
+        "aggregator",
+        "aggregator",
+        "critic_agent",
+        "aggregator",
+        "search_agent"
+      ],
+      "failure_signals": [],
+      "memory_reads": [
+        "research paper evidence sources citations cross check route",
+        "research paper evidence sources citations cross check route",
+        "research paper evidence sources citations cross check route",
+        "research paper evidence sources citations cross check route"
+      ],
+      "memory_writes": [
+        "Summarize research papers with evidence sources and propose ablations route search_agent -> memory -> search_agent -> aggregator -> aggregator -> critic_agent -> aggregator -> search_agent"
+      ],
+      "final_answer": null
+    },
+    "timestamp": 1782397924.3679628
+  },
+  {
+    "event_id": 21,
+    "step": 4,
+    "kind": "verify",
+    "payload": {
+      "module_id": "verifier",
+      "content": "Verifier found no blocking inconsistency in the trajectory.",
+      "confidence": 0.84,
+      "evidence": [
+        "trajectory_consistent"
+      ],
+      "failure_signal": null
+    },
+    "timestamp": 1782397924.3679764
+  },
+  {
+    "event_id": 22,
+    "step": 4,
+    "kind": "halt_gate",
+    "payload": {
+      "halt": true,
+      "reason": "answer_ready"
+    },
+    "timestamp": 1782397924.3679771
+  },
+  {
+    "event_id": 23,
+    "step": 4,
+    "kind": "reflection",
+    "payload": {
+      "key": "Summarize research papers with evidence sources and propose ablations route search_agent -> memory -> search_agent -> aggregator -> aggregator -> critic_agent -> aggregator -> search_agent",
+      "value": "Task 'Summarize research papers with evidence sources and propose ablations' reached confidence 0.7351; route search_agent -> memory -> search_agent -> aggregator -> aggregator -> critic_agent -> aggregator -> search_agent was useful under budget 3.45."
+    },
+    "timestamp": 1782397924.3679833
+  },
+  {
+    "event_id": 24,
+    "step": 4,
+    "kind": "finish",
+    "payload": {
+      "goal": "Summarize research papers with evidence sources and propose ablations",
+      "step": 4,
+      "confidence": 0.7351,
+      "risk": 0.02,
+      "budget_used": 3.45,
+      "selected_modules": [
+        "search_agent",
+        "memory",
+        "search_agent",
+        "aggregator",
+        "aggregator",
+        "critic_agent",
+        "aggregator",
+        "search_agent"
+      ],
+      "failure_signals": [],
+      "memory_reads": [
+        "research paper evidence sources citations cross check route",
+        "research paper evidence sources citations cross check route",
+        "research paper evidence sources citations cross check route",
+        "research paper evidence sources citations cross check route"
+      ],
+      "memory_writes": [
+        "Summarize research papers with evidence sources and propose ablations route search_agent -> memory -> search_agent -> aggregator -> aggregator -> critic_agent -> aggregator -> search_agent"
+      ],
+      "final_answer": "Finalized because confidence_threshold_met. Selected modules: search_agent, memory, search_agent, aggregator, aggregator, critic_agent, aggregator, search_agent. Latest evidence: critic_agent: Critiqued current trajectory; unresolved signals: no explicit failures. | aggregator: Aggregated active module outputs into a concise state update. | search_agent: Identified external-evidence need around: evidence, research, sources. | verifier: Verifier found no blocking inconsistency in the trajectory.."
+    },
+    "timestamp": 1782397924.3679845
+  }
+]
