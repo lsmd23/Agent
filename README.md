@@ -6,6 +6,7 @@ This workspace is a small research scaffold for exploring a Transformer/MoE/Memo
 
 - `docs/research_memo.md`: research framing, related work map, architecture proposal, baselines, ablations, and metrics.
 - `docs/experiment_plan.md`: concrete first experiments for code/search/research tasks.
+- `docs/subtasks/`: subagent-ready research task pack with one guiding document per subtask.
 - `src/agent_attention_runtime.py`: a deterministic toy runtime that models state, routing, module activation, memory retrieval, verification, halting, and trajectory logging.
 - `experiments/sample_tasks.jsonl`: example tasks for the toy runtime.
 - `tests/test_runtime.py`: sanity tests for routing, memory reuse, and halt behavior.
