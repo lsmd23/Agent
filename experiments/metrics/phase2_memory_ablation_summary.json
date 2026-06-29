@@ -1,0 +1,131 @@
+{
+  "scope": "Phase 2 memory ablations on tuned Agent-Attention.",
+  "control_id": "aa_tuned_control",
+  "task_count": 12,
+  "rows": [
+    {
+      "ablation_id": "aa_tuned_control",
+      "run_count": 12,
+      "success_rate": 0.666667,
+      "mean_cost_normalized_success": 0.207098,
+      "mean_activation_cost": 2.025,
+      "total_memory_reads": 40,
+      "total_harmful_memory_reads": 0,
+      "total_negative_transfer_cases": 0
+    },
+    {
+      "ablation_id": "aa_no_memory",
+      "run_count": 12,
+      "success_rate": 0.75,
+      "mean_cost_normalized_success": 0.242223,
+      "mean_activation_cost": 1.983333,
+      "total_memory_reads": 0,
+      "total_harmful_memory_reads": 0,
+      "total_negative_transfer_cases": 0
+    },
+    {
+      "ablation_id": "aa_memory_read_only",
+      "run_count": 12,
+      "success_rate": 0.666667,
+      "mean_cost_normalized_success": 0.207098,
+      "mean_activation_cost": 2.025,
+      "total_memory_reads": 40,
+      "total_harmful_memory_reads": 0,
+      "total_negative_transfer_cases": 0
+    },
+    {
+      "ablation_id": "aa_success_only_memory_write",
+      "run_count": 12,
+      "success_rate": 0.666667,
+      "mean_cost_normalized_success": 0.207098,
+      "mean_activation_cost": 2.025,
+      "total_memory_reads": 40,
+      "total_harmful_memory_reads": 0,
+      "total_negative_transfer_cases": 0
+    },
+    {
+      "ablation_id": "aa_unfiltered_memory",
+      "run_count": 12,
+      "success_rate": 0.666667,
+      "mean_cost_normalized_success": 0.207098,
+      "mean_activation_cost": 2.025,
+      "total_memory_reads": 44,
+      "total_harmful_memory_reads": 4,
+      "total_negative_transfer_cases": 12
+    },
+    {
+      "ablation_id": "aa_quarantine_aware",
+      "run_count": 12,
+      "success_rate": 0.666667,
+      "mean_cost_normalized_success": 0.207098,
+      "mean_activation_cost": 2.025,
+      "total_memory_reads": 40,
+      "total_harmful_memory_reads": 0,
+      "total_negative_transfer_cases": 0
+    }
+  ],
+  "negative_memory_probe": {
+    "aa_tuned_control": {
+      "ablation_id": "aa_tuned_control",
+      "run_count": 1,
+      "success_rate": 0.0,
+      "mean_cost_normalized_success": 0.0,
+      "mean_activation_cost": 1.85,
+      "total_memory_reads": 4,
+      "total_harmful_memory_reads": 0,
+      "total_negative_transfer_cases": 0
+    },
+    "aa_no_memory": {
+      "ablation_id": "aa_no_memory",
+      "run_count": 1,
+      "success_rate": 0.0,
+      "mean_cost_normalized_success": 0.0,
+      "mean_activation_cost": 1.4,
+      "total_memory_reads": 0,
+      "total_harmful_memory_reads": 0,
+      "total_negative_transfer_cases": 0
+    },
+    "aa_memory_read_only": {
+      "ablation_id": "aa_memory_read_only",
+      "run_count": 1,
+      "success_rate": 0.0,
+      "mean_cost_normalized_success": 0.0,
+      "mean_activation_cost": 1.85,
+      "total_memory_reads": 4,
+      "total_harmful_memory_reads": 0,
+      "total_negative_transfer_cases": 0
+    },
+    "aa_success_only_memory_write": {
+      "ablation_id": "aa_success_only_memory_write",
+      "run_count": 1,
+      "success_rate": 0.0,
+      "mean_cost_normalized_success": 0.0,
+      "mean_activation_cost": 1.85,
+      "total_memory_reads": 4,
+      "total_harmful_memory_reads": 0,
+      "total_negative_transfer_cases": 0
+    },
+    "aa_unfiltered_memory": {
+      "ablation_id": "aa_unfiltered_memory",
+      "run_count": 1,
+      "success_rate": 0.0,
+      "mean_cost_normalized_success": 0.0,
+      "mean_activation_cost": 1.85,
+      "total_memory_reads": 8,
+      "total_harmful_memory_reads": 4,
+      "total_negative_transfer_cases": 12
+    },
+    "aa_quarantine_aware": {
+      "ablation_id": "aa_quarantine_aware",
+      "run_count": 1,
+      "success_rate": 0.0,
+      "mean_cost_normalized_success": 0.0,
+      "mean_activation_cost": 1.85,
+      "total_memory_reads": 4,
+      "total_harmful_memory_reads": 0,
+      "total_negative_transfer_cases": 0
+    }
+  },
+  "negative_memory_task_id": "phase0_seed_negative_memory_001",
+  "interpretation_hint": "Compare aa_no_memory vs control for transfer; aa_unfiltered_memory vs aa_quarantine_aware on negative-memory probe."
+}

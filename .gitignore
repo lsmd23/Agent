@@ -1,0 +1,14 @@
+.env
+.env.*
+!.env.example
+
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+*.metrics.json
+
+# Regenerable experiment outputs (keep summaries in experiments/metrics/)
+experiments/llm_runs/
+experiments/trajectories/
+experiments/llm_runs/real_eval/logs/

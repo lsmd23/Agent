@@ -1,38 +1,65 @@
-# Agent-Attention Runtime Research Seed
+# Agent-Attention Runtime Research
 
-This workspace is a small research scaffold for exploring a Transformer/MoE/Memory-inspired agent architecture: fixed workflows are replaced by dynamically routed, sparsely activated agent/tool/memory modules.
+Research scaffold for a **sparse, logged module-routing agent runtime**: dynamic activation over agents, tools, memory, verifiers, and halt gates (vs fixed workflows or always-on MoA).
 
-## What Is Here
+## Current Milestone (2026-06-29)
 
-- `docs/research_memo.md`: research framing, related work map, architecture proposal, baselines, ablations, and metrics.
-- `docs/experiment_plan.md`: concrete first experiments for code/search/research tasks.
-- `docs/subtasks/`: subagent-ready research task pack with one guiding document per subtask.
-- `src/agent_attention_runtime.py`: a deterministic toy runtime that models state, routing, module activation, memory retrieval, verification, halting, and trajectory logging.
-- `experiments/sample_tasks.jsonl`: example tasks for the toy runtime.
-- `tests/test_runtime.py`: sanity tests for routing, memory reuse, and halt behavior.
+| Track | Status | Evidence |
+|-------|--------|----------|
+| Toy runtime + gates/routing | Done | `src/agent_attention_runtime.py`, 49 tests |
+| Phase 1–4 (toy, route-proxy) | Done | faithful baselines, memory ablations, textual backprop, learned router |
+| Real LLM harness | Done | 19 baselines, OpenAI-compatible + Ollama |
+| Full real-LLM matrix | Done | 344 runs; summaries in `experiments/metrics/` |
+| Publication-grade end-task eval | **Next** | executable code verifier, larger benchmarks |
 
-## Run The Toy Runtime
+**Canonical status:** [`docs/project_status.md`](docs/project_status.md)  
+**Real vs toy comparison:** [`docs/deliverables/08/result_table_real_vs_toy.md`](docs/deliverables/08/result_table_real_vs_toy.md)
 
-```bash
-python3 src/agent_attention_runtime.py \
-  --task "Fix a failing Python test by inspecting code, editing, and verifying" \
-  --output experiments/trajectory_demo.json
-```
-
-Run tests:
+## Quick Start
 
 ```bash
+# Tests
 python3 -m unittest discover -s tests
+
+# Toy Phase 1 faithful matrix (route-proxy, no API)
+python3 experiments/phase1/phase1_faithful_runner.py
+
+# Real LLM (requires .env — copy from .env.example)
+python3 experiments/real_benchmarks/run_real_llm_eval.py --suite gsm8k --family faithful --limit 5
+
+# Compare real LLM summaries vs toy Phase 1–4
+python3 experiments/real_benchmarks/compare_real_vs_toy.py
 ```
+
+## Repository Layout
+
+```
+src/agent_attention_runtime.py     # core runtime (routing, gates, memory, trajectories)
+experiments/baselines/             # faithful baseline runners
+experiments/phase{1,2,3,4}/        # toy experiment runners + memos
+experiments/real_benchmarks/       # LLM client, executors, unified eval runner
+experiments/tasks/                 # phase1 + GSM8K task JSONL
+experiments/metrics/               # committed summary JSON (trajectories gitignored)
+docs/deliverables/                 # result tables, scoring scripts
+docs/decision_log.md               # architecture decisions
+tests/                             # unit tests
+```
+
+## Evaluation Notes
+
+- **Toy Phases 1–4** use **route-proxy success** (module routing vs expected_route) — mechanism validation, not end-task performance.
+- **GSM8K real LLM** uses **exact numeric match** — end-task metric, but routing rarely matters on easy math items.
+- **Phase1 real LLM** still uses route-proxy; interpret Pass+Partial together (see comparison doc).
+- Trajectories under `experiments/llm_runs/` and `experiments/trajectories/` are **regenerable** and gitignored; summaries are committed.
 
 ## Research Goal
 
-The first target is not to prove that multi-agent systems are better. It is to measure when dynamic routing improves efficiency, stability, and transfer compared with:
+Measure when **dynamic sparse routing** improves **cost-adjusted success and stability** vs:
 
-- single ReAct-style agent
+- single ReAct agent
 - fixed planner/executor/critic workflow
-- full-history context agent
-- retrieval-memory agent
-- layered Mixture-of-Agents style aggregation
+- full-history context
+- retrieval-memory ReAct
+- MoA-style all-proposer aggregation
 
-The toy runtime is deliberately simple so that routing decisions and failure modes are inspectable.
+See `docs/research_memo.md` and `docs/deliverables/01/gap_analysis.md` for positioning.

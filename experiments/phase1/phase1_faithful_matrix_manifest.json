@@ -1,0 +1,1010 @@
+[
+  {
+    "run_id": "phase1_faithful__single_react_agent__phase0_seed_code_fix_001",
+    "task_id": "phase0_seed_code_fix_001",
+    "benchmark_id": "phase1_mixed",
+    "task_family": "code_agent_task",
+    "baseline_id": "single_react_agent",
+    "trajectory_path": "experiments/trajectories/phase1_faithful_matrix/phase1_faithful__single_react_agent__phase0_seed_code_fix_001.json",
+    "known_deviations": [
+      "faithful_toy_runtime_not_real_llm",
+      "toy_route_oracle_success_label",
+      "toy_scalar_activation_cost_not_full_cost_delta",
+      "oracle_route_regret_unavailable"
+    ]
+  },
+  {
+    "run_id": "phase1_faithful__fixed_workflow_agent__phase0_seed_code_fix_001",
+    "task_id": "phase0_seed_code_fix_001",
+    "benchmark_id": "phase1_mixed",
+    "task_family": "code_agent_task",
+    "baseline_id": "fixed_workflow_agent",
+    "trajectory_path": "experiments/trajectories/phase1_faithful_matrix/phase1_faithful__fixed_workflow_agent__phase0_seed_code_fix_001.json",
+    "known_deviations": [
+      "faithful_toy_runtime_not_real_llm",
+      "toy_route_oracle_success_label",
+      "toy_scalar_activation_cost_not_full_cost_delta",
+      "oracle_route_regret_unavailable"
+    ]
+  },
+  {
+    "run_id": "phase1_faithful__full_history_agent__phase0_seed_code_fix_001",
+    "task_id": "phase0_seed_code_fix_001",
+    "benchmark_id": "phase1_mixed",
+    "task_family": "code_agent_task",
+    "baseline_id": "full_history_agent",
+    "trajectory_path": "experiments/trajectories/phase1_faithful_matrix/phase1_faithful__full_history_agent__phase0_seed_code_fix_001.json",
+    "known_deviations": [
+      "faithful_toy_runtime_not_real_llm",
+      "toy_route_oracle_success_label",
+      "toy_scalar_activation_cost_not_full_cost_delta",
+      "oracle_route_regret_unavailable"
+    ]
+  },
+  {
+    "run_id": "phase1_faithful__retrieval_memory_agent__phase0_seed_code_fix_001",
+    "task_id": "phase0_seed_code_fix_001",
+    "benchmark_id": "phase1_mixed",
+    "task_family": "code_agent_task",
+    "baseline_id": "retrieval_memory_agent",
+    "trajectory_path": "experiments/trajectories/phase1_faithful_matrix/phase1_faithful__retrieval_memory_agent__phase0_seed_code_fix_001.json",
+    "known_deviations": [
+      "faithful_toy_runtime_not_real_llm",
+      "toy_route_oracle_success_label",
+      "toy_scalar_activation_cost_not_full_cost_delta",
+      "oracle_route_regret_unavailable"
+    ]
+  },
+  {
+    "run_id": "phase1_faithful__moa_style_agent__phase0_seed_code_fix_001",
+    "task_id": "phase0_seed_code_fix_001",
+    "benchmark_id": "phase1_mixed",
+    "task_family": "code_agent_task",
+    "baseline_id": "moa_style_agent",
+    "trajectory_path": "experiments/trajectories/phase1_faithful_matrix/phase1_faithful__moa_style_agent__phase0_seed_code_fix_001.json",
+    "known_deviations": [
+      "faithful_toy_runtime_not_real_llm",
+      "toy_route_oracle_success_label",
+      "toy_scalar_activation_cost_not_full_cost_delta",
+      "oracle_route_regret_unavailable"
+    ]
+  },
+  {
+    "run_id": "phase1_faithful__agent_attention_agent__phase0_seed_code_fix_001",
+    "task_id": "phase0_seed_code_fix_001",
+    "benchmark_id": "phase1_mixed",
+    "task_family": "code_agent_task",
+    "baseline_id": "agent_attention_agent",
+    "trajectory_path": "experiments/trajectories/phase1_faithful_matrix/phase1_faithful__agent_attention_agent__phase0_seed_code_fix_001.json",
+    "known_deviations": [
+      "faithful_toy_runtime_not_real_llm",
+      "toy_route_oracle_success_label",
+      "toy_scalar_activation_cost_not_full_cost_delta",
+      "oracle_route_regret_unavailable"
+    ]
+  },
+  {
+    "run_id": "phase1_faithful__single_react_agent__phase0_seed_search_sources_001",
+    "task_id": "phase0_seed_search_sources_001",
+    "benchmark_id": "phase1_mixed",
+    "task_family": "search_agent_task",
+    "baseline_id": "single_react_agent",
+    "trajectory_path": "experiments/trajectories/phase1_faithful_matrix/phase1_faithful__single_react_agent__phase0_seed_search_sources_001.json",
+    "known_deviations": [
+      "faithful_toy_runtime_not_real_llm",
+      "toy_route_oracle_success_label",
+      "toy_scalar_activation_cost_not_full_cost_delta",
+      "oracle_route_regret_unavailable"
+    ]
+  },
+  {
+    "run_id": "phase1_faithful__fixed_workflow_agent__phase0_seed_search_sources_001",
+    "task_id": "phase0_seed_search_sources_001",
+    "benchmark_id": "phase1_mixed",
+    "task_family": "search_agent_task",
+    "baseline_id": "fixed_workflow_agent",
+    "trajectory_path": "experiments/trajectories/phase1_faithful_matrix/phase1_faithful__fixed_workflow_agent__phase0_seed_search_sources_001.json",
+    "known_deviations": [
+      "faithful_toy_runtime_not_real_llm",
+      "toy_route_oracle_success_label",
+      "toy_scalar_activation_cost_not_full_cost_delta",
+      "oracle_route_regret_unavailable"
+    ]
+  },
+  {
+    "run_id": "phase1_faithful__full_history_agent__phase0_seed_search_sources_001",
+    "task_id": "phase0_seed_search_sources_001",
+    "benchmark_id": "phase1_mixed",
+    "task_family": "search_agent_task",
+    "baseline_id": "full_history_agent",
+    "trajectory_path": "experiments/trajectories/phase1_faithful_matrix/phase1_faithful__full_history_agent__phase0_seed_search_sources_001.json",
+    "known_deviations": [
+      "faithful_toy_runtime_not_real_llm",
+      "toy_route_oracle_success_label",
+      "toy_scalar_activation_cost_not_full_cost_delta",
+      "oracle_route_regret_unavailable"
+    ]
+  },
+  {
+    "run_id": "phase1_faithful__retrieval_memory_agent__phase0_seed_search_sources_001",
+    "task_id": "phase0_seed_search_sources_001",
+    "benchmark_id": "phase1_mixed",
+    "task_family": "search_agent_task",
+    "baseline_id": "retrieval_memory_agent",
+    "trajectory_path": "experiments/trajectories/phase1_faithful_matrix/phase1_faithful__retrieval_memory_agent__phase0_seed_search_sources_001.json",
+    "known_deviations": [
+      "faithful_toy_runtime_not_real_llm",
+      "toy_route_oracle_success_label",
+      "toy_scalar_activation_cost_not_full_cost_delta",
+      "oracle_route_regret_unavailable"
+    ]
+  },
+  {
+    "run_id": "phase1_faithful__moa_style_agent__phase0_seed_search_sources_001",
+    "task_id": "phase0_seed_search_sources_001",
+    "benchmark_id": "phase1_mixed",
+    "task_family": "search_agent_task",
+    "baseline_id": "moa_style_agent",
+    "trajectory_path": "experiments/trajectories/phase1_faithful_matrix/phase1_faithful__moa_style_agent__phase0_seed_search_sources_001.json",
+    "known_deviations": [
+      "faithful_toy_runtime_not_real_llm",
+      "toy_route_oracle_success_label",
+      "toy_scalar_activation_cost_not_full_cost_delta",
+      "oracle_route_regret_unavailable"
+    ]
+  },
+  {
+    "run_id": "phase1_faithful__agent_attention_agent__phase0_seed_search_sources_001",
+    "task_id": "phase0_seed_search_sources_001",
+    "benchmark_id": "phase1_mixed",
+    "task_family": "search_agent_task",
+    "baseline_id": "agent_attention_agent",
+    "trajectory_path": "experiments/trajectories/phase1_faithful_matrix/phase1_faithful__agent_attention_agent__phase0_seed_search_sources_001.json",
+    "known_deviations": [
+      "faithful_toy_runtime_not_real_llm",
+      "toy_route_oracle_success_label",
+      "toy_scalar_activation_cost_not_full_cost_delta",
+      "oracle_route_regret_unavailable"
+    ]
+  },
+  {
+    "run_id": "phase1_faithful__single_react_agent__phase0_seed_research_metrics_001",
+    "task_id": "phase0_seed_research_metrics_001",
+    "benchmark_id": "phase1_mixed",
+    "task_family": "mini_research_task",
+    "baseline_id": "single_react_agent",
+    "trajectory_path": "experiments/trajectories/phase1_faithful_matrix/phase1_faithful__single_react_agent__phase0_seed_research_metrics_001.json",
+    "known_deviations": [
+      "faithful_toy_runtime_not_real_llm",
+      "toy_route_oracle_success_label",
+      "toy_scalar_activation_cost_not_full_cost_delta",
+      "oracle_route_regret_unavailable"
+    ]
+  },
+  {
+    "run_id": "phase1_faithful__fixed_workflow_agent__phase0_seed_research_metrics_001",
+    "task_id": "phase0_seed_research_metrics_001",
+    "benchmark_id": "phase1_mixed",
+    "task_family": "mini_research_task",
+    "baseline_id": "fixed_workflow_agent",
+    "trajectory_path": "experiments/trajectories/phase1_faithful_matrix/phase1_faithful__fixed_workflow_agent__phase0_seed_research_metrics_001.json",
+    "known_deviations": [
+      "faithful_toy_runtime_not_real_llm",
+      "toy_route_oracle_success_label",
+      "toy_scalar_activation_cost_not_full_cost_delta",
+      "oracle_route_regret_unavailable"
+    ]
+  },
+  {
+    "run_id": "phase1_faithful__full_history_agent__phase0_seed_research_metrics_001",
+    "task_id": "phase0_seed_research_metrics_001",
+    "benchmark_id": "phase1_mixed",
+    "task_family": "mini_research_task",
+    "baseline_id": "full_history_agent",
+    "trajectory_path": "experiments/trajectories/phase1_faithful_matrix/phase1_faithful__full_history_agent__phase0_seed_research_metrics_001.json",
+    "known_deviations": [
+      "faithful_toy_runtime_not_real_llm",
+      "toy_route_oracle_success_label",
+      "toy_scalar_activation_cost_not_full_cost_delta",
+      "oracle_route_regret_unavailable"
+    ]
+  },
+  {
+    "run_id": "phase1_faithful__retrieval_memory_agent__phase0_seed_research_metrics_001",
+    "task_id": "phase0_seed_research_metrics_001",
+    "benchmark_id": "phase1_mixed",
+    "task_family": "mini_research_task",
+    "baseline_id": "retrieval_memory_agent",
+    "trajectory_path": "experiments/trajectories/phase1_faithful_matrix/phase1_faithful__retrieval_memory_agent__phase0_seed_research_metrics_001.json",
+    "known_deviations": [
+      "faithful_toy_runtime_not_real_llm",
+      "toy_route_oracle_success_label",
+      "toy_scalar_activation_cost_not_full_cost_delta",
+      "oracle_route_regret_unavailable"
+    ]
+  },
+  {
+    "run_id": "phase1_faithful__moa_style_agent__phase0_seed_research_metrics_001",
+    "task_id": "phase0_seed_research_metrics_001",
+    "benchmark_id": "phase1_mixed",
+    "task_family": "mini_research_task",
+    "baseline_id": "moa_style_agent",
+    "trajectory_path": "experiments/trajectories/phase1_faithful_matrix/phase1_faithful__moa_style_agent__phase0_seed_research_metrics_001.json",
+    "known_deviations": [
+      "faithful_toy_runtime_not_real_llm",
+      "toy_route_oracle_success_label",
+      "toy_scalar_activation_cost_not_full_cost_delta",
+      "oracle_route_regret_unavailable"
+    ]
+  },
+  {
+    "run_id": "phase1_faithful__agent_attention_agent__phase0_seed_research_metrics_001",
+    "task_id": "phase0_seed_research_metrics_001",
+    "benchmark_id": "phase1_mixed",
+    "task_family": "mini_research_task",
+    "baseline_id": "agent_attention_agent",
+    "trajectory_path": "experiments/trajectories/phase1_faithful_matrix/phase1_faithful__agent_attention_agent__phase0_seed_research_metrics_001.json",
+    "known_deviations": [
+      "faithful_toy_runtime_not_real_llm",
+      "toy_route_oracle_success_label",
+      "toy_scalar_activation_cost_not_full_cost_delta",
+      "oracle_route_regret_unavailable"
+    ]
+  },
+  {
+    "run_id": "phase1_faithful__single_react_agent__phase0_seed_negative_memory_001",
+    "task_id": "phase0_seed_negative_memory_001",
+    "benchmark_id": "phase1_mixed",
+    "task_family": "code_agent_task",
+    "baseline_id": "single_react_agent",
+    "trajectory_path": "experiments/trajectories/phase1_faithful_matrix/phase1_faithful__single_react_agent__phase0_seed_negative_memory_001.json",
+    "known_deviations": [
+      "faithful_toy_runtime_not_real_llm",
+      "toy_route_oracle_success_label",
+      "toy_scalar_activation_cost_not_full_cost_delta",
+      "oracle_route_regret_unavailable"
+    ]
+  },
+  {
+    "run_id": "phase1_faithful__fixed_workflow_agent__phase0_seed_negative_memory_001",
+    "task_id": "phase0_seed_negative_memory_001",
+    "benchmark_id": "phase1_mixed",
+    "task_family": "code_agent_task",
+    "baseline_id": "fixed_workflow_agent",
+    "trajectory_path": "experiments/trajectories/phase1_faithful_matrix/phase1_faithful__fixed_workflow_agent__phase0_seed_negative_memory_001.json",
+    "known_deviations": [
+      "faithful_toy_runtime_not_real_llm",
+      "toy_route_oracle_success_label",
+      "toy_scalar_activation_cost_not_full_cost_delta",
+      "oracle_route_regret_unavailable"
+    ]
+  },
+  {
+    "run_id": "phase1_faithful__full_history_agent__phase0_seed_negative_memory_001",
+    "task_id": "phase0_seed_negative_memory_001",
+    "benchmark_id": "phase1_mixed",
+    "task_family": "code_agent_task",
+    "baseline_id": "full_history_agent",
+    "trajectory_path": "experiments/trajectories/phase1_faithful_matrix/phase1_faithful__full_history_agent__phase0_seed_negative_memory_001.json",
+    "known_deviations": [
+      "faithful_toy_runtime_not_real_llm",
+      "toy_route_oracle_success_label",
+      "toy_scalar_activation_cost_not_full_cost_delta",
+      "oracle_route_regret_unavailable"
+    ]
+  },
+  {
+    "run_id": "phase1_faithful__retrieval_memory_agent__phase0_seed_negative_memory_001",
+    "task_id": "phase0_seed_negative_memory_001",
+    "benchmark_id": "phase1_mixed",
+    "task_family": "code_agent_task",
+    "baseline_id": "retrieval_memory_agent",
+    "trajectory_path": "experiments/trajectories/phase1_faithful_matrix/phase1_faithful__retrieval_memory_agent__phase0_seed_negative_memory_001.json",
+    "known_deviations": [
+      "faithful_toy_runtime_not_real_llm",
+      "toy_route_oracle_success_label",
+      "toy_scalar_activation_cost_not_full_cost_delta",
+      "oracle_route_regret_unavailable"
+    ]
+  },
+  {
+    "run_id": "phase1_faithful__moa_style_agent__phase0_seed_negative_memory_001",
+    "task_id": "phase0_seed_negative_memory_001",
+    "benchmark_id": "phase1_mixed",
+    "task_family": "code_agent_task",
+    "baseline_id": "moa_style_agent",
+    "trajectory_path": "experiments/trajectories/phase1_faithful_matrix/phase1_faithful__moa_style_agent__phase0_seed_negative_memory_001.json",
+    "known_deviations": [
+      "faithful_toy_runtime_not_real_llm",
+      "toy_route_oracle_success_label",
+      "toy_scalar_activation_cost_not_full_cost_delta",
+      "oracle_route_regret_unavailable"
+    ]
+  },
+  {
+    "run_id": "phase1_faithful__agent_attention_agent__phase0_seed_negative_memory_001",
+    "task_id": "phase0_seed_negative_memory_001",
+    "benchmark_id": "phase1_mixed",
+    "task_family": "code_agent_task",
+    "baseline_id": "agent_attention_agent",
+    "trajectory_path": "experiments/trajectories/phase1_faithful_matrix/phase1_faithful__agent_attention_agent__phase0_seed_negative_memory_001.json",
+    "known_deviations": [
+      "faithful_toy_runtime_not_real_llm",
+      "toy_route_oracle_success_label",
+      "toy_scalar_activation_cost_not_full_cost_delta",
+      "oracle_route_regret_unavailable"
+    ]
+  },
+  {
+    "run_id": "phase1_faithful__single_react_agent__phase1_code_config_001",
+    "task_id": "phase1_code_config_001",
+    "benchmark_id": "phase1_mixed",
+    "task_family": "code_agent_task",
+    "baseline_id": "single_react_agent",
+    "trajectory_path": "experiments/trajectories/phase1_faithful_matrix/phase1_faithful__single_react_agent__phase1_code_config_001.json",
+    "known_deviations": [
+      "faithful_toy_runtime_not_real_llm",
+      "toy_route_oracle_success_label",
+      "toy_scalar_activation_cost_not_full_cost_delta",
+      "oracle_route_regret_unavailable"
+    ]
+  },
+  {
+    "run_id": "phase1_faithful__fixed_workflow_agent__phase1_code_config_001",
+    "task_id": "phase1_code_config_001",
+    "benchmark_id": "phase1_mixed",
+    "task_family": "code_agent_task",
+    "baseline_id": "fixed_workflow_agent",
+    "trajectory_path": "experiments/trajectories/phase1_faithful_matrix/phase1_faithful__fixed_workflow_agent__phase1_code_config_001.json",
+    "known_deviations": [
+      "faithful_toy_runtime_not_real_llm",
+      "toy_route_oracle_success_label",
+      "toy_scalar_activation_cost_not_full_cost_delta",
+      "oracle_route_regret_unavailable"
+    ]
+  },
+  {
+    "run_id": "phase1_faithful__full_history_agent__phase1_code_config_001",
+    "task_id": "phase1_code_config_001",
+    "benchmark_id": "phase1_mixed",
+    "task_family": "code_agent_task",
+    "baseline_id": "full_history_agent",
+    "trajectory_path": "experiments/trajectories/phase1_faithful_matrix/phase1_faithful__full_history_agent__phase1_code_config_001.json",
+    "known_deviations": [
+      "faithful_toy_runtime_not_real_llm",
+      "toy_route_oracle_success_label",
+      "toy_scalar_activation_cost_not_full_cost_delta",
+      "oracle_route_regret_unavailable"
+    ]
+  },
+  {
+    "run_id": "phase1_faithful__retrieval_memory_agent__phase1_code_config_001",
+    "task_id": "phase1_code_config_001",
+    "benchmark_id": "phase1_mixed",
+    "task_family": "code_agent_task",
+    "baseline_id": "retrieval_memory_agent",
+    "trajectory_path": "experiments/trajectories/phase1_faithful_matrix/phase1_faithful__retrieval_memory_agent__phase1_code_config_001.json",
+    "known_deviations": [
+      "faithful_toy_runtime_not_real_llm",
+      "toy_route_oracle_success_label",
+      "toy_scalar_activation_cost_not_full_cost_delta",
+      "oracle_route_regret_unavailable"
+    ]
+  },
+  {
+    "run_id": "phase1_faithful__moa_style_agent__phase1_code_config_001",
+    "task_id": "phase1_code_config_001",
+    "benchmark_id": "phase1_mixed",
+    "task_family": "code_agent_task",
+    "baseline_id": "moa_style_agent",
+    "trajectory_path": "experiments/trajectories/phase1_faithful_matrix/phase1_faithful__moa_style_agent__phase1_code_config_001.json",
+    "known_deviations": [
+      "faithful_toy_runtime_not_real_llm",
+      "toy_route_oracle_success_label",
+      "toy_scalar_activation_cost_not_full_cost_delta",
+      "oracle_route_regret_unavailable"
+    ]
+  },
+  {
+    "run_id": "phase1_faithful__agent_attention_agent__phase1_code_config_001",
+    "task_id": "phase1_code_config_001",
+    "benchmark_id": "phase1_mixed",
+    "task_family": "code_agent_task",
+    "baseline_id": "agent_attention_agent",
+    "trajectory_path": "experiments/trajectories/phase1_faithful_matrix/phase1_faithful__agent_attention_agent__phase1_code_config_001.json",
+    "known_deviations": [
+      "faithful_toy_runtime_not_real_llm",
+      "toy_route_oracle_success_label",
+      "toy_scalar_activation_cost_not_full_cost_delta",
+      "oracle_route_regret_unavailable"
+    ]
+  },
+  {
+    "run_id": "phase1_faithful__single_react_agent__phase1_code_doc_001",
+    "task_id": "phase1_code_doc_001",
+    "benchmark_id": "phase1_mixed",
+    "task_family": "code_agent_task",
+    "baseline_id": "single_react_agent",
+    "trajectory_path": "experiments/trajectories/phase1_faithful_matrix/phase1_faithful__single_react_agent__phase1_code_doc_001.json",
+    "known_deviations": [
+      "faithful_toy_runtime_not_real_llm",
+      "toy_route_oracle_success_label",
+      "toy_scalar_activation_cost_not_full_cost_delta",
+      "oracle_route_regret_unavailable"
+    ]
+  },
+  {
+    "run_id": "phase1_faithful__fixed_workflow_agent__phase1_code_doc_001",
+    "task_id": "phase1_code_doc_001",
+    "benchmark_id": "phase1_mixed",
+    "task_family": "code_agent_task",
+    "baseline_id": "fixed_workflow_agent",
+    "trajectory_path": "experiments/trajectories/phase1_faithful_matrix/phase1_faithful__fixed_workflow_agent__phase1_code_doc_001.json",
+    "known_deviations": [
+      "faithful_toy_runtime_not_real_llm",
+      "toy_route_oracle_success_label",
+      "toy_scalar_activation_cost_not_full_cost_delta",
+      "oracle_route_regret_unavailable"
+    ]
+  },
+  {
+    "run_id": "phase1_faithful__full_history_agent__phase1_code_doc_001",
+    "task_id": "phase1_code_doc_001",
+    "benchmark_id": "phase1_mixed",
+    "task_family": "code_agent_task",
+    "baseline_id": "full_history_agent",
+    "trajectory_path": "experiments/trajectories/phase1_faithful_matrix/phase1_faithful__full_history_agent__phase1_code_doc_001.json",
+    "known_deviations": [
+      "faithful_toy_runtime_not_real_llm",
+      "toy_route_oracle_success_label",
+      "toy_scalar_activation_cost_not_full_cost_delta",
+      "oracle_route_regret_unavailable"
+    ]
+  },
+  {
+    "run_id": "phase1_faithful__retrieval_memory_agent__phase1_code_doc_001",
+    "task_id": "phase1_code_doc_001",
+    "benchmark_id": "phase1_mixed",
+    "task_family": "code_agent_task",
+    "baseline_id": "retrieval_memory_agent",
+    "trajectory_path": "experiments/trajectories/phase1_faithful_matrix/phase1_faithful__retrieval_memory_agent__phase1_code_doc_001.json",
+    "known_deviations": [
+      "faithful_toy_runtime_not_real_llm",
+      "toy_route_oracle_success_label",
+      "toy_scalar_activation_cost_not_full_cost_delta",
+      "oracle_route_regret_unavailable"
+    ]
+  },
+  {
+    "run_id": "phase1_faithful__moa_style_agent__phase1_code_doc_001",
+    "task_id": "phase1_code_doc_001",
+    "benchmark_id": "phase1_mixed",
+    "task_family": "code_agent_task",
+    "baseline_id": "moa_style_agent",
+    "trajectory_path": "experiments/trajectories/phase1_faithful_matrix/phase1_faithful__moa_style_agent__phase1_code_doc_001.json",
+    "known_deviations": [
+      "faithful_toy_runtime_not_real_llm",
+      "toy_route_oracle_success_label",
+      "toy_scalar_activation_cost_not_full_cost_delta",
+      "oracle_route_regret_unavailable"
+    ]
+  },
+  {
+    "run_id": "phase1_faithful__agent_attention_agent__phase1_code_doc_001",
+    "task_id": "phase1_code_doc_001",
+    "benchmark_id": "phase1_mixed",
+    "task_family": "code_agent_task",
+    "baseline_id": "agent_attention_agent",
+    "trajectory_path": "experiments/trajectories/phase1_faithful_matrix/phase1_faithful__agent_attention_agent__phase1_code_doc_001.json",
+    "known_deviations": [
+      "faithful_toy_runtime_not_real_llm",
+      "toy_route_oracle_success_label",
+      "toy_scalar_activation_cost_not_full_cost_delta",
+      "oracle_route_regret_unavailable"
+    ]
+  },
+  {
+    "run_id": "phase1_faithful__single_react_agent__phase1_code_import_001",
+    "task_id": "phase1_code_import_001",
+    "benchmark_id": "phase1_mixed",
+    "task_family": "code_agent_task",
+    "baseline_id": "single_react_agent",
+    "trajectory_path": "experiments/trajectories/phase1_faithful_matrix/phase1_faithful__single_react_agent__phase1_code_import_001.json",
+    "known_deviations": [
+      "faithful_toy_runtime_not_real_llm",
+      "toy_route_oracle_success_label",
+      "toy_scalar_activation_cost_not_full_cost_delta",
+      "oracle_route_regret_unavailable"
+    ]
+  },
+  {
+    "run_id": "phase1_faithful__fixed_workflow_agent__phase1_code_import_001",
+    "task_id": "phase1_code_import_001",
+    "benchmark_id": "phase1_mixed",
+    "task_family": "code_agent_task",
+    "baseline_id": "fixed_workflow_agent",
+    "trajectory_path": "experiments/trajectories/phase1_faithful_matrix/phase1_faithful__fixed_workflow_agent__phase1_code_import_001.json",
+    "known_deviations": [
+      "faithful_toy_runtime_not_real_llm",
+      "toy_route_oracle_success_label",
+      "toy_scalar_activation_cost_not_full_cost_delta",
+      "oracle_route_regret_unavailable"
+    ]
+  },
+  {
+    "run_id": "phase1_faithful__full_history_agent__phase1_code_import_001",
+    "task_id": "phase1_code_import_001",
+    "benchmark_id": "phase1_mixed",
+    "task_family": "code_agent_task",
+    "baseline_id": "full_history_agent",
+    "trajectory_path": "experiments/trajectories/phase1_faithful_matrix/phase1_faithful__full_history_agent__phase1_code_import_001.json",
+    "known_deviations": [
+      "faithful_toy_runtime_not_real_llm",
+      "toy_route_oracle_success_label",
+      "toy_scalar_activation_cost_not_full_cost_delta",
+      "oracle_route_regret_unavailable"
+    ]
+  },
+  {
+    "run_id": "phase1_faithful__retrieval_memory_agent__phase1_code_import_001",
+    "task_id": "phase1_code_import_001",
+    "benchmark_id": "phase1_mixed",
+    "task_family": "code_agent_task",
+    "baseline_id": "retrieval_memory_agent",
+    "trajectory_path": "experiments/trajectories/phase1_faithful_matrix/phase1_faithful__retrieval_memory_agent__phase1_code_import_001.json",
+    "known_deviations": [
+      "faithful_toy_runtime_not_real_llm",
+      "toy_route_oracle_success_label",
+      "toy_scalar_activation_cost_not_full_cost_delta",
+      "oracle_route_regret_unavailable"
+    ]
+  },
+  {
+    "run_id": "phase1_faithful__moa_style_agent__phase1_code_import_001",
+    "task_id": "phase1_code_import_001",
+    "benchmark_id": "phase1_mixed",
+    "task_family": "code_agent_task",
+    "baseline_id": "moa_style_agent",
+    "trajectory_path": "experiments/trajectories/phase1_faithful_matrix/phase1_faithful__moa_style_agent__phase1_code_import_001.json",
+    "known_deviations": [
+      "faithful_toy_runtime_not_real_llm",
+      "toy_route_oracle_success_label",
+      "toy_scalar_activation_cost_not_full_cost_delta",
+      "oracle_route_regret_unavailable"
+    ]
+  },
+  {
+    "run_id": "phase1_faithful__agent_attention_agent__phase1_code_import_001",
+    "task_id": "phase1_code_import_001",
+    "benchmark_id": "phase1_mixed",
+    "task_family": "code_agent_task",
+    "baseline_id": "agent_attention_agent",
+    "trajectory_path": "experiments/trajectories/phase1_faithful_matrix/phase1_faithful__agent_attention_agent__phase1_code_import_001.json",
+    "known_deviations": [
+      "faithful_toy_runtime_not_real_llm",
+      "toy_route_oracle_success_label",
+      "toy_scalar_activation_cost_not_full_cost_delta",
+      "oracle_route_regret_unavailable"
+    ]
+  },
+  {
+    "run_id": "phase1_faithful__single_react_agent__phase1_code_edge_001",
+    "task_id": "phase1_code_edge_001",
+    "benchmark_id": "phase1_mixed",
+    "task_family": "code_agent_task",
+    "baseline_id": "single_react_agent",
+    "trajectory_path": "experiments/trajectories/phase1_faithful_matrix/phase1_faithful__single_react_agent__phase1_code_edge_001.json",
+    "known_deviations": [
+      "faithful_toy_runtime_not_real_llm",
+      "toy_route_oracle_success_label",
+      "toy_scalar_activation_cost_not_full_cost_delta",
+      "oracle_route_regret_unavailable"
+    ]
+  },
+  {
+    "run_id": "phase1_faithful__fixed_workflow_agent__phase1_code_edge_001",
+    "task_id": "phase1_code_edge_001",
+    "benchmark_id": "phase1_mixed",
+    "task_family": "code_agent_task",
+    "baseline_id": "fixed_workflow_agent",
+    "trajectory_path": "experiments/trajectories/phase1_faithful_matrix/phase1_faithful__fixed_workflow_agent__phase1_code_edge_001.json",
+    "known_deviations": [
+      "faithful_toy_runtime_not_real_llm",
+      "toy_route_oracle_success_label",
+      "toy_scalar_activation_cost_not_full_cost_delta",
+      "oracle_route_regret_unavailable"
+    ]
+  },
+  {
+    "run_id": "phase1_faithful__full_history_agent__phase1_code_edge_001",
+    "task_id": "phase1_code_edge_001",
+    "benchmark_id": "phase1_mixed",
+    "task_family": "code_agent_task",
+    "baseline_id": "full_history_agent",
+    "trajectory_path": "experiments/trajectories/phase1_faithful_matrix/phase1_faithful__full_history_agent__phase1_code_edge_001.json",
+    "known_deviations": [
+      "faithful_toy_runtime_not_real_llm",
+      "toy_route_oracle_success_label",
+      "toy_scalar_activation_cost_not_full_cost_delta",
+      "oracle_route_regret_unavailable"
+    ]
+  },
+  {
+    "run_id": "phase1_faithful__retrieval_memory_agent__phase1_code_edge_001",
+    "task_id": "phase1_code_edge_001",
+    "benchmark_id": "phase1_mixed",
+    "task_family": "code_agent_task",
+    "baseline_id": "retrieval_memory_agent",
+    "trajectory_path": "experiments/trajectories/phase1_faithful_matrix/phase1_faithful__retrieval_memory_agent__phase1_code_edge_001.json",
+    "known_deviations": [
+      "faithful_toy_runtime_not_real_llm",
+      "toy_route_oracle_success_label",
+      "toy_scalar_activation_cost_not_full_cost_delta",
+      "oracle_route_regret_unavailable"
+    ]
+  },
+  {
+    "run_id": "phase1_faithful__moa_style_agent__phase1_code_edge_001",
+    "task_id": "phase1_code_edge_001",
+    "benchmark_id": "phase1_mixed",
+    "task_family": "code_agent_task",
+    "baseline_id": "moa_style_agent",
+    "trajectory_path": "experiments/trajectories/phase1_faithful_matrix/phase1_faithful__moa_style_agent__phase1_code_edge_001.json",
+    "known_deviations": [
+      "faithful_toy_runtime_not_real_llm",
+      "toy_route_oracle_success_label",
+      "toy_scalar_activation_cost_not_full_cost_delta",
+      "oracle_route_regret_unavailable"
+    ]
+  },
+  {
+    "run_id": "phase1_faithful__agent_attention_agent__phase1_code_edge_001",
+    "task_id": "phase1_code_edge_001",
+    "benchmark_id": "phase1_mixed",
+    "task_family": "code_agent_task",
+    "baseline_id": "agent_attention_agent",
+    "trajectory_path": "experiments/trajectories/phase1_faithful_matrix/phase1_faithful__agent_attention_agent__phase1_code_edge_001.json",
+    "known_deviations": [
+      "faithful_toy_runtime_not_real_llm",
+      "toy_route_oracle_success_label",
+      "toy_scalar_activation_cost_not_full_cost_delta",
+      "oracle_route_regret_unavailable"
+    ]
+  },
+  {
+    "run_id": "phase1_faithful__single_react_agent__phase1_search_conflict_001",
+    "task_id": "phase1_search_conflict_001",
+    "benchmark_id": "phase1_mixed",
+    "task_family": "search_agent_task",
+    "baseline_id": "single_react_agent",
+    "trajectory_path": "experiments/trajectories/phase1_faithful_matrix/phase1_faithful__single_react_agent__phase1_search_conflict_001.json",
+    "known_deviations": [
+      "faithful_toy_runtime_not_real_llm",
+      "toy_route_oracle_success_label",
+      "toy_scalar_activation_cost_not_full_cost_delta",
+      "oracle_route_regret_unavailable"
+    ]
+  },
+  {
+    "run_id": "phase1_faithful__fixed_workflow_agent__phase1_search_conflict_001",
+    "task_id": "phase1_search_conflict_001",
+    "benchmark_id": "phase1_mixed",
+    "task_family": "search_agent_task",
+    "baseline_id": "fixed_workflow_agent",
+    "trajectory_path": "experiments/trajectories/phase1_faithful_matrix/phase1_faithful__fixed_workflow_agent__phase1_search_conflict_001.json",
+    "known_deviations": [
+      "faithful_toy_runtime_not_real_llm",
+      "toy_route_oracle_success_label",
+      "toy_scalar_activation_cost_not_full_cost_delta",
+      "oracle_route_regret_unavailable"
+    ]
+  },
+  {
+    "run_id": "phase1_faithful__full_history_agent__phase1_search_conflict_001",
+    "task_id": "phase1_search_conflict_001",
+    "benchmark_id": "phase1_mixed",
+    "task_family": "search_agent_task",
+    "baseline_id": "full_history_agent",
+    "trajectory_path": "experiments/trajectories/phase1_faithful_matrix/phase1_faithful__full_history_agent__phase1_search_conflict_001.json",
+    "known_deviations": [
+      "faithful_toy_runtime_not_real_llm",
+      "toy_route_oracle_success_label",
+      "toy_scalar_activation_cost_not_full_cost_delta",
+      "oracle_route_regret_unavailable"
+    ]
+  },
+  {
+    "run_id": "phase1_faithful__retrieval_memory_agent__phase1_search_conflict_001",
+    "task_id": "phase1_search_conflict_001",
+    "benchmark_id": "phase1_mixed",
+    "task_family": "search_agent_task",
+    "baseline_id": "retrieval_memory_agent",
+    "trajectory_path": "experiments/trajectories/phase1_faithful_matrix/phase1_faithful__retrieval_memory_agent__phase1_search_conflict_001.json",
+    "known_deviations": [
+      "faithful_toy_runtime_not_real_llm",
+      "toy_route_oracle_success_label",
+      "toy_scalar_activation_cost_not_full_cost_delta",
+      "oracle_route_regret_unavailable"
+    ]
+  },
+  {
+    "run_id": "phase1_faithful__moa_style_agent__phase1_search_conflict_001",
+    "task_id": "phase1_search_conflict_001",
+    "benchmark_id": "phase1_mixed",
+    "task_family": "search_agent_task",
+    "baseline_id": "moa_style_agent",
+    "trajectory_path": "experiments/trajectories/phase1_faithful_matrix/phase1_faithful__moa_style_agent__phase1_search_conflict_001.json",
+    "known_deviations": [
+      "faithful_toy_runtime_not_real_llm",
+      "toy_route_oracle_success_label",
+      "toy_scalar_activation_cost_not_full_cost_delta",
+      "oracle_route_regret_unavailable"
+    ]
+  },
+  {
+    "run_id": "phase1_faithful__agent_attention_agent__phase1_search_conflict_001",
+    "task_id": "phase1_search_conflict_001",
+    "benchmark_id": "phase1_mixed",
+    "task_family": "search_agent_task",
+    "baseline_id": "agent_attention_agent",
+    "trajectory_path": "experiments/trajectories/phase1_faithful_matrix/phase1_faithful__agent_attention_agent__phase1_search_conflict_001.json",
+    "known_deviations": [
+      "faithful_toy_runtime_not_real_llm",
+      "toy_route_oracle_success_label",
+      "toy_scalar_activation_cost_not_full_cost_delta",
+      "oracle_route_regret_unavailable"
+    ]
+  },
+  {
+    "run_id": "phase1_faithful__single_react_agent__phase1_search_recency_001",
+    "task_id": "phase1_search_recency_001",
+    "benchmark_id": "phase1_mixed",
+    "task_family": "search_agent_task",
+    "baseline_id": "single_react_agent",
+    "trajectory_path": "experiments/trajectories/phase1_faithful_matrix/phase1_faithful__single_react_agent__phase1_search_recency_001.json",
+    "known_deviations": [
+      "faithful_toy_runtime_not_real_llm",
+      "toy_route_oracle_success_label",
+      "toy_scalar_activation_cost_not_full_cost_delta",
+      "oracle_route_regret_unavailable"
+    ]
+  },
+  {
+    "run_id": "phase1_faithful__fixed_workflow_agent__phase1_search_recency_001",
+    "task_id": "phase1_search_recency_001",
+    "benchmark_id": "phase1_mixed",
+    "task_family": "search_agent_task",
+    "baseline_id": "fixed_workflow_agent",
+    "trajectory_path": "experiments/trajectories/phase1_faithful_matrix/phase1_faithful__fixed_workflow_agent__phase1_search_recency_001.json",
+    "known_deviations": [
+      "faithful_toy_runtime_not_real_llm",
+      "toy_route_oracle_success_label",
+      "toy_scalar_activation_cost_not_full_cost_delta",
+      "oracle_route_regret_unavailable"
+    ]
+  },
+  {
+    "run_id": "phase1_faithful__full_history_agent__phase1_search_recency_001",
+    "task_id": "phase1_search_recency_001",
+    "benchmark_id": "phase1_mixed",
+    "task_family": "search_agent_task",
+    "baseline_id": "full_history_agent",
+    "trajectory_path": "experiments/trajectories/phase1_faithful_matrix/phase1_faithful__full_history_agent__phase1_search_recency_001.json",
+    "known_deviations": [
+      "faithful_toy_runtime_not_real_llm",
+      "toy_route_oracle_success_label",
+      "toy_scalar_activation_cost_not_full_cost_delta",
+      "oracle_route_regret_unavailable"
+    ]
+  },
+  {
+    "run_id": "phase1_faithful__retrieval_memory_agent__phase1_search_recency_001",
+    "task_id": "phase1_search_recency_001",
+    "benchmark_id": "phase1_mixed",
+    "task_family": "search_agent_task",
+    "baseline_id": "retrieval_memory_agent",
+    "trajectory_path": "experiments/trajectories/phase1_faithful_matrix/phase1_faithful__retrieval_memory_agent__phase1_search_recency_001.json",
+    "known_deviations": [
+      "faithful_toy_runtime_not_real_llm",
+      "toy_route_oracle_success_label",
+      "toy_scalar_activation_cost_not_full_cost_delta",
+      "oracle_route_regret_unavailable"
+    ]
+  },
+  {
+    "run_id": "phase1_faithful__moa_style_agent__phase1_search_recency_001",
+    "task_id": "phase1_search_recency_001",
+    "benchmark_id": "phase1_mixed",
+    "task_family": "search_agent_task",
+    "baseline_id": "moa_style_agent",
+    "trajectory_path": "experiments/trajectories/phase1_faithful_matrix/phase1_faithful__moa_style_agent__phase1_search_recency_001.json",
+    "known_deviations": [
+      "faithful_toy_runtime_not_real_llm",
+      "toy_route_oracle_success_label",
+      "toy_scalar_activation_cost_not_full_cost_delta",
+      "oracle_route_regret_unavailable"
+    ]
+  },
+  {
+    "run_id": "phase1_faithful__agent_attention_agent__phase1_search_recency_001",
+    "task_id": "phase1_search_recency_001",
+    "benchmark_id": "phase1_mixed",
+    "task_family": "search_agent_task",
+    "baseline_id": "agent_attention_agent",
+    "trajectory_path": "experiments/trajectories/phase1_faithful_matrix/phase1_faithful__agent_attention_agent__phase1_search_recency_001.json",
+    "known_deviations": [
+      "faithful_toy_runtime_not_real_llm",
+      "toy_route_oracle_success_label",
+      "toy_scalar_activation_cost_not_full_cost_delta",
+      "oracle_route_regret_unavailable"
+    ]
+  },
+  {
+    "run_id": "phase1_faithful__single_react_agent__phase1_search_evidence_002",
+    "task_id": "phase1_search_evidence_002",
+    "benchmark_id": "phase1_mixed",
+    "task_family": "search_agent_task",
+    "baseline_id": "single_react_agent",
+    "trajectory_path": "experiments/trajectories/phase1_faithful_matrix/phase1_faithful__single_react_agent__phase1_search_evidence_002.json",
+    "known_deviations": [
+      "faithful_toy_runtime_not_real_llm",
+      "toy_route_oracle_success_label",
+      "toy_scalar_activation_cost_not_full_cost_delta",
+      "oracle_route_regret_unavailable"
+    ]
+  },
+  {
+    "run_id": "phase1_faithful__fixed_workflow_agent__phase1_search_evidence_002",
+    "task_id": "phase1_search_evidence_002",
+    "benchmark_id": "phase1_mixed",
+    "task_family": "search_agent_task",
+    "baseline_id": "fixed_workflow_agent",
+    "trajectory_path": "experiments/trajectories/phase1_faithful_matrix/phase1_faithful__fixed_workflow_agent__phase1_search_evidence_002.json",
+    "known_deviations": [
+      "faithful_toy_runtime_not_real_llm",
+      "toy_route_oracle_success_label",
+      "toy_scalar_activation_cost_not_full_cost_delta",
+      "oracle_route_regret_unavailable"
+    ]
+  },
+  {
+    "run_id": "phase1_faithful__full_history_agent__phase1_search_evidence_002",
+    "task_id": "phase1_search_evidence_002",
+    "benchmark_id": "phase1_mixed",
+    "task_family": "search_agent_task",
+    "baseline_id": "full_history_agent",
+    "trajectory_path": "experiments/trajectories/phase1_faithful_matrix/phase1_faithful__full_history_agent__phase1_search_evidence_002.json",
+    "known_deviations": [
+      "faithful_toy_runtime_not_real_llm",
+      "toy_route_oracle_success_label",
+      "toy_scalar_activation_cost_not_full_cost_delta",
+      "oracle_route_regret_unavailable"
+    ]
+  },
+  {
+    "run_id": "phase1_faithful__retrieval_memory_agent__phase1_search_evidence_002",
+    "task_id": "phase1_search_evidence_002",
+    "benchmark_id": "phase1_mixed",
+    "task_family": "search_agent_task",
+    "baseline_id": "retrieval_memory_agent",
+    "trajectory_path": "experiments/trajectories/phase1_faithful_matrix/phase1_faithful__retrieval_memory_agent__phase1_search_evidence_002.json",
+    "known_deviations": [
+      "faithful_toy_runtime_not_real_llm",
+      "toy_route_oracle_success_label",
+      "toy_scalar_activation_cost_not_full_cost_delta",
+      "oracle_route_regret_unavailable"
+    ]
+  },
+  {
+    "run_id": "phase1_faithful__moa_style_agent__phase1_search_evidence_002",
+    "task_id": "phase1_search_evidence_002",
+    "benchmark_id": "phase1_mixed",
+    "task_family": "search_agent_task",
+    "baseline_id": "moa_style_agent",
+    "trajectory_path": "experiments/trajectories/phase1_faithful_matrix/phase1_faithful__moa_style_agent__phase1_search_evidence_002.json",
+    "known_deviations": [
+      "faithful_toy_runtime_not_real_llm",
+      "toy_route_oracle_success_label",
+      "toy_scalar_activation_cost_not_full_cost_delta",
+      "oracle_route_regret_unavailable"
+    ]
+  },
+  {
+    "run_id": "phase1_faithful__agent_attention_agent__phase1_search_evidence_002",
+    "task_id": "phase1_search_evidence_002",
+    "benchmark_id": "phase1_mixed",
+    "task_family": "search_agent_task",
+    "baseline_id": "agent_attention_agent",
+    "trajectory_path": "experiments/trajectories/phase1_faithful_matrix/phase1_faithful__agent_attention_agent__phase1_search_evidence_002.json",
+    "known_deviations": [
+      "faithful_toy_runtime_not_real_llm",
+      "toy_route_oracle_success_label",
+      "toy_scalar_activation_cost_not_full_cost_delta",
+      "oracle_route_regret_unavailable"
+    ]
+  },
+  {
+    "run_id": "phase1_faithful__single_react_agent__phase1_research_taxonomy_001",
+    "task_id": "phase1_research_taxonomy_001",
+    "benchmark_id": "phase1_mixed",
+    "task_family": "mini_research_task",
+    "baseline_id": "single_react_agent",
+    "trajectory_path": "experiments/trajectories/phase1_faithful_matrix/phase1_faithful__single_react_agent__phase1_research_taxonomy_001.json",
+    "known_deviations": [
+      "faithful_toy_runtime_not_real_llm",
+      "toy_route_oracle_success_label",
+      "toy_scalar_activation_cost_not_full_cost_delta",
+      "oracle_route_regret_unavailable"
+    ]
+  },
+  {
+    "run_id": "phase1_faithful__fixed_workflow_agent__phase1_research_taxonomy_001",
+    "task_id": "phase1_research_taxonomy_001",
+    "benchmark_id": "phase1_mixed",
+    "task_family": "mini_research_task",
+    "baseline_id": "fixed_workflow_agent",
+    "trajectory_path": "experiments/trajectories/phase1_faithful_matrix/phase1_faithful__fixed_workflow_agent__phase1_research_taxonomy_001.json",
+    "known_deviations": [
+      "faithful_toy_runtime_not_real_llm",
+      "toy_route_oracle_success_label",
+      "toy_scalar_activation_cost_not_full_cost_delta",
+      "oracle_route_regret_unavailable"
+    ]
+  },
+  {
+    "run_id": "phase1_faithful__full_history_agent__phase1_research_taxonomy_001",
+    "task_id": "phase1_research_taxonomy_001",
+    "benchmark_id": "phase1_mixed",
+    "task_family": "mini_research_task",
+    "baseline_id": "full_history_agent",
+    "trajectory_path": "experiments/trajectories/phase1_faithful_matrix/phase1_faithful__full_history_agent__phase1_research_taxonomy_001.json",
+    "known_deviations": [
+      "faithful_toy_runtime_not_real_llm",
+      "toy_route_oracle_success_label",
+      "toy_scalar_activation_cost_not_full_cost_delta",
+      "oracle_route_regret_unavailable"
+    ]
+  },
+  {
+    "run_id": "phase1_faithful__retrieval_memory_agent__phase1_research_taxonomy_001",
+    "task_id": "phase1_research_taxonomy_001",
+    "benchmark_id": "phase1_mixed",
+    "task_family": "mini_research_task",
+    "baseline_id": "retrieval_memory_agent",
+    "trajectory_path": "experiments/trajectories/phase1_faithful_matrix/phase1_faithful__retrieval_memory_agent__phase1_research_taxonomy_001.json",
+    "known_deviations": [
+      "faithful_toy_runtime_not_real_llm",
+      "toy_route_oracle_success_label",
+      "toy_scalar_activation_cost_not_full_cost_delta",
+      "oracle_route_regret_unavailable"
+    ]
+  },
+  {
+    "run_id": "phase1_faithful__moa_style_agent__phase1_research_taxonomy_001",
+    "task_id": "phase1_research_taxonomy_001",
+    "benchmark_id": "phase1_mixed",
+    "task_family": "mini_research_task",
+    "baseline_id": "moa_style_agent",
+    "trajectory_path": "experiments/trajectories/phase1_faithful_matrix/phase1_faithful__moa_style_agent__phase1_research_taxonomy_001.json",
+    "known_deviations": [
+      "faithful_toy_runtime_not_real_llm",
+      "toy_route_oracle_success_label",
+      "toy_scalar_activation_cost_not_full_cost_delta",
+      "oracle_route_regret_unavailable"
+    ]
+  },
+  {
+    "run_id": "phase1_faithful__agent_attention_agent__phase1_research_taxonomy_001",
+    "task_id": "phase1_research_taxonomy_001",
+    "benchmark_id": "phase1_mixed",
+    "task_family": "mini_research_task",
+    "baseline_id": "agent_attention_agent",
+    "trajectory_path": "experiments/trajectories/phase1_faithful_matrix/phase1_faithful__agent_attention_agent__phase1_research_taxonomy_001.json",
+    "known_deviations": [
+      "faithful_toy_runtime_not_real_llm",
+      "toy_route_oracle_success_label",
+      "toy_scalar_activation_cost_not_full_cost_delta",
+      "oracle_route_regret_unavailable"
+    ]
+  }
+]

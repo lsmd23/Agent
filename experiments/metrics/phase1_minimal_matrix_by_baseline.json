@@ -1,0 +1,94 @@
+{
+  "scope": "Phase 1 minimal matrix grouped by toy baseline simulation.",
+  "warning": "These are deterministic toy simulations for pipeline validation, not final strong-baseline results.",
+  "rows": [
+    {
+      "baseline_id": "single_react_agent",
+      "run_count": 4,
+      "success_rate": 0.5,
+      "mean_cost_normalized_success": 0.161669,
+      "mean_activation_cost": 2.15,
+      "mean_module_calls": 4.75,
+      "mean_repeated_action_ratio": 0.3125,
+      "budget_exhaustion_rate": 0.0,
+      "premature_halt_rate": 0.25,
+      "mean_route_entropy": 1.578702,
+      "mean_proxy_route_regret": 0.365625,
+      "total_memory_reads": 0,
+      "total_negative_transfer_cases": 0,
+      "known_deviations": [
+        "legacy_event_payloads_inside_target_envelope",
+        "oracle_route_regret_unavailable",
+        "phase1_toy_baseline_simulation",
+        "toy_route_oracle_success_label",
+        "toy_scalar_activation_cost_not_full_cost_delta"
+      ]
+    },
+    {
+      "baseline_id": "fixed_workflow_agent",
+      "run_count": 4,
+      "success_rate": 0.25,
+      "mean_cost_normalized_success": 0.0625,
+      "mean_activation_cost": 3.225,
+      "mean_module_calls": 6.75,
+      "mean_repeated_action_ratio": 0.472222,
+      "budget_exhaustion_rate": 1.0,
+      "premature_halt_rate": 0.25,
+      "mean_route_entropy": 1.734336,
+      "mean_proxy_route_regret": 0.414886,
+      "total_memory_reads": 0,
+      "total_negative_transfer_cases": 0,
+      "known_deviations": [
+        "legacy_event_payloads_inside_target_envelope",
+        "oracle_route_regret_unavailable",
+        "phase1_toy_baseline_simulation",
+        "toy_route_oracle_success_label",
+        "toy_scalar_activation_cost_not_full_cost_delta"
+      ]
+    },
+    {
+      "baseline_id": "retrieval_memory_agent",
+      "run_count": 4,
+      "success_rate": 0.5,
+      "mean_cost_normalized_success": 0.191129,
+      "mean_activation_cost": 1.925,
+      "mean_module_calls": 4.5,
+      "mean_repeated_action_ratio": 0.275,
+      "budget_exhaustion_rate": 0.0,
+      "premature_halt_rate": 0.25,
+      "mean_route_entropy": 1.57322,
+      "mean_proxy_route_regret": 0.3875,
+      "total_memory_reads": 16,
+      "total_negative_transfer_cases": 0,
+      "known_deviations": [
+        "legacy_event_payloads_inside_target_envelope",
+        "oracle_route_regret_unavailable",
+        "phase1_toy_baseline_simulation",
+        "toy_route_oracle_success_label",
+        "toy_scalar_activation_cost_not_full_cost_delta"
+      ]
+    },
+    {
+      "baseline_id": "agent_attention_agent",
+      "run_count": 4,
+      "success_rate": 0.5,
+      "mean_cost_normalized_success": 0.130068,
+      "mean_activation_cost": 2.875,
+      "mean_module_calls": 7.0,
+      "mean_repeated_action_ratio": 0.489583,
+      "budget_exhaustion_rate": 0.75,
+      "premature_halt_rate": 0.0,
+      "mean_route_entropy": 1.703634,
+      "mean_proxy_route_regret": 0.304167,
+      "total_memory_reads": 15,
+      "total_negative_transfer_cases": 0,
+      "known_deviations": [
+        "legacy_event_payloads_inside_target_envelope",
+        "oracle_route_regret_unavailable",
+        "phase1_toy_baseline_simulation",
+        "toy_route_oracle_success_label",
+        "toy_scalar_activation_cost_not_full_cost_delta"
+      ]
+    }
+  ]
+}

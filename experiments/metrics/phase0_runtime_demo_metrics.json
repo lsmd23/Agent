@@ -1,0 +1,105 @@
+{
+  "runs": [
+    {
+      "trajectory_path": "experiments/trajectories/cli_required_demo.json",
+      "task_id": null,
+      "benchmark_id": null,
+      "baseline_id": "agent_attention_agent",
+      "final": {
+        "success_label": "pass",
+        "task_success": true,
+        "failure_reason": null,
+        "final_answer_present": true
+      },
+      "process": {
+        "activation_cost": 3.4,
+        "cost_normalized_success": 0.227273,
+        "module_calls": 9,
+        "verifier_calls": 1,
+        "budget_rejections": 0,
+        "repeated_action_ratio": 0.444444,
+        "invalid_tool_call_ratio": 0.0,
+        "loop_stuck": false,
+        "budget_exhaustion": false,
+        "step_exhaustion": false,
+        "premature_halt": false
+      },
+      "routing": {
+        "route_events": 4,
+        "route_candidates": 19,
+        "selected_candidates": 8,
+        "route_reject_rate": 0.578947,
+        "route_entropy": 2.113283,
+        "selected_route_score_mean": 0.5131,
+        "selected_route_cost_mean": 0.38125,
+        "oracle_route_regret_mean": null,
+        "proxy_route_regret_mean": null,
+        "activated_modules": [
+          "code_agent",
+          "critic_agent",
+          "aggregator",
+          "critic_agent",
+          "aggregator",
+          "memory",
+          "aggregator",
+          "critic_agent",
+          "verifier"
+        ]
+      },
+      "memory": {
+        "memory_reads": 4,
+        "useful_memory_reads": 4,
+        "harmful_memory_reads": 0,
+        "neutral_memory_reads": 0,
+        "unknown_memory_reads": 0,
+        "useful_memory_reuse_rate": 1.0,
+        "negative_transfer_cases": 0
+      },
+      "verifier": {
+        "verifier_statuses": [
+          "skipped",
+          "skipped",
+          "skipped",
+          "pass"
+        ],
+        "verifier_failures": 0,
+        "verifier_catches": 0,
+        "verifier_catch_rate": null
+      },
+      "known_deviations": [
+        "legacy_06_event_list_no_top_level_run_metadata",
+        "legacy_06_lacks_oracle_route_regret",
+        "legacy_06_lacks_task_schema_join",
+        "legacy_06_uses_scalar_activation_cost_not_full_cost_delta",
+        "oracle_route_regret_unavailable",
+        "proxy_route_regret_unavailable"
+      ]
+    }
+  ],
+  "aggregate": {
+    "run_count": 1,
+    "success_rate": 1.0,
+    "mean_cost_normalized_success": 0.227273,
+    "mean_activation_cost": 3.4,
+    "mean_module_calls": 9.0,
+    "mean_repeated_action_ratio": 0.444444,
+    "budget_exhaustion_rate": 0.0,
+    "premature_halt_rate": 0.0,
+    "loop_stuck_rate": 0.0,
+    "step_exhaustion_rate": 0.0,
+    "mean_route_entropy": 2.113283,
+    "mean_route_reject_rate": 0.578947,
+    "total_memory_reads": 4,
+    "total_negative_transfer_cases": 0,
+    "total_verifier_failures": 0,
+    "total_verifier_catches": 0,
+    "known_deviations": [
+      "legacy_06_event_list_no_top_level_run_metadata",
+      "legacy_06_lacks_oracle_route_regret",
+      "legacy_06_lacks_task_schema_join",
+      "legacy_06_uses_scalar_activation_cost_not_full_cost_delta",
+      "oracle_route_regret_unavailable",
+      "proxy_route_regret_unavailable"
+    ]
+  }
+}

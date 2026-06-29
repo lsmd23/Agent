@@ -1,0 +1,1697 @@
+{
+  "scope": {
+    "summary": "Machine-readable schema bundle for the Phase 0-1 Agent-Attention formal model.",
+    "runtime_contract": "A toy runtime can validate states, modules, route decisions, memory entries, trajectory events, failure updates, and halt decisions against this file.",
+    "out_of_scope": [
+      "learned router training data beyond versioned feature logs",
+      "full raw transcript storage",
+      "changes to Subtask 01 deliverables"
+    ]
+  },
+  "claims": [
+    {
+      "evidence_type": "文献",
+      "claim": "Agent loops, tool use, memory, aggregation, and routing literature motivate explicit state and trajectory schemas."
+    },
+    {
+      "evidence_type": "原型",
+      "claim": "The Phase 0-1 runtime can use deterministic heuristic routing if every score term and outcome is logged."
+    },
+    {
+      "evidence_type": "猜想",
+      "claim": "Typed memory and atomic route logs are necessary to measure useful transfer, negative transfer, and cost-aware activation."
+    }
+  ],
+  "design": {
+    "minimal_version": [
+      "Validate the core state fields: goal, task_state, working_memory, observations, beliefs, uncertainties, failure_signals, budget, route_history, verification_status.",
+      "Validate atomic modules with kind, capability, schemas, cost, latency, risk, reliability, and history_features.",
+      "Validate route decisions with required score terms and selected modules.",
+      "Validate trajectory events with cost, latency, memory, verifier, error, and evidence fields."
+    ],
+    "enhanced_version": [
+      "Support hierarchical modules with parent_id and child activation records.",
+      "Support typed memory: knowledge_memory, episodic_memory, skill_memory, behavior_kv.",
+      "Support oracle/proxy regret separation.",
+      "Support local textual updates after failures."
+    ],
+    "counterexamples": [
+      "A selected-only route schema cannot compute regret or analyze rejected candidates.",
+      "An untyped memory schema cannot distinguish factual recall from behavioral transfer.",
+      "A halt schema without verification and reason fields cannot diagnose premature stopping."
+    ]
+  },
+  "interfaces": {
+    "schema_version": "agent_attention.formal_model.v0.1",
+    "json_schema_dialect": "https://json-schema.org/draft/2020-12/schema",
+    "baseline_alignment": {
+      "baseline_fields": [
+        "id",
+        "family",
+        "controller_policy",
+        "routing_policy",
+        "memory_policy",
+        "feedback_update",
+        "activation_budget",
+        "trajectory_requirements"
+      ],
+      "category_fields": [
+        "id",
+        "definition",
+        "inclusion_criteria",
+        "exclusion_criteria",
+        "observables_from_log",
+        "typical_failures"
+      ],
+      "benchmark_fields": [
+        "id",
+        "task_family",
+        "environment_type",
+        "success_metric",
+        "process_metrics_from_log",
+        "oracle_route_possible",
+        "negative_transfer_probe"
+      ]
+    },
+    "metric_sources": {
+      "success_rate": [
+        "trajectory_event.success_signal",
+        "halt_decision.final_success_signal"
+      ],
+      "average_tool_calls": [
+        "trajectory_event.cost_delta.tool_calls"
+      ],
+      "token_cost": [
+        "trajectory_event.cost_delta.prompt_tokens",
+        "trajectory_event.cost_delta.completion_tokens",
+        "trajectory_event.cost_delta.token_cost_estimate"
+      ],
+      "latency": [
+        "trajectory_event.cost_delta.latency_ms",
+        "trajectory_event.latency_ms"
+      ],
+      "repeated_action_ratio": [
+        "trajectory_event.action_payload_hash"
+      ],
+      "invalid_tool_call_ratio": [
+        "trajectory_event.error_type",
+        "failure_signal.failure_type"
+      ],
+      "premature_stopping_rate": [
+        "halt_decision.halt_reason",
+        "halt_decision.final_success_signal",
+        "halt_decision.budget_snapshot"
+      ],
+      "loop_stuck_rate": [
+        "trajectory_event.error_type",
+        "failure_signal.failure_type",
+        "trajectory_event.action_payload_hash"
+      ],
+      "verifier_catch_rate": [
+        "trajectory_event.verifier_result",
+        "verification_status.checks"
+      ],
+      "memory_retrieval_precision": [
+        "trajectory_event.memory_usefulness_label"
+      ],
+      "useful_memory_reuse_rate": [
+        "trajectory_event.memory_ids_read",
+        "trajectory_event.memory_usefulness_label"
+      ],
+      "negative_transfer_cases": [
+        "trajectory_event.error_type",
+        "trajectory_event.memory_usefulness_label",
+        "failure_signal.failure_type"
+      ],
+      "router_regret": [
+        "route_decision.oracle.oracle_regret"
+      ],
+      "proxy_router_regret": [
+        "route_decision.oracle.proxy_regret"
+      ]
+    }
+  },
+  "experiments": [
+    {
+      "id": "schema_validation_fixture",
+      "description": "Validate synthetic valid and invalid states, route decisions, trajectory events, and halt decisions.",
+      "metrics": [
+        "schema_pass_rate",
+        "missing_required_field_count",
+        "invariant_failure_count"
+      ]
+    },
+    {
+      "id": "metric_computability_check",
+      "description": "Compute all required metrics from trajectory logs without reading raw prompts or hidden module internals.",
+      "metrics": [
+        "metric_coverage",
+        "undefined_metric_count"
+      ]
+    }
+  ],
+  "risks": [
+    "Schemas may be too strict for exploratory modules unless extension fields are allowed.",
+    "Human-readable Markdown and JSON schema can drift unless examples are validated in CI.",
+    "Proxy regret may be misreported as oracle regret if field names are ignored."
+  ],
+  "open_questions": [
+    "Should this schema become one JSON Schema file per object after the toy runtime exists?",
+    "Which fields should be required for Phase 0 smoke tests versus Phase 1 benchmark runs?",
+    "Should semantic_match inputs store embeddings, lexical features, or only feature hashes?"
+  ],
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://agent-attention.local/schemas/formal_model.schema.json",
+  "title": "Agent-Attention Formal Model Schemas",
+  "type": "object",
+  "$defs": {
+    "evidenceRef": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "ref_id",
+        "source_type"
+      ],
+      "properties": {
+        "ref_id": {
+          "type": "string"
+        },
+        "source_type": {
+          "enum": [
+            "trajectory_event",
+            "observation",
+            "tool_output",
+            "verifier_result",
+            "memory_entry",
+            "benchmark_oracle",
+            "internal_decomposition",
+            "none"
+          ]
+        },
+        "summary": {
+          "type": "string"
+        }
+      }
+    },
+    "costDelta": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "prompt_tokens",
+        "completion_tokens",
+        "token_cost_estimate",
+        "tool_calls",
+        "tool_cost_estimate",
+        "verifier_calls",
+        "verifier_cost_estimate",
+        "failed_retries",
+        "retry_cost_estimate",
+        "latency_ms",
+        "monetary_cost_estimate",
+        "human_review_minutes"
+      ],
+      "properties": {
+        "prompt_tokens": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "completion_tokens": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "token_cost_estimate": {
+          "type": "number",
+          "minimum": 0
+        },
+        "tool_calls": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "tool_cost_estimate": {
+          "type": "number",
+          "minimum": 0
+        },
+        "verifier_calls": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "verifier_cost_estimate": {
+          "type": "number",
+          "minimum": 0
+        },
+        "failed_retries": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "retry_cost_estimate": {
+          "type": "number",
+          "minimum": 0
+        },
+        "latency_ms": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "monetary_cost_estimate": {
+          "type": "number",
+          "minimum": 0
+        },
+        "human_review_minutes": {
+          "type": "number",
+          "minimum": 0
+        }
+      }
+    },
+    "budgetState": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "max_steps",
+        "max_calls",
+        "max_tokens",
+        "max_latency_ms",
+        "spent"
+      ],
+      "properties": {
+        "max_steps": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "max_calls": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "max_tokens": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "max_latency_ms": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "max_monetary_cost": {
+          "type": "number",
+          "minimum": 0
+        },
+        "max_human_review_minutes": {
+          "type": "number",
+          "minimum": 0
+        },
+        "spent": {
+          "$ref": "#/$defs/costDelta"
+        }
+      }
+    },
+    "failureSignal": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "failure_id",
+        "step_id",
+        "failure_type",
+        "severity",
+        "description",
+        "evidence_refs",
+        "source_event_ids",
+        "candidate_causes",
+        "status"
+      ],
+      "properties": {
+        "failure_id": {
+          "type": "string"
+        },
+        "step_id": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "failure_type": {
+          "enum": [
+            "invalid_tool",
+            "timeout",
+            "contradiction",
+            "test_failed",
+            "verifier_failed",
+            "loop_stuck",
+            "premature_halt",
+            "budget_exceeded",
+            "negative_transfer",
+            "schema_invalid",
+            "low_confidence"
+          ]
+        },
+        "severity": {
+          "enum": [
+            "info",
+            "warning",
+            "blocking",
+            "fatal"
+          ]
+        },
+        "description": {
+          "type": "string"
+        },
+        "evidence_refs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/evidenceRef"
+          }
+        },
+        "source_event_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "candidate_causes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "status": {
+          "enum": [
+            "active",
+            "mitigated",
+            "accepted_risk",
+            "resolved"
+          ]
+        }
+      }
+    },
+    "verificationStatus": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "required",
+        "status",
+        "checks"
+      ],
+      "properties": {
+        "required": {
+          "type": "boolean"
+        },
+        "status": {
+          "enum": [
+            "pass",
+            "fail",
+            "skipped",
+            "inconclusive",
+            "not_required"
+          ]
+        },
+        "checks": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "check_id",
+              "description",
+              "status",
+              "evidence_refs"
+            ],
+            "properties": {
+              "check_id": {
+                "type": "string"
+              },
+              "description": {
+                "type": "string"
+              },
+              "status": {
+                "enum": [
+                  "pass",
+                  "fail",
+                  "unknown",
+                  "not_applicable"
+                ]
+              },
+              "evidence_refs": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/evidenceRef"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "state": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "run_id",
+        "task_id",
+        "step_id",
+        "goal",
+        "task_state",
+        "working_memory",
+        "observations",
+        "beliefs",
+        "uncertainties",
+        "failure_signals",
+        "budget",
+        "route_history",
+        "verification_status"
+      ],
+      "properties": {
+        "run_id": {
+          "type": "string"
+        },
+        "task_id": {
+          "type": "string"
+        },
+        "step_id": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "goal": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "original",
+            "goal_hash",
+            "constraints",
+            "success_criteria"
+          ],
+          "properties": {
+            "original": {
+              "type": "string"
+            },
+            "goal_hash": {
+              "type": "string"
+            },
+            "constraints": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "success_criteria": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "criterion_id",
+                  "description"
+                ],
+                "properties": {
+                  "criterion_id": {
+                    "type": "string"
+                  },
+                  "description": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "task_state": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "active_subgoal",
+            "decomposition",
+            "progress_status"
+          ],
+          "properties": {
+            "active_subgoal": {
+              "type": "string"
+            },
+            "decomposition": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "subgoal_id",
+                  "parent_id",
+                  "description",
+                  "status",
+                  "evidence_refs"
+                ],
+                "properties": {
+                  "subgoal_id": {
+                    "type": "string"
+                  },
+                  "parent_id": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "description": {
+                    "type": "string"
+                  },
+                  "status": {
+                    "enum": [
+                      "not_started",
+                      "in_progress",
+                      "blocked",
+                      "verifying",
+                      "done",
+                      "failed"
+                    ]
+                  },
+                  "evidence_refs": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/$defs/evidenceRef"
+                    }
+                  }
+                }
+              }
+            },
+            "progress_status": {
+              "enum": [
+                "not_started",
+                "in_progress",
+                "blocked",
+                "verifying",
+                "done",
+                "failed"
+              ]
+            }
+          }
+        },
+        "working_memory": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "summary",
+            "focus_items",
+            "context_refs"
+          ],
+          "properties": {
+            "summary": {
+              "type": "string"
+            },
+            "focus_items": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "context_refs": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "observations": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "beliefs": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "id",
+              "statement",
+              "confidence",
+              "evidence_refs",
+              "status"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "statement": {
+                "type": "string"
+              },
+              "confidence": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1
+              },
+              "evidence_refs": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/evidenceRef"
+                }
+              },
+              "status": {
+                "enum": [
+                  "accepted",
+                  "tentative",
+                  "rejected",
+                  "superseded"
+                ]
+              }
+            }
+          }
+        },
+        "uncertainties": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "id",
+              "question",
+              "evidence_needed",
+              "severity"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "question": {
+                "type": "string"
+              },
+              "evidence_needed": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "severity": {
+                "enum": [
+                  "low",
+                  "medium",
+                  "high",
+                  "blocking"
+                ]
+              }
+            }
+          }
+        },
+        "failure_signals": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/failureSignal"
+          }
+        },
+        "budget": {
+          "$ref": "#/$defs/budgetState"
+        },
+        "route_history": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "verification_status": {
+          "$ref": "#/$defs/verificationStatus"
+        }
+      }
+    },
+    "module": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "parent_id",
+        "kind",
+        "capability",
+        "key",
+        "input_schema",
+        "output_schema",
+        "cost",
+        "latency",
+        "risk",
+        "reliability",
+        "history_features"
+      ],
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "parent_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "kind": {
+          "enum": [
+            "agent",
+            "tool",
+            "memory",
+            "skill",
+            "verifier",
+            "aggregator",
+            "halt"
+          ]
+        },
+        "capability": {
+          "type": "string"
+        },
+        "key": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "task_tags",
+            "input_schema_ref",
+            "output_schema_ref",
+            "applicable_benchmarks"
+          ],
+          "properties": {
+            "task_tags": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "input_schema_ref": {
+              "type": "string"
+            },
+            "output_schema_ref": {
+              "type": "string"
+            },
+            "applicable_benchmarks": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "input_schema": {
+          "type": "object"
+        },
+        "output_schema": {
+          "type": "object"
+        },
+        "cost": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "token_estimate",
+            "tool_call_cost",
+            "verifier_call_cost",
+            "monetary_cost"
+          ],
+          "properties": {
+            "token_estimate": {
+              "type": "number",
+              "minimum": 0
+            },
+            "tool_call_cost": {
+              "type": "number",
+              "minimum": 0
+            },
+            "verifier_call_cost": {
+              "type": "number",
+              "minimum": 0
+            },
+            "monetary_cost": {
+              "type": "number",
+              "minimum": 0
+            }
+          }
+        },
+        "latency": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "p50_ms",
+            "p95_ms"
+          ],
+          "properties": {
+            "p50_ms": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "p95_ms": {
+              "type": "integer",
+              "minimum": 0
+            }
+          }
+        },
+        "risk": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "score",
+            "labels"
+          ],
+          "properties": {
+            "score": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            },
+            "labels": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "reliability": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "prior",
+            "observed_success_rate",
+            "sample_size"
+          ],
+          "properties": {
+            "prior": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            },
+            "observed_success_rate": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            },
+            "sample_size": {
+              "type": "integer",
+              "minimum": 0
+            }
+          }
+        },
+        "history_features": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "historical_success",
+            "invalid_call_rate",
+            "repeated_action_rate",
+            "negative_transfer_rate"
+          ],
+          "properties": {
+            "historical_success": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            },
+            "invalid_call_rate": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            },
+            "repeated_action_rate": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            },
+            "negative_transfer_rate": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            }
+          }
+        }
+      }
+    },
+    "routeScoreTerms": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "semantic_match",
+        "reliability",
+        "historical_success",
+        "cost",
+        "latency",
+        "risk",
+        "repetition",
+        "memory_bonus"
+      ],
+      "properties": {
+        "semantic_match": {
+          "type": "number"
+        },
+        "reliability": {
+          "type": "number"
+        },
+        "historical_success": {
+          "type": "number"
+        },
+        "cost": {
+          "type": "number"
+        },
+        "latency": {
+          "type": "number"
+        },
+        "risk": {
+          "type": "number"
+        },
+        "repetition": {
+          "type": "number"
+        },
+        "memory_bonus": {
+          "type": "number"
+        }
+      }
+    },
+    "routeDecision": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "decision_id",
+        "step_id",
+        "query",
+        "candidates",
+        "selected_modules",
+        "routing_policy",
+        "top_k",
+        "budget_snapshot",
+        "oracle"
+      ],
+      "properties": {
+        "decision_id": {
+          "type": "string"
+        },
+        "step_id": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "query": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "goal_hash",
+            "active_subgoal",
+            "failure_signal_ids",
+            "uncertainty_ids",
+            "evidence_need",
+            "action_need"
+          ],
+          "properties": {
+            "goal_hash": {
+              "type": "string"
+            },
+            "active_subgoal": {
+              "type": "string"
+            },
+            "failure_signal_ids": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "uncertainty_ids": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "evidence_need": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "action_need": {
+              "enum": [
+                "reason",
+                "tool_call",
+                "memory_read",
+                "memory_write",
+                "verify",
+                "aggregate",
+                "halt"
+              ]
+            }
+          }
+        },
+        "candidates": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "module_id",
+              "schema_valid",
+              "budget_valid",
+              "risk_valid",
+              "score_total",
+              "score_terms",
+              "score_weights",
+              "selected",
+              "reject_reason"
+            ],
+            "properties": {
+              "module_id": {
+                "type": "string"
+              },
+              "schema_valid": {
+                "type": "boolean"
+              },
+              "budget_valid": {
+                "type": "boolean"
+              },
+              "risk_valid": {
+                "type": "boolean"
+              },
+              "score_total": {
+                "type": "number"
+              },
+              "score_terms": {
+                "$ref": "#/$defs/routeScoreTerms"
+              },
+              "score_weights": {
+                "$ref": "#/$defs/routeScoreTerms"
+              },
+              "selected": {
+                "type": "boolean"
+              },
+              "reject_reason": {
+                "enum": [
+                  null,
+                  "schema_invalid",
+                  "budget_exceeded",
+                  "risk_exceeded",
+                  "below_top_k",
+                  "suppressed_duplicate"
+                ]
+              }
+            }
+          }
+        },
+        "selected_modules": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "routing_policy": {
+          "enum": [
+            "none",
+            "static",
+            "heuristic",
+            "learned",
+            "feedback_updated"
+          ]
+        },
+        "top_k": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "budget_snapshot": {
+          "$ref": "#/$defs/budgetState"
+        },
+        "oracle": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "oracle_available",
+            "oracle_source",
+            "oracle_best_module_id",
+            "selected_score",
+            "oracle_best_score",
+            "oracle_regret",
+            "proxy_regret",
+            "proxy_formula"
+          ],
+          "properties": {
+            "oracle_available": {
+              "type": "boolean"
+            },
+            "oracle_source": {
+              "enum": [
+                "offline_matrix",
+                "exhaustive_replay",
+                "none"
+              ]
+            },
+            "oracle_best_module_id": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "selected_score": {
+              "type": [
+                "number",
+                "null"
+              ]
+            },
+            "oracle_best_score": {
+              "type": [
+                "number",
+                "null"
+              ]
+            },
+            "oracle_regret": {
+              "type": [
+                "number",
+                "null"
+              ]
+            },
+            "proxy_regret": {
+              "type": [
+                "number",
+                "null"
+              ]
+            },
+            "proxy_formula": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          }
+        }
+      }
+    },
+    "memoryEntry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "memory_id",
+        "memory_type",
+        "key",
+        "value",
+        "provenance",
+        "write_reason",
+        "reuse_outcomes"
+      ],
+      "properties": {
+        "memory_id": {
+          "type": "string"
+        },
+        "memory_type": {
+          "enum": [
+            "knowledge_memory",
+            "episodic_memory",
+            "skill_memory",
+            "behavior_kv"
+          ]
+        },
+        "key": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "task_signature",
+            "route_signature",
+            "tool_schema_refs",
+            "failure_success_features"
+          ],
+          "properties": {
+            "task_signature": {
+              "type": "string"
+            },
+            "route_signature": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "tool_schema_refs": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "failure_success_features": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "value": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "trajectory_summary",
+            "accepted_facts",
+            "successful_workflow",
+            "useful_reflection",
+            "reusable_skill_ref"
+          ],
+          "properties": {
+            "trajectory_summary": {
+              "type": "string"
+            },
+            "accepted_facts": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "successful_workflow": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "useful_reflection": {
+              "type": "string"
+            },
+            "reusable_skill_ref": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          }
+        },
+        "provenance": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "source_run_id",
+            "evidence_refs",
+            "created_at"
+          ],
+          "properties": {
+            "source_run_id": {
+              "type": "string"
+            },
+            "evidence_refs": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/evidenceRef"
+              }
+            },
+            "created_at": {
+              "type": "string"
+            }
+          }
+        },
+        "write_reason": {
+          "enum": [
+            "success",
+            "failure",
+            "uncertainty",
+            "negative_transfer",
+            "manual_seed"
+          ]
+        },
+        "reuse_outcomes": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "useful_count",
+            "harmful_count",
+            "neutral_count",
+            "last_outcome"
+          ],
+          "properties": {
+            "useful_count": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "harmful_count": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "neutral_count": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "last_outcome": {
+              "enum": [
+                "useful",
+                "harmful",
+                "neutral",
+                "unknown"
+              ]
+            }
+          }
+        }
+      }
+    },
+    "trajectoryEvent": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "event_id",
+        "run_id",
+        "task_id",
+        "step_id",
+        "event_type",
+        "baseline_id",
+        "category_ids",
+        "benchmark_id",
+        "state_ref",
+        "goal_hash",
+        "candidate_modules",
+        "selected_modules",
+        "route_scores",
+        "action_type",
+        "action_payload_hash",
+        "observation_summary",
+        "success_signal",
+        "verifier_result",
+        "cost_delta",
+        "latency_ms",
+        "error_type",
+        "memory_ids_read",
+        "memory_ids_written",
+        "memory_usefulness_label",
+        "correction_of_event_ids",
+        "evidence_refs"
+      ],
+      "properties": {
+        "event_id": {
+          "type": "string"
+        },
+        "run_id": {
+          "type": "string"
+        },
+        "task_id": {
+          "type": "string"
+        },
+        "step_id": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "event_type": {
+          "enum": [
+            "state_update",
+            "route_decision",
+            "module_call",
+            "memory_read",
+            "memory_write",
+            "aggregate",
+            "verifier_result",
+            "failure_update",
+            "halt"
+          ]
+        },
+        "baseline_id": {
+          "type": "string"
+        },
+        "category_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "benchmark_id": {
+          "type": "string"
+        },
+        "state_ref": {
+          "type": "string"
+        },
+        "goal_hash": {
+          "type": "string"
+        },
+        "candidate_modules": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "selected_modules": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "route_scores": {
+          "type": "object"
+        },
+        "action_type": {
+          "enum": [
+            "llm_call",
+            "tool_call",
+            "memory_read",
+            "memory_write",
+            "verifier_call",
+            "aggregate",
+            "halt",
+            "no_op"
+          ]
+        },
+        "action_payload_hash": {
+          "type": "string"
+        },
+        "observation_summary": {
+          "type": "string"
+        },
+        "success_signal": {
+          "enum": [
+            "pass",
+            "fail",
+            "partial",
+            "unknown"
+          ]
+        },
+        "verifier_result": {
+          "enum": [
+            "pass",
+            "fail",
+            "skipped",
+            "inconclusive"
+          ]
+        },
+        "cost_delta": {
+          "$ref": "#/$defs/costDelta"
+        },
+        "latency_ms": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "error_type": {
+          "enum": [
+            "none",
+            "invalid_tool",
+            "timeout",
+            "contradiction",
+            "loop_stuck",
+            "premature_halt",
+            "verifier_failed",
+            "budget_exceeded",
+            "negative_transfer"
+          ]
+        },
+        "memory_ids_read": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "memory_ids_written": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "memory_usefulness_label": {
+          "enum": [
+            "useful",
+            "harmful",
+            "neutral",
+            "unknown",
+            "not_applicable"
+          ]
+        },
+        "correction_of_event_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "evidence_refs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/evidenceRef"
+          }
+        }
+      }
+    },
+    "updateRecord": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "update_id",
+        "step_id",
+        "trigger_failure_ids",
+        "update_target",
+        "target_id",
+        "textual_gradient",
+        "patch_summary",
+        "evidence_refs",
+        "confidence",
+        "applied",
+        "rollback_condition",
+        "expected_metric_effect"
+      ],
+      "properties": {
+        "update_id": {
+          "type": "string"
+        },
+        "step_id": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "trigger_failure_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "update_target": {
+          "enum": [
+            "router_rule",
+            "module_prompt",
+            "memory_write_policy",
+            "verifier_checklist",
+            "tool_schema",
+            "halt_threshold",
+            "task_decomposition_heuristic",
+            "none"
+          ]
+        },
+        "target_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "textual_gradient": {
+          "type": "string"
+        },
+        "patch_summary": {
+          "type": "string"
+        },
+        "evidence_refs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/evidenceRef"
+          }
+        },
+        "confidence": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "applied": {
+          "type": "boolean"
+        },
+        "rollback_condition": {
+          "type": "string"
+        },
+        "expected_metric_effect": {
+          "type": "array",
+          "items": {
+            "enum": [
+              "success_rate",
+              "token_cost",
+              "latency",
+              "invalid_tool_call_ratio",
+              "repeated_action_ratio",
+              "verifier_catch_rate",
+              "negative_transfer_cases",
+              "router_regret"
+            ]
+          }
+        }
+      }
+    },
+    "haltDecision": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "halt_id",
+        "step_id",
+        "decision",
+        "halt_reason",
+        "success_criteria_status",
+        "verification_status",
+        "blocking_uncertainties",
+        "active_failure_signals",
+        "budget_snapshot",
+        "final_success_signal"
+      ],
+      "properties": {
+        "halt_id": {
+          "type": "string"
+        },
+        "step_id": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "decision": {
+          "enum": [
+            "stop",
+            "continue"
+          ]
+        },
+        "halt_reason": {
+          "enum": [
+            "success",
+            "budget_exhausted",
+            "unrecoverable_failure",
+            "user_stop",
+            "safety_risk",
+            "needs_more_work",
+            "verifier_required",
+            "blocked"
+          ]
+        },
+        "success_criteria_status": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "criterion_id",
+              "status",
+              "evidence_refs"
+            ],
+            "properties": {
+              "criterion_id": {
+                "type": "string"
+              },
+              "status": {
+                "enum": [
+                  "pass",
+                  "fail",
+                  "unknown",
+                  "not_applicable"
+                ]
+              },
+              "evidence_refs": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/evidenceRef"
+                }
+              }
+            }
+          }
+        },
+        "verification_status": {
+          "enum": [
+            "pass",
+            "fail",
+            "skipped",
+            "inconclusive",
+            "not_required"
+          ]
+        },
+        "blocking_uncertainties": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "active_failure_signals": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "budget_snapshot": {
+          "$ref": "#/$defs/budgetState"
+        },
+        "final_success_signal": {
+          "enum": [
+            "pass",
+            "fail",
+            "partial",
+            "unknown"
+          ]
+        }
+      }
+    }
+  }
+}

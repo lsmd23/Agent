@@ -1,0 +1,242 @@
+[
+  {
+    "run_id": "phase1_minimal__single_react_agent__phase0_seed_code_fix_001",
+    "task_id": "phase0_seed_code_fix_001",
+    "benchmark_id": "phase0_seed",
+    "task_family": "code_agent_task",
+    "baseline_id": "single_react_agent",
+    "trajectory_path": "experiments/trajectories/phase1_minimal_matrix/phase1_minimal__single_react_agent__phase0_seed_code_fix_001.json",
+    "known_deviations": [
+      "phase1_toy_baseline_simulation",
+      "toy_route_oracle_success_label",
+      "legacy_event_payloads_inside_target_envelope",
+      "toy_scalar_activation_cost_not_full_cost_delta",
+      "oracle_route_regret_unavailable"
+    ]
+  },
+  {
+    "run_id": "phase1_minimal__fixed_workflow_agent__phase0_seed_code_fix_001",
+    "task_id": "phase0_seed_code_fix_001",
+    "benchmark_id": "phase0_seed",
+    "task_family": "code_agent_task",
+    "baseline_id": "fixed_workflow_agent",
+    "trajectory_path": "experiments/trajectories/phase1_minimal_matrix/phase1_minimal__fixed_workflow_agent__phase0_seed_code_fix_001.json",
+    "known_deviations": [
+      "phase1_toy_baseline_simulation",
+      "toy_route_oracle_success_label",
+      "legacy_event_payloads_inside_target_envelope",
+      "toy_scalar_activation_cost_not_full_cost_delta",
+      "oracle_route_regret_unavailable"
+    ]
+  },
+  {
+    "run_id": "phase1_minimal__retrieval_memory_agent__phase0_seed_code_fix_001",
+    "task_id": "phase0_seed_code_fix_001",
+    "benchmark_id": "phase0_seed",
+    "task_family": "code_agent_task",
+    "baseline_id": "retrieval_memory_agent",
+    "trajectory_path": "experiments/trajectories/phase1_minimal_matrix/phase1_minimal__retrieval_memory_agent__phase0_seed_code_fix_001.json",
+    "known_deviations": [
+      "phase1_toy_baseline_simulation",
+      "toy_route_oracle_success_label",
+      "legacy_event_payloads_inside_target_envelope",
+      "toy_scalar_activation_cost_not_full_cost_delta",
+      "oracle_route_regret_unavailable"
+    ]
+  },
+  {
+    "run_id": "phase1_minimal__agent_attention_agent__phase0_seed_code_fix_001",
+    "task_id": "phase0_seed_code_fix_001",
+    "benchmark_id": "phase0_seed",
+    "task_family": "code_agent_task",
+    "baseline_id": "agent_attention_agent",
+    "trajectory_path": "experiments/trajectories/phase1_minimal_matrix/phase1_minimal__agent_attention_agent__phase0_seed_code_fix_001.json",
+    "known_deviations": [
+      "phase1_toy_baseline_simulation",
+      "toy_route_oracle_success_label",
+      "legacy_event_payloads_inside_target_envelope",
+      "toy_scalar_activation_cost_not_full_cost_delta",
+      "oracle_route_regret_unavailable"
+    ]
+  },
+  {
+    "run_id": "phase1_minimal__single_react_agent__phase0_seed_search_sources_001",
+    "task_id": "phase0_seed_search_sources_001",
+    "benchmark_id": "phase0_seed",
+    "task_family": "search_agent_task",
+    "baseline_id": "single_react_agent",
+    "trajectory_path": "experiments/trajectories/phase1_minimal_matrix/phase1_minimal__single_react_agent__phase0_seed_search_sources_001.json",
+    "known_deviations": [
+      "phase1_toy_baseline_simulation",
+      "toy_route_oracle_success_label",
+      "legacy_event_payloads_inside_target_envelope",
+      "toy_scalar_activation_cost_not_full_cost_delta",
+      "oracle_route_regret_unavailable"
+    ]
+  },
+  {
+    "run_id": "phase1_minimal__fixed_workflow_agent__phase0_seed_search_sources_001",
+    "task_id": "phase0_seed_search_sources_001",
+    "benchmark_id": "phase0_seed",
+    "task_family": "search_agent_task",
+    "baseline_id": "fixed_workflow_agent",
+    "trajectory_path": "experiments/trajectories/phase1_minimal_matrix/phase1_minimal__fixed_workflow_agent__phase0_seed_search_sources_001.json",
+    "known_deviations": [
+      "phase1_toy_baseline_simulation",
+      "toy_route_oracle_success_label",
+      "legacy_event_payloads_inside_target_envelope",
+      "toy_scalar_activation_cost_not_full_cost_delta",
+      "oracle_route_regret_unavailable"
+    ]
+  },
+  {
+    "run_id": "phase1_minimal__retrieval_memory_agent__phase0_seed_search_sources_001",
+    "task_id": "phase0_seed_search_sources_001",
+    "benchmark_id": "phase0_seed",
+    "task_family": "search_agent_task",
+    "baseline_id": "retrieval_memory_agent",
+    "trajectory_path": "experiments/trajectories/phase1_minimal_matrix/phase1_minimal__retrieval_memory_agent__phase0_seed_search_sources_001.json",
+    "known_deviations": [
+      "phase1_toy_baseline_simulation",
+      "toy_route_oracle_success_label",
+      "legacy_event_payloads_inside_target_envelope",
+      "toy_scalar_activation_cost_not_full_cost_delta",
+      "oracle_route_regret_unavailable"
+    ]
+  },
+  {
+    "run_id": "phase1_minimal__agent_attention_agent__phase0_seed_search_sources_001",
+    "task_id": "phase0_seed_search_sources_001",
+    "benchmark_id": "phase0_seed",
+    "task_family": "search_agent_task",
+    "baseline_id": "agent_attention_agent",
+    "trajectory_path": "experiments/trajectories/phase1_minimal_matrix/phase1_minimal__agent_attention_agent__phase0_seed_search_sources_001.json",
+    "known_deviations": [
+      "phase1_toy_baseline_simulation",
+      "toy_route_oracle_success_label",
+      "legacy_event_payloads_inside_target_envelope",
+      "toy_scalar_activation_cost_not_full_cost_delta",
+      "oracle_route_regret_unavailable"
+    ]
+  },
+  {
+    "run_id": "phase1_minimal__single_react_agent__phase0_seed_research_metrics_001",
+    "task_id": "phase0_seed_research_metrics_001",
+    "benchmark_id": "phase0_seed",
+    "task_family": "mini_research_task",
+    "baseline_id": "single_react_agent",
+    "trajectory_path": "experiments/trajectories/phase1_minimal_matrix/phase1_minimal__single_react_agent__phase0_seed_research_metrics_001.json",
+    "known_deviations": [
+      "phase1_toy_baseline_simulation",
+      "toy_route_oracle_success_label",
+      "legacy_event_payloads_inside_target_envelope",
+      "toy_scalar_activation_cost_not_full_cost_delta",
+      "oracle_route_regret_unavailable"
+    ]
+  },
+  {
+    "run_id": "phase1_minimal__fixed_workflow_agent__phase0_seed_research_metrics_001",
+    "task_id": "phase0_seed_research_metrics_001",
+    "benchmark_id": "phase0_seed",
+    "task_family": "mini_research_task",
+    "baseline_id": "fixed_workflow_agent",
+    "trajectory_path": "experiments/trajectories/phase1_minimal_matrix/phase1_minimal__fixed_workflow_agent__phase0_seed_research_metrics_001.json",
+    "known_deviations": [
+      "phase1_toy_baseline_simulation",
+      "toy_route_oracle_success_label",
+      "legacy_event_payloads_inside_target_envelope",
+      "toy_scalar_activation_cost_not_full_cost_delta",
+      "oracle_route_regret_unavailable"
+    ]
+  },
+  {
+    "run_id": "phase1_minimal__retrieval_memory_agent__phase0_seed_research_metrics_001",
+    "task_id": "phase0_seed_research_metrics_001",
+    "benchmark_id": "phase0_seed",
+    "task_family": "mini_research_task",
+    "baseline_id": "retrieval_memory_agent",
+    "trajectory_path": "experiments/trajectories/phase1_minimal_matrix/phase1_minimal__retrieval_memory_agent__phase0_seed_research_metrics_001.json",
+    "known_deviations": [
+      "phase1_toy_baseline_simulation",
+      "toy_route_oracle_success_label",
+      "legacy_event_payloads_inside_target_envelope",
+      "toy_scalar_activation_cost_not_full_cost_delta",
+      "oracle_route_regret_unavailable"
+    ]
+  },
+  {
+    "run_id": "phase1_minimal__agent_attention_agent__phase0_seed_research_metrics_001",
+    "task_id": "phase0_seed_research_metrics_001",
+    "benchmark_id": "phase0_seed",
+    "task_family": "mini_research_task",
+    "baseline_id": "agent_attention_agent",
+    "trajectory_path": "experiments/trajectories/phase1_minimal_matrix/phase1_minimal__agent_attention_agent__phase0_seed_research_metrics_001.json",
+    "known_deviations": [
+      "phase1_toy_baseline_simulation",
+      "toy_route_oracle_success_label",
+      "legacy_event_payloads_inside_target_envelope",
+      "toy_scalar_activation_cost_not_full_cost_delta",
+      "oracle_route_regret_unavailable"
+    ]
+  },
+  {
+    "run_id": "phase1_minimal__single_react_agent__phase0_seed_negative_memory_001",
+    "task_id": "phase0_seed_negative_memory_001",
+    "benchmark_id": "phase0_seed",
+    "task_family": "code_agent_task",
+    "baseline_id": "single_react_agent",
+    "trajectory_path": "experiments/trajectories/phase1_minimal_matrix/phase1_minimal__single_react_agent__phase0_seed_negative_memory_001.json",
+    "known_deviations": [
+      "phase1_toy_baseline_simulation",
+      "toy_route_oracle_success_label",
+      "legacy_event_payloads_inside_target_envelope",
+      "toy_scalar_activation_cost_not_full_cost_delta",
+      "oracle_route_regret_unavailable"
+    ]
+  },
+  {
+    "run_id": "phase1_minimal__fixed_workflow_agent__phase0_seed_negative_memory_001",
+    "task_id": "phase0_seed_negative_memory_001",
+    "benchmark_id": "phase0_seed",
+    "task_family": "code_agent_task",
+    "baseline_id": "fixed_workflow_agent",
+    "trajectory_path": "experiments/trajectories/phase1_minimal_matrix/phase1_minimal__fixed_workflow_agent__phase0_seed_negative_memory_001.json",
+    "known_deviations": [
+      "phase1_toy_baseline_simulation",
+      "toy_route_oracle_success_label",
+      "legacy_event_payloads_inside_target_envelope",
+      "toy_scalar_activation_cost_not_full_cost_delta",
+      "oracle_route_regret_unavailable"
+    ]
+  },
+  {
+    "run_id": "phase1_minimal__retrieval_memory_agent__phase0_seed_negative_memory_001",
+    "task_id": "phase0_seed_negative_memory_001",
+    "benchmark_id": "phase0_seed",
+    "task_family": "code_agent_task",
+    "baseline_id": "retrieval_memory_agent",
+    "trajectory_path": "experiments/trajectories/phase1_minimal_matrix/phase1_minimal__retrieval_memory_agent__phase0_seed_negative_memory_001.json",
+    "known_deviations": [
+      "phase1_toy_baseline_simulation",
+      "toy_route_oracle_success_label",
+      "legacy_event_payloads_inside_target_envelope",
+      "toy_scalar_activation_cost_not_full_cost_delta",
+      "oracle_route_regret_unavailable"
+    ]
+  },
+  {
+    "run_id": "phase1_minimal__agent_attention_agent__phase0_seed_negative_memory_001",
+    "task_id": "phase0_seed_negative_memory_001",
+    "benchmark_id": "phase0_seed",
+    "task_family": "code_agent_task",
+    "baseline_id": "agent_attention_agent",
+    "trajectory_path": "experiments/trajectories/phase1_minimal_matrix/phase1_minimal__agent_attention_agent__phase0_seed_negative_memory_001.json",
+    "known_deviations": [
+      "phase1_toy_baseline_simulation",
+      "toy_route_oracle_success_label",
+      "legacy_event_payloads_inside_target_envelope",
+      "toy_scalar_activation_cost_not_full_cost_delta",
+      "oracle_route_regret_unavailable"
+    ]
+  }
+]

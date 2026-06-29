@@ -1,0 +1,255 @@
+{
+  "model": "Qwen3-30B-A3B-Instruct-2507",
+  "provider": "openai/paratera",
+  "phase1_faithful": [
+    {
+      "toy_baseline_id": "single_react_agent",
+      "real_baseline_id": "single_react_llm_agent",
+      "toy_success_rate": 0.916667,
+      "real_pass_rate": 0.0833,
+      "real_partial_rate": 0.8333,
+      "delta_pass_vs_toy": -0.8334,
+      "toy_mean_module_calls": 3.833333,
+      "real_mean_model_calls": 2.83,
+      "real_mean_latency_ms": 9930.33,
+      "toy_mean_proxy_regret": 0.463125
+    },
+    {
+      "toy_baseline_id": "fixed_workflow_agent",
+      "real_baseline_id": "fixed_workflow_llm_agent",
+      "toy_success_rate": 0.916667,
+      "real_pass_rate": 0.0,
+      "real_partial_rate": 0.8333,
+      "delta_pass_vs_toy": -0.9167,
+      "toy_mean_module_calls": 4.166667,
+      "real_mean_model_calls": 2.83,
+      "real_mean_latency_ms": 10767.17,
+      "toy_mean_proxy_regret": 0.377083
+    },
+    {
+      "toy_baseline_id": "full_history_agent",
+      "real_baseline_id": "full_history_llm_agent",
+      "toy_success_rate": 0.916667,
+      "real_pass_rate": 0.0833,
+      "real_partial_rate": 0.8333,
+      "delta_pass_vs_toy": -0.8334,
+      "toy_mean_module_calls": 3.833333,
+      "real_mean_model_calls": 2.83,
+      "real_mean_latency_ms": 11481.83,
+      "toy_mean_proxy_regret": 0.463125
+    },
+    {
+      "toy_baseline_id": "retrieval_memory_agent",
+      "real_baseline_id": "retrieval_memory_llm_agent",
+      "toy_success_rate": 0.833333,
+      "real_pass_rate": 0.0833,
+      "real_partial_rate": 0.8333,
+      "delta_pass_vs_toy": -0.75,
+      "toy_mean_module_calls": 3.833333,
+      "real_mean_model_calls": 2.83,
+      "real_mean_latency_ms": 10100.0,
+      "toy_mean_proxy_regret": 0.463125
+    },
+    {
+      "toy_baseline_id": "moa_style_agent",
+      "real_baseline_id": "moa_style_llm_agent",
+      "toy_success_rate": 0.083333,
+      "real_pass_rate": 0.5,
+      "real_partial_rate": 0.4167,
+      "delta_pass_vs_toy": 0.4167,
+      "toy_mean_module_calls": 6.083333,
+      "real_mean_model_calls": 3.17,
+      "real_mean_latency_ms": 10909.75,
+      "toy_mean_proxy_regret": 0.718125
+    },
+    {
+      "toy_baseline_id": "agent_attention_agent",
+      "real_baseline_id": "agent_attention_llm_agent",
+      "toy_success_rate": 0.25,
+      "real_pass_rate": 0.1667,
+      "real_partial_rate": 0.8333,
+      "delta_pass_vs_toy": -0.0833,
+      "toy_mean_module_calls": 7.416667,
+      "real_mean_model_calls": 3.17,
+      "real_mean_latency_ms": 12441.42,
+      "toy_mean_proxy_regret": 0.225347
+    },
+    {
+      "toy_baseline_id": "agent_attention_agent_tuned",
+      "real_baseline_id": "agent_attention_llm_tuned",
+      "toy_success_rate": 0.666667,
+      "real_pass_rate": 0.75,
+      "real_partial_rate": 0.1667,
+      "delta_pass_vs_toy": 0.0833,
+      "toy_mean_module_calls": 7.416667,
+      "real_mean_model_calls": 2.17,
+      "real_mean_latency_ms": 8678.33,
+      "toy_mean_proxy_regret": 0.344181
+    }
+  ],
+  "phase1_memory": [
+    {
+      "toy_ablation_id": "aa_tuned_control",
+      "real_ablation_id": "aa_tuned_control_llm",
+      "toy_success_rate": 0.666667,
+      "real_pass_rate": 0.75,
+      "real_partial_rate": 0.1667,
+      "delta_pass_vs_toy": 0.0833,
+      "real_mean_model_calls": 2.17,
+      "real_mean_latency_ms": 9117.92
+    },
+    {
+      "toy_ablation_id": "aa_no_memory",
+      "real_ablation_id": "aa_no_memory_llm",
+      "toy_success_rate": 0.75,
+      "real_pass_rate": 0.8333,
+      "real_partial_rate": 0.0833,
+      "delta_pass_vs_toy": 0.0833,
+      "real_mean_model_calls": 2.17,
+      "real_mean_latency_ms": 9562.92
+    },
+    {
+      "toy_ablation_id": "aa_memory_read_only",
+      "real_ablation_id": "aa_memory_read_only_llm",
+      "toy_success_rate": 0.666667,
+      "real_pass_rate": 0.75,
+      "real_partial_rate": 0.1667,
+      "delta_pass_vs_toy": 0.0833,
+      "real_mean_model_calls": 2.17,
+      "real_mean_latency_ms": 8167.5
+    },
+    {
+      "toy_ablation_id": "aa_success_only_memory_write",
+      "real_ablation_id": "aa_success_only_memory_write_llm",
+      "toy_success_rate": 0.666667,
+      "real_pass_rate": 0.75,
+      "real_partial_rate": 0.1667,
+      "delta_pass_vs_toy": 0.0833,
+      "real_mean_model_calls": 2.17,
+      "real_mean_latency_ms": 8431.67
+    },
+    {
+      "toy_ablation_id": "aa_unfiltered_memory",
+      "real_ablation_id": "aa_unfiltered_memory_llm",
+      "toy_success_rate": 0.666667,
+      "real_pass_rate": 0.75,
+      "real_partial_rate": 0.1667,
+      "delta_pass_vs_toy": 0.0833,
+      "real_mean_model_calls": 2.17,
+      "real_mean_latency_ms": 8104.67
+    },
+    {
+      "toy_ablation_id": "aa_quarantine_aware",
+      "real_ablation_id": "aa_quarantine_aware_llm",
+      "toy_success_rate": 0.666667,
+      "real_pass_rate": 0.75,
+      "real_partial_rate": 0.1667,
+      "delta_pass_vs_toy": 0.0833,
+      "real_mean_model_calls": 2.17,
+      "real_mean_latency_ms": 8282.08
+    }
+  ],
+  "phase1_router": [
+    {
+      "toy_router_id": "aa_lexical_router",
+      "real_router_id": "aa_lexical_router_llm",
+      "toy_success_rate": 0.666667,
+      "real_pass_rate": 0.75,
+      "real_partial_rate": 0.25,
+      "delta_pass_vs_toy": 0.0833,
+      "toy_oracle_regret": 0.316667,
+      "real_mean_model_calls": 2.17,
+      "real_mean_latency_ms": 9005.0
+    },
+    {
+      "toy_router_id": "aa_rule_router",
+      "real_router_id": "aa_rule_router_llm",
+      "toy_success_rate": 0.416667,
+      "real_pass_rate": 0.75,
+      "real_partial_rate": 0.1667,
+      "delta_pass_vs_toy": 0.3333,
+      "toy_oracle_regret": 0.604167,
+      "real_mean_model_calls": 2.17,
+      "real_mean_latency_ms": 7950.08
+    },
+    {
+      "toy_router_id": "aa_learned_router_replay",
+      "real_router_id": "aa_learned_router_replay_llm",
+      "toy_success_rate": 0.75,
+      "real_pass_rate": 0.75,
+      "real_partial_rate": 0.0833,
+      "delta_pass_vs_toy": 0.0,
+      "toy_oracle_regret": 0.220833,
+      "real_mean_model_calls": 2.17,
+      "real_mean_latency_ms": 8499.0
+    },
+    {
+      "toy_router_id": "aa_oracle_router",
+      "real_router_id": "aa_oracle_router_llm",
+      "toy_success_rate": 0.916667,
+      "real_pass_rate": 0.6667,
+      "real_partial_rate": 0.0833,
+      "delta_pass_vs_toy": -0.25,
+      "toy_oracle_regret": 0.0,
+      "real_mean_model_calls": 2.17,
+      "real_mean_latency_ms": 8297.75
+    }
+  ],
+  "gsm8k_faithful": [
+    {
+      "real_baseline_id": "llm_direct_agent (reference)",
+      "gsm8k_pass_rate": 0.95,
+      "mean_model_calls": 1.0,
+      "mean_latency_ms": 1838.1,
+      "note": "from gsm8k_multi_baseline_full_summary"
+    },
+    {
+      "real_baseline_id": "single_react_llm_agent",
+      "gsm8k_pass_rate": 1.0,
+      "mean_model_calls": 3.0,
+      "mean_latency_ms": 7152.75
+    },
+    {
+      "real_baseline_id": "fixed_workflow_llm_agent",
+      "gsm8k_pass_rate": 1.0,
+      "mean_model_calls": 3.0,
+      "mean_latency_ms": 8192.25
+    },
+    {
+      "real_baseline_id": "full_history_llm_agent",
+      "gsm8k_pass_rate": 0.95,
+      "mean_model_calls": 3.0,
+      "mean_latency_ms": 6781.8
+    },
+    {
+      "real_baseline_id": "retrieval_memory_llm_agent",
+      "gsm8k_pass_rate": 1.0,
+      "mean_model_calls": 3.0,
+      "mean_latency_ms": 7002.4
+    },
+    {
+      "real_baseline_id": "moa_style_llm_agent",
+      "gsm8k_pass_rate": 1.0,
+      "mean_model_calls": 5.0,
+      "mean_latency_ms": 12917.9
+    },
+    {
+      "real_baseline_id": "agent_attention_llm_agent",
+      "gsm8k_pass_rate": 0.7,
+      "mean_model_calls": 5.0,
+      "mean_latency_ms": 10608.1
+    },
+    {
+      "real_baseline_id": "agent_attention_llm_tuned",
+      "gsm8k_pass_rate": 0.9,
+      "mean_model_calls": 2.2,
+      "mean_latency_ms": 6028.5
+    },
+    {
+      "toy_baseline_id": "agent_attention_agent_tuned (phase1 toy)",
+      "gsm8k_pass_rate": null,
+      "toy_phase1_success_rate": null,
+      "note": "GSM8K exact-match vs phase1 route-oracle are not directly comparable"
+    }
+  ]
+}

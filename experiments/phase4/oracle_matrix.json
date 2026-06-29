@@ -1,0 +1,560 @@
+{
+  "schema_version": "agent_attention.oracle_matrix.v0.1",
+  "task_count": 12,
+  "entries": [
+    {
+      "task_id": "phase0_seed_code_fix_001",
+      "task_family": "code_agent_task",
+      "oracle_available": true,
+      "oracle_best_module_id": "code_agent",
+      "required_modules": [
+        "code_agent"
+      ],
+      "discouraged_modules": [
+        "search_agent"
+      ],
+      "module_utilities": {
+        "verifier": 0.2,
+        "aggregator": 0.2,
+        "code_agent": 1.0,
+        "executor": 0.2,
+        "critic_agent": 0.2,
+        "memory": 0.2,
+        "planner": 0.2,
+        "search_agent": 0.05
+      },
+      "rationale": "Code repair tasks should prioritize inspect-edit-test behavior."
+    },
+    {
+      "task_id": "phase0_seed_search_sources_001",
+      "task_family": "search_agent_task",
+      "oracle_available": true,
+      "oracle_best_module_id": "search_agent",
+      "required_modules": [
+        "search_agent"
+      ],
+      "discouraged_modules": [
+        "code_agent"
+      ],
+      "module_utilities": {
+        "verifier": 0.2,
+        "aggregator": 0.2,
+        "code_agent": 0.05,
+        "executor": 0.2,
+        "critic_agent": 0.2,
+        "memory": 0.2,
+        "planner": 0.2,
+        "search_agent": 1.0
+      },
+      "rationale": "Search/evidence tasks should activate external evidence modules."
+    },
+    {
+      "task_id": "phase0_seed_research_metrics_001",
+      "task_family": "mini_research_task",
+      "oracle_available": true,
+      "oracle_best_module_id": "critic_agent",
+      "required_modules": [
+        "memory",
+        "critic_agent",
+        "aggregator"
+      ],
+      "discouraged_modules": [],
+      "module_utilities": {
+        "verifier": 0.2,
+        "aggregator": 1.0,
+        "code_agent": 0.2,
+        "executor": 0.2,
+        "critic_agent": 1.0,
+        "memory": 1.0,
+        "planner": 0.2,
+        "search_agent": 0.2
+      },
+      "rationale": "Metric design benefits from memory reuse, critique, and aggregation; search is useful when literature claims need updating."
+    },
+    {
+      "task_id": "phase0_seed_negative_memory_001",
+      "task_family": "code_agent_task",
+      "oracle_available": true,
+      "oracle_best_module_id": "code_agent",
+      "required_modules": [
+        "code_agent"
+      ],
+      "discouraged_modules": [
+        "search_agent"
+      ],
+      "module_utilities": {
+        "verifier": 0.2,
+        "aggregator": 0.2,
+        "code_agent": 1.0,
+        "executor": 0.2,
+        "critic_agent": 0.2,
+        "memory": 0.2,
+        "planner": 0.2,
+        "search_agent": 0.05
+      },
+      "rationale": "Harmful memory should not override code-task route."
+    },
+    {
+      "task_id": "phase1_code_config_001",
+      "task_family": "code_agent_task",
+      "oracle_available": true,
+      "oracle_best_module_id": "code_agent",
+      "required_modules": [
+        "code_agent"
+      ],
+      "discouraged_modules": [
+        "search_agent"
+      ],
+      "module_utilities": {
+        "verifier": 0.2,
+        "aggregator": 0.2,
+        "code_agent": 1.0,
+        "executor": 0.2,
+        "critic_agent": 0.2,
+        "memory": 0.2,
+        "planner": 0.2,
+        "search_agent": 0.05
+      },
+      "rationale": "Config/code fix task."
+    },
+    {
+      "task_id": "phase1_code_doc_001",
+      "task_family": "code_agent_task",
+      "oracle_available": true,
+      "oracle_best_module_id": "code_agent",
+      "required_modules": [
+        "code_agent"
+      ],
+      "discouraged_modules": [
+        "search_agent"
+      ],
+      "module_utilities": {
+        "verifier": 0.2,
+        "aggregator": 0.2,
+        "code_agent": 1.0,
+        "executor": 0.2,
+        "critic_agent": 0.2,
+        "memory": 0.2,
+        "planner": 0.2,
+        "search_agent": 0.05
+      },
+      "rationale": "Doc/code alignment fix."
+    },
+    {
+      "task_id": "phase1_code_import_001",
+      "task_family": "code_agent_task",
+      "oracle_available": true,
+      "oracle_best_module_id": "code_agent",
+      "required_modules": [
+        "code_agent"
+      ],
+      "discouraged_modules": [
+        "search_agent"
+      ],
+      "module_utilities": {
+        "verifier": 0.2,
+        "aggregator": 0.2,
+        "code_agent": 1.0,
+        "executor": 0.2,
+        "critic_agent": 0.2,
+        "memory": 0.2,
+        "planner": 0.2,
+        "search_agent": 0.05
+      },
+      "rationale": "Import path code fix."
+    },
+    {
+      "task_id": "phase1_code_edge_001",
+      "task_family": "code_agent_task",
+      "oracle_available": true,
+      "oracle_best_module_id": "code_agent",
+      "required_modules": [
+        "code_agent"
+      ],
+      "discouraged_modules": [
+        "search_agent"
+      ],
+      "module_utilities": {
+        "verifier": 0.2,
+        "aggregator": 0.2,
+        "code_agent": 1.0,
+        "executor": 0.2,
+        "critic_agent": 0.2,
+        "memory": 0.2,
+        "planner": 0.2,
+        "search_agent": 0.05
+      },
+      "rationale": "Minimal edge-case fix."
+    },
+    {
+      "task_id": "phase1_search_conflict_001",
+      "task_family": "search_agent_task",
+      "oracle_available": true,
+      "oracle_best_module_id": "search_agent",
+      "required_modules": [
+        "search_agent",
+        "critic_agent"
+      ],
+      "discouraged_modules": [
+        "code_agent"
+      ],
+      "module_utilities": {
+        "verifier": 0.2,
+        "aggregator": 0.2,
+        "code_agent": 0.05,
+        "executor": 0.2,
+        "critic_agent": 1.0,
+        "memory": 0.2,
+        "planner": 0.2,
+        "search_agent": 1.0
+      },
+      "rationale": "Conflict reconciliation needs search and critique."
+    },
+    {
+      "task_id": "phase1_search_recency_001",
+      "task_family": "search_agent_task",
+      "oracle_available": true,
+      "oracle_best_module_id": "search_agent",
+      "required_modules": [
+        "search_agent"
+      ],
+      "discouraged_modules": [
+        "code_agent"
+      ],
+      "module_utilities": {
+        "verifier": 0.2,
+        "aggregator": 0.2,
+        "code_agent": 0.05,
+        "executor": 0.2,
+        "critic_agent": 0.2,
+        "memory": 0.2,
+        "planner": 0.2,
+        "search_agent": 1.0
+      },
+      "rationale": "Recency search task."
+    },
+    {
+      "task_id": "phase1_search_evidence_002",
+      "task_family": "search_agent_task",
+      "oracle_available": true,
+      "oracle_best_module_id": "search_agent",
+      "required_modules": [
+        "search_agent"
+      ],
+      "discouraged_modules": [
+        "code_agent"
+      ],
+      "module_utilities": {
+        "verifier": 0.2,
+        "aggregator": 0.2,
+        "code_agent": 0.05,
+        "executor": 0.2,
+        "critic_agent": 0.2,
+        "memory": 0.2,
+        "planner": 0.2,
+        "search_agent": 1.0
+      },
+      "rationale": "Multi-source evidence search."
+    },
+    {
+      "task_id": "phase1_research_taxonomy_001",
+      "task_family": "mini_research_task",
+      "oracle_available": true,
+      "oracle_best_module_id": "critic_agent",
+      "required_modules": [
+        "critic_agent",
+        "aggregator"
+      ],
+      "discouraged_modules": [],
+      "module_utilities": {
+        "verifier": 0.2,
+        "aggregator": 1.0,
+        "code_agent": 0.2,
+        "executor": 0.2,
+        "critic_agent": 1.0,
+        "memory": 0.2,
+        "planner": 0.2,
+        "search_agent": 0.2
+      },
+      "rationale": "Taxonomy design needs critique and aggregation."
+    }
+  ],
+  "entries_by_task_id": {
+    "phase0_seed_code_fix_001": {
+      "task_id": "phase0_seed_code_fix_001",
+      "task_family": "code_agent_task",
+      "oracle_available": true,
+      "oracle_best_module_id": "code_agent",
+      "required_modules": [
+        "code_agent"
+      ],
+      "discouraged_modules": [
+        "search_agent"
+      ],
+      "module_utilities": {
+        "verifier": 0.2,
+        "aggregator": 0.2,
+        "code_agent": 1.0,
+        "executor": 0.2,
+        "critic_agent": 0.2,
+        "memory": 0.2,
+        "planner": 0.2,
+        "search_agent": 0.05
+      },
+      "rationale": "Code repair tasks should prioritize inspect-edit-test behavior."
+    },
+    "phase0_seed_search_sources_001": {
+      "task_id": "phase0_seed_search_sources_001",
+      "task_family": "search_agent_task",
+      "oracle_available": true,
+      "oracle_best_module_id": "search_agent",
+      "required_modules": [
+        "search_agent"
+      ],
+      "discouraged_modules": [
+        "code_agent"
+      ],
+      "module_utilities": {
+        "verifier": 0.2,
+        "aggregator": 0.2,
+        "code_agent": 0.05,
+        "executor": 0.2,
+        "critic_agent": 0.2,
+        "memory": 0.2,
+        "planner": 0.2,
+        "search_agent": 1.0
+      },
+      "rationale": "Search/evidence tasks should activate external evidence modules."
+    },
+    "phase0_seed_research_metrics_001": {
+      "task_id": "phase0_seed_research_metrics_001",
+      "task_family": "mini_research_task",
+      "oracle_available": true,
+      "oracle_best_module_id": "critic_agent",
+      "required_modules": [
+        "memory",
+        "critic_agent",
+        "aggregator"
+      ],
+      "discouraged_modules": [],
+      "module_utilities": {
+        "verifier": 0.2,
+        "aggregator": 1.0,
+        "code_agent": 0.2,
+        "executor": 0.2,
+        "critic_agent": 1.0,
+        "memory": 1.0,
+        "planner": 0.2,
+        "search_agent": 0.2
+      },
+      "rationale": "Metric design benefits from memory reuse, critique, and aggregation; search is useful when literature claims need updating."
+    },
+    "phase0_seed_negative_memory_001": {
+      "task_id": "phase0_seed_negative_memory_001",
+      "task_family": "code_agent_task",
+      "oracle_available": true,
+      "oracle_best_module_id": "code_agent",
+      "required_modules": [
+        "code_agent"
+      ],
+      "discouraged_modules": [
+        "search_agent"
+      ],
+      "module_utilities": {
+        "verifier": 0.2,
+        "aggregator": 0.2,
+        "code_agent": 1.0,
+        "executor": 0.2,
+        "critic_agent": 0.2,
+        "memory": 0.2,
+        "planner": 0.2,
+        "search_agent": 0.05
+      },
+      "rationale": "Harmful memory should not override code-task route."
+    },
+    "phase1_code_config_001": {
+      "task_id": "phase1_code_config_001",
+      "task_family": "code_agent_task",
+      "oracle_available": true,
+      "oracle_best_module_id": "code_agent",
+      "required_modules": [
+        "code_agent"
+      ],
+      "discouraged_modules": [
+        "search_agent"
+      ],
+      "module_utilities": {
+        "verifier": 0.2,
+        "aggregator": 0.2,
+        "code_agent": 1.0,
+        "executor": 0.2,
+        "critic_agent": 0.2,
+        "memory": 0.2,
+        "planner": 0.2,
+        "search_agent": 0.05
+      },
+      "rationale": "Config/code fix task."
+    },
+    "phase1_code_doc_001": {
+      "task_id": "phase1_code_doc_001",
+      "task_family": "code_agent_task",
+      "oracle_available": true,
+      "oracle_best_module_id": "code_agent",
+      "required_modules": [
+        "code_agent"
+      ],
+      "discouraged_modules": [
+        "search_agent"
+      ],
+      "module_utilities": {
+        "verifier": 0.2,
+        "aggregator": 0.2,
+        "code_agent": 1.0,
+        "executor": 0.2,
+        "critic_agent": 0.2,
+        "memory": 0.2,
+        "planner": 0.2,
+        "search_agent": 0.05
+      },
+      "rationale": "Doc/code alignment fix."
+    },
+    "phase1_code_import_001": {
+      "task_id": "phase1_code_import_001",
+      "task_family": "code_agent_task",
+      "oracle_available": true,
+      "oracle_best_module_id": "code_agent",
+      "required_modules": [
+        "code_agent"
+      ],
+      "discouraged_modules": [
+        "search_agent"
+      ],
+      "module_utilities": {
+        "verifier": 0.2,
+        "aggregator": 0.2,
+        "code_agent": 1.0,
+        "executor": 0.2,
+        "critic_agent": 0.2,
+        "memory": 0.2,
+        "planner": 0.2,
+        "search_agent": 0.05
+      },
+      "rationale": "Import path code fix."
+    },
+    "phase1_code_edge_001": {
+      "task_id": "phase1_code_edge_001",
+      "task_family": "code_agent_task",
+      "oracle_available": true,
+      "oracle_best_module_id": "code_agent",
+      "required_modules": [
+        "code_agent"
+      ],
+      "discouraged_modules": [
+        "search_agent"
+      ],
+      "module_utilities": {
+        "verifier": 0.2,
+        "aggregator": 0.2,
+        "code_agent": 1.0,
+        "executor": 0.2,
+        "critic_agent": 0.2,
+        "memory": 0.2,
+        "planner": 0.2,
+        "search_agent": 0.05
+      },
+      "rationale": "Minimal edge-case fix."
+    },
+    "phase1_search_conflict_001": {
+      "task_id": "phase1_search_conflict_001",
+      "task_family": "search_agent_task",
+      "oracle_available": true,
+      "oracle_best_module_id": "search_agent",
+      "required_modules": [
+        "search_agent",
+        "critic_agent"
+      ],
+      "discouraged_modules": [
+        "code_agent"
+      ],
+      "module_utilities": {
+        "verifier": 0.2,
+        "aggregator": 0.2,
+        "code_agent": 0.05,
+        "executor": 0.2,
+        "critic_agent": 1.0,
+        "memory": 0.2,
+        "planner": 0.2,
+        "search_agent": 1.0
+      },
+      "rationale": "Conflict reconciliation needs search and critique."
+    },
+    "phase1_search_recency_001": {
+      "task_id": "phase1_search_recency_001",
+      "task_family": "search_agent_task",
+      "oracle_available": true,
+      "oracle_best_module_id": "search_agent",
+      "required_modules": [
+        "search_agent"
+      ],
+      "discouraged_modules": [
+        "code_agent"
+      ],
+      "module_utilities": {
+        "verifier": 0.2,
+        "aggregator": 0.2,
+        "code_agent": 0.05,
+        "executor": 0.2,
+        "critic_agent": 0.2,
+        "memory": 0.2,
+        "planner": 0.2,
+        "search_agent": 1.0
+      },
+      "rationale": "Recency search task."
+    },
+    "phase1_search_evidence_002": {
+      "task_id": "phase1_search_evidence_002",
+      "task_family": "search_agent_task",
+      "oracle_available": true,
+      "oracle_best_module_id": "search_agent",
+      "required_modules": [
+        "search_agent"
+      ],
+      "discouraged_modules": [
+        "code_agent"
+      ],
+      "module_utilities": {
+        "verifier": 0.2,
+        "aggregator": 0.2,
+        "code_agent": 0.05,
+        "executor": 0.2,
+        "critic_agent": 0.2,
+        "memory": 0.2,
+        "planner": 0.2,
+        "search_agent": 1.0
+      },
+      "rationale": "Multi-source evidence search."
+    },
+    "phase1_research_taxonomy_001": {
+      "task_id": "phase1_research_taxonomy_001",
+      "task_family": "mini_research_task",
+      "oracle_available": true,
+      "oracle_best_module_id": "critic_agent",
+      "required_modules": [
+        "critic_agent",
+        "aggregator"
+      ],
+      "discouraged_modules": [],
+      "module_utilities": {
+        "verifier": 0.2,
+        "aggregator": 1.0,
+        "code_agent": 0.2,
+        "executor": 0.2,
+        "critic_agent": 1.0,
+        "memory": 0.2,
+        "planner": 0.2,
+        "search_agent": 0.2
+      },
+      "rationale": "Taxonomy design needs critique and aggregation."
+    }
+  }
+}

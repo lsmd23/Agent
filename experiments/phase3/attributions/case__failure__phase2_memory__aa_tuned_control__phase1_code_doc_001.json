@@ -1,0 +1,75 @@
+{
+  "case_id": "case__failure__phase2_memory__aa_tuned_control__phase1_code_doc_001",
+  "failure_id": "failure__phase2_memory__aa_tuned_control__phase1_code_doc_001",
+  "trigger_failure_ids": [
+    "failure__phase2_memory__aa_tuned_control__phase1_code_doc_001"
+  ],
+  "symptom": "max_steps_reached",
+  "root_cause_hypothesis": "Required modules ['code_agent'] were not activated; bias router toward code_agent on this task family.",
+  "blamed_component": "router",
+  "blame_candidates": [
+    {
+      "candidate_id": "failure__phase2_memory__aa_tuned_control__phase1_code_doc_001__primary",
+      "component_type": "router",
+      "component_id": "lexical_router",
+      "hypothesis": "Required modules ['code_agent'] were not activated; bias router toward code_agent on this task family.",
+      "causal_link_score": 0.68,
+      "temporal_proximity_score": 0.6,
+      "counterfactual_plausibility_score": 0.63,
+      "evidence_event_ids": [
+        "5",
+        "14"
+      ],
+      "evidence_refs": [
+        {
+          "ref_id": "5",
+          "source_type": "trajectory_event"
+        },
+        {
+          "ref_id": "14",
+          "source_type": "trajectory_event"
+        }
+      ],
+      "label": "primary",
+      "validation_outcome": "not_tested"
+    }
+  ],
+  "evidence_event_ids": [
+    "5",
+    "14"
+  ],
+  "evidence_refs": [
+    {
+      "ref_id": "5",
+      "source_type": "trajectory_event"
+    },
+    {
+      "ref_id": "14",
+      "source_type": "trajectory_event"
+    }
+  ],
+  "local_gradient": "Required modules ['code_agent'] were not activated; bias router toward code_agent on this task family.",
+  "proposed_update": {
+    "target": "router_rule",
+    "target_id": "code_agent_task",
+    "before": "pure_lexical_match",
+    "after": "intent_bonus_for=['code_agent']",
+    "bounded_scope": "task_family=code_agent_task",
+    "expected_effect": "success_rate",
+    "rollback_condition": "activation_cost rises by >0.5 without success gain",
+    "patch_parameters": {
+      "intent_bonus_for": [
+        "code_agent"
+      ],
+      "intent_bonus_delta": 0.25,
+      "early_priority_modules": [
+        "code_agent"
+      ],
+      "early_priority_max_step": 2,
+      "early_priority_bonus": 1.5
+    }
+  },
+  "rollback_condition": "activation_cost rises by >0.5 without success gain",
+  "confidence": 0.68,
+  "failure_signals": []
+}

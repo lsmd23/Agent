@@ -1,0 +1,911 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://agent-attention.local/schemas/failure_attribution.v0.1.schema.json",
+  "title": "Agent-Attention Failure Attribution And Textual Backpropagation Schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "scope",
+    "claims",
+    "design",
+    "interfaces",
+    "experiments",
+    "risks",
+    "open_questions",
+    "$defs"
+  ],
+  "properties": {
+    "scope": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "summary",
+        "alignment",
+        "out_of_scope"
+      ],
+      "properties": {
+        "summary": {
+          "type": "string"
+        },
+        "alignment": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "out_of_scope": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "claims": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "evidence_type",
+          "claim"
+        ],
+        "properties": {
+          "evidence_type": {
+            "enum": [
+              "文献",
+              "原型",
+              "实验",
+              "猜想"
+            ]
+          },
+          "claim": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "design": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "minimal_version",
+        "enhanced_version",
+        "counterexamples"
+      ],
+      "properties": {
+        "minimal_version": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "enhanced_version": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "counterexamples": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "interfaces": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema_version",
+        "alignment_with_subtask_02",
+        "allowed_update_targets",
+        "decision_statuses",
+        "metric_sources"
+      ],
+      "properties": {
+        "schema_version": {
+          "type": "string"
+        },
+        "alignment_with_subtask_02": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "allowed_update_targets": {
+          "type": "array",
+          "items": {
+            "enum": [
+              "router_rule",
+              "module_prompt",
+              "memory_write_policy",
+              "memory_usefulness",
+              "verifier_checklist",
+              "tool_schema",
+              "halt_threshold",
+              "budget_policy",
+              "task_decomposition_heuristic"
+            ]
+          }
+        },
+        "decision_statuses": {
+          "type": "array",
+          "items": {
+            "enum": [
+              "accept",
+              "reject",
+              "quarantine",
+              "rollback"
+            ]
+          }
+        },
+        "metric_sources": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "experiments": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/experimentSpec"
+      }
+    },
+    "risks": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "open_questions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "$defs": {
+      "type": "object"
+    }
+  },
+  "scope": {
+    "summary": "This schema defines the Subtask 05 attribution layer for converting final failures into local, bounded, auditable textual updates.",
+    "alignment": [
+      "It consumes Subtask 02 failureSignal objects as triggers.",
+      "It emits Subtask 02 updateRecord-compatible updates and trajectoryEvent records with event_type=failure_update.",
+      "It binds every attribution and update to trajectory evidence refs, source event ids, and verificationStatus outcomes.",
+      "It does not change the core Subtask 02 schemas; conflicts are represented as open questions or extension fields in this file."
+    ],
+    "out_of_scope": [
+      "Global prompt rewrites from a single failure.",
+      "Weight training or learned router updates.",
+      "Runtime code or test changes outside docs/deliverables/05/.",
+      "Accepting updates without replay, held-out validation, or explicit quarantine."
+    ]
+  },
+  "claims": [
+    {
+      "evidence_type": "文献",
+      "claim": "Reflexion, Voyager, and Self-Refine motivate language feedback after failure, but this schema makes the update target, evidence, rollback, and replay status explicit."
+    },
+    {
+      "evidence_type": "原型",
+      "claim": "The Phase 0-1 formal model already logs failureSignal, trajectoryEvent, updateRecord, and verificationStatus, so Subtask 05 can be implemented as a schema-compatible attribution layer."
+    },
+    {
+      "evidence_type": "猜想",
+      "claim": "Local updates with accept/reject/quarantine decisions will reduce repeated failures with lower negative-transfer risk than broad prompt rewrites."
+    },
+    {
+      "evidence_type": "实验",
+      "claim": "The proposed replay and held-out protocols are designed so attribution accuracy, improvement, regression, false blame, and rollback frequency are computable from logs."
+    }
+  ],
+  "design": {
+    "minimal_version": [
+      "For each blocking final failure, create one attributionCase from one or more failureSignal ids.",
+      "Separate symptom, root_cause_hypothesis, blamed_component, local_gradient, proposed_update, and rollback_condition.",
+      "Require at least one trajectory_event evidence ref and one source_event_id for every proposed update.",
+      "Map proposed_update to one Subtask 02 updateRecord with update_target, target_id, textual_gradient, patch_summary, evidence_refs, confidence, applied=false, and expected_metric_effect.",
+      "Accept only after replay or held-out validation improves a primary metric without violating regression guards; otherwise reject or quarantine."
+    ],
+    "enhanced_version": [
+      "Rank multiple blame candidates with causal link, temporal proximity, counterfactual plausibility, and verifier agreement scores.",
+      "Represent component-specific gradients for router rules, module prompts, memory write/usefulness policy, verifier checklists, tool schemas, halt thresholds, budget policy, and task decomposition heuristics.",
+      "Use quarantine for medium-confidence updates that improve replay but lack held-out evidence or might affect high-risk modules.",
+      "Attach rollbackRecords to accepted updates and monitor future trajectory metrics for rollback conditions.",
+      "Track no-update and global-rewrite baselines to detect overfitting and negative transfer."
+    ],
+    "counterexamples": [
+      "A failure summary that says 'be more careful next time' has no target_id, no local gradient, and no bounded patch, so it is not a valid textual update.",
+      "Blaming the last module only because it emitted the final wrong answer is invalid when earlier route, memory, or verifier events provide stronger causal evidence.",
+      "Increasing memory usefulness after one apparent success without replay can amplify stale memories and cause negative transfer.",
+      "A global prompt rewrite may improve the failed replay while degrading unrelated held-out tasks; it should be a rejected or quarantined control, not the default update."
+    ]
+  },
+  "interfaces": {
+    "schema_version": "agent_attention.failure_attribution.v0.1",
+    "alignment_with_subtask_02": [
+      "trigger_failure_ids maps to failureSignal.failure_id.",
+      "evidence_refs reuse the Subtask 02 evidenceRef object shape.",
+      "source_event_ids and evidence_event_ids map to trajectoryEvent.event_id.",
+      "verification_status_before and verification_status_after reuse verificationStatus.",
+      "update_record_patch is structurally compatible with Subtask 02 updateRecord; extra lifecycle fields stay in textualUpdateEnvelope."
+    ],
+    "allowed_update_targets": [
+      "router_rule",
+      "module_prompt",
+      "memory_write_policy",
+      "memory_usefulness",
+      "verifier_checklist",
+      "tool_schema",
+      "halt_threshold",
+      "budget_policy",
+      "task_decomposition_heuristic"
+    ],
+    "decision_statuses": [
+      "accept",
+      "reject",
+      "quarantine",
+      "rollback"
+    ],
+    "metric_sources": {
+      "attribution_accuracy": [
+        "attributionCase.blame_candidates.label",
+        "held_out_validation.outcome",
+        "human_oracle_optional"
+      ],
+      "update_acceptance_rate": [
+        "textualUpdateEnvelope.decision"
+      ],
+      "replay_improvement": [
+        "validationRun.before_metrics",
+        "validationRun.after_metrics"
+      ],
+      "regression_rate": [
+        "validationRun.regression_checks"
+      ],
+      "repeated_failure_reduction": [
+        "trajectoryEvent.error_type",
+        "failureSignal.failure_type",
+        "textualUpdateEnvelope.trigger_failure_ids"
+      ],
+      "rollback_frequency": [
+        "rollbackRecord.status"
+      ],
+      "false_blame_rate": [
+        "blameCandidate.validation_outcome",
+        "validationRun.counterfactual_component_tests"
+      ],
+      "negative_transfer_cases": [
+        "trajectoryEvent.error_type=negative_transfer",
+        "trajectoryEvent.memory_usefulness_label=harmful",
+        "validationRun.held_out_metrics"
+      ]
+    }
+  },
+  "experiments": [
+    {
+      "id": "failure_attribution_schema_fixture",
+      "description": "Validate synthetic attribution cases for router, memory, module, aggregator, verifier, and halt failures.",
+      "control": "Malformed cases missing evidence refs, rollback conditions, or update targets.",
+      "metrics": [
+        "schema_pass_rate",
+        "missing_evidence_ref_count",
+        "invalid_target_count",
+        "missing_rollback_condition_count"
+      ],
+      "required_logs": [
+        "failureSignal",
+        "trajectoryEvent",
+        "updateRecord"
+      ]
+    },
+    {
+      "id": "attribution_to_update_roundtrip",
+      "description": "Generate attributionCase objects from failed trajectories and compile them into Subtask 02 updateRecord objects plus failure_update trajectory events.",
+      "control": "Reflection-only summaries that do not compile into updateRecord.",
+      "metrics": [
+        "roundtrip_success_rate",
+        "evidence_coverage",
+        "target_specificity",
+        "compile_error_count"
+      ],
+      "required_logs": [
+        "failureSignal",
+        "trajectoryEvent",
+        "updateRecord",
+        "verificationStatus"
+      ]
+    }
+  ],
+  "risks": [
+    "False blame can create a precise but wrong update when trajectory evidence is incomplete.",
+    "A local patch can still have non-local effects if target_id points to a shared module prompt or router rule.",
+    "Quarantine queues can grow if validation budgets are too small.",
+    "Subtask 02 updateRecord does not include accept/reject/quarantine directly; this schema keeps lifecycle status in textualUpdateEnvelope to avoid changing 02."
+  ],
+  "open_questions": [
+    "Should Subtask 02 later add update lifecycle fields such as decision, quarantine_reason, accepted_at, and rolled_back_at to updateRecord?",
+    "Should memory_usefulness remain a separate Subtask 05 target or be folded into memory_write_policy for strict 02 compatibility?",
+    "What confidence threshold should trigger human review for ambiguous false-blame cases?",
+    "Should budget_policy be added to the core Subtask 02 update_target enum, or represented as router_rule/halt_threshold until the schema changes?"
+  ],
+  "$defs": {
+    "evidenceRef": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "ref_id",
+        "source_type"
+      ],
+      "properties": {
+        "ref_id": {
+          "type": "string"
+        },
+        "source_type": {
+          "enum": [
+            "trajectory_event",
+            "observation",
+            "tool_output",
+            "verifier_result",
+            "memory_entry",
+            "benchmark_oracle",
+            "internal_decomposition",
+            "none"
+          ]
+        },
+        "summary": {
+          "type": "string"
+        }
+      }
+    },
+    "verificationStatusRef": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "check_refs"
+      ],
+      "properties": {
+        "status": {
+          "enum": [
+            "pass",
+            "fail",
+            "skipped",
+            "inconclusive",
+            "not_required"
+          ]
+        },
+        "check_refs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "blameCandidate": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "candidate_id",
+        "component_type",
+        "component_id",
+        "hypothesis",
+        "causal_link_score",
+        "temporal_proximity_score",
+        "counterfactual_plausibility_score",
+        "evidence_event_ids",
+        "evidence_refs",
+        "label"
+      ],
+      "properties": {
+        "candidate_id": {
+          "type": "string"
+        },
+        "component_type": {
+          "enum": [
+            "router",
+            "memory",
+            "module",
+            "aggregator",
+            "verifier",
+            "halt"
+          ]
+        },
+        "component_id": {
+          "type": "string"
+        },
+        "hypothesis": {
+          "type": "string"
+        },
+        "causal_link_score": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "temporal_proximity_score": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "counterfactual_plausibility_score": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "evidence_event_ids": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string"
+          }
+        },
+        "evidence_refs": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/evidenceRef"
+          }
+        },
+        "label": {
+          "enum": [
+            "primary",
+            "secondary",
+            "ruled_out",
+            "unknown"
+          ]
+        },
+        "validation_outcome": {
+          "enum": [
+            "supported",
+            "unsupported",
+            "mixed",
+            "not_tested"
+          ]
+        }
+      }
+    },
+    "proposedUpdate": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "target",
+        "target_id",
+        "before",
+        "after",
+        "bounded_scope",
+        "expected_effect",
+        "rollback_condition"
+      ],
+      "properties": {
+        "target": {
+          "enum": [
+            "router_rule",
+            "module_prompt",
+            "memory_write_policy",
+            "memory_usefulness",
+            "verifier_checklist",
+            "tool_schema",
+            "halt_threshold",
+            "budget_policy",
+            "task_decomposition_heuristic"
+          ]
+        },
+        "target_id": {
+          "type": "string"
+        },
+        "before": {
+          "type": "string"
+        },
+        "after": {
+          "type": "string"
+        },
+        "bounded_scope": {
+          "type": "string"
+        },
+        "expected_effect": {
+          "type": "string"
+        },
+        "rollback_condition": {
+          "type": "string"
+        }
+      }
+    },
+    "attributionCase": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "case_id",
+        "failure_id",
+        "trigger_failure_ids",
+        "symptom",
+        "root_cause_hypothesis",
+        "blamed_component",
+        "blame_candidates",
+        "evidence_event_ids",
+        "evidence_refs",
+        "local_gradient",
+        "proposed_update",
+        "rollback_condition",
+        "confidence"
+      ],
+      "properties": {
+        "case_id": {
+          "type": "string"
+        },
+        "failure_id": {
+          "type": "string"
+        },
+        "trigger_failure_ids": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string"
+          }
+        },
+        "symptom": {
+          "type": "string"
+        },
+        "root_cause_hypothesis": {
+          "type": "string"
+        },
+        "blamed_component": {
+          "enum": [
+            "router",
+            "memory",
+            "module",
+            "aggregator",
+            "verifier",
+            "halt"
+          ]
+        },
+        "blame_candidates": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/blameCandidate"
+          }
+        },
+        "evidence_event_ids": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string"
+          }
+        },
+        "evidence_refs": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/evidenceRef"
+          }
+        },
+        "local_gradient": {
+          "type": "string"
+        },
+        "proposed_update": {
+          "$ref": "#/$defs/proposedUpdate"
+        },
+        "rollback_condition": {
+          "type": "string"
+        },
+        "confidence": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        }
+      }
+    },
+    "updateRecordPatch": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "update_id",
+        "step_id",
+        "trigger_failure_ids",
+        "update_target",
+        "target_id",
+        "textual_gradient",
+        "patch_summary",
+        "evidence_refs",
+        "confidence",
+        "applied",
+        "rollback_condition",
+        "expected_metric_effect"
+      ],
+      "properties": {
+        "update_id": {
+          "type": "string"
+        },
+        "step_id": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "trigger_failure_ids": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string"
+          }
+        },
+        "update_target": {
+          "enum": [
+            "router_rule",
+            "module_prompt",
+            "memory_write_policy",
+            "verifier_checklist",
+            "tool_schema",
+            "halt_threshold",
+            "task_decomposition_heuristic",
+            "none"
+          ]
+        },
+        "target_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "textual_gradient": {
+          "type": "string"
+        },
+        "patch_summary": {
+          "type": "string"
+        },
+        "evidence_refs": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/evidenceRef"
+          }
+        },
+        "confidence": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "applied": {
+          "type": "boolean"
+        },
+        "rollback_condition": {
+          "type": "string"
+        },
+        "expected_metric_effect": {
+          "type": "array",
+          "items": {
+            "enum": [
+              "success_rate",
+              "token_cost",
+              "latency",
+              "invalid_tool_call_ratio",
+              "repeated_action_ratio",
+              "verifier_catch_rate",
+              "negative_transfer_cases",
+              "router_regret"
+            ]
+          }
+        }
+      }
+    },
+    "validationRun": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "validation_id",
+        "mode",
+        "task_ids",
+        "before_metrics",
+        "after_metrics",
+        "regression_checks",
+        "verification_status_after",
+        "decision_recommendation"
+      ],
+      "properties": {
+        "validation_id": {
+          "type": "string"
+        },
+        "mode": {
+          "enum": [
+            "failure_replay",
+            "held_out",
+            "counterfactual_no_update",
+            "global_rewrite_control"
+          ]
+        },
+        "task_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "before_metrics": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "number"
+          }
+        },
+        "after_metrics": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "number"
+          }
+        },
+        "regression_checks": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "metric",
+              "status",
+              "threshold",
+              "observed_delta"
+            ],
+            "properties": {
+              "metric": {
+                "type": "string"
+              },
+              "status": {
+                "enum": [
+                  "pass",
+                  "fail",
+                  "warn"
+                ]
+              },
+              "threshold": {
+                "type": "number"
+              },
+              "observed_delta": {
+                "type": "number"
+              }
+            }
+          }
+        },
+        "verification_status_after": {
+          "$ref": "#/$defs/verificationStatusRef"
+        },
+        "decision_recommendation": {
+          "enum": [
+            "accept",
+            "reject",
+            "quarantine"
+          ]
+        }
+      }
+    },
+    "textualUpdateEnvelope": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "envelope_id",
+        "attribution_case",
+        "update_record_patch",
+        "validation_runs",
+        "decision",
+        "audit_status"
+      ],
+      "properties": {
+        "envelope_id": {
+          "type": "string"
+        },
+        "attribution_case": {
+          "$ref": "#/$defs/attributionCase"
+        },
+        "update_record_patch": {
+          "$ref": "#/$defs/updateRecordPatch"
+        },
+        "validation_runs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/validationRun"
+          }
+        },
+        "decision": {
+          "enum": [
+            "accept",
+            "reject",
+            "quarantine",
+            "rollback"
+          ]
+        },
+        "quarantine_reason": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "audit_status": {
+          "enum": [
+            "complete",
+            "missing_replay",
+            "missing_held_out",
+            "missing_evidence",
+            "schema_conflict"
+          ]
+        }
+      }
+    },
+    "rollbackRecord": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "rollback_id",
+        "update_id",
+        "trigger_metric",
+        "trigger_event_ids",
+        "condition",
+        "status"
+      ],
+      "properties": {
+        "rollback_id": {
+          "type": "string"
+        },
+        "update_id": {
+          "type": "string"
+        },
+        "trigger_metric": {
+          "type": "string"
+        },
+        "trigger_event_ids": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string"
+          }
+        },
+        "condition": {
+          "type": "string"
+        },
+        "status": {
+          "enum": [
+            "pending",
+            "executed",
+            "suppressed"
+          ]
+        }
+      }
+    },
+    "experimentSpec": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "description",
+        "control",
+        "metrics",
+        "required_logs"
+      ],
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "control": {
+          "type": "string"
+        },
+        "metrics": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "required_logs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

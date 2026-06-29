@@ -1,0 +1,424 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://agent-attention.local/schemas/benchmark_trajectory.v0.1.schema.json",
+  "title": "Agent-Attention Benchmark Trajectory Schema",
+  "description": "Target benchmark trajectory envelope with explicit support for Subtask 06 legacy event lists.",
+  "x_metadata": {
+    "scope": "Reusable trajectory schema for scoring final success, process cost, routing, memory, verifier, and halt metrics.",
+    "claims": [
+      {
+        "evidence_type": "文献",
+        "claim": "Trajectory-level event logs are necessary to compare agent loops, routing policies, memory systems, and verifiers."
+      },
+      {
+        "evidence_type": "原型",
+        "claim": "Subtask 06 lightweight event lists can be normalized into this trajectory envelope for Phase 0 scoring."
+      },
+      {
+        "evidence_type": "实验",
+        "claim": "A scoring script can compute required metrics from at least one existing trajectory."
+      },
+      {
+        "evidence_type": "猜想",
+        "claim": "Full envelopes should become mandatory before Phase 1 baseline claims."
+      }
+    ],
+    "design": {
+      "minimal_version": "Accept either a target envelope with events or a legacy list of kind/payload events.",
+      "enhanced_version": "Require cost_delta, oracle route fields, action hashes, task IDs, baseline IDs, and final oracle labels.",
+      "counterexamples": [
+        "Selected-only route logs cannot compute route reject rate or regret.",
+        "Final-answer-only logs cannot distinguish premature halt from successful halt.",
+        "Cost-free logs cannot distinguish correct expensive runs from correct cheap runs."
+      ]
+    },
+    "interfaces": {
+      "aligned_with": [
+        "Subtask 02 trajectory_event schema summary",
+        "Subtask 06 kind/payload event envelope"
+      ],
+      "known_deviations": [
+        "Subtask 06 emits a top-level JSON list instead of an object envelope.",
+        "Subtask 06 cost is module activation cost, not full token/tool/verifier/human-review cost_delta.",
+        "Subtask 06 has no explicit task_id, benchmark_id, baseline_id, or oracle route regret."
+      ]
+    },
+    "experiments": [
+      "Score an existing legacy trajectory.",
+      "Validate a generated target envelope fixture once runtime export supports it."
+    ],
+    "risks": [
+      "Legacy compatibility can become permanent schema debt.",
+      "Proxy metrics may be mistaken for oracle metrics unless nulls and deviations are preserved."
+    ],
+    "open_questions": [
+      "Should legacy list trajectories be wrapped during ingestion or migrated on disk?",
+      "Should route oracle fields be required for all synthetic tasks?"
+    ]
+  },
+  "oneOf": [
+    {
+      "$ref": "#/$defs/trajectoryEnvelope"
+    },
+    {
+      "$ref": "#/$defs/legacy06EventList"
+    }
+  ],
+  "$defs": {
+    "successLabel": {
+      "enum": [
+        "pass",
+        "fail",
+        "partial",
+        "unknown"
+      ]
+    },
+    "costDelta": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "prompt_tokens",
+        "completion_tokens",
+        "token_cost_estimate",
+        "tool_calls",
+        "tool_cost_estimate",
+        "verifier_calls",
+        "verifier_cost_estimate",
+        "failed_retries",
+        "retry_cost_estimate",
+        "latency_ms",
+        "monetary_cost_estimate",
+        "human_review_minutes"
+      ],
+      "properties": {
+        "prompt_tokens": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "completion_tokens": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "token_cost_estimate": {
+          "type": "number",
+          "minimum": 0
+        },
+        "tool_calls": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "tool_cost_estimate": {
+          "type": "number",
+          "minimum": 0
+        },
+        "verifier_calls": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "verifier_cost_estimate": {
+          "type": "number",
+          "minimum": 0
+        },
+        "failed_retries": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "retry_cost_estimate": {
+          "type": "number",
+          "minimum": 0
+        },
+        "latency_ms": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "monetary_cost_estimate": {
+          "type": "number",
+          "minimum": 0
+        },
+        "human_review_minutes": {
+          "type": "number",
+          "minimum": 0
+        }
+      }
+    },
+    "routeCandidate": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": [
+        "module_id",
+        "score_terms",
+        "selected"
+      ],
+      "properties": {
+        "module_id": {
+          "type": "string"
+        },
+        "score": {
+          "type": "number"
+        },
+        "score_total": {
+          "type": "number"
+        },
+        "score_terms": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "semantic_match",
+            "reliability",
+            "historical_success",
+            "cost",
+            "latency",
+            "risk",
+            "repetition",
+            "memory_bonus"
+          ],
+          "properties": {
+            "semantic_match": {
+              "type": "number"
+            },
+            "reliability": {
+              "type": "number"
+            },
+            "historical_success": {
+              "type": "number"
+            },
+            "cost": {
+              "type": "number"
+            },
+            "latency": {
+              "type": "number"
+            },
+            "risk": {
+              "type": "number"
+            },
+            "repetition": {
+              "type": "number"
+            },
+            "memory_bonus": {
+              "type": "number"
+            }
+          }
+        },
+        "score_weights": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "number"
+          }
+        },
+        "selected": {
+          "type": "boolean"
+        },
+        "reject_reason": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "schema_valid": {
+          "type": "boolean"
+        },
+        "budget_valid": {
+          "type": "boolean"
+        },
+        "risk_valid": {
+          "type": "boolean"
+        }
+      }
+    },
+    "trajectoryEvent": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": [
+        "event_id",
+        "step"
+      ],
+      "properties": {
+        "event_id": {
+          "type": [
+            "string",
+            "integer"
+          ]
+        },
+        "run_id": {
+          "type": "string"
+        },
+        "task_id": {
+          "type": "string"
+        },
+        "step": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "event_type": {
+          "enum": [
+            "start",
+            "state_update",
+            "route_decision",
+            "module_call",
+            "memory_read",
+            "memory_write",
+            "aggregate",
+            "verifier_result",
+            "failure_update",
+            "halt",
+            "budget_gate",
+            "finish"
+          ]
+        },
+        "kind": {
+          "type": "string"
+        },
+        "payload": {
+          "type": "object"
+        },
+        "selected_modules": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "candidates": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/routeCandidate"
+          }
+        },
+        "action_type": {
+          "enum": [
+            "llm_call",
+            "tool_call",
+            "memory_read",
+            "memory_write",
+            "verifier_call",
+            "aggregate",
+            "halt",
+            "no_op"
+          ]
+        },
+        "action_payload_hash": {
+          "type": "string"
+        },
+        "success_signal": {
+          "$ref": "#/$defs/successLabel"
+        },
+        "verifier_result": {
+          "enum": [
+            "pass",
+            "fail",
+            "skipped",
+            "inconclusive"
+          ]
+        },
+        "cost_delta": {
+          "$ref": "#/$defs/costDelta"
+        },
+        "latency_ms": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "error_type": {
+          "enum": [
+            "none",
+            "invalid_tool",
+            "timeout",
+            "contradiction",
+            "loop_stuck",
+            "premature_halt",
+            "verifier_failed",
+            "budget_exceeded",
+            "negative_transfer",
+            "schema_invalid",
+            "low_confidence"
+          ]
+        },
+        "memory_ids_read": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "memory_usefulness_label": {
+          "enum": [
+            "useful",
+            "harmful",
+            "neutral",
+            "unknown",
+            "not_applicable",
+            "failure"
+          ]
+        },
+        "timestamp": {
+          "type": "number"
+        }
+      }
+    },
+    "trajectoryEnvelope": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": [
+        "schema_version",
+        "run_id",
+        "task_id",
+        "benchmark_id",
+        "baseline_id",
+        "runtime_config",
+        "events",
+        "final_answer",
+        "final_success_label"
+      ],
+      "properties": {
+        "schema_version": {
+          "const": "agent_attention.benchmark_trajectory.v0.1"
+        },
+        "run_id": {
+          "type": "string"
+        },
+        "task_id": {
+          "type": "string"
+        },
+        "benchmark_id": {
+          "type": "string"
+        },
+        "baseline_id": {
+          "type": "string"
+        },
+        "runtime_config": {
+          "type": "object"
+        },
+        "module_registry_snapshot": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        },
+        "events": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/trajectoryEvent"
+          }
+        },
+        "final_answer": {
+          "type": "string"
+        },
+        "final_success_label": {
+          "$ref": "#/$defs/successLabel"
+        },
+        "failure_reason": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "metrics_summary": {
+          "type": "object"
+        }
+      }
+    },
+    "legacy06EventList": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/trajectoryEvent"
+      }
+    }
+  }
+}

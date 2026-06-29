@@ -1,0 +1,1355 @@
+{
+  "runs": [
+    {
+      "trajectory_path": "experiments/llm_runs/gsm8k/multi_baseline_full/agent_attention_llm_tuned/real_gsm8k__aa_llm__openai__Qwen3-30B-A3B-Instruct-2507__gsm8k_test_0000.json",
+      "task_id": "gsm8k_test_0000",
+      "benchmark_id": "gsm8k_test",
+      "baseline_id": "agent_attention_llm_tuned",
+      "ablation_id": null,
+      "final": {
+        "success_label": "pass",
+        "task_success": true,
+        "failure_reason": null,
+        "final_answer_present": true
+      },
+      "process": {
+        "activation_cost": 2.0,
+        "cost_normalized_success": 0.333333,
+        "module_calls": 2,
+        "verifier_calls": 1,
+        "budget_rejections": 0,
+        "repeated_action_ratio": 0.0,
+        "invalid_tool_call_ratio": null,
+        "loop_stuck": false,
+        "budget_exhaustion": false,
+        "step_exhaustion": false,
+        "premature_halt": false
+      },
+      "routing": {
+        "route_events": 1,
+        "route_candidates": 4,
+        "selected_candidates": 1,
+        "route_reject_rate": 0.75,
+        "route_entropy": 1.0,
+        "selected_route_score_mean": 0.21,
+        "selected_route_cost_mean": 1.0,
+        "oracle_route_regret_mean": null,
+        "proxy_route_regret_mean": null,
+        "activated_modules": [
+          "critic_agent",
+          "verifier"
+        ]
+      },
+      "memory": {
+        "memory_reads": 0,
+        "useful_memory_reads": 0,
+        "harmful_memory_reads": 0,
+        "neutral_memory_reads": 0,
+        "unknown_memory_reads": 0,
+        "useful_memory_reuse_rate": null,
+        "negative_transfer_cases": 0
+      },
+      "verifier": {
+        "verifier_statuses": [
+          "pass"
+        ],
+        "verifier_failures": 0,
+        "verifier_catches": 0,
+        "verifier_catch_rate": null
+      },
+      "known_deviations": [
+        "agent_attention_routing_with_llm_modules",
+        "gsm8k_exact_match_verifier",
+        "memory_disabled_for_math_track",
+        "oracle_route_regret_unavailable",
+        "proxy_route_regret_unavailable",
+        "real_llm_module_executors"
+      ]
+    },
+    {
+      "trajectory_path": "experiments/llm_runs/gsm8k/multi_baseline_full/agent_attention_llm_tuned/real_gsm8k__aa_llm__openai__Qwen3-30B-A3B-Instruct-2507__gsm8k_test_0001.json",
+      "task_id": "gsm8k_test_0001",
+      "benchmark_id": "gsm8k_test",
+      "baseline_id": "agent_attention_llm_tuned",
+      "ablation_id": null,
+      "final": {
+        "success_label": "pass",
+        "task_success": true,
+        "failure_reason": null,
+        "final_answer_present": true
+      },
+      "process": {
+        "activation_cost": 2.0,
+        "cost_normalized_success": 0.333333,
+        "module_calls": 2,
+        "verifier_calls": 1,
+        "budget_rejections": 0,
+        "repeated_action_ratio": 0.0,
+        "invalid_tool_call_ratio": null,
+        "loop_stuck": false,
+        "budget_exhaustion": false,
+        "step_exhaustion": false,
+        "premature_halt": false
+      },
+      "routing": {
+        "route_events": 1,
+        "route_candidates": 4,
+        "selected_candidates": 1,
+        "route_reject_rate": 0.75,
+        "route_entropy": 1.0,
+        "selected_route_score_mean": 0.2223,
+        "selected_route_cost_mean": 1.0,
+        "oracle_route_regret_mean": null,
+        "proxy_route_regret_mean": null,
+        "activated_modules": [
+          "critic_agent",
+          "verifier"
+        ]
+      },
+      "memory": {
+        "memory_reads": 0,
+        "useful_memory_reads": 0,
+        "harmful_memory_reads": 0,
+        "neutral_memory_reads": 0,
+        "unknown_memory_reads": 0,
+        "useful_memory_reuse_rate": null,
+        "negative_transfer_cases": 0
+      },
+      "verifier": {
+        "verifier_statuses": [
+          "pass"
+        ],
+        "verifier_failures": 0,
+        "verifier_catches": 0,
+        "verifier_catch_rate": null
+      },
+      "known_deviations": [
+        "agent_attention_routing_with_llm_modules",
+        "gsm8k_exact_match_verifier",
+        "memory_disabled_for_math_track",
+        "oracle_route_regret_unavailable",
+        "proxy_route_regret_unavailable",
+        "real_llm_module_executors"
+      ]
+    },
+    {
+      "trajectory_path": "experiments/llm_runs/gsm8k/multi_baseline_full/agent_attention_llm_tuned/real_gsm8k__aa_llm__openai__Qwen3-30B-A3B-Instruct-2507__gsm8k_test_0002.json",
+      "task_id": "gsm8k_test_0002",
+      "benchmark_id": "gsm8k_test",
+      "baseline_id": "agent_attention_llm_tuned",
+      "ablation_id": null,
+      "final": {
+        "success_label": "pass",
+        "task_success": true,
+        "failure_reason": null,
+        "final_answer_present": true
+      },
+      "process": {
+        "activation_cost": 4.0,
+        "cost_normalized_success": 0.2,
+        "module_calls": 4,
+        "verifier_calls": 2,
+        "budget_rejections": 0,
+        "repeated_action_ratio": 0.25,
+        "invalid_tool_call_ratio": null,
+        "loop_stuck": false,
+        "budget_exhaustion": false,
+        "step_exhaustion": false,
+        "premature_halt": false
+      },
+      "routing": {
+        "route_events": 2,
+        "route_candidates": 9,
+        "selected_candidates": 2,
+        "route_reject_rate": 0.777778,
+        "route_entropy": 1.5,
+        "selected_route_score_mean": 0.3261,
+        "selected_route_cost_mean": 1.0,
+        "oracle_route_regret_mean": null,
+        "proxy_route_regret_mean": null,
+        "activated_modules": [
+          "critic_agent",
+          "verifier",
+          "aggregator",
+          "verifier"
+        ]
+      },
+      "memory": {
+        "memory_reads": 0,
+        "useful_memory_reads": 0,
+        "harmful_memory_reads": 0,
+        "neutral_memory_reads": 0,
+        "unknown_memory_reads": 0,
+        "useful_memory_reuse_rate": null,
+        "negative_transfer_cases": 0
+      },
+      "verifier": {
+        "verifier_statuses": [
+          "fail",
+          "pass"
+        ],
+        "verifier_failures": 1,
+        "verifier_catches": 1,
+        "verifier_catch_rate": 1.0
+      },
+      "known_deviations": [
+        "agent_attention_routing_with_llm_modules",
+        "gsm8k_exact_match_verifier",
+        "memory_disabled_for_math_track",
+        "oracle_route_regret_unavailable",
+        "proxy_route_regret_unavailable",
+        "real_llm_module_executors"
+      ]
+    },
+    {
+      "trajectory_path": "experiments/llm_runs/gsm8k/multi_baseline_full/agent_attention_llm_tuned/real_gsm8k__aa_llm__openai__Qwen3-30B-A3B-Instruct-2507__gsm8k_test_0003.json",
+      "task_id": "gsm8k_test_0003",
+      "benchmark_id": "gsm8k_test",
+      "baseline_id": "agent_attention_llm_tuned",
+      "ablation_id": null,
+      "final": {
+        "success_label": "pass",
+        "task_success": true,
+        "failure_reason": null,
+        "final_answer_present": true
+      },
+      "process": {
+        "activation_cost": 2.0,
+        "cost_normalized_success": 0.333333,
+        "module_calls": 2,
+        "verifier_calls": 1,
+        "budget_rejections": 0,
+        "repeated_action_ratio": 0.0,
+        "invalid_tool_call_ratio": null,
+        "loop_stuck": false,
+        "budget_exhaustion": false,
+        "step_exhaustion": false,
+        "premature_halt": false
+      },
+      "routing": {
+        "route_events": 1,
+        "route_candidates": 4,
+        "selected_candidates": 1,
+        "route_reject_rate": 0.75,
+        "route_entropy": 1.0,
+        "selected_route_score_mean": 0.19,
+        "selected_route_cost_mean": 1.0,
+        "oracle_route_regret_mean": null,
+        "proxy_route_regret_mean": null,
+        "activated_modules": [
+          "critic_agent",
+          "verifier"
+        ]
+      },
+      "memory": {
+        "memory_reads": 0,
+        "useful_memory_reads": 0,
+        "harmful_memory_reads": 0,
+        "neutral_memory_reads": 0,
+        "unknown_memory_reads": 0,
+        "useful_memory_reuse_rate": null,
+        "negative_transfer_cases": 0
+      },
+      "verifier": {
+        "verifier_statuses": [
+          "pass"
+        ],
+        "verifier_failures": 0,
+        "verifier_catches": 0,
+        "verifier_catch_rate": null
+      },
+      "known_deviations": [
+        "agent_attention_routing_with_llm_modules",
+        "gsm8k_exact_match_verifier",
+        "memory_disabled_for_math_track",
+        "oracle_route_regret_unavailable",
+        "proxy_route_regret_unavailable",
+        "real_llm_module_executors"
+      ]
+    },
+    {
+      "trajectory_path": "experiments/llm_runs/gsm8k/multi_baseline_full/agent_attention_llm_tuned/real_gsm8k__aa_llm__openai__Qwen3-30B-A3B-Instruct-2507__gsm8k_test_0004.json",
+      "task_id": "gsm8k_test_0004",
+      "benchmark_id": "gsm8k_test",
+      "baseline_id": "agent_attention_llm_tuned",
+      "ablation_id": null,
+      "final": {
+        "success_label": "pass",
+        "task_success": true,
+        "failure_reason": null,
+        "final_answer_present": true
+      },
+      "process": {
+        "activation_cost": 2.0,
+        "cost_normalized_success": 0.333333,
+        "module_calls": 2,
+        "verifier_calls": 1,
+        "budget_rejections": 0,
+        "repeated_action_ratio": 0.0,
+        "invalid_tool_call_ratio": null,
+        "loop_stuck": false,
+        "budget_exhaustion": false,
+        "step_exhaustion": false,
+        "premature_halt": false
+      },
+      "routing": {
+        "route_events": 1,
+        "route_candidates": 4,
+        "selected_candidates": 1,
+        "route_reject_rate": 0.75,
+        "route_entropy": 1.0,
+        "selected_route_score_mean": 0.2069,
+        "selected_route_cost_mean": 1.0,
+        "oracle_route_regret_mean": null,
+        "proxy_route_regret_mean": null,
+        "activated_modules": [
+          "critic_agent",
+          "verifier"
+        ]
+      },
+      "memory": {
+        "memory_reads": 0,
+        "useful_memory_reads": 0,
+        "harmful_memory_reads": 0,
+        "neutral_memory_reads": 0,
+        "unknown_memory_reads": 0,
+        "useful_memory_reuse_rate": null,
+        "negative_transfer_cases": 0
+      },
+      "verifier": {
+        "verifier_statuses": [
+          "pass"
+        ],
+        "verifier_failures": 0,
+        "verifier_catches": 0,
+        "verifier_catch_rate": null
+      },
+      "known_deviations": [
+        "agent_attention_routing_with_llm_modules",
+        "gsm8k_exact_match_verifier",
+        "memory_disabled_for_math_track",
+        "oracle_route_regret_unavailable",
+        "proxy_route_regret_unavailable",
+        "real_llm_module_executors"
+      ]
+    },
+    {
+      "trajectory_path": "experiments/llm_runs/gsm8k/multi_baseline_full/agent_attention_llm_tuned/real_gsm8k__aa_llm__openai__Qwen3-30B-A3B-Instruct-2507__gsm8k_test_0005.json",
+      "task_id": "gsm8k_test_0005",
+      "benchmark_id": "gsm8k_test",
+      "baseline_id": "agent_attention_llm_tuned",
+      "ablation_id": null,
+      "final": {
+        "success_label": "pass",
+        "task_success": true,
+        "failure_reason": null,
+        "final_answer_present": true
+      },
+      "process": {
+        "activation_cost": 2.0,
+        "cost_normalized_success": 0.333333,
+        "module_calls": 2,
+        "verifier_calls": 1,
+        "budget_rejections": 0,
+        "repeated_action_ratio": 0.0,
+        "invalid_tool_call_ratio": null,
+        "loop_stuck": false,
+        "budget_exhaustion": false,
+        "step_exhaustion": false,
+        "premature_halt": false
+      },
+      "routing": {
+        "route_events": 1,
+        "route_candidates": 4,
+        "selected_candidates": 1,
+        "route_reject_rate": 0.75,
+        "route_entropy": 1.0,
+        "selected_route_score_mean": 0.19,
+        "selected_route_cost_mean": 1.0,
+        "oracle_route_regret_mean": null,
+        "proxy_route_regret_mean": null,
+        "activated_modules": [
+          "critic_agent",
+          "verifier"
+        ]
+      },
+      "memory": {
+        "memory_reads": 0,
+        "useful_memory_reads": 0,
+        "harmful_memory_reads": 0,
+        "neutral_memory_reads": 0,
+        "unknown_memory_reads": 0,
+        "useful_memory_reuse_rate": null,
+        "negative_transfer_cases": 0
+      },
+      "verifier": {
+        "verifier_statuses": [
+          "pass"
+        ],
+        "verifier_failures": 0,
+        "verifier_catches": 0,
+        "verifier_catch_rate": null
+      },
+      "known_deviations": [
+        "agent_attention_routing_with_llm_modules",
+        "gsm8k_exact_match_verifier",
+        "memory_disabled_for_math_track",
+        "oracle_route_regret_unavailable",
+        "proxy_route_regret_unavailable",
+        "real_llm_module_executors"
+      ]
+    },
+    {
+      "trajectory_path": "experiments/llm_runs/gsm8k/multi_baseline_full/agent_attention_llm_tuned/real_gsm8k__aa_llm__openai__Qwen3-30B-A3B-Instruct-2507__gsm8k_test_0006.json",
+      "task_id": "gsm8k_test_0006",
+      "benchmark_id": "gsm8k_test",
+      "baseline_id": "agent_attention_llm_tuned",
+      "ablation_id": null,
+      "final": {
+        "success_label": "pass",
+        "task_success": true,
+        "failure_reason": null,
+        "final_answer_present": true
+      },
+      "process": {
+        "activation_cost": 2.0,
+        "cost_normalized_success": 0.333333,
+        "module_calls": 2,
+        "verifier_calls": 1,
+        "budget_rejections": 0,
+        "repeated_action_ratio": 0.0,
+        "invalid_tool_call_ratio": null,
+        "loop_stuck": false,
+        "budget_exhaustion": false,
+        "step_exhaustion": false,
+        "premature_halt": false
+      },
+      "routing": {
+        "route_events": 1,
+        "route_candidates": 4,
+        "selected_candidates": 1,
+        "route_reject_rate": 0.75,
+        "route_entropy": 1.0,
+        "selected_route_score_mean": 0.2257,
+        "selected_route_cost_mean": 1.0,
+        "oracle_route_regret_mean": null,
+        "proxy_route_regret_mean": null,
+        "activated_modules": [
+          "critic_agent",
+          "verifier"
+        ]
+      },
+      "memory": {
+        "memory_reads": 0,
+        "useful_memory_reads": 0,
+        "harmful_memory_reads": 0,
+        "neutral_memory_reads": 0,
+        "unknown_memory_reads": 0,
+        "useful_memory_reuse_rate": null,
+        "negative_transfer_cases": 0
+      },
+      "verifier": {
+        "verifier_statuses": [
+          "pass"
+        ],
+        "verifier_failures": 0,
+        "verifier_catches": 0,
+        "verifier_catch_rate": null
+      },
+      "known_deviations": [
+        "agent_attention_routing_with_llm_modules",
+        "gsm8k_exact_match_verifier",
+        "memory_disabled_for_math_track",
+        "oracle_route_regret_unavailable",
+        "proxy_route_regret_unavailable",
+        "real_llm_module_executors"
+      ]
+    },
+    {
+      "trajectory_path": "experiments/llm_runs/gsm8k/multi_baseline_full/agent_attention_llm_tuned/real_gsm8k__aa_llm__openai__Qwen3-30B-A3B-Instruct-2507__gsm8k_test_0007.json",
+      "task_id": "gsm8k_test_0007",
+      "benchmark_id": "gsm8k_test",
+      "baseline_id": "agent_attention_llm_tuned",
+      "ablation_id": null,
+      "final": {
+        "success_label": "pass",
+        "task_success": true,
+        "failure_reason": null,
+        "final_answer_present": true
+      },
+      "process": {
+        "activation_cost": 2.0,
+        "cost_normalized_success": 0.333333,
+        "module_calls": 2,
+        "verifier_calls": 1,
+        "budget_rejections": 0,
+        "repeated_action_ratio": 0.0,
+        "invalid_tool_call_ratio": null,
+        "loop_stuck": false,
+        "budget_exhaustion": false,
+        "step_exhaustion": false,
+        "premature_halt": false
+      },
+      "routing": {
+        "route_events": 1,
+        "route_candidates": 4,
+        "selected_candidates": 1,
+        "route_reject_rate": 0.75,
+        "route_entropy": 1.0,
+        "selected_route_score_mean": 0.19,
+        "selected_route_cost_mean": 1.0,
+        "oracle_route_regret_mean": null,
+        "proxy_route_regret_mean": null,
+        "activated_modules": [
+          "critic_agent",
+          "verifier"
+        ]
+      },
+      "memory": {
+        "memory_reads": 0,
+        "useful_memory_reads": 0,
+        "harmful_memory_reads": 0,
+        "neutral_memory_reads": 0,
+        "unknown_memory_reads": 0,
+        "useful_memory_reuse_rate": null,
+        "negative_transfer_cases": 0
+      },
+      "verifier": {
+        "verifier_statuses": [
+          "pass"
+        ],
+        "verifier_failures": 0,
+        "verifier_catches": 0,
+        "verifier_catch_rate": null
+      },
+      "known_deviations": [
+        "agent_attention_routing_with_llm_modules",
+        "gsm8k_exact_match_verifier",
+        "memory_disabled_for_math_track",
+        "oracle_route_regret_unavailable",
+        "proxy_route_regret_unavailable",
+        "real_llm_module_executors"
+      ]
+    },
+    {
+      "trajectory_path": "experiments/llm_runs/gsm8k/multi_baseline_full/agent_attention_llm_tuned/real_gsm8k__aa_llm__openai__Qwen3-30B-A3B-Instruct-2507__gsm8k_test_0008.json",
+      "task_id": "gsm8k_test_0008",
+      "benchmark_id": "gsm8k_test",
+      "baseline_id": "agent_attention_llm_tuned",
+      "ablation_id": null,
+      "final": {
+        "success_label": "pass",
+        "task_success": true,
+        "failure_reason": null,
+        "final_answer_present": true
+      },
+      "process": {
+        "activation_cost": 2.0,
+        "cost_normalized_success": 0.333333,
+        "module_calls": 2,
+        "verifier_calls": 1,
+        "budget_rejections": 0,
+        "repeated_action_ratio": 0.0,
+        "invalid_tool_call_ratio": null,
+        "loop_stuck": false,
+        "budget_exhaustion": false,
+        "step_exhaustion": false,
+        "premature_halt": false
+      },
+      "routing": {
+        "route_events": 1,
+        "route_candidates": 4,
+        "selected_candidates": 1,
+        "route_reject_rate": 0.75,
+        "route_entropy": 1.0,
+        "selected_route_score_mean": 0.2054,
+        "selected_route_cost_mean": 1.0,
+        "oracle_route_regret_mean": null,
+        "proxy_route_regret_mean": null,
+        "activated_modules": [
+          "critic_agent",
+          "verifier"
+        ]
+      },
+      "memory": {
+        "memory_reads": 0,
+        "useful_memory_reads": 0,
+        "harmful_memory_reads": 0,
+        "neutral_memory_reads": 0,
+        "unknown_memory_reads": 0,
+        "useful_memory_reuse_rate": null,
+        "negative_transfer_cases": 0
+      },
+      "verifier": {
+        "verifier_statuses": [
+          "pass"
+        ],
+        "verifier_failures": 0,
+        "verifier_catches": 0,
+        "verifier_catch_rate": null
+      },
+      "known_deviations": [
+        "agent_attention_routing_with_llm_modules",
+        "gsm8k_exact_match_verifier",
+        "memory_disabled_for_math_track",
+        "oracle_route_regret_unavailable",
+        "proxy_route_regret_unavailable",
+        "real_llm_module_executors"
+      ]
+    },
+    {
+      "trajectory_path": "experiments/llm_runs/gsm8k/multi_baseline_full/agent_attention_llm_tuned/real_gsm8k__aa_llm__openai__Qwen3-30B-A3B-Instruct-2507__gsm8k_test_0009.json",
+      "task_id": "gsm8k_test_0009",
+      "benchmark_id": "gsm8k_test",
+      "baseline_id": "agent_attention_llm_tuned",
+      "ablation_id": null,
+      "final": {
+        "success_label": "pass",
+        "task_success": true,
+        "failure_reason": null,
+        "final_answer_present": true
+      },
+      "process": {
+        "activation_cost": 2.0,
+        "cost_normalized_success": 0.333333,
+        "module_calls": 2,
+        "verifier_calls": 1,
+        "budget_rejections": 0,
+        "repeated_action_ratio": 0.0,
+        "invalid_tool_call_ratio": null,
+        "loop_stuck": false,
+        "budget_exhaustion": false,
+        "step_exhaustion": false,
+        "premature_halt": false
+      },
+      "routing": {
+        "route_events": 1,
+        "route_candidates": 4,
+        "selected_candidates": 1,
+        "route_reject_rate": 0.75,
+        "route_entropy": 1.0,
+        "selected_route_score_mean": 0.19,
+        "selected_route_cost_mean": 1.0,
+        "oracle_route_regret_mean": null,
+        "proxy_route_regret_mean": null,
+        "activated_modules": [
+          "critic_agent",
+          "verifier"
+        ]
+      },
+      "memory": {
+        "memory_reads": 0,
+        "useful_memory_reads": 0,
+        "harmful_memory_reads": 0,
+        "neutral_memory_reads": 0,
+        "unknown_memory_reads": 0,
+        "useful_memory_reuse_rate": null,
+        "negative_transfer_cases": 0
+      },
+      "verifier": {
+        "verifier_statuses": [
+          "pass"
+        ],
+        "verifier_failures": 0,
+        "verifier_catches": 0,
+        "verifier_catch_rate": null
+      },
+      "known_deviations": [
+        "agent_attention_routing_with_llm_modules",
+        "gsm8k_exact_match_verifier",
+        "memory_disabled_for_math_track",
+        "oracle_route_regret_unavailable",
+        "proxy_route_regret_unavailable",
+        "real_llm_module_executors"
+      ]
+    },
+    {
+      "trajectory_path": "experiments/llm_runs/gsm8k/multi_baseline_full/agent_attention_llm_tuned/real_gsm8k__aa_llm__openai__Qwen3-30B-A3B-Instruct-2507__gsm8k_test_0010.json",
+      "task_id": "gsm8k_test_0010",
+      "benchmark_id": "gsm8k_test",
+      "baseline_id": "agent_attention_llm_tuned",
+      "ablation_id": null,
+      "final": {
+        "success_label": "pass",
+        "task_success": true,
+        "failure_reason": null,
+        "final_answer_present": true
+      },
+      "process": {
+        "activation_cost": 2.0,
+        "cost_normalized_success": 0.333333,
+        "module_calls": 2,
+        "verifier_calls": 1,
+        "budget_rejections": 0,
+        "repeated_action_ratio": 0.0,
+        "invalid_tool_call_ratio": null,
+        "loop_stuck": false,
+        "budget_exhaustion": false,
+        "step_exhaustion": false,
+        "premature_halt": false
+      },
+      "routing": {
+        "route_events": 1,
+        "route_candidates": 4,
+        "selected_candidates": 1,
+        "route_reject_rate": 0.75,
+        "route_entropy": 1.0,
+        "selected_route_score_mean": 0.19,
+        "selected_route_cost_mean": 1.0,
+        "oracle_route_regret_mean": null,
+        "proxy_route_regret_mean": null,
+        "activated_modules": [
+          "critic_agent",
+          "verifier"
+        ]
+      },
+      "memory": {
+        "memory_reads": 0,
+        "useful_memory_reads": 0,
+        "harmful_memory_reads": 0,
+        "neutral_memory_reads": 0,
+        "unknown_memory_reads": 0,
+        "useful_memory_reuse_rate": null,
+        "negative_transfer_cases": 0
+      },
+      "verifier": {
+        "verifier_statuses": [
+          "pass"
+        ],
+        "verifier_failures": 0,
+        "verifier_catches": 0,
+        "verifier_catch_rate": null
+      },
+      "known_deviations": [
+        "agent_attention_routing_with_llm_modules",
+        "gsm8k_exact_match_verifier",
+        "memory_disabled_for_math_track",
+        "oracle_route_regret_unavailable",
+        "proxy_route_regret_unavailable",
+        "real_llm_module_executors"
+      ]
+    },
+    {
+      "trajectory_path": "experiments/llm_runs/gsm8k/multi_baseline_full/agent_attention_llm_tuned/real_gsm8k__aa_llm__openai__Qwen3-30B-A3B-Instruct-2507__gsm8k_test_0011.json",
+      "task_id": "gsm8k_test_0011",
+      "benchmark_id": "gsm8k_test",
+      "baseline_id": "agent_attention_llm_tuned",
+      "ablation_id": null,
+      "final": {
+        "success_label": "pass",
+        "task_success": true,
+        "failure_reason": null,
+        "final_answer_present": true
+      },
+      "process": {
+        "activation_cost": 2.0,
+        "cost_normalized_success": 0.333333,
+        "module_calls": 2,
+        "verifier_calls": 1,
+        "budget_rejections": 0,
+        "repeated_action_ratio": 0.0,
+        "invalid_tool_call_ratio": null,
+        "loop_stuck": false,
+        "budget_exhaustion": false,
+        "step_exhaustion": false,
+        "premature_halt": false
+      },
+      "routing": {
+        "route_events": 1,
+        "route_candidates": 4,
+        "selected_candidates": 1,
+        "route_reject_rate": 0.75,
+        "route_entropy": 1.0,
+        "selected_route_score_mean": 0.2138,
+        "selected_route_cost_mean": 1.0,
+        "oracle_route_regret_mean": null,
+        "proxy_route_regret_mean": null,
+        "activated_modules": [
+          "critic_agent",
+          "verifier"
+        ]
+      },
+      "memory": {
+        "memory_reads": 0,
+        "useful_memory_reads": 0,
+        "harmful_memory_reads": 0,
+        "neutral_memory_reads": 0,
+        "unknown_memory_reads": 0,
+        "useful_memory_reuse_rate": null,
+        "negative_transfer_cases": 0
+      },
+      "verifier": {
+        "verifier_statuses": [
+          "pass"
+        ],
+        "verifier_failures": 0,
+        "verifier_catches": 0,
+        "verifier_catch_rate": null
+      },
+      "known_deviations": [
+        "agent_attention_routing_with_llm_modules",
+        "gsm8k_exact_match_verifier",
+        "memory_disabled_for_math_track",
+        "oracle_route_regret_unavailable",
+        "proxy_route_regret_unavailable",
+        "real_llm_module_executors"
+      ]
+    },
+    {
+      "trajectory_path": "experiments/llm_runs/gsm8k/multi_baseline_full/agent_attention_llm_tuned/real_gsm8k__aa_llm__openai__Qwen3-30B-A3B-Instruct-2507__gsm8k_test_0012.json",
+      "task_id": "gsm8k_test_0012",
+      "benchmark_id": "gsm8k_test",
+      "baseline_id": "agent_attention_llm_tuned",
+      "ablation_id": null,
+      "final": {
+        "success_label": "pass",
+        "task_success": true,
+        "failure_reason": null,
+        "final_answer_present": true
+      },
+      "process": {
+        "activation_cost": 2.0,
+        "cost_normalized_success": 0.333333,
+        "module_calls": 2,
+        "verifier_calls": 1,
+        "budget_rejections": 0,
+        "repeated_action_ratio": 0.0,
+        "invalid_tool_call_ratio": null,
+        "loop_stuck": false,
+        "budget_exhaustion": false,
+        "step_exhaustion": false,
+        "premature_halt": false
+      },
+      "routing": {
+        "route_events": 1,
+        "route_candidates": 4,
+        "selected_candidates": 1,
+        "route_reject_rate": 0.75,
+        "route_entropy": 1.0,
+        "selected_route_score_mean": 0.21,
+        "selected_route_cost_mean": 1.0,
+        "oracle_route_regret_mean": null,
+        "proxy_route_regret_mean": null,
+        "activated_modules": [
+          "critic_agent",
+          "verifier"
+        ]
+      },
+      "memory": {
+        "memory_reads": 0,
+        "useful_memory_reads": 0,
+        "harmful_memory_reads": 0,
+        "neutral_memory_reads": 0,
+        "unknown_memory_reads": 0,
+        "useful_memory_reuse_rate": null,
+        "negative_transfer_cases": 0
+      },
+      "verifier": {
+        "verifier_statuses": [
+          "pass"
+        ],
+        "verifier_failures": 0,
+        "verifier_catches": 0,
+        "verifier_catch_rate": null
+      },
+      "known_deviations": [
+        "agent_attention_routing_with_llm_modules",
+        "gsm8k_exact_match_verifier",
+        "memory_disabled_for_math_track",
+        "oracle_route_regret_unavailable",
+        "proxy_route_regret_unavailable",
+        "real_llm_module_executors"
+      ]
+    },
+    {
+      "trajectory_path": "experiments/llm_runs/gsm8k/multi_baseline_full/agent_attention_llm_tuned/real_gsm8k__aa_llm__openai__Qwen3-30B-A3B-Instruct-2507__gsm8k_test_0013.json",
+      "task_id": "gsm8k_test_0013",
+      "benchmark_id": "gsm8k_test",
+      "baseline_id": "agent_attention_llm_tuned",
+      "ablation_id": null,
+      "final": {
+        "success_label": "pass",
+        "task_success": true,
+        "failure_reason": null,
+        "final_answer_present": true
+      },
+      "process": {
+        "activation_cost": 2.0,
+        "cost_normalized_success": 0.333333,
+        "module_calls": 2,
+        "verifier_calls": 1,
+        "budget_rejections": 0,
+        "repeated_action_ratio": 0.0,
+        "invalid_tool_call_ratio": null,
+        "loop_stuck": false,
+        "budget_exhaustion": false,
+        "step_exhaustion": false,
+        "premature_halt": false
+      },
+      "routing": {
+        "route_events": 1,
+        "route_candidates": 4,
+        "selected_candidates": 1,
+        "route_reject_rate": 0.75,
+        "route_entropy": 1.0,
+        "selected_route_score_mean": 0.2122,
+        "selected_route_cost_mean": 1.0,
+        "oracle_route_regret_mean": null,
+        "proxy_route_regret_mean": null,
+        "activated_modules": [
+          "critic_agent",
+          "verifier"
+        ]
+      },
+      "memory": {
+        "memory_reads": 0,
+        "useful_memory_reads": 0,
+        "harmful_memory_reads": 0,
+        "neutral_memory_reads": 0,
+        "unknown_memory_reads": 0,
+        "useful_memory_reuse_rate": null,
+        "negative_transfer_cases": 0
+      },
+      "verifier": {
+        "verifier_statuses": [
+          "pass"
+        ],
+        "verifier_failures": 0,
+        "verifier_catches": 0,
+        "verifier_catch_rate": null
+      },
+      "known_deviations": [
+        "agent_attention_routing_with_llm_modules",
+        "gsm8k_exact_match_verifier",
+        "memory_disabled_for_math_track",
+        "oracle_route_regret_unavailable",
+        "proxy_route_regret_unavailable",
+        "real_llm_module_executors"
+      ]
+    },
+    {
+      "trajectory_path": "experiments/llm_runs/gsm8k/multi_baseline_full/agent_attention_llm_tuned/real_gsm8k__aa_llm__openai__Qwen3-30B-A3B-Instruct-2507__gsm8k_test_0014.json",
+      "task_id": "gsm8k_test_0014",
+      "benchmark_id": "gsm8k_test",
+      "baseline_id": "agent_attention_llm_tuned",
+      "ablation_id": null,
+      "final": {
+        "success_label": "pass",
+        "task_success": true,
+        "failure_reason": null,
+        "final_answer_present": true
+      },
+      "process": {
+        "activation_cost": 2.0,
+        "cost_normalized_success": 0.333333,
+        "module_calls": 2,
+        "verifier_calls": 1,
+        "budget_rejections": 0,
+        "repeated_action_ratio": 0.0,
+        "invalid_tool_call_ratio": null,
+        "loop_stuck": false,
+        "budget_exhaustion": false,
+        "step_exhaustion": false,
+        "premature_halt": false
+      },
+      "routing": {
+        "route_events": 1,
+        "route_candidates": 4,
+        "selected_candidates": 1,
+        "route_reject_rate": 0.75,
+        "route_entropy": 1.0,
+        "selected_route_score_mean": 0.2223,
+        "selected_route_cost_mean": 1.0,
+        "oracle_route_regret_mean": null,
+        "proxy_route_regret_mean": null,
+        "activated_modules": [
+          "critic_agent",
+          "verifier"
+        ]
+      },
+      "memory": {
+        "memory_reads": 0,
+        "useful_memory_reads": 0,
+        "harmful_memory_reads": 0,
+        "neutral_memory_reads": 0,
+        "unknown_memory_reads": 0,
+        "useful_memory_reuse_rate": null,
+        "negative_transfer_cases": 0
+      },
+      "verifier": {
+        "verifier_statuses": [
+          "pass"
+        ],
+        "verifier_failures": 0,
+        "verifier_catches": 0,
+        "verifier_catch_rate": null
+      },
+      "known_deviations": [
+        "agent_attention_routing_with_llm_modules",
+        "gsm8k_exact_match_verifier",
+        "memory_disabled_for_math_track",
+        "oracle_route_regret_unavailable",
+        "proxy_route_regret_unavailable",
+        "real_llm_module_executors"
+      ]
+    },
+    {
+      "trajectory_path": "experiments/llm_runs/gsm8k/multi_baseline_full/agent_attention_llm_tuned/real_gsm8k__aa_llm__openai__Qwen3-30B-A3B-Instruct-2507__gsm8k_test_0015.json",
+      "task_id": "gsm8k_test_0015",
+      "benchmark_id": "gsm8k_test",
+      "baseline_id": "agent_attention_llm_tuned",
+      "ablation_id": null,
+      "final": {
+        "success_label": "pass",
+        "task_success": true,
+        "failure_reason": null,
+        "final_answer_present": true
+      },
+      "process": {
+        "activation_cost": 2.0,
+        "cost_normalized_success": 0.333333,
+        "module_calls": 2,
+        "verifier_calls": 1,
+        "budget_rejections": 0,
+        "repeated_action_ratio": 0.0,
+        "invalid_tool_call_ratio": null,
+        "loop_stuck": false,
+        "budget_exhaustion": false,
+        "step_exhaustion": false,
+        "premature_halt": false
+      },
+      "routing": {
+        "route_events": 1,
+        "route_candidates": 4,
+        "selected_candidates": 1,
+        "route_reject_rate": 0.75,
+        "route_entropy": 1.0,
+        "selected_route_score_mean": 0.2067,
+        "selected_route_cost_mean": 1.0,
+        "oracle_route_regret_mean": null,
+        "proxy_route_regret_mean": null,
+        "activated_modules": [
+          "critic_agent",
+          "verifier"
+        ]
+      },
+      "memory": {
+        "memory_reads": 0,
+        "useful_memory_reads": 0,
+        "harmful_memory_reads": 0,
+        "neutral_memory_reads": 0,
+        "unknown_memory_reads": 0,
+        "useful_memory_reuse_rate": null,
+        "negative_transfer_cases": 0
+      },
+      "verifier": {
+        "verifier_statuses": [
+          "pass"
+        ],
+        "verifier_failures": 0,
+        "verifier_catches": 0,
+        "verifier_catch_rate": null
+      },
+      "known_deviations": [
+        "agent_attention_routing_with_llm_modules",
+        "gsm8k_exact_match_verifier",
+        "memory_disabled_for_math_track",
+        "oracle_route_regret_unavailable",
+        "proxy_route_regret_unavailable",
+        "real_llm_module_executors"
+      ]
+    },
+    {
+      "trajectory_path": "experiments/llm_runs/gsm8k/multi_baseline_full/agent_attention_llm_tuned/real_gsm8k__aa_llm__openai__Qwen3-30B-A3B-Instruct-2507__gsm8k_test_0016.json",
+      "task_id": "gsm8k_test_0016",
+      "benchmark_id": "gsm8k_test",
+      "baseline_id": "agent_attention_llm_tuned",
+      "ablation_id": null,
+      "final": {
+        "success_label": "pass",
+        "task_success": true,
+        "failure_reason": null,
+        "final_answer_present": true
+      },
+      "process": {
+        "activation_cost": 2.0,
+        "cost_normalized_success": 0.333333,
+        "module_calls": 2,
+        "verifier_calls": 1,
+        "budget_rejections": 0,
+        "repeated_action_ratio": 0.0,
+        "invalid_tool_call_ratio": null,
+        "loop_stuck": false,
+        "budget_exhaustion": false,
+        "step_exhaustion": false,
+        "premature_halt": false
+      },
+      "routing": {
+        "route_events": 1,
+        "route_candidates": 4,
+        "selected_candidates": 1,
+        "route_reject_rate": 0.75,
+        "route_entropy": 1.0,
+        "selected_route_score_mean": 0.19,
+        "selected_route_cost_mean": 1.0,
+        "oracle_route_regret_mean": null,
+        "proxy_route_regret_mean": null,
+        "activated_modules": [
+          "critic_agent",
+          "verifier"
+        ]
+      },
+      "memory": {
+        "memory_reads": 0,
+        "useful_memory_reads": 0,
+        "harmful_memory_reads": 0,
+        "neutral_memory_reads": 0,
+        "unknown_memory_reads": 0,
+        "useful_memory_reuse_rate": null,
+        "negative_transfer_cases": 0
+      },
+      "verifier": {
+        "verifier_statuses": [
+          "pass"
+        ],
+        "verifier_failures": 0,
+        "verifier_catches": 0,
+        "verifier_catch_rate": null
+      },
+      "known_deviations": [
+        "agent_attention_routing_with_llm_modules",
+        "gsm8k_exact_match_verifier",
+        "memory_disabled_for_math_track",
+        "oracle_route_regret_unavailable",
+        "proxy_route_regret_unavailable",
+        "real_llm_module_executors"
+      ]
+    },
+    {
+      "trajectory_path": "experiments/llm_runs/gsm8k/multi_baseline_full/agent_attention_llm_tuned/real_gsm8k__aa_llm__openai__Qwen3-30B-A3B-Instruct-2507__gsm8k_test_0017.json",
+      "task_id": "gsm8k_test_0017",
+      "benchmark_id": "gsm8k_test",
+      "baseline_id": "agent_attention_llm_tuned",
+      "ablation_id": null,
+      "final": {
+        "success_label": "pass",
+        "task_success": true,
+        "failure_reason": null,
+        "final_answer_present": true
+      },
+      "process": {
+        "activation_cost": 2.0,
+        "cost_normalized_success": 0.333333,
+        "module_calls": 2,
+        "verifier_calls": 1,
+        "budget_rejections": 0,
+        "repeated_action_ratio": 0.0,
+        "invalid_tool_call_ratio": null,
+        "loop_stuck": false,
+        "budget_exhaustion": false,
+        "step_exhaustion": false,
+        "premature_halt": false
+      },
+      "routing": {
+        "route_events": 1,
+        "route_candidates": 4,
+        "selected_candidates": 1,
+        "route_reject_rate": 0.75,
+        "route_entropy": 1.0,
+        "selected_route_score_mean": 0.2138,
+        "selected_route_cost_mean": 1.0,
+        "oracle_route_regret_mean": null,
+        "proxy_route_regret_mean": null,
+        "activated_modules": [
+          "critic_agent",
+          "verifier"
+        ]
+      },
+      "memory": {
+        "memory_reads": 0,
+        "useful_memory_reads": 0,
+        "harmful_memory_reads": 0,
+        "neutral_memory_reads": 0,
+        "unknown_memory_reads": 0,
+        "useful_memory_reuse_rate": null,
+        "negative_transfer_cases": 0
+      },
+      "verifier": {
+        "verifier_statuses": [
+          "pass"
+        ],
+        "verifier_failures": 0,
+        "verifier_catches": 0,
+        "verifier_catch_rate": null
+      },
+      "known_deviations": [
+        "agent_attention_routing_with_llm_modules",
+        "gsm8k_exact_match_verifier",
+        "memory_disabled_for_math_track",
+        "oracle_route_regret_unavailable",
+        "proxy_route_regret_unavailable",
+        "real_llm_module_executors"
+      ]
+    },
+    {
+      "trajectory_path": "experiments/llm_runs/gsm8k/multi_baseline_full/agent_attention_llm_tuned/real_gsm8k__aa_llm__openai__Qwen3-30B-A3B-Instruct-2507__gsm8k_test_0018.json",
+      "task_id": "gsm8k_test_0018",
+      "benchmark_id": "gsm8k_test",
+      "baseline_id": "agent_attention_llm_tuned",
+      "ablation_id": null,
+      "final": {
+        "success_label": "pass",
+        "task_success": true,
+        "failure_reason": null,
+        "final_answer_present": true
+      },
+      "process": {
+        "activation_cost": 2.0,
+        "cost_normalized_success": 0.333333,
+        "module_calls": 2,
+        "verifier_calls": 1,
+        "budget_rejections": 0,
+        "repeated_action_ratio": 0.0,
+        "invalid_tool_call_ratio": null,
+        "loop_stuck": false,
+        "budget_exhaustion": false,
+        "step_exhaustion": false,
+        "premature_halt": false
+      },
+      "routing": {
+        "route_events": 1,
+        "route_candidates": 4,
+        "selected_candidates": 1,
+        "route_reject_rate": 0.75,
+        "route_entropy": 1.0,
+        "selected_route_score_mean": 0.19,
+        "selected_route_cost_mean": 1.0,
+        "oracle_route_regret_mean": null,
+        "proxy_route_regret_mean": null,
+        "activated_modules": [
+          "critic_agent",
+          "verifier"
+        ]
+      },
+      "memory": {
+        "memory_reads": 0,
+        "useful_memory_reads": 0,
+        "harmful_memory_reads": 0,
+        "neutral_memory_reads": 0,
+        "unknown_memory_reads": 0,
+        "useful_memory_reuse_rate": null,
+        "negative_transfer_cases": 0
+      },
+      "verifier": {
+        "verifier_statuses": [
+          "pass"
+        ],
+        "verifier_failures": 0,
+        "verifier_catches": 0,
+        "verifier_catch_rate": null
+      },
+      "known_deviations": [
+        "agent_attention_routing_with_llm_modules",
+        "gsm8k_exact_match_verifier",
+        "memory_disabled_for_math_track",
+        "oracle_route_regret_unavailable",
+        "proxy_route_regret_unavailable",
+        "real_llm_module_executors"
+      ]
+    },
+    {
+      "trajectory_path": "experiments/llm_runs/gsm8k/multi_baseline_full/agent_attention_llm_tuned/real_gsm8k__aa_llm__openai__Qwen3-30B-A3B-Instruct-2507__gsm8k_test_0019.json",
+      "task_id": "gsm8k_test_0019",
+      "benchmark_id": "gsm8k_test",
+      "baseline_id": "agent_attention_llm_tuned",
+      "ablation_id": null,
+      "final": {
+        "success_label": "pass",
+        "task_success": true,
+        "failure_reason": null,
+        "final_answer_present": true
+      },
+      "process": {
+        "activation_cost": 2.0,
+        "cost_normalized_success": 0.333333,
+        "module_calls": 2,
+        "verifier_calls": 1,
+        "budget_rejections": 0,
+        "repeated_action_ratio": 0.0,
+        "invalid_tool_call_ratio": null,
+        "loop_stuck": false,
+        "budget_exhaustion": false,
+        "step_exhaustion": false,
+        "premature_halt": false
+      },
+      "routing": {
+        "route_events": 1,
+        "route_candidates": 4,
+        "selected_candidates": 1,
+        "route_reject_rate": 0.75,
+        "route_entropy": 1.0,
+        "selected_route_score_mean": 0.19,
+        "selected_route_cost_mean": 1.0,
+        "oracle_route_regret_mean": null,
+        "proxy_route_regret_mean": null,
+        "activated_modules": [
+          "critic_agent",
+          "verifier"
+        ]
+      },
+      "memory": {
+        "memory_reads": 0,
+        "useful_memory_reads": 0,
+        "harmful_memory_reads": 0,
+        "neutral_memory_reads": 0,
+        "unknown_memory_reads": 0,
+        "useful_memory_reuse_rate": null,
+        "negative_transfer_cases": 0
+      },
+      "verifier": {
+        "verifier_statuses": [
+          "pass"
+        ],
+        "verifier_failures": 0,
+        "verifier_catches": 0,
+        "verifier_catch_rate": null
+      },
+      "known_deviations": [
+        "agent_attention_routing_with_llm_modules",
+        "gsm8k_exact_match_verifier",
+        "memory_disabled_for_math_track",
+        "oracle_route_regret_unavailable",
+        "proxy_route_regret_unavailable",
+        "real_llm_module_executors"
+      ]
+    }
+  ],
+  "aggregate": {
+    "run_count": 20,
+    "success_rate": 1.0,
+    "mean_cost_normalized_success": 0.326666,
+    "mean_activation_cost": 2.1,
+    "mean_module_calls": 2.1,
+    "mean_repeated_action_ratio": 0.0125,
+    "budget_exhaustion_rate": 0.0,
+    "premature_halt_rate": 0.0,
+    "loop_stuck_rate": 0.0,
+    "step_exhaustion_rate": 0.0,
+    "mean_route_entropy": 1.025,
+    "mean_route_reject_rate": 0.751389,
+    "mean_oracle_route_regret": null,
+    "mean_proxy_route_regret": null,
+    "total_memory_reads": 0,
+    "total_negative_transfer_cases": 0,
+    "total_verifier_failures": 1,
+    "total_verifier_catches": 1,
+    "known_deviations": [
+      "agent_attention_routing_with_llm_modules",
+      "gsm8k_exact_match_verifier",
+      "memory_disabled_for_math_track",
+      "oracle_route_regret_unavailable",
+      "proxy_route_regret_unavailable",
+      "real_llm_module_executors"
+    ]
+  }
+}

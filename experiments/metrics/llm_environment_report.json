@@ -1,0 +1,43 @@
+{
+  "scope": "Real LLM benchmark environment check",
+  "cpu_count": 32,
+  "mem_total_gb": 7.6,
+  "gpu": {
+    "available": false,
+    "devices": []
+  },
+  "ollama": {
+    "base_url": "http://localhost:11434",
+    "reachable": true,
+    "models": [
+      "llama3.1:8b"
+    ],
+    "cli_in_path": false
+  },
+  "openai_compatible": {
+    "api_key_set": false,
+    "base_url": "https://api.openai.com/v1",
+    "default_model": null
+  },
+  "recommendation": {
+    "recommended_provider": "ollama",
+    "recommended_model": "llama3.1:8b",
+    "recommended_limit": 5,
+    "notes": [
+      "No GPU detected — expect slow CPU inference.",
+      "System RAM 7.6GB is tight for 7B+ models; prefer Q4 quants and small batch sizes."
+    ]
+  },
+  "can_run_local_ollama": true,
+  "needs_remote_api": false,
+  "chat_probe": {
+    "ok": true,
+    "latency_ms": 331,
+    "output_preview": "OK",
+    "metadata": {
+      "eval_count": 2,
+      "prompt_eval_count": 15,
+      "total_duration": 328527700
+    }
+  }
+}

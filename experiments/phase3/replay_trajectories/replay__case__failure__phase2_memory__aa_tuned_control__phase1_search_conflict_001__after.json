@@ -1,0 +1,1981 @@
+{
+  "schema_version": "agent_attention.benchmark_trajectory.v0.1",
+  "run_id": "phase3_replay__aa_tuned_control__phase1_search_conflict_001",
+  "task_id": "phase1_search_conflict_001",
+  "benchmark_id": "phase1_mixed",
+  "baseline_id": "agent_attention_agent_tuned",
+  "ablation_id": "aa_tuned_control",
+  "runtime_config": {
+    "baseline_config": {
+      "ablation_id": "aa_tuned_control",
+      "control_id": "aa_tuned_control",
+      "baseline_id": "agent_attention_agent_tuned",
+      "memory_enabled": true,
+      "memory_write_enabled": true,
+      "memory_write_policy": "success_plus_failure",
+      "quarantine_at_load": true,
+      "quarantine_aware": false,
+      "note": "P2 tuned control with default load-time quarantine.",
+      "applied_patches": [
+        "patch__case__failure__phase2_memory__aa_tuned_control__phase1_search_conflict_001"
+      ]
+    },
+    "budget": {
+      "max_steps": 4,
+      "max_module_calls": 8,
+      "max_tool_calls": 4,
+      "max_verifier_calls": 1,
+      "max_tokens": 8000,
+      "max_latency_ms": 120000,
+      "max_activation_cost": 3.2
+    },
+    "simulation": false,
+    "faithful_baseline": true
+  },
+  "task_family": "search_agent_task",
+  "module_registry_snapshot": [],
+  "events": [
+    {
+      "event_id": 1,
+      "step": 0,
+      "kind": "start",
+      "payload": {
+        "goal": "Reconcile conflicting evidence from two research sources about agent routing benchmarks and cite both.",
+        "config": {
+          "top_k": 2,
+          "max_steps": 4,
+          "memory_enabled": true,
+          "verifier_enabled": true,
+          "router_strategy": "lexical",
+          "adaptive_top_k_enabled": true,
+          "max_top_k": 3,
+          "strong_budget_gate": true,
+          "budget_cost_fraction": 0.3,
+          "cost_quality_epsilon": 0.05,
+          "memory_write_enabled": true,
+          "memory_write_policy": "success_plus_failure",
+          "quarantine_aware": false,
+          "memory_bonus_cap": 0.2,
+          "memory_bonus_floor": -0.4
+        }
+      },
+      "timestamp": 1782714173.0328138
+    },
+    {
+      "event_id": 2,
+      "step": 1,
+      "kind": "memory_retrieval",
+      "payload": {
+        "enabled": true,
+        "items": [
+          {
+            "key": "research paper evidence sources citations cross check route",
+            "value_summary": "For research answers, retrieve primary sources, cluster by method, then ask critic to find gaps.",
+            "memory_type": "behavior_kv",
+            "usefulness_label": "useful",
+            "retrieval_score": 0.2749,
+            "route_signature": "memory -> search_agent -> critic_agent",
+            "evidence_refs": [
+              "seed:research_route"
+            ],
+            "negative_transfer_count": 0,
+            "memory_bonus": 0.0194
+          }
+        ]
+      },
+      "timestamp": 1782714173.0328414
+    },
+    {
+      "event_id": 3,
+      "step": 1,
+      "kind": "memory_read",
+      "payload": {
+        "key": "research paper evidence sources citations cross check route",
+        "value_summary": "For research answers, retrieve primary sources, cluster by method, then ask critic to find gaps.",
+        "memory_type": "behavior_kv",
+        "usefulness_label": "useful",
+        "retrieval_score": 0.2749,
+        "route_signature": "memory -> search_agent -> critic_agent",
+        "evidence_refs": [
+          "seed:research_route"
+        ],
+        "negative_transfer_count": 0,
+        "memory_bonus": 0.0194
+      },
+      "timestamp": 1782714173.0328496
+    },
+    {
+      "event_id": 4,
+      "step": 1,
+      "kind": "gates",
+      "payload": {
+        "decisions": [
+          {
+            "gate": "ToolGate",
+            "status": "closed",
+            "reason": "no_tool_need"
+          },
+          {
+            "gate": "SearchGate",
+            "status": "open",
+            "reason": "external_evidence_need"
+          },
+          {
+            "gate": "MemoryGate",
+            "status": "open_read",
+            "reason": "memory_enabled"
+          },
+          {
+            "gate": "VerifierGate",
+            "status": "closed",
+            "reason": "not_required_or_disabled"
+          },
+          {
+            "gate": "HaltGate",
+            "status": "evaluate",
+            "reason": "checked_every_step"
+          },
+          {
+            "gate": "BudgetGate",
+            "status": "allow",
+            "reason": "remaining_budget_positive",
+            "remaining_budget": 3.2
+          },
+          {
+            "gate": "SafetyGate",
+            "status": "allow",
+            "reason": "read_only_toy_runtime"
+          }
+        ],
+        "budget_snapshot": {
+          "max_budget": 3.2,
+          "budget_used": 0.0,
+          "remaining_budget": 3.2
+        }
+      },
+      "timestamp": 1782714173.032863
+    },
+    {
+      "event_id": 5,
+      "step": 1,
+      "kind": "route",
+      "payload": {
+        "decision_id": "route-1",
+        "routing_policy": "lexical",
+        "top_k": 2,
+        "effective_top_k": 2,
+        "adaptive_top_k_enabled": true,
+        "strong_budget_gate": true,
+        "query": "Reconcile conflicting evidence from two research sources about agent routing benchmarks and cite both.   ",
+        "selected_modules": [
+          "critic_agent",
+          "search_agent"
+        ],
+        "candidates": [
+          {
+            "module_id": "critic_agent",
+            "score": 1.9388,
+            "score_terms": {
+              "semantic_match": 1.6304,
+              "reliability": 0.7,
+              "historical_success": 0.58,
+              "cost": 0.45,
+              "latency": 0.4,
+              "risk": 0.2,
+              "repetition": 0,
+              "memory_bonus": 0.0194
+            },
+            "score_weights": {
+              "semantic_match": 1.0,
+              "reliability": 0.45,
+              "historical_success": 0.25,
+              "cost": -0.18,
+              "latency": -0.1,
+              "risk": -0.25,
+              "repetition": -0.14,
+              "memory_bonus": 1.0
+            },
+            "selected": true,
+            "schema_valid": true,
+            "budget_valid": true,
+            "risk_valid": true,
+            "reject_reason": null
+          },
+          {
+            "module_id": "search_agent",
+            "score": 0.6999,
+            "score_terms": {
+              "semantic_match": 0.5,
+              "reliability": 0.72,
+              "historical_success": 0.6,
+              "cost": 0.7,
+              "latency": 0.8,
+              "risk": 0.35,
+              "repetition": 0,
+              "memory_bonus": 0.0194
+            },
+            "score_weights": {
+              "semantic_match": 1.0,
+              "reliability": 0.45,
+              "historical_success": 0.25,
+              "cost": -0.18,
+              "latency": -0.1,
+              "risk": -0.25,
+              "repetition": -0.14,
+              "memory_bonus": 1.0
+            },
+            "selected": true,
+            "schema_valid": true,
+            "budget_valid": true,
+            "risk_valid": true,
+            "reject_reason": null
+          },
+          {
+            "module_id": "memory",
+            "score": 0.5639,
+            "score_terms": {
+              "semantic_match": 0.167,
+              "reliability": 0.66,
+              "historical_success": 0.62,
+              "cost": 0.15,
+              "latency": 0.1,
+              "risk": 0.15,
+              "repetition": 0,
+              "memory_bonus": 0.0194
+            },
+            "score_weights": {
+              "semantic_match": 1.0,
+              "reliability": 0.45,
+              "historical_success": 0.25,
+              "cost": -0.18,
+              "latency": -0.1,
+              "risk": -0.25,
+              "repetition": -0.14,
+              "memory_bonus": 1.0
+            },
+            "selected": false,
+            "schema_valid": true,
+            "budget_valid": true,
+            "risk_valid": true,
+            "reject_reason": "below_top_k"
+          },
+          {
+            "module_id": "code_agent",
+            "score": 0.2404,
+            "score_terms": {
+              "semantic_match": 0.0769,
+              "reliability": 0.75,
+              "historical_success": 0.64,
+              "cost": 0.8,
+              "latency": 0.9,
+              "risk": 0.4,
+              "repetition": 0,
+              "memory_bonus": 0.0
+            },
+            "score_weights": {
+              "semantic_match": 1.0,
+              "reliability": 0.45,
+              "historical_success": 0.25,
+              "cost": -0.18,
+              "latency": -0.1,
+              "risk": -0.25,
+              "repetition": -0.14,
+              "memory_bonus": 1.0
+            },
+            "selected": false,
+            "schema_valid": true,
+            "budget_valid": true,
+            "risk_valid": true,
+            "reject_reason": "below_top_k"
+          }
+        ],
+        "route_scores": {
+          "critic_agent": {
+            "semantic_match": 1.6304,
+            "reliability": 0.7,
+            "historical_success": 0.58,
+            "cost": 0.45,
+            "latency": 0.4,
+            "risk": 0.2,
+            "repetition": 0,
+            "memory_bonus": 0.0194,
+            "score_total": 1.9388,
+            "reject_reason": null
+          },
+          "search_agent": {
+            "semantic_match": 0.5,
+            "reliability": 0.72,
+            "historical_success": 0.6,
+            "cost": 0.7,
+            "latency": 0.8,
+            "risk": 0.35,
+            "repetition": 0,
+            "memory_bonus": 0.0194,
+            "score_total": 0.6999,
+            "reject_reason": null
+          },
+          "memory": {
+            "semantic_match": 0.167,
+            "reliability": 0.66,
+            "historical_success": 0.62,
+            "cost": 0.15,
+            "latency": 0.1,
+            "risk": 0.15,
+            "repetition": 0,
+            "memory_bonus": 0.0194,
+            "score_total": 0.5639,
+            "reject_reason": "below_top_k"
+          },
+          "code_agent": {
+            "semantic_match": 0.0769,
+            "reliability": 0.75,
+            "historical_success": 0.64,
+            "cost": 0.8,
+            "latency": 0.9,
+            "risk": 0.4,
+            "repetition": 0,
+            "memory_bonus": 0.0,
+            "score_total": 0.2404,
+            "reject_reason": "below_top_k"
+          }
+        },
+        "budget_snapshot": {
+          "max_budget": 3.2,
+          "budget_used": 0.0,
+          "remaining_budget": 3.2
+        },
+        "oracle": {
+          "oracle_available": true,
+          "proxy_available": true,
+          "oracle_best_module_id": "search_agent",
+          "selected_score": 1.9388,
+          "oracle_best_score": 0.6999,
+          "oracle_regret": null,
+          "proxy_regret": 0.0,
+          "missing_required_modules": [],
+          "selected_discouraged_modules": [],
+          "rationale": "Conflict reconciliation needs search and critique."
+        }
+      },
+      "timestamp": 1782714173.0330577
+    },
+    {
+      "event_id": 6,
+      "step": 1,
+      "kind": "budget_gate",
+      "payload": {
+        "module_id": "critic_agent",
+        "decision": "allow",
+        "reason": "within_budget",
+        "module_cost": 0.45,
+        "budget_snapshot": {
+          "max_budget": 3.2,
+          "budget_used": 0.0,
+          "remaining_budget": 3.2
+        }
+      },
+      "timestamp": 1782714173.0330606
+    },
+    {
+      "event_id": 7,
+      "step": 1,
+      "kind": "budget_gate",
+      "payload": {
+        "module_id": "search_agent",
+        "decision": "allow",
+        "reason": "within_budget",
+        "module_cost": 0.7,
+        "budget_snapshot": {
+          "max_budget": 3.2,
+          "budget_used": 0.45,
+          "remaining_budget": 2.75
+        }
+      },
+      "timestamp": 1782714173.0330648
+    },
+    {
+      "event_id": 8,
+      "step": 1,
+      "kind": "module_execution",
+      "payload": {
+        "outputs": [
+          {
+            "module_id": "critic_agent",
+            "content": "Critiqued current trajectory; unresolved signals: no explicit failures.",
+            "confidence": 0.66,
+            "evidence": [],
+            "failure_signal": null
+          },
+          {
+            "module_id": "search_agent",
+            "content": "Identified external-evidence need around: evidence, research, sources.",
+            "confidence": 0.72,
+            "evidence": [
+              "external_search_required"
+            ],
+            "failure_signal": null
+          }
+        ]
+      },
+      "timestamp": 1782714173.0330813
+    },
+    {
+      "event_id": 9,
+      "step": 1,
+      "kind": "state_update",
+      "payload": {
+        "action_type": "aggregate",
+        "state": {
+          "goal": "Reconcile conflicting evidence from two research sources about agent routing benchmarks and cite both.",
+          "step": 1,
+          "confidence": 0.324,
+          "risk": 0.1276,
+          "budget_used": 1.15,
+          "max_budget": 3.2,
+          "selected_modules": [
+            "critic_agent",
+            "search_agent",
+            "critic_agent",
+            "aggregator",
+            "aggregator",
+            "memory",
+            "aggregator"
+          ],
+          "failure_signals": [],
+          "memory_reads": [
+            "research paper evidence sources citations cross check route",
+            "research paper evidence sources citations cross check route",
+            "research paper evidence sources citations cross check route",
+            "research paper evidence sources citations cross check route"
+          ],
+          "memory_writes": [
+            "Reconcile conflicting evidence from two research sources about agent routing benchmarks and cite both. route critic_agent -> search_agent -> critic_agent -> aggregator -> aggregator -> memory -> aggregator"
+          ],
+          "verifier_status": "skipped",
+          "final_answer": null
+        }
+      },
+      "timestamp": 1782714173.0330853
+    },
+    {
+      "event_id": 10,
+      "step": 1,
+      "kind": "verifier_result",
+      "payload": {
+        "enabled": true,
+        "required": false,
+        "status": "skipped",
+        "reason": "threshold_not_met",
+        "budget_snapshot": {
+          "max_budget": 3.2,
+          "budget_used": 1.15,
+          "remaining_budget": 2.05
+        }
+      },
+      "timestamp": 1782714173.033088
+    },
+    {
+      "event_id": 11,
+      "step": 1,
+      "kind": "halt_gate",
+      "payload": {
+        "halt": false,
+        "reason": "continue",
+        "success_signal": "unknown",
+        "verifier_status": "skipped",
+        "budget_snapshot": {
+          "max_budget": 3.2,
+          "budget_used": 1.15,
+          "remaining_budget": 2.05
+        }
+      },
+      "timestamp": 1782714173.0330908
+    },
+    {
+      "event_id": 12,
+      "step": 2,
+      "kind": "memory_retrieval",
+      "payload": {
+        "enabled": true,
+        "items": [
+          {
+            "key": "research paper evidence sources citations cross check route",
+            "value_summary": "For research answers, retrieve primary sources, cluster by method, then ask critic to find gaps.",
+            "memory_type": "behavior_kv",
+            "usefulness_label": "useful",
+            "retrieval_score": 0.2079,
+            "route_signature": "memory -> search_agent -> critic_agent",
+            "evidence_refs": [
+              "seed:research_route"
+            ],
+            "negative_transfer_count": 0,
+            "memory_bonus": 0.0064
+          }
+        ]
+      },
+      "timestamp": 1782714173.0331192
+    },
+    {
+      "event_id": 13,
+      "step": 2,
+      "kind": "memory_read",
+      "payload": {
+        "key": "research paper evidence sources citations cross check route",
+        "value_summary": "For research answers, retrieve primary sources, cluster by method, then ask critic to find gaps.",
+        "memory_type": "behavior_kv",
+        "usefulness_label": "useful",
+        "retrieval_score": 0.2079,
+        "route_signature": "memory -> search_agent -> critic_agent",
+        "evidence_refs": [
+          "seed:research_route"
+        ],
+        "negative_transfer_count": 0,
+        "memory_bonus": 0.0064
+      },
+      "timestamp": 1782714173.033127
+    },
+    {
+      "event_id": 14,
+      "step": 2,
+      "kind": "gates",
+      "payload": {
+        "decisions": [
+          {
+            "gate": "ToolGate",
+            "status": "closed",
+            "reason": "no_tool_need"
+          },
+          {
+            "gate": "SearchGate",
+            "status": "open",
+            "reason": "external_evidence_need"
+          },
+          {
+            "gate": "MemoryGate",
+            "status": "open_read",
+            "reason": "memory_enabled"
+          },
+          {
+            "gate": "VerifierGate",
+            "status": "closed",
+            "reason": "not_required_or_disabled"
+          },
+          {
+            "gate": "HaltGate",
+            "status": "evaluate",
+            "reason": "checked_every_step"
+          },
+          {
+            "gate": "BudgetGate",
+            "status": "allow",
+            "reason": "remaining_budget_positive",
+            "remaining_budget": 2.05
+          },
+          {
+            "gate": "SafetyGate",
+            "status": "allow",
+            "reason": "read_only_toy_runtime"
+          }
+        ],
+        "budget_snapshot": {
+          "max_budget": 3.2,
+          "budget_used": 1.15,
+          "remaining_budget": 2.05
+        }
+      },
+      "timestamp": 1782714173.033134
+    },
+    {
+      "event_id": 15,
+      "step": 2,
+      "kind": "route",
+      "payload": {
+        "decision_id": "route-2",
+        "routing_policy": "lexical",
+        "top_k": 2,
+        "effective_top_k": 2,
+        "adaptive_top_k_enabled": true,
+        "strong_budget_gate": true,
+        "query": "Reconcile conflicting evidence from two research sources about agent routing benchmarks and cite both. critic_agent: Critiqued current trajectory; unresolved signals: no explicit failures. search_agent: Identified external-evidence need around: evidence, research, sources.  Critiqued current trajectory; unresolved signals: no explicit failures. Identified external-evidence need around: evidence, research, sources.",
+        "selected_modules": [
+          "critic_agent",
+          "aggregator"
+        ],
+        "candidates": [
+          {
+            "module_id": "critic_agent",
+            "score": 1.9183,
+            "score_terms": {
+              "semantic_match": 1.7629,
+              "reliability": 0.7,
+              "historical_success": 0.58,
+              "cost": 0.45,
+              "latency": 0.4,
+              "risk": 0.2,
+              "repetition": 1,
+              "memory_bonus": 0.0064
+            },
+            "score_weights": {
+              "semantic_match": 1.0,
+              "reliability": 0.45,
+              "historical_success": 0.25,
+              "cost": -0.18,
+              "latency": -0.1,
+              "risk": -0.25,
+              "repetition": -0.14,
+              "memory_bonus": 1.0
+            },
+            "selected": true,
+            "schema_valid": true,
+            "budget_valid": true,
+            "risk_valid": true,
+            "reject_reason": null
+          },
+          {
+            "module_id": "aggregator",
+            "score": 0.6101,
+            "score_terms": {
+              "semantic_match": 0.2326,
+              "reliability": 0.7,
+              "historical_success": 0.61,
+              "cost": 0.25,
+              "latency": 0.2,
+              "risk": 0.1,
+              "repetition": 0,
+              "memory_bonus": 0.0
+            },
+            "score_weights": {
+              "semantic_match": 1.0,
+              "reliability": 0.45,
+              "historical_success": 0.25,
+              "cost": -0.18,
+              "latency": -0.1,
+              "risk": -0.25,
+              "repetition": -0.14,
+              "memory_bonus": 1.0
+            },
+            "selected": true,
+            "schema_valid": true,
+            "budget_valid": true,
+            "risk_valid": true,
+            "reject_reason": null
+          },
+          {
+            "module_id": "search_agent",
+            "score": 0.5491,
+            "score_terms": {
+              "semantic_match": 0.5022,
+              "reliability": 0.72,
+              "historical_success": 0.6,
+              "cost": 0.7,
+              "latency": 0.8,
+              "risk": 0.35,
+              "repetition": 1,
+              "memory_bonus": 0.0064
+            },
+            "score_weights": {
+              "semantic_match": 1.0,
+              "reliability": 0.45,
+              "historical_success": 0.25,
+              "cost": -0.18,
+              "latency": -0.1,
+              "risk": -0.25,
+              "repetition": -0.14,
+              "memory_bonus": 1.0
+            },
+            "selected": false,
+            "schema_valid": true,
+            "budget_valid": false,
+            "risk_valid": true,
+            "reject_reason": "budget_high_cost_fraction"
+          },
+          {
+            "module_id": "memory",
+            "score": 0.5472,
+            "score_terms": {
+              "semantic_match": 0.1633,
+              "reliability": 0.66,
+              "historical_success": 0.62,
+              "cost": 0.15,
+              "latency": 0.1,
+              "risk": 0.15,
+              "repetition": 0,
+              "memory_bonus": 0.0064
+            },
+            "score_weights": {
+              "semantic_match": 1.0,
+              "reliability": 0.45,
+              "historical_success": 0.25,
+              "cost": -0.18,
+              "latency": -0.1,
+              "risk": -0.25,
+              "repetition": -0.14,
+              "memory_bonus": 1.0
+            },
+            "selected": false,
+            "schema_valid": true,
+            "budget_valid": true,
+            "risk_valid": true,
+            "reject_reason": "below_top_k"
+          },
+          {
+            "module_id": "code_agent",
+            "score": 0.2135,
+            "score_terms": {
+              "semantic_match": 0.05,
+              "reliability": 0.75,
+              "historical_success": 0.64,
+              "cost": 0.8,
+              "latency": 0.9,
+              "risk": 0.4,
+              "repetition": 0,
+              "memory_bonus": 0.0
+            },
+            "score_weights": {
+              "semantic_match": 1.0,
+              "reliability": 0.45,
+              "historical_success": 0.25,
+              "cost": -0.18,
+              "latency": -0.1,
+              "risk": -0.25,
+              "repetition": -0.14,
+              "memory_bonus": 1.0
+            },
+            "selected": false,
+            "schema_valid": true,
+            "budget_valid": false,
+            "risk_valid": true,
+            "reject_reason": "budget_high_cost_fraction"
+          }
+        ],
+        "route_scores": {
+          "critic_agent": {
+            "semantic_match": 1.7629,
+            "reliability": 0.7,
+            "historical_success": 0.58,
+            "cost": 0.45,
+            "latency": 0.4,
+            "risk": 0.2,
+            "repetition": 1,
+            "memory_bonus": 0.0064,
+            "score_total": 1.9183,
+            "reject_reason": null
+          },
+          "aggregator": {
+            "semantic_match": 0.2326,
+            "reliability": 0.7,
+            "historical_success": 0.61,
+            "cost": 0.25,
+            "latency": 0.2,
+            "risk": 0.1,
+            "repetition": 0,
+            "memory_bonus": 0.0,
+            "score_total": 0.6101,
+            "reject_reason": null
+          },
+          "search_agent": {
+            "semantic_match": 0.5022,
+            "reliability": 0.72,
+            "historical_success": 0.6,
+            "cost": 0.7,
+            "latency": 0.8,
+            "risk": 0.35,
+            "repetition": 1,
+            "memory_bonus": 0.0064,
+            "score_total": 0.5491,
+            "reject_reason": "budget_high_cost_fraction"
+          },
+          "memory": {
+            "semantic_match": 0.1633,
+            "reliability": 0.66,
+            "historical_success": 0.62,
+            "cost": 0.15,
+            "latency": 0.1,
+            "risk": 0.15,
+            "repetition": 0,
+            "memory_bonus": 0.0064,
+            "score_total": 0.5472,
+            "reject_reason": "below_top_k"
+          },
+          "code_agent": {
+            "semantic_match": 0.05,
+            "reliability": 0.75,
+            "historical_success": 0.64,
+            "cost": 0.8,
+            "latency": 0.9,
+            "risk": 0.4,
+            "repetition": 0,
+            "memory_bonus": 0.0,
+            "score_total": 0.2135,
+            "reject_reason": "budget_high_cost_fraction"
+          }
+        },
+        "budget_snapshot": {
+          "max_budget": 3.2,
+          "budget_used": 1.15,
+          "remaining_budget": 2.05
+        },
+        "oracle": {
+          "oracle_available": true,
+          "proxy_available": true,
+          "oracle_best_module_id": "search_agent",
+          "selected_score": 1.9183,
+          "oracle_best_score": 0.5491,
+          "oracle_regret": null,
+          "proxy_regret": 0.35,
+          "missing_required_modules": [
+            "search_agent"
+          ],
+          "selected_discouraged_modules": [],
+          "rationale": "Conflict reconciliation needs search and critique."
+        }
+      },
+      "timestamp": 1782714173.0333672
+    },
+    {
+      "event_id": 16,
+      "step": 2,
+      "kind": "budget_gate",
+      "payload": {
+        "module_id": "critic_agent",
+        "decision": "allow",
+        "reason": "within_budget",
+        "module_cost": 0.45,
+        "budget_snapshot": {
+          "max_budget": 3.2,
+          "budget_used": 1.15,
+          "remaining_budget": 2.05
+        }
+      },
+      "timestamp": 1782714173.0333698
+    },
+    {
+      "event_id": 17,
+      "step": 2,
+      "kind": "budget_gate",
+      "payload": {
+        "module_id": "aggregator",
+        "decision": "allow",
+        "reason": "within_budget",
+        "module_cost": 0.25,
+        "budget_snapshot": {
+          "max_budget": 3.2,
+          "budget_used": 1.6,
+          "remaining_budget": 1.6
+        }
+      },
+      "timestamp": 1782714173.033373
+    },
+    {
+      "event_id": 18,
+      "step": 2,
+      "kind": "module_execution",
+      "payload": {
+        "outputs": [
+          {
+            "module_id": "critic_agent",
+            "content": "Critiqued current trajectory; unresolved signals: no explicit failures.",
+            "confidence": 0.66,
+            "evidence": [],
+            "failure_signal": null
+          },
+          {
+            "module_id": "aggregator",
+            "content": "Aggregated active module outputs into a concise state update.",
+            "confidence": 0.7,
+            "evidence": [],
+            "failure_signal": null
+          }
+        ]
+      },
+      "timestamp": 1782714173.0333834
+    },
+    {
+      "event_id": 19,
+      "step": 2,
+      "kind": "state_update",
+      "payload": {
+        "action_type": "aggregate",
+        "state": {
+          "goal": "Reconcile conflicting evidence from two research sources about agent routing benchmarks and cite both.",
+          "step": 2,
+          "confidence": 0.4932,
+          "risk": 0.0528,
+          "budget_used": 1.85,
+          "max_budget": 3.2,
+          "selected_modules": [
+            "critic_agent",
+            "search_agent",
+            "critic_agent",
+            "aggregator",
+            "aggregator",
+            "memory",
+            "aggregator"
+          ],
+          "failure_signals": [],
+          "memory_reads": [
+            "research paper evidence sources citations cross check route",
+            "research paper evidence sources citations cross check route",
+            "research paper evidence sources citations cross check route",
+            "research paper evidence sources citations cross check route"
+          ],
+          "memory_writes": [
+            "Reconcile conflicting evidence from two research sources about agent routing benchmarks and cite both. route critic_agent -> search_agent -> critic_agent -> aggregator -> aggregator -> memory -> aggregator"
+          ],
+          "verifier_status": "skipped",
+          "final_answer": null
+        }
+      },
+      "timestamp": 1782714173.033387
+    },
+    {
+      "event_id": 20,
+      "step": 2,
+      "kind": "verifier_result",
+      "payload": {
+        "enabled": true,
+        "required": false,
+        "status": "skipped",
+        "reason": "threshold_not_met",
+        "budget_snapshot": {
+          "max_budget": 3.2,
+          "budget_used": 1.85,
+          "remaining_budget": 1.35
+        }
+      },
+      "timestamp": 1782714173.0333893
+    },
+    {
+      "event_id": 21,
+      "step": 2,
+      "kind": "halt_gate",
+      "payload": {
+        "halt": false,
+        "reason": "continue",
+        "success_signal": "unknown",
+        "verifier_status": "skipped",
+        "budget_snapshot": {
+          "max_budget": 3.2,
+          "budget_used": 1.85,
+          "remaining_budget": 1.35
+        }
+      },
+      "timestamp": 1782714173.033392
+    },
+    {
+      "event_id": 22,
+      "step": 3,
+      "kind": "memory_retrieval",
+      "payload": {
+        "enabled": true,
+        "items": [
+          {
+            "key": "research paper evidence sources citations cross check route",
+            "value_summary": "For research answers, retrieve primary sources, cluster by method, then ask critic to find gaps.",
+            "memory_type": "behavior_kv",
+            "usefulness_label": "useful",
+            "retrieval_score": 0.1868,
+            "route_signature": "memory -> search_agent -> critic_agent",
+            "evidence_refs": [
+              "seed:research_route"
+            ],
+            "negative_transfer_count": 0,
+            "memory_bonus": 0.0038
+          }
+        ]
+      },
+      "timestamp": 1782714173.0334208
+    },
+    {
+      "event_id": 23,
+      "step": 3,
+      "kind": "memory_read",
+      "payload": {
+        "key": "research paper evidence sources citations cross check route",
+        "value_summary": "For research answers, retrieve primary sources, cluster by method, then ask critic to find gaps.",
+        "memory_type": "behavior_kv",
+        "usefulness_label": "useful",
+        "retrieval_score": 0.1868,
+        "route_signature": "memory -> search_agent -> critic_agent",
+        "evidence_refs": [
+          "seed:research_route"
+        ],
+        "negative_transfer_count": 0,
+        "memory_bonus": 0.0038
+      },
+      "timestamp": 1782714173.0334282
+    },
+    {
+      "event_id": 24,
+      "step": 3,
+      "kind": "gates",
+      "payload": {
+        "decisions": [
+          {
+            "gate": "ToolGate",
+            "status": "closed",
+            "reason": "no_tool_need"
+          },
+          {
+            "gate": "SearchGate",
+            "status": "open",
+            "reason": "external_evidence_need"
+          },
+          {
+            "gate": "MemoryGate",
+            "status": "open_read",
+            "reason": "memory_enabled"
+          },
+          {
+            "gate": "VerifierGate",
+            "status": "closed",
+            "reason": "not_required_or_disabled"
+          },
+          {
+            "gate": "HaltGate",
+            "status": "evaluate",
+            "reason": "checked_every_step"
+          },
+          {
+            "gate": "BudgetGate",
+            "status": "allow",
+            "reason": "remaining_budget_positive",
+            "remaining_budget": 1.35
+          },
+          {
+            "gate": "SafetyGate",
+            "status": "allow",
+            "reason": "read_only_toy_runtime"
+          }
+        ],
+        "budget_snapshot": {
+          "max_budget": 3.2,
+          "budget_used": 1.85,
+          "remaining_budget": 1.35
+        }
+      },
+      "timestamp": 1782714173.0334346
+    },
+    {
+      "event_id": 25,
+      "step": 3,
+      "kind": "route",
+      "payload": {
+        "decision_id": "route-3",
+        "routing_policy": "lexical",
+        "top_k": 2,
+        "effective_top_k": 2,
+        "adaptive_top_k_enabled": true,
+        "strong_budget_gate": true,
+        "query": "Reconcile conflicting evidence from two research sources about agent routing benchmarks and cite both. critic_agent: Critiqued current trajectory; unresolved signals: no explicit failures. search_agent: Identified external-evidence need around: evidence, research, sources. critic_agent: Critiqued current trajectory; unresolved signals: no explicit failures. aggregator: Aggregated active module outputs into a concise state update.  Identified external-evidence need around: evidence, research, sources. Critiqued current trajectory; unresolved signals: no explicit failures. Aggregated active module outputs into a concise state update.",
+        "selected_modules": [
+          "aggregator",
+          "memory"
+        ],
+        "candidates": [
+          {
+            "module_id": "aggregator",
+            "score": 0.5803,
+            "score_terms": {
+              "semantic_match": 0.3428,
+              "reliability": 0.7,
+              "historical_success": 0.61,
+              "cost": 0.25,
+              "latency": 0.2,
+              "risk": 0.1,
+              "repetition": 1,
+              "memory_bonus": 0.0
+            },
+            "score_weights": {
+              "semantic_match": 1.0,
+              "reliability": 0.45,
+              "historical_success": 0.25,
+              "cost": -0.18,
+              "latency": -0.1,
+              "risk": -0.25,
+              "repetition": -0.14,
+              "memory_bonus": 1.0
+            },
+            "selected": true,
+            "schema_valid": true,
+            "budget_valid": true,
+            "risk_valid": true,
+            "reject_reason": null
+          },
+          {
+            "module_id": "memory",
+            "score": 0.5265,
+            "score_terms": {
+              "semantic_match": 0.1452,
+              "reliability": 0.66,
+              "historical_success": 0.62,
+              "cost": 0.15,
+              "latency": 0.1,
+              "risk": 0.15,
+              "repetition": 0,
+              "memory_bonus": 0.0038
+            },
+            "score_weights": {
+              "semantic_match": 1.0,
+              "reliability": 0.45,
+              "historical_success": 0.25,
+              "cost": -0.18,
+              "latency": -0.1,
+              "risk": -0.25,
+              "repetition": -0.14,
+              "memory_bonus": 1.0
+            },
+            "selected": true,
+            "schema_valid": true,
+            "budget_valid": true,
+            "risk_valid": true,
+            "reject_reason": null
+          },
+          {
+            "module_id": "search_agent",
+            "score": 0.512,
+            "score_terms": {
+              "semantic_match": 0.4677,
+              "reliability": 0.72,
+              "historical_success": 0.6,
+              "cost": 0.7,
+              "latency": 0.8,
+              "risk": 0.35,
+              "repetition": 1,
+              "memory_bonus": 0.0038
+            },
+            "score_weights": {
+              "semantic_match": 1.0,
+              "reliability": 0.45,
+              "historical_success": 0.25,
+              "cost": -0.18,
+              "latency": -0.1,
+              "risk": -0.25,
+              "repetition": -0.14,
+              "memory_bonus": 1.0
+            },
+            "selected": false,
+            "schema_valid": true,
+            "budget_valid": false,
+            "risk_valid": true,
+            "reject_reason": "budget_high_cost_fraction"
+          },
+          {
+            "module_id": "critic_agent",
+            "score": 0.4939,
+            "score_terms": {
+              "semantic_match": 0.4811,
+              "reliability": 0.7,
+              "historical_success": 0.58,
+              "cost": 0.45,
+              "latency": 0.4,
+              "risk": 0.2,
+              "repetition": 2,
+              "memory_bonus": 0.0038
+            },
+            "score_weights": {
+              "semantic_match": 1.0,
+              "reliability": 0.45,
+              "historical_success": 0.25,
+              "cost": -0.18,
+              "latency": -0.1,
+              "risk": -0.25,
+              "repetition": -0.14,
+              "memory_bonus": 1.0
+            },
+            "selected": false,
+            "schema_valid": true,
+            "budget_valid": false,
+            "risk_valid": true,
+            "reject_reason": "budget_high_cost_fraction"
+          },
+          {
+            "module_id": "code_agent",
+            "score": 0.2035,
+            "score_terms": {
+              "semantic_match": 0.04,
+              "reliability": 0.75,
+              "historical_success": 0.64,
+              "cost": 0.8,
+              "latency": 0.9,
+              "risk": 0.4,
+              "repetition": 0,
+              "memory_bonus": 0.0
+            },
+            "score_weights": {
+              "semantic_match": 1.0,
+              "reliability": 0.45,
+              "historical_success": 0.25,
+              "cost": -0.18,
+              "latency": -0.1,
+              "risk": -0.25,
+              "repetition": -0.14,
+              "memory_bonus": 1.0
+            },
+            "selected": false,
+            "schema_valid": true,
+            "budget_valid": false,
+            "risk_valid": true,
+            "reject_reason": "budget_high_cost_fraction"
+          }
+        ],
+        "route_scores": {
+          "aggregator": {
+            "semantic_match": 0.3428,
+            "reliability": 0.7,
+            "historical_success": 0.61,
+            "cost": 0.25,
+            "latency": 0.2,
+            "risk": 0.1,
+            "repetition": 1,
+            "memory_bonus": 0.0,
+            "score_total": 0.5803,
+            "reject_reason": null
+          },
+          "memory": {
+            "semantic_match": 0.1452,
+            "reliability": 0.66,
+            "historical_success": 0.62,
+            "cost": 0.15,
+            "latency": 0.1,
+            "risk": 0.15,
+            "repetition": 0,
+            "memory_bonus": 0.0038,
+            "score_total": 0.5265,
+            "reject_reason": null
+          },
+          "search_agent": {
+            "semantic_match": 0.4677,
+            "reliability": 0.72,
+            "historical_success": 0.6,
+            "cost": 0.7,
+            "latency": 0.8,
+            "risk": 0.35,
+            "repetition": 1,
+            "memory_bonus": 0.0038,
+            "score_total": 0.512,
+            "reject_reason": "budget_high_cost_fraction"
+          },
+          "critic_agent": {
+            "semantic_match": 0.4811,
+            "reliability": 0.7,
+            "historical_success": 0.58,
+            "cost": 0.45,
+            "latency": 0.4,
+            "risk": 0.2,
+            "repetition": 2,
+            "memory_bonus": 0.0038,
+            "score_total": 0.4939,
+            "reject_reason": "budget_high_cost_fraction"
+          },
+          "code_agent": {
+            "semantic_match": 0.04,
+            "reliability": 0.75,
+            "historical_success": 0.64,
+            "cost": 0.8,
+            "latency": 0.9,
+            "risk": 0.4,
+            "repetition": 0,
+            "memory_bonus": 0.0,
+            "score_total": 0.2035,
+            "reject_reason": "budget_high_cost_fraction"
+          }
+        },
+        "budget_snapshot": {
+          "max_budget": 3.2,
+          "budget_used": 1.85,
+          "remaining_budget": 1.35
+        },
+        "oracle": {
+          "oracle_available": true,
+          "proxy_available": true,
+          "oracle_best_module_id": "search_agent",
+          "selected_score": 0.5803,
+          "oracle_best_score": 0.512,
+          "oracle_regret": null,
+          "proxy_regret": 0.7,
+          "missing_required_modules": [
+            "critic_agent",
+            "search_agent"
+          ],
+          "selected_discouraged_modules": [],
+          "rationale": "Conflict reconciliation needs search and critique."
+        }
+      },
+      "timestamp": 1782714173.033682
+    },
+    {
+      "event_id": 26,
+      "step": 3,
+      "kind": "budget_gate",
+      "payload": {
+        "module_id": "aggregator",
+        "decision": "allow",
+        "reason": "within_budget",
+        "module_cost": 0.25,
+        "budget_snapshot": {
+          "max_budget": 3.2,
+          "budget_used": 1.85,
+          "remaining_budget": 1.35
+        }
+      },
+      "timestamp": 1782714173.0336847
+    },
+    {
+      "event_id": 27,
+      "step": 3,
+      "kind": "budget_gate",
+      "payload": {
+        "module_id": "memory",
+        "decision": "allow",
+        "reason": "within_budget",
+        "module_cost": 0.15,
+        "budget_snapshot": {
+          "max_budget": 3.2,
+          "budget_used": 2.1,
+          "remaining_budget": 1.1
+        }
+      },
+      "timestamp": 1782714173.0336876
+    },
+    {
+      "event_id": 28,
+      "step": 3,
+      "kind": "module_execution",
+      "payload": {
+        "outputs": [
+          {
+            "module_id": "aggregator",
+            "content": "Aggregated active module outputs into a concise state update.",
+            "confidence": 0.7,
+            "evidence": [],
+            "failure_signal": null
+          },
+          {
+            "module_id": "memory",
+            "content": "Reused 3 retrieved trajectory memories.",
+            "confidence": 0.68,
+            "evidence": [
+              "research paper evidence sources citations cross check route",
+              "research paper evidence sources citations cross check route"
+            ],
+            "failure_signal": null
+          }
+        ]
+      },
+      "timestamp": 1782714173.033699
+    },
+    {
+      "event_id": 29,
+      "step": 3,
+      "kind": "state_update",
+      "payload": {
+        "action_type": "aggregate",
+        "state": {
+          "goal": "Reconcile conflicting evidence from two research sources about agent routing benchmarks and cite both.",
+          "step": 3,
+          "confidence": 0.5863,
+          "risk": 0.02,
+          "budget_used": 2.25,
+          "max_budget": 3.2,
+          "selected_modules": [
+            "critic_agent",
+            "search_agent",
+            "critic_agent",
+            "aggregator",
+            "aggregator",
+            "memory",
+            "aggregator"
+          ],
+          "failure_signals": [],
+          "memory_reads": [
+            "research paper evidence sources citations cross check route",
+            "research paper evidence sources citations cross check route",
+            "research paper evidence sources citations cross check route",
+            "research paper evidence sources citations cross check route"
+          ],
+          "memory_writes": [
+            "Reconcile conflicting evidence from two research sources about agent routing benchmarks and cite both. route critic_agent -> search_agent -> critic_agent -> aggregator -> aggregator -> memory -> aggregator"
+          ],
+          "verifier_status": "skipped",
+          "final_answer": null
+        }
+      },
+      "timestamp": 1782714173.0337029
+    },
+    {
+      "event_id": 30,
+      "step": 3,
+      "kind": "verifier_result",
+      "payload": {
+        "enabled": true,
+        "required": false,
+        "status": "skipped",
+        "reason": "threshold_not_met",
+        "budget_snapshot": {
+          "max_budget": 3.2,
+          "budget_used": 2.25,
+          "remaining_budget": 0.95
+        }
+      },
+      "timestamp": 1782714173.033705
+    },
+    {
+      "event_id": 31,
+      "step": 3,
+      "kind": "halt_gate",
+      "payload": {
+        "halt": false,
+        "reason": "continue",
+        "success_signal": "unknown",
+        "verifier_status": "skipped",
+        "budget_snapshot": {
+          "max_budget": 3.2,
+          "budget_used": 2.25,
+          "remaining_budget": 0.95
+        }
+      },
+      "timestamp": 1782714173.0337076
+    },
+    {
+      "event_id": 32,
+      "step": 4,
+      "kind": "memory_retrieval",
+      "payload": {
+        "enabled": true,
+        "items": [
+          {
+            "key": "research paper evidence sources citations cross check route",
+            "value_summary": "For research answers, retrieve primary sources, cluster by method, then ask critic to find gaps.",
+            "memory_type": "behavior_kv",
+            "usefulness_label": "useful",
+            "retrieval_score": 0.1868,
+            "route_signature": "memory -> search_agent -> critic_agent",
+            "evidence_refs": [
+              "seed:research_route"
+            ],
+            "negative_transfer_count": 0,
+            "memory_bonus": 0.0038
+          }
+        ]
+      },
+      "timestamp": 1782714173.033736
+    },
+    {
+      "event_id": 33,
+      "step": 4,
+      "kind": "memory_read",
+      "payload": {
+        "key": "research paper evidence sources citations cross check route",
+        "value_summary": "For research answers, retrieve primary sources, cluster by method, then ask critic to find gaps.",
+        "memory_type": "behavior_kv",
+        "usefulness_label": "useful",
+        "retrieval_score": 0.1868,
+        "route_signature": "memory -> search_agent -> critic_agent",
+        "evidence_refs": [
+          "seed:research_route"
+        ],
+        "negative_transfer_count": 0,
+        "memory_bonus": 0.0038
+      },
+      "timestamp": 1782714173.0337434
+    },
+    {
+      "event_id": 34,
+      "step": 4,
+      "kind": "gates",
+      "payload": {
+        "decisions": [
+          {
+            "gate": "ToolGate",
+            "status": "closed",
+            "reason": "no_tool_need"
+          },
+          {
+            "gate": "SearchGate",
+            "status": "open",
+            "reason": "external_evidence_need"
+          },
+          {
+            "gate": "MemoryGate",
+            "status": "open_read",
+            "reason": "memory_enabled"
+          },
+          {
+            "gate": "VerifierGate",
+            "status": "closed",
+            "reason": "not_required_or_disabled"
+          },
+          {
+            "gate": "HaltGate",
+            "status": "evaluate",
+            "reason": "checked_every_step"
+          },
+          {
+            "gate": "BudgetGate",
+            "status": "allow",
+            "reason": "remaining_budget_positive",
+            "remaining_budget": 0.95
+          },
+          {
+            "gate": "SafetyGate",
+            "status": "allow",
+            "reason": "read_only_toy_runtime"
+          }
+        ],
+        "budget_snapshot": {
+          "max_budget": 3.2,
+          "budget_used": 2.25,
+          "remaining_budget": 0.95
+        }
+      },
+      "timestamp": 1782714173.03375
+    },
+    {
+      "event_id": 35,
+      "step": 4,
+      "kind": "route",
+      "payload": {
+        "decision_id": "route-4",
+        "routing_policy": "lexical",
+        "top_k": 2,
+        "effective_top_k": 1,
+        "adaptive_top_k_enabled": true,
+        "strong_budget_gate": true,
+        "query": "Reconcile conflicting evidence from two research sources about agent routing benchmarks and cite both. critic_agent: Critiqued current trajectory; unresolved signals: no explicit failures. aggregator: Aggregated active module outputs into a concise state update. aggregator: Aggregated active module outputs into a concise state update. memory: Reused 3 retrieved trajectory memories.  Aggregated active module outputs into a concise state update. Aggregated active module outputs into a concise state update. Reused 3 retrieved trajectory memories.",
+        "selected_modules": [
+          "aggregator"
+        ],
+        "candidates": [
+          {
+            "module_id": "critic_agent",
+            "score": 0.4939,
+            "score_terms": {
+              "semantic_match": 0.4811,
+              "reliability": 0.7,
+              "historical_success": 0.58,
+              "cost": 0.45,
+              "latency": 0.4,
+              "risk": 0.2,
+              "repetition": 2,
+              "memory_bonus": 0.0038
+            },
+            "score_weights": {
+              "semantic_match": 1.0,
+              "reliability": 0.45,
+              "historical_success": 0.25,
+              "cost": -0.18,
+              "latency": -0.1,
+              "risk": -0.25,
+              "repetition": -0.14,
+              "memory_bonus": 1.0
+            },
+            "selected": false,
+            "schema_valid": true,
+            "budget_valid": false,
+            "risk_valid": true,
+            "reject_reason": "budget_high_cost_fraction"
+          },
+          {
+            "module_id": "search_agent",
+            "score": 0.4659,
+            "score_terms": {
+              "semantic_match": 0.4216,
+              "reliability": 0.72,
+              "historical_success": 0.6,
+              "cost": 0.7,
+              "latency": 0.8,
+              "risk": 0.35,
+              "repetition": 1,
+              "memory_bonus": 0.0038
+            },
+            "score_weights": {
+              "semantic_match": 1.0,
+              "reliability": 0.45,
+              "historical_success": 0.25,
+              "cost": -0.18,
+              "latency": -0.1,
+              "risk": -0.25,
+              "repetition": -0.14,
+              "memory_bonus": 1.0
+            },
+            "selected": false,
+            "schema_valid": true,
+            "budget_valid": false,
+            "risk_valid": true,
+            "reject_reason": "budget_high_cost_fraction"
+          },
+          {
+            "module_id": "aggregator",
+            "score": 0.4403,
+            "score_terms": {
+              "semantic_match": 0.3428,
+              "reliability": 0.7,
+              "historical_success": 0.61,
+              "cost": 0.25,
+              "latency": 0.2,
+              "risk": 0.1,
+              "repetition": 2,
+              "memory_bonus": 0.0
+            },
+            "score_weights": {
+              "semantic_match": 1.0,
+              "reliability": 0.45,
+              "historical_success": 0.25,
+              "cost": -0.18,
+              "latency": -0.1,
+              "risk": -0.25,
+              "repetition": -0.14,
+              "memory_bonus": 1.0
+            },
+            "selected": true,
+            "schema_valid": true,
+            "budget_valid": true,
+            "risk_valid": true,
+            "reject_reason": null
+          },
+          {
+            "module_id": "memory",
+            "score": 0.4102,
+            "score_terms": {
+              "semantic_match": 0.1689,
+              "reliability": 0.66,
+              "historical_success": 0.62,
+              "cost": 0.15,
+              "latency": 0.1,
+              "risk": 0.15,
+              "repetition": 1,
+              "memory_bonus": 0.0038
+            },
+            "score_weights": {
+              "semantic_match": 1.0,
+              "reliability": 0.45,
+              "historical_success": 0.25,
+              "cost": -0.18,
+              "latency": -0.1,
+              "risk": -0.25,
+              "repetition": -0.14,
+              "memory_bonus": 1.0
+            },
+            "selected": false,
+            "schema_valid": true,
+            "budget_valid": true,
+            "risk_valid": true,
+            "reject_reason": "below_top_k"
+          },
+          {
+            "module_id": "code_agent",
+            "score": 0.2035,
+            "score_terms": {
+              "semantic_match": 0.04,
+              "reliability": 0.75,
+              "historical_success": 0.64,
+              "cost": 0.8,
+              "latency": 0.9,
+              "risk": 0.4,
+              "repetition": 0,
+              "memory_bonus": 0.0
+            },
+            "score_weights": {
+              "semantic_match": 1.0,
+              "reliability": 0.45,
+              "historical_success": 0.25,
+              "cost": -0.18,
+              "latency": -0.1,
+              "risk": -0.25,
+              "repetition": -0.14,
+              "memory_bonus": 1.0
+            },
+            "selected": false,
+            "schema_valid": true,
+            "budget_valid": false,
+            "risk_valid": true,
+            "reject_reason": "budget_high_cost_fraction"
+          }
+        ],
+        "route_scores": {
+          "critic_agent": {
+            "semantic_match": 0.4811,
+            "reliability": 0.7,
+            "historical_success": 0.58,
+            "cost": 0.45,
+            "latency": 0.4,
+            "risk": 0.2,
+            "repetition": 2,
+            "memory_bonus": 0.0038,
+            "score_total": 0.4939,
+            "reject_reason": "budget_high_cost_fraction"
+          },
+          "search_agent": {
+            "semantic_match": 0.4216,
+            "reliability": 0.72,
+            "historical_success": 0.6,
+            "cost": 0.7,
+            "latency": 0.8,
+            "risk": 0.35,
+            "repetition": 1,
+            "memory_bonus": 0.0038,
+            "score_total": 0.4659,
+            "reject_reason": "budget_high_cost_fraction"
+          },
+          "aggregator": {
+            "semantic_match": 0.3428,
+            "reliability": 0.7,
+            "historical_success": 0.61,
+            "cost": 0.25,
+            "latency": 0.2,
+            "risk": 0.1,
+            "repetition": 2,
+            "memory_bonus": 0.0,
+            "score_total": 0.4403,
+            "reject_reason": null
+          },
+          "memory": {
+            "semantic_match": 0.1689,
+            "reliability": 0.66,
+            "historical_success": 0.62,
+            "cost": 0.15,
+            "latency": 0.1,
+            "risk": 0.15,
+            "repetition": 1,
+            "memory_bonus": 0.0038,
+            "score_total": 0.4102,
+            "reject_reason": "below_top_k"
+          },
+          "code_agent": {
+            "semantic_match": 0.04,
+            "reliability": 0.75,
+            "historical_success": 0.64,
+            "cost": 0.8,
+            "latency": 0.9,
+            "risk": 0.4,
+            "repetition": 0,
+            "memory_bonus": 0.0,
+            "score_total": 0.2035,
+            "reject_reason": "budget_high_cost_fraction"
+          }
+        },
+        "budget_snapshot": {
+          "max_budget": 3.2,
+          "budget_used": 2.25,
+          "remaining_budget": 0.95
+        },
+        "oracle": {
+          "oracle_available": true,
+          "proxy_available": true,
+          "oracle_best_module_id": "search_agent",
+          "selected_score": 0.4403,
+          "oracle_best_score": 0.4659,
+          "oracle_regret": null,
+          "proxy_regret": 0.7256,
+          "missing_required_modules": [
+            "critic_agent",
+            "search_agent"
+          ],
+          "selected_discouraged_modules": [],
+          "rationale": "Conflict reconciliation needs search and critique."
+        }
+      },
+      "timestamp": 1782714173.0339737
+    },
+    {
+      "event_id": 36,
+      "step": 4,
+      "kind": "budget_gate",
+      "payload": {
+        "module_id": "aggregator",
+        "decision": "allow",
+        "reason": "within_budget",
+        "module_cost": 0.25,
+        "budget_snapshot": {
+          "max_budget": 3.2,
+          "budget_used": 2.25,
+          "remaining_budget": 0.95
+        }
+      },
+      "timestamp": 1782714173.0339758
+    },
+    {
+      "event_id": 37,
+      "step": 4,
+      "kind": "module_execution",
+      "payload": {
+        "outputs": [
+          {
+            "module_id": "aggregator",
+            "content": "Aggregated active module outputs into a concise state update.",
+            "confidence": 0.7,
+            "evidence": [],
+            "failure_signal": null
+          }
+        ]
+      },
+      "timestamp": 1782714173.0339828
+    },
+    {
+      "event_id": 38,
+      "step": 4,
+      "kind": "state_update",
+      "payload": {
+        "action_type": "aggregate",
+        "state": {
+          "goal": "Reconcile conflicting evidence from two research sources about agent routing benchmarks and cite both.",
+          "step": 4,
+          "confidence": 0.6375,
+          "risk": 0.02,
+          "budget_used": 2.5,
+          "max_budget": 3.2,
+          "selected_modules": [
+            "critic_agent",
+            "search_agent",
+            "critic_agent",
+            "aggregator",
+            "aggregator",
+            "memory",
+            "aggregator"
+          ],
+          "failure_signals": [],
+          "memory_reads": [
+            "research paper evidence sources citations cross check route",
+            "research paper evidence sources citations cross check route",
+            "research paper evidence sources citations cross check route",
+            "research paper evidence sources citations cross check route"
+          ],
+          "memory_writes": [
+            "Reconcile conflicting evidence from two research sources about agent routing benchmarks and cite both. route critic_agent -> search_agent -> critic_agent -> aggregator -> aggregator -> memory -> aggregator"
+          ],
+          "verifier_status": "skipped",
+          "final_answer": null
+        }
+      },
+      "timestamp": 1782714173.033986
+    },
+    {
+      "event_id": 39,
+      "step": 4,
+      "kind": "verifier_result",
+      "payload": {
+        "enabled": true,
+        "required": false,
+        "status": "skipped",
+        "reason": "threshold_not_met",
+        "budget_snapshot": {
+          "max_budget": 3.2,
+          "budget_used": 2.5,
+          "remaining_budget": 0.7
+        }
+      },
+      "timestamp": 1782714173.0339878
+    },
+    {
+      "event_id": 40,
+      "step": 4,
+      "kind": "halt_gate",
+      "payload": {
+        "halt": false,
+        "reason": "continue",
+        "success_signal": "unknown",
+        "verifier_status": "skipped",
+        "budget_snapshot": {
+          "max_budget": 3.2,
+          "budget_used": 2.5,
+          "remaining_budget": 0.7
+        }
+      },
+      "timestamp": 1782714173.03399
+    },
+    {
+      "event_id": 41,
+      "step": 4,
+      "kind": "reflection",
+      "payload": {
+        "key": "Reconcile conflicting evidence from two research sources about agent routing benchmarks and cite both. route critic_agent -> search_agent -> critic_agent -> aggregator -> aggregator -> memory -> aggregator",
+        "value": "Task 'Reconcile conflicting evidence from two research sources about agent routing benchmarks and cite both.' reached confidence 0.6375; route critic_agent -> search_agent -> critic_agent -> aggregator -> aggregator -> memory -> aggregator was useful under budget 2.50.",
+        "usefulness": 0.75,
+        "failures": 0,
+        "memory_type": "behavior_kv",
+        "usefulness_label": "useful",
+        "route_signature": "critic_agent -> search_agent -> critic_agent -> aggregator -> aggregator -> memory -> aggregator",
+        "evidence_refs": [
+          "event:37",
+          "event:38",
+          "event:39",
+          "event:40"
+        ],
+        "negative_transfer_count": 0,
+        "value_summary": "Task 'Reconcile conflicting evidence from two research sources about agent routing benchmarks and cite both.' reached confidence 0.6375; route critic_agent -> search_agent -> critic_agent -> aggregator -> aggregator -> memory -> aggregator ",
+        "write_reason": "success"
+      },
+      "timestamp": 1782714173.0340075
+    },
+    {
+      "event_id": 42,
+      "step": 4,
+      "kind": "memory_write",
+      "payload": {
+        "key": "Reconcile conflicting evidence from two research sources about agent routing benchmarks and cite both. route critic_agent -> search_agent -> critic_agent -> aggregator -> aggregator -> memory -> aggregator",
+        "value": "Task 'Reconcile conflicting evidence from two research sources about agent routing benchmarks and cite both.' reached confidence 0.6375; route critic_agent -> search_agent -> critic_agent -> aggregator -> aggregator -> memory -> aggregator was useful under budget 2.50.",
+        "usefulness": 0.75,
+        "failures": 0,
+        "memory_type": "behavior_kv",
+        "usefulness_label": "useful",
+        "route_signature": "critic_agent -> search_agent -> critic_agent -> aggregator -> aggregator -> memory -> aggregator",
+        "evidence_refs": [
+          "event:37",
+          "event:38",
+          "event:39",
+          "event:40"
+        ],
+        "negative_transfer_count": 0,
+        "value_summary": "Task 'Reconcile conflicting evidence from two research sources about agent routing benchmarks and cite both.' reached confidence 0.6375; route critic_agent -> search_agent -> critic_agent -> aggregator -> aggregator -> memory -> aggregator ",
+        "write_reason": "success"
+      },
+      "timestamp": 1782714173.0340083
+    },
+    {
+      "event_id": 43,
+      "step": 4,
+      "kind": "finish",
+      "payload": {
+        "goal": "Reconcile conflicting evidence from two research sources about agent routing benchmarks and cite both.",
+        "step": 4,
+        "confidence": 0.6375,
+        "risk": 0.02,
+        "budget_used": 2.5,
+        "max_budget": 3.2,
+        "selected_modules": [
+          "critic_agent",
+          "search_agent",
+          "critic_agent",
+          "aggregator",
+          "aggregator",
+          "memory",
+          "aggregator"
+        ],
+        "failure_signals": [],
+        "memory_reads": [
+          "research paper evidence sources citations cross check route",
+          "research paper evidence sources citations cross check route",
+          "research paper evidence sources citations cross check route",
+          "research paper evidence sources citations cross check route"
+        ],
+        "memory_writes": [
+          "Reconcile conflicting evidence from two research sources about agent routing benchmarks and cite both. route critic_agent -> search_agent -> critic_agent -> aggregator -> aggregator -> memory -> aggregator"
+        ],
+        "verifier_status": "skipped",
+        "final_answer": "Finalized because max_steps_reached. Selected modules: critic_agent, search_agent, critic_agent, aggregator, aggregator, memory, aggregator. Latest evidence: aggregator: Aggregated active module outputs into a concise state update. | aggregator: Aggregated active module outputs into a concise state update. | memory: Reused 3 retrieved trajectory memories. | aggregator: Aggregated active module outputs into a concise state update.."
+      },
+      "timestamp": 1782714173.0340095
+    }
+  ],
+  "final_answer": "Finalized because max_steps_reached. Selected modules: critic_agent, search_agent, critic_agent, aggregator, aggregator, memory, aggregator. Latest evidence: aggregator: Aggregated active module outputs into a concise state update. | aggregator: Aggregated active module outputs into a concise state update. | memory: Reused 3 retrieved trajectory memories. | aggregator: Aggregated active module outputs into a concise state update..",
+  "final_success_label": "pass",
+  "failure_reason": null,
+  "known_deviations": [
+    "faithful_toy_runtime_not_real_llm",
+    "toy_route_oracle_success_label",
+    "toy_scalar_activation_cost_not_full_cost_delta",
+    "oracle_route_regret_unavailable"
+  ],
+  "metrics_summary": {}
+}

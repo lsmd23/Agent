@@ -1,0 +1,42 @@
+{
+  "scope": "P2 Agent-Attention tuning comparison on phase1_mixed tasks.",
+  "variants": {
+    "default": {
+      "baseline_id": "agent_attention_agent",
+      "run_count": 12,
+      "success_rate": 0.25,
+      "mean_cost_normalized_success": 0.065878,
+      "mean_activation_cost": 2.925,
+      "mean_module_calls": 7.416667,
+      "mean_repeated_action_ratio": 0.457837,
+      "budget_exhaustion_rate": 0.833333,
+      "mean_proxy_route_regret": 0.225347
+    },
+    "tuned": {
+      "baseline_id": "agent_attention_agent_tuned",
+      "run_count": 12,
+      "success_rate": 0.666667,
+      "mean_cost_normalized_success": 0.207098,
+      "mean_activation_cost": 2.025,
+      "mean_module_calls": 7.416667,
+      "mean_repeated_action_ratio": 0.542494,
+      "budget_exhaustion_rate": 0.0,
+      "mean_proxy_route_regret": 0.344181
+    },
+    "delta_tuned_minus_default": {
+      "success_rate": 0.416667,
+      "mean_cost_normalized_success": 0.14122,
+      "mean_activation_cost": -0.9,
+      "mean_module_calls": 0.0,
+      "mean_repeated_action_ratio": 0.084657,
+      "budget_exhaustion_rate": -0.833333,
+      "mean_proxy_route_regret": 0.118834
+    }
+  },
+  "tuning_changes": [
+    "adaptive_top_k_enabled: k=1 default, k=2 on failure/low confidence, k=3 on high risk",
+    "strong_budget_gate: block module if cost > 30% remaining budget unless high risk/verifier",
+    "cost_quality_frontier: prefer cheaper module within epsilon=0.05 score"
+  ],
+  "interpretation_hint": "Positive delta on success_rate and cost_normalized_success with lower activation_cost is desired."
+}

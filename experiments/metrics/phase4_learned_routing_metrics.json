@@ -1,0 +1,3604 @@
+{
+  "runs": [
+    {
+      "trajectory_path": "/home/myuser/Agent/experiments/trajectories/phase4_learned_routing/phase4_router__aa_lexical_router__phase0_seed_code_fix_001.json",
+      "task_id": "phase0_seed_code_fix_001",
+      "benchmark_id": "phase1_mixed",
+      "baseline_id": "agent_attention_agent_tuned",
+      "ablation_id": "aa_lexical_router",
+      "final": {
+        "success_label": "pass",
+        "task_success": true,
+        "failure_reason": null,
+        "final_answer_present": true
+      },
+      "process": {
+        "activation_cost": 2.65,
+        "cost_normalized_success": 0.273973,
+        "module_calls": 8,
+        "verifier_calls": 1,
+        "budget_rejections": 0,
+        "repeated_action_ratio": 0.375,
+        "invalid_tool_call_ratio": 0.0,
+        "loop_stuck": false,
+        "budget_exhaustion": false,
+        "step_exhaustion": false,
+        "premature_halt": false
+      },
+      "routing": {
+        "route_events": 4,
+        "route_candidates": 19,
+        "selected_candidates": 7,
+        "route_reject_rate": 0.631579,
+        "route_entropy": 2.155639,
+        "selected_route_score_mean": 0.557229,
+        "selected_route_cost_mean": 0.328571,
+        "oracle_route_regret_mean": null,
+        "proxy_route_regret_mean": 0.273325,
+        "activated_modules": [
+          "code_agent",
+          "memory",
+          "aggregator",
+          "memory",
+          "critic_agent",
+          "aggregator",
+          "aggregator",
+          "verifier"
+        ]
+      },
+      "memory": {
+        "memory_reads": 4,
+        "useful_memory_reads": 4,
+        "harmful_memory_reads": 0,
+        "neutral_memory_reads": 0,
+        "unknown_memory_reads": 0,
+        "useful_memory_reuse_rate": 1.0,
+        "negative_transfer_cases": 0
+      },
+      "verifier": {
+        "verifier_statuses": [
+          "skipped",
+          "skipped",
+          "skipped",
+          "pass"
+        ],
+        "verifier_failures": 0,
+        "verifier_catches": 0,
+        "verifier_catch_rate": null
+      },
+      "known_deviations": [
+        "faithful_toy_runtime_not_real_llm",
+        "oracle_route_regret_unavailable",
+        "toy_route_oracle_success_label",
+        "toy_scalar_activation_cost_not_full_cost_delta"
+      ],
+      "oracle_route_regret": 0.0,
+      "router_id": "aa_lexical_router"
+    },
+    {
+      "trajectory_path": "/home/myuser/Agent/experiments/trajectories/phase4_learned_routing/phase4_router__aa_rule_router__phase0_seed_code_fix_001.json",
+      "task_id": "phase0_seed_code_fix_001",
+      "benchmark_id": "phase1_mixed",
+      "baseline_id": "agent_attention_agent_tuned",
+      "ablation_id": "aa_rule_router",
+      "final": {
+        "success_label": "fail",
+        "task_success": false,
+        "failure_reason": "max_steps_reached",
+        "final_answer_present": true
+      },
+      "process": {
+        "activation_cost": 1.8,
+        "cost_normalized_success": 0.0,
+        "module_calls": 6,
+        "verifier_calls": 0,
+        "budget_rejections": 0,
+        "repeated_action_ratio": 0.5,
+        "invalid_tool_call_ratio": 0.0,
+        "loop_stuck": false,
+        "budget_exhaustion": false,
+        "step_exhaustion": true,
+        "premature_halt": false
+      },
+      "routing": {
+        "route_events": 4,
+        "route_candidates": 19,
+        "selected_candidates": 6,
+        "route_reject_rate": 0.684211,
+        "route_entropy": 1.459148,
+        "selected_route_score_mean": 1.505733,
+        "selected_route_cost_mean": 0.3,
+        "oracle_route_regret_mean": null,
+        "proxy_route_regret_mean": 0.3802,
+        "activated_modules": [
+          "memory",
+          "critic_agent",
+          "aggregator",
+          "critic_agent",
+          "aggregator",
+          "aggregator"
+        ]
+      },
+      "memory": {
+        "memory_reads": 4,
+        "useful_memory_reads": 4,
+        "harmful_memory_reads": 0,
+        "neutral_memory_reads": 0,
+        "unknown_memory_reads": 0,
+        "useful_memory_reuse_rate": 1.0,
+        "negative_transfer_cases": 0
+      },
+      "verifier": {
+        "verifier_statuses": [
+          "skipped",
+          "skipped",
+          "skipped",
+          "skipped"
+        ],
+        "verifier_failures": 0,
+        "verifier_catches": 0,
+        "verifier_catch_rate": null
+      },
+      "known_deviations": [
+        "faithful_toy_runtime_not_real_llm",
+        "oracle_route_regret_unavailable",
+        "toy_route_oracle_success_label",
+        "toy_scalar_activation_cost_not_full_cost_delta"
+      ],
+      "oracle_route_regret": 1.15,
+      "router_id": "aa_rule_router"
+    },
+    {
+      "trajectory_path": "/home/myuser/Agent/experiments/trajectories/phase4_learned_routing/phase4_router__aa_learned_router_replay__phase0_seed_code_fix_001.json",
+      "task_id": "phase0_seed_code_fix_001",
+      "benchmark_id": "phase1_mixed",
+      "baseline_id": "agent_attention_agent_tuned",
+      "ablation_id": "aa_learned_router_replay",
+      "final": {
+        "success_label": "pass",
+        "task_success": true,
+        "failure_reason": null,
+        "final_answer_present": true
+      },
+      "process": {
+        "activation_cost": 2.5,
+        "cost_normalized_success": 0.285714,
+        "module_calls": 7,
+        "verifier_calls": 0,
+        "budget_rejections": 0,
+        "repeated_action_ratio": 0.428571,
+        "invalid_tool_call_ratio": 0.0,
+        "loop_stuck": false,
+        "budget_exhaustion": false,
+        "step_exhaustion": true,
+        "premature_halt": false
+      },
+      "routing": {
+        "route_events": 4,
+        "route_candidates": 19,
+        "selected_candidates": 7,
+        "route_reject_rate": 0.631579,
+        "route_entropy": 1.950212,
+        "selected_route_score_mean": 1.002471,
+        "selected_route_cost_mean": 0.357143,
+        "oracle_route_regret_mean": null,
+        "proxy_route_regret_mean": 0.57025,
+        "activated_modules": [
+          "code_agent",
+          "critic_agent",
+          "critic_agent",
+          "aggregator",
+          "aggregator",
+          "memory",
+          "memory"
+        ]
+      },
+      "memory": {
+        "memory_reads": 4,
+        "useful_memory_reads": 4,
+        "harmful_memory_reads": 0,
+        "neutral_memory_reads": 0,
+        "unknown_memory_reads": 0,
+        "useful_memory_reuse_rate": 1.0,
+        "negative_transfer_cases": 0
+      },
+      "verifier": {
+        "verifier_statuses": [
+          "skipped",
+          "skipped",
+          "skipped",
+          "skipped"
+        ],
+        "verifier_failures": 0,
+        "verifier_catches": 0,
+        "verifier_catch_rate": null
+      },
+      "known_deviations": [
+        "faithful_toy_runtime_not_real_llm",
+        "oracle_route_regret_unavailable",
+        "toy_route_oracle_success_label",
+        "toy_scalar_activation_cost_not_full_cost_delta"
+      ],
+      "oracle_route_regret": 0.0,
+      "router_id": "aa_learned_router_replay"
+    },
+    {
+      "trajectory_path": "/home/myuser/Agent/experiments/trajectories/phase4_learned_routing/phase4_router__aa_oracle_router__phase0_seed_code_fix_001.json",
+      "task_id": "phase0_seed_code_fix_001",
+      "benchmark_id": "phase1_mixed",
+      "baseline_id": "agent_attention_agent_tuned",
+      "ablation_id": "aa_oracle_router",
+      "final": {
+        "success_label": "pass",
+        "task_success": true,
+        "failure_reason": null,
+        "final_answer_present": true
+      },
+      "process": {
+        "activation_cost": 2.2,
+        "cost_normalized_success": 0.3125,
+        "module_calls": 7,
+        "verifier_calls": 0,
+        "budget_rejections": 0,
+        "repeated_action_ratio": 0.428571,
+        "invalid_tool_call_ratio": 0.0,
+        "loop_stuck": false,
+        "budget_exhaustion": false,
+        "step_exhaustion": true,
+        "premature_halt": false
+      },
+      "routing": {
+        "route_events": 4,
+        "route_candidates": 19,
+        "selected_candidates": 7,
+        "route_reject_rate": 0.631579,
+        "route_entropy": 1.842371,
+        "selected_route_score_mean": 0.578657,
+        "selected_route_cost_mean": 0.314286,
+        "oracle_route_regret_mean": null,
+        "proxy_route_regret_mean": 0.7086,
+        "activated_modules": [
+          "code_agent",
+          "memory",
+          "aggregator",
+          "critic_agent",
+          "memory",
+          "aggregator",
+          "memory"
+        ]
+      },
+      "memory": {
+        "memory_reads": 4,
+        "useful_memory_reads": 4,
+        "harmful_memory_reads": 0,
+        "neutral_memory_reads": 0,
+        "unknown_memory_reads": 0,
+        "useful_memory_reuse_rate": 1.0,
+        "negative_transfer_cases": 0
+      },
+      "verifier": {
+        "verifier_statuses": [
+          "skipped",
+          "skipped",
+          "skipped",
+          "skipped"
+        ],
+        "verifier_failures": 0,
+        "verifier_catches": 0,
+        "verifier_catch_rate": null
+      },
+      "known_deviations": [
+        "faithful_toy_runtime_not_real_llm",
+        "oracle_route_regret_unavailable",
+        "toy_route_oracle_success_label",
+        "toy_scalar_activation_cost_not_full_cost_delta"
+      ],
+      "oracle_route_regret": 0.0,
+      "router_id": "aa_oracle_router"
+    },
+    {
+      "trajectory_path": "/home/myuser/Agent/experiments/trajectories/phase4_learned_routing/phase4_router__aa_lexical_router__phase0_seed_search_sources_001.json",
+      "task_id": "phase0_seed_search_sources_001",
+      "benchmark_id": "phase1_mixed",
+      "baseline_id": "agent_attention_agent_tuned",
+      "ablation_id": "aa_lexical_router",
+      "final": {
+        "success_label": "pass",
+        "task_success": true,
+        "failure_reason": null,
+        "final_answer_present": true
+      },
+      "process": {
+        "activation_cost": 1.9,
+        "cost_normalized_success": 0.344828,
+        "module_calls": 7,
+        "verifier_calls": 0,
+        "budget_rejections": 0,
+        "repeated_action_ratio": 0.571429,
+        "invalid_tool_call_ratio": 0.0,
+        "loop_stuck": false,
+        "budget_exhaustion": false,
+        "step_exhaustion": true,
+        "premature_halt": false
+      },
+      "routing": {
+        "route_events": 4,
+        "route_candidates": 19,
+        "selected_candidates": 7,
+        "route_reject_rate": 0.631579,
+        "route_entropy": 1.448816,
+        "selected_route_score_mean": 0.508814,
+        "selected_route_cost_mean": 0.271429,
+        "oracle_route_regret_mean": null,
+        "proxy_route_regret_mean": 0.2625,
+        "activated_modules": [
+          "search_agent",
+          "memory",
+          "aggregator",
+          "memory",
+          "aggregator",
+          "memory",
+          "aggregator"
+        ]
+      },
+      "memory": {
+        "memory_reads": 4,
+        "useful_memory_reads": 4,
+        "harmful_memory_reads": 0,
+        "neutral_memory_reads": 0,
+        "unknown_memory_reads": 0,
+        "useful_memory_reuse_rate": 1.0,
+        "negative_transfer_cases": 0
+      },
+      "verifier": {
+        "verifier_statuses": [
+          "skipped",
+          "skipped",
+          "skipped",
+          "skipped"
+        ],
+        "verifier_failures": 0,
+        "verifier_catches": 0,
+        "verifier_catch_rate": null
+      },
+      "known_deviations": [
+        "faithful_toy_runtime_not_real_llm",
+        "oracle_route_regret_unavailable",
+        "toy_route_oracle_success_label",
+        "toy_scalar_activation_cost_not_full_cost_delta"
+      ],
+      "oracle_route_regret": 0.0,
+      "router_id": "aa_lexical_router"
+    },
+    {
+      "trajectory_path": "/home/myuser/Agent/experiments/trajectories/phase4_learned_routing/phase4_router__aa_rule_router__phase0_seed_search_sources_001.json",
+      "task_id": "phase0_seed_search_sources_001",
+      "benchmark_id": "phase1_mixed",
+      "baseline_id": "agent_attention_agent_tuned",
+      "ablation_id": "aa_rule_router",
+      "final": {
+        "success_label": "pass",
+        "task_success": true,
+        "failure_reason": null,
+        "final_answer_present": true
+      },
+      "process": {
+        "activation_cost": 1.9,
+        "cost_normalized_success": 0.344828,
+        "module_calls": 7,
+        "verifier_calls": 0,
+        "budget_rejections": 0,
+        "repeated_action_ratio": 0.571429,
+        "invalid_tool_call_ratio": 0.0,
+        "loop_stuck": false,
+        "budget_exhaustion": false,
+        "step_exhaustion": true,
+        "premature_halt": false
+      },
+      "routing": {
+        "route_events": 4,
+        "route_candidates": 19,
+        "selected_candidates": 7,
+        "route_reject_rate": 0.631579,
+        "route_entropy": 1.448816,
+        "selected_route_score_mean": 1.420257,
+        "selected_route_cost_mean": 0.271429,
+        "oracle_route_regret_mean": null,
+        "proxy_route_regret_mean": 0.2625,
+        "activated_modules": [
+          "search_agent",
+          "memory",
+          "aggregator",
+          "memory",
+          "aggregator",
+          "memory",
+          "aggregator"
+        ]
+      },
+      "memory": {
+        "memory_reads": 4,
+        "useful_memory_reads": 4,
+        "harmful_memory_reads": 0,
+        "neutral_memory_reads": 0,
+        "unknown_memory_reads": 0,
+        "useful_memory_reuse_rate": 1.0,
+        "negative_transfer_cases": 0
+      },
+      "verifier": {
+        "verifier_statuses": [
+          "skipped",
+          "skipped",
+          "skipped",
+          "skipped"
+        ],
+        "verifier_failures": 0,
+        "verifier_catches": 0,
+        "verifier_catch_rate": null
+      },
+      "known_deviations": [
+        "faithful_toy_runtime_not_real_llm",
+        "oracle_route_regret_unavailable",
+        "toy_route_oracle_success_label",
+        "toy_scalar_activation_cost_not_full_cost_delta"
+      ],
+      "oracle_route_regret": 0.0,
+      "router_id": "aa_rule_router"
+    },
+    {
+      "trajectory_path": "/home/myuser/Agent/experiments/trajectories/phase4_learned_routing/phase4_router__aa_learned_router_replay__phase0_seed_search_sources_001.json",
+      "task_id": "phase0_seed_search_sources_001",
+      "benchmark_id": "phase1_mixed",
+      "baseline_id": "agent_attention_agent_tuned",
+      "ablation_id": "aa_learned_router_replay",
+      "final": {
+        "success_label": "pass",
+        "task_success": true,
+        "failure_reason": null,
+        "final_answer_present": true
+      },
+      "process": {
+        "activation_cost": 1.9,
+        "cost_normalized_success": 0.344828,
+        "module_calls": 7,
+        "verifier_calls": 0,
+        "budget_rejections": 0,
+        "repeated_action_ratio": 0.571429,
+        "invalid_tool_call_ratio": 0.0,
+        "loop_stuck": false,
+        "budget_exhaustion": false,
+        "step_exhaustion": true,
+        "premature_halt": false
+      },
+      "routing": {
+        "route_events": 4,
+        "route_candidates": 19,
+        "selected_candidates": 7,
+        "route_reject_rate": 0.631579,
+        "route_entropy": 1.448816,
+        "selected_route_score_mean": 0.919743,
+        "selected_route_cost_mean": 0.271429,
+        "oracle_route_regret_mean": null,
+        "proxy_route_regret_mean": 0.29115,
+        "activated_modules": [
+          "search_agent",
+          "memory",
+          "aggregator",
+          "memory",
+          "aggregator",
+          "memory",
+          "aggregator"
+        ]
+      },
+      "memory": {
+        "memory_reads": 4,
+        "useful_memory_reads": 4,
+        "harmful_memory_reads": 0,
+        "neutral_memory_reads": 0,
+        "unknown_memory_reads": 0,
+        "useful_memory_reuse_rate": 1.0,
+        "negative_transfer_cases": 0
+      },
+      "verifier": {
+        "verifier_statuses": [
+          "skipped",
+          "skipped",
+          "skipped",
+          "skipped"
+        ],
+        "verifier_failures": 0,
+        "verifier_catches": 0,
+        "verifier_catch_rate": null
+      },
+      "known_deviations": [
+        "faithful_toy_runtime_not_real_llm",
+        "oracle_route_regret_unavailable",
+        "toy_route_oracle_success_label",
+        "toy_scalar_activation_cost_not_full_cost_delta"
+      ],
+      "oracle_route_regret": 0.0,
+      "router_id": "aa_learned_router_replay"
+    },
+    {
+      "trajectory_path": "/home/myuser/Agent/experiments/trajectories/phase4_learned_routing/phase4_router__aa_oracle_router__phase0_seed_search_sources_001.json",
+      "task_id": "phase0_seed_search_sources_001",
+      "benchmark_id": "phase1_mixed",
+      "baseline_id": "agent_attention_agent_tuned",
+      "ablation_id": "aa_oracle_router",
+      "final": {
+        "success_label": "pass",
+        "task_success": true,
+        "failure_reason": null,
+        "final_answer_present": true
+      },
+      "process": {
+        "activation_cost": 2.35,
+        "cost_normalized_success": 0.298507,
+        "module_calls": 7,
+        "verifier_calls": 0,
+        "budget_rejections": 0,
+        "repeated_action_ratio": 0.571429,
+        "invalid_tool_call_ratio": 0.0,
+        "loop_stuck": false,
+        "budget_exhaustion": false,
+        "step_exhaustion": true,
+        "premature_halt": false
+      },
+      "routing": {
+        "route_events": 4,
+        "route_candidates": 19,
+        "selected_candidates": 7,
+        "route_reject_rate": 0.631579,
+        "route_entropy": 1.556657,
+        "selected_route_score_mean": 0.655543,
+        "selected_route_cost_mean": 0.335714,
+        "oracle_route_regret_mean": null,
+        "proxy_route_regret_mean": 0.4415,
+        "activated_modules": [
+          "search_agent",
+          "memory",
+          "search_agent",
+          "aggregator",
+          "memory",
+          "aggregator",
+          "memory"
+        ]
+      },
+      "memory": {
+        "memory_reads": 4,
+        "useful_memory_reads": 4,
+        "harmful_memory_reads": 0,
+        "neutral_memory_reads": 0,
+        "unknown_memory_reads": 0,
+        "useful_memory_reuse_rate": 1.0,
+        "negative_transfer_cases": 0
+      },
+      "verifier": {
+        "verifier_statuses": [
+          "skipped",
+          "skipped",
+          "skipped",
+          "skipped"
+        ],
+        "verifier_failures": 0,
+        "verifier_catches": 0,
+        "verifier_catch_rate": null
+      },
+      "known_deviations": [
+        "faithful_toy_runtime_not_real_llm",
+        "oracle_route_regret_unavailable",
+        "toy_route_oracle_success_label",
+        "toy_scalar_activation_cost_not_full_cost_delta"
+      ],
+      "oracle_route_regret": 0.0,
+      "router_id": "aa_oracle_router"
+    },
+    {
+      "trajectory_path": "/home/myuser/Agent/experiments/trajectories/phase4_learned_routing/phase4_router__aa_lexical_router__phase0_seed_research_metrics_001.json",
+      "task_id": "phase0_seed_research_metrics_001",
+      "benchmark_id": "phase1_mixed",
+      "baseline_id": "agent_attention_agent_tuned",
+      "ablation_id": "aa_lexical_router",
+      "final": {
+        "success_label": "pass",
+        "task_success": true,
+        "failure_reason": null,
+        "final_answer_present": true
+      },
+      "process": {
+        "activation_cost": 2.45,
+        "cost_normalized_success": 0.289855,
+        "module_calls": 9,
+        "verifier_calls": 1,
+        "budget_rejections": 0,
+        "repeated_action_ratio": 0.555556,
+        "invalid_tool_call_ratio": 0.0,
+        "loop_stuck": false,
+        "budget_exhaustion": false,
+        "step_exhaustion": false,
+        "premature_halt": false
+      },
+      "routing": {
+        "route_events": 5,
+        "route_candidates": 24,
+        "selected_candidates": 8,
+        "route_reject_rate": 0.666667,
+        "route_entropy": 1.891061,
+        "selected_route_score_mean": 0.500337,
+        "selected_route_cost_mean": 0.2625,
+        "oracle_route_regret_mean": null,
+        "proxy_route_regret_mean": 0.49,
+        "activated_modules": [
+          "critic_agent",
+          "memory",
+          "aggregator",
+          "memory",
+          "aggregator",
+          "memory",
+          "critic_agent",
+          "aggregator",
+          "verifier"
+        ]
+      },
+      "memory": {
+        "memory_reads": 0,
+        "useful_memory_reads": 0,
+        "harmful_memory_reads": 0,
+        "neutral_memory_reads": 0,
+        "unknown_memory_reads": 0,
+        "useful_memory_reuse_rate": null,
+        "negative_transfer_cases": 0
+      },
+      "verifier": {
+        "verifier_statuses": [
+          "skipped",
+          "skipped",
+          "skipped",
+          "skipped",
+          "pass"
+        ],
+        "verifier_failures": 0,
+        "verifier_catches": 0,
+        "verifier_catch_rate": null
+      },
+      "known_deviations": [
+        "faithful_toy_runtime_not_real_llm",
+        "oracle_route_regret_unavailable",
+        "toy_route_oracle_success_label",
+        "toy_scalar_activation_cost_not_full_cost_delta"
+      ],
+      "oracle_route_regret": 0.0,
+      "router_id": "aa_lexical_router"
+    },
+    {
+      "trajectory_path": "/home/myuser/Agent/experiments/trajectories/phase4_learned_routing/phase4_router__aa_rule_router__phase0_seed_research_metrics_001.json",
+      "task_id": "phase0_seed_research_metrics_001",
+      "benchmark_id": "phase1_mixed",
+      "baseline_id": "agent_attention_agent_tuned",
+      "ablation_id": "aa_rule_router",
+      "final": {
+        "success_label": "pass",
+        "task_success": true,
+        "failure_reason": null,
+        "final_answer_present": true
+      },
+      "process": {
+        "activation_cost": 2.75,
+        "cost_normalized_success": 0.266667,
+        "module_calls": 9,
+        "verifier_calls": 1,
+        "budget_rejections": 0,
+        "repeated_action_ratio": 0.555556,
+        "invalid_tool_call_ratio": 0.0,
+        "loop_stuck": false,
+        "budget_exhaustion": false,
+        "step_exhaustion": false,
+        "premature_halt": false
+      },
+      "routing": {
+        "route_events": 5,
+        "route_candidates": 24,
+        "selected_candidates": 8,
+        "route_reject_rate": 0.666667,
+        "route_entropy": 1.891061,
+        "selected_route_score_mean": 1.211675,
+        "selected_route_cost_mean": 0.3,
+        "oracle_route_regret_mean": null,
+        "proxy_route_regret_mean": 0.49,
+        "activated_modules": [
+          "critic_agent",
+          "memory",
+          "aggregator",
+          "memory",
+          "critic_agent",
+          "aggregator",
+          "critic_agent",
+          "aggregator",
+          "verifier"
+        ]
+      },
+      "memory": {
+        "memory_reads": 0,
+        "useful_memory_reads": 0,
+        "harmful_memory_reads": 0,
+        "neutral_memory_reads": 0,
+        "unknown_memory_reads": 0,
+        "useful_memory_reuse_rate": null,
+        "negative_transfer_cases": 0
+      },
+      "verifier": {
+        "verifier_statuses": [
+          "skipped",
+          "skipped",
+          "skipped",
+          "skipped",
+          "pass"
+        ],
+        "verifier_failures": 0,
+        "verifier_catches": 0,
+        "verifier_catch_rate": null
+      },
+      "known_deviations": [
+        "faithful_toy_runtime_not_real_llm",
+        "oracle_route_regret_unavailable",
+        "toy_route_oracle_success_label",
+        "toy_scalar_activation_cost_not_full_cost_delta"
+      ],
+      "oracle_route_regret": 0.0,
+      "router_id": "aa_rule_router"
+    },
+    {
+      "trajectory_path": "/home/myuser/Agent/experiments/trajectories/phase4_learned_routing/phase4_router__aa_learned_router_replay__phase0_seed_research_metrics_001.json",
+      "task_id": "phase0_seed_research_metrics_001",
+      "benchmark_id": "phase1_mixed",
+      "baseline_id": "agent_attention_agent_tuned",
+      "ablation_id": "aa_learned_router_replay",
+      "final": {
+        "success_label": "pass",
+        "task_success": true,
+        "failure_reason": null,
+        "final_answer_present": true
+      },
+      "process": {
+        "activation_cost": 2.75,
+        "cost_normalized_success": 0.266667,
+        "module_calls": 9,
+        "verifier_calls": 1,
+        "budget_rejections": 0,
+        "repeated_action_ratio": 0.555556,
+        "invalid_tool_call_ratio": 0.0,
+        "loop_stuck": false,
+        "budget_exhaustion": false,
+        "step_exhaustion": false,
+        "premature_halt": false
+      },
+      "routing": {
+        "route_events": 5,
+        "route_candidates": 24,
+        "selected_candidates": 8,
+        "route_reject_rate": 0.666667,
+        "route_entropy": 1.891061,
+        "selected_route_score_mean": 1.213075,
+        "selected_route_cost_mean": 0.3,
+        "oracle_route_regret_mean": null,
+        "proxy_route_regret_mean": 0.49,
+        "activated_modules": [
+          "critic_agent",
+          "memory",
+          "aggregator",
+          "memory",
+          "critic_agent",
+          "aggregator",
+          "critic_agent",
+          "aggregator",
+          "verifier"
+        ]
+      },
+      "memory": {
+        "memory_reads": 0,
+        "useful_memory_reads": 0,
+        "harmful_memory_reads": 0,
+        "neutral_memory_reads": 0,
+        "unknown_memory_reads": 0,
+        "useful_memory_reuse_rate": null,
+        "negative_transfer_cases": 0
+      },
+      "verifier": {
+        "verifier_statuses": [
+          "skipped",
+          "skipped",
+          "skipped",
+          "skipped",
+          "pass"
+        ],
+        "verifier_failures": 0,
+        "verifier_catches": 0,
+        "verifier_catch_rate": null
+      },
+      "known_deviations": [
+        "faithful_toy_runtime_not_real_llm",
+        "oracle_route_regret_unavailable",
+        "toy_route_oracle_success_label",
+        "toy_scalar_activation_cost_not_full_cost_delta"
+      ],
+      "oracle_route_regret": 0.0,
+      "router_id": "aa_learned_router_replay"
+    },
+    {
+      "trajectory_path": "/home/myuser/Agent/experiments/trajectories/phase4_learned_routing/phase4_router__aa_oracle_router__phase0_seed_research_metrics_001.json",
+      "task_id": "phase0_seed_research_metrics_001",
+      "benchmark_id": "phase1_mixed",
+      "baseline_id": "agent_attention_agent_tuned",
+      "ablation_id": "aa_oracle_router",
+      "final": {
+        "success_label": "pass",
+        "task_success": true,
+        "failure_reason": null,
+        "final_answer_present": true
+      },
+      "process": {
+        "activation_cost": 2.1,
+        "cost_normalized_success": 0.322581,
+        "module_calls": 8,
+        "verifier_calls": 0,
+        "budget_rejections": 0,
+        "repeated_action_ratio": 0.625,
+        "invalid_tool_call_ratio": 0.0,
+        "loop_stuck": true,
+        "budget_exhaustion": false,
+        "step_exhaustion": false,
+        "premature_halt": false
+      },
+      "routing": {
+        "route_events": 5,
+        "route_candidates": 24,
+        "selected_candidates": 8,
+        "route_reject_rate": 0.666667,
+        "route_entropy": 1.561278,
+        "selected_route_score_mean": 1.232875,
+        "selected_route_cost_mean": 0.2625,
+        "oracle_route_regret_mean": null,
+        "proxy_route_regret_mean": 0.49,
+        "activated_modules": [
+          "memory",
+          "critic_agent",
+          "aggregator",
+          "memory",
+          "aggregator",
+          "critic_agent",
+          "aggregator",
+          "memory"
+        ]
+      },
+      "memory": {
+        "memory_reads": 0,
+        "useful_memory_reads": 0,
+        "harmful_memory_reads": 0,
+        "neutral_memory_reads": 0,
+        "unknown_memory_reads": 0,
+        "useful_memory_reuse_rate": null,
+        "negative_transfer_cases": 0
+      },
+      "verifier": {
+        "verifier_statuses": [
+          "skipped",
+          "skipped",
+          "skipped",
+          "skipped",
+          "skipped"
+        ],
+        "verifier_failures": 0,
+        "verifier_catches": 0,
+        "verifier_catch_rate": null
+      },
+      "known_deviations": [
+        "faithful_toy_runtime_not_real_llm",
+        "oracle_route_regret_unavailable",
+        "toy_route_oracle_success_label",
+        "toy_scalar_activation_cost_not_full_cost_delta"
+      ],
+      "oracle_route_regret": 0.0,
+      "router_id": "aa_oracle_router"
+    },
+    {
+      "trajectory_path": "/home/myuser/Agent/experiments/trajectories/phase4_learned_routing/phase4_router__aa_lexical_router__phase0_seed_negative_memory_001.json",
+      "task_id": "phase0_seed_negative_memory_001",
+      "benchmark_id": "phase1_mixed",
+      "baseline_id": "agent_attention_agent_tuned",
+      "ablation_id": "aa_lexical_router",
+      "final": {
+        "success_label": "fail",
+        "task_success": false,
+        "failure_reason": "max_steps_reached",
+        "final_answer_present": true
+      },
+      "process": {
+        "activation_cost": 1.85,
+        "cost_normalized_success": 0.0,
+        "module_calls": 7,
+        "verifier_calls": 0,
+        "budget_rejections": 0,
+        "repeated_action_ratio": 0.571429,
+        "invalid_tool_call_ratio": 0.0,
+        "loop_stuck": false,
+        "budget_exhaustion": false,
+        "step_exhaustion": true,
+        "premature_halt": false
+      },
+      "routing": {
+        "route_events": 4,
+        "route_candidates": 19,
+        "selected_candidates": 7,
+        "route_reject_rate": 0.631579,
+        "route_entropy": 1.556657,
+        "selected_route_score_mean": 0.487014,
+        "selected_route_cost_mean": 0.264286,
+        "oracle_route_regret_mean": null,
+        "proxy_route_regret_mean": 0.3596,
+        "activated_modules": [
+          "critic_agent",
+          "memory",
+          "aggregator",
+          "memory",
+          "aggregator",
+          "memory",
+          "critic_agent"
+        ]
+      },
+      "memory": {
+        "memory_reads": 4,
+        "useful_memory_reads": 4,
+        "harmful_memory_reads": 0,
+        "neutral_memory_reads": 0,
+        "unknown_memory_reads": 0,
+        "useful_memory_reuse_rate": 1.0,
+        "negative_transfer_cases": 0
+      },
+      "verifier": {
+        "verifier_statuses": [
+          "skipped",
+          "skipped",
+          "skipped",
+          "skipped"
+        ],
+        "verifier_failures": 0,
+        "verifier_catches": 0,
+        "verifier_catch_rate": null
+      },
+      "known_deviations": [
+        "faithful_toy_runtime_not_real_llm",
+        "oracle_route_regret_unavailable",
+        "toy_route_oracle_success_label",
+        "toy_scalar_activation_cost_not_full_cost_delta"
+      ],
+      "oracle_route_regret": 1.15,
+      "router_id": "aa_lexical_router"
+    },
+    {
+      "trajectory_path": "/home/myuser/Agent/experiments/trajectories/phase4_learned_routing/phase4_router__aa_rule_router__phase0_seed_negative_memory_001.json",
+      "task_id": "phase0_seed_negative_memory_001",
+      "benchmark_id": "phase1_mixed",
+      "baseline_id": "agent_attention_agent_tuned",
+      "ablation_id": "aa_rule_router",
+      "final": {
+        "success_label": "fail",
+        "task_success": false,
+        "failure_reason": "max_steps_reached",
+        "final_answer_present": true
+      },
+      "process": {
+        "activation_cost": 1.8,
+        "cost_normalized_success": 0.0,
+        "module_calls": 6,
+        "verifier_calls": 0,
+        "budget_rejections": 0,
+        "repeated_action_ratio": 0.5,
+        "invalid_tool_call_ratio": 0.0,
+        "loop_stuck": false,
+        "budget_exhaustion": false,
+        "step_exhaustion": true,
+        "premature_halt": false
+      },
+      "routing": {
+        "route_events": 4,
+        "route_candidates": 19,
+        "selected_candidates": 6,
+        "route_reject_rate": 0.684211,
+        "route_entropy": 1.459148,
+        "selected_route_score_mean": 1.503117,
+        "selected_route_cost_mean": 0.3,
+        "oracle_route_regret_mean": null,
+        "proxy_route_regret_mean": 0.378325,
+        "activated_modules": [
+          "memory",
+          "critic_agent",
+          "aggregator",
+          "critic_agent",
+          "aggregator",
+          "aggregator"
+        ]
+      },
+      "memory": {
+        "memory_reads": 4,
+        "useful_memory_reads": 4,
+        "harmful_memory_reads": 0,
+        "neutral_memory_reads": 0,
+        "unknown_memory_reads": 0,
+        "useful_memory_reuse_rate": 1.0,
+        "negative_transfer_cases": 0
+      },
+      "verifier": {
+        "verifier_statuses": [
+          "skipped",
+          "skipped",
+          "skipped",
+          "skipped"
+        ],
+        "verifier_failures": 0,
+        "verifier_catches": 0,
+        "verifier_catch_rate": null
+      },
+      "known_deviations": [
+        "faithful_toy_runtime_not_real_llm",
+        "oracle_route_regret_unavailable",
+        "toy_route_oracle_success_label",
+        "toy_scalar_activation_cost_not_full_cost_delta"
+      ],
+      "oracle_route_regret": 1.15,
+      "router_id": "aa_rule_router"
+    },
+    {
+      "trajectory_path": "/home/myuser/Agent/experiments/trajectories/phase4_learned_routing/phase4_router__aa_learned_router_replay__phase0_seed_negative_memory_001.json",
+      "task_id": "phase0_seed_negative_memory_001",
+      "benchmark_id": "phase1_mixed",
+      "baseline_id": "agent_attention_agent_tuned",
+      "ablation_id": "aa_learned_router_replay",
+      "final": {
+        "success_label": "fail",
+        "task_success": false,
+        "failure_reason": "max_steps_reached",
+        "final_answer_present": true
+      },
+      "process": {
+        "activation_cost": 2.25,
+        "cost_normalized_success": 0.0,
+        "module_calls": 7,
+        "verifier_calls": 0,
+        "budget_rejections": 0,
+        "repeated_action_ratio": 0.571429,
+        "invalid_tool_call_ratio": 0.0,
+        "loop_stuck": false,
+        "budget_exhaustion": false,
+        "step_exhaustion": true,
+        "premature_halt": false
+      },
+      "routing": {
+        "route_events": 4,
+        "route_candidates": 19,
+        "selected_candidates": 7,
+        "route_reject_rate": 0.631579,
+        "route_entropy": 1.448816,
+        "selected_route_score_mean": 1.0486,
+        "selected_route_cost_mean": 0.321429,
+        "oracle_route_regret_mean": null,
+        "proxy_route_regret_mean": 0.497425,
+        "activated_modules": [
+          "critic_agent",
+          "memory",
+          "critic_agent",
+          "aggregator",
+          "critic_agent",
+          "aggregator",
+          "aggregator"
+        ]
+      },
+      "memory": {
+        "memory_reads": 4,
+        "useful_memory_reads": 4,
+        "harmful_memory_reads": 0,
+        "neutral_memory_reads": 0,
+        "unknown_memory_reads": 0,
+        "useful_memory_reuse_rate": 1.0,
+        "negative_transfer_cases": 0
+      },
+      "verifier": {
+        "verifier_statuses": [
+          "skipped",
+          "skipped",
+          "skipped",
+          "skipped"
+        ],
+        "verifier_failures": 0,
+        "verifier_catches": 0,
+        "verifier_catch_rate": null
+      },
+      "known_deviations": [
+        "faithful_toy_runtime_not_real_llm",
+        "oracle_route_regret_unavailable",
+        "toy_route_oracle_success_label",
+        "toy_scalar_activation_cost_not_full_cost_delta"
+      ],
+      "oracle_route_regret": 1.15,
+      "router_id": "aa_learned_router_replay"
+    },
+    {
+      "trajectory_path": "/home/myuser/Agent/experiments/trajectories/phase4_learned_routing/phase4_router__aa_oracle_router__phase0_seed_negative_memory_001.json",
+      "task_id": "phase0_seed_negative_memory_001",
+      "benchmark_id": "phase1_mixed",
+      "baseline_id": "agent_attention_agent_tuned",
+      "ablation_id": "aa_oracle_router",
+      "final": {
+        "success_label": "partial",
+        "task_success": false,
+        "failure_reason": "max_steps_reached",
+        "final_answer_present": true
+      },
+      "process": {
+        "activation_cost": 2.2,
+        "cost_normalized_success": 0.0,
+        "module_calls": 7,
+        "verifier_calls": 0,
+        "budget_rejections": 0,
+        "repeated_action_ratio": 0.428571,
+        "invalid_tool_call_ratio": 0.0,
+        "loop_stuck": false,
+        "budget_exhaustion": false,
+        "step_exhaustion": true,
+        "premature_halt": false
+      },
+      "routing": {
+        "route_events": 4,
+        "route_candidates": 19,
+        "selected_candidates": 7,
+        "route_reject_rate": 0.631579,
+        "route_entropy": 1.842371,
+        "selected_route_score_mean": 0.573086,
+        "selected_route_cost_mean": 0.314286,
+        "oracle_route_regret_mean": null,
+        "proxy_route_regret_mean": 0.70585,
+        "activated_modules": [
+          "code_agent",
+          "memory",
+          "aggregator",
+          "critic_agent",
+          "memory",
+          "aggregator",
+          "memory"
+        ]
+      },
+      "memory": {
+        "memory_reads": 4,
+        "useful_memory_reads": 4,
+        "harmful_memory_reads": 0,
+        "neutral_memory_reads": 0,
+        "unknown_memory_reads": 0,
+        "useful_memory_reuse_rate": 1.0,
+        "negative_transfer_cases": 0
+      },
+      "verifier": {
+        "verifier_statuses": [
+          "skipped",
+          "skipped",
+          "skipped",
+          "skipped"
+        ],
+        "verifier_failures": 0,
+        "verifier_catches": 0,
+        "verifier_catch_rate": null
+      },
+      "known_deviations": [
+        "faithful_toy_runtime_not_real_llm",
+        "oracle_route_regret_unavailable",
+        "toy_route_oracle_success_label",
+        "toy_scalar_activation_cost_not_full_cost_delta"
+      ],
+      "oracle_route_regret": 0.0,
+      "router_id": "aa_oracle_router"
+    },
+    {
+      "trajectory_path": "/home/myuser/Agent/experiments/trajectories/phase4_learned_routing/phase4_router__aa_lexical_router__phase1_code_config_001.json",
+      "task_id": "phase1_code_config_001",
+      "benchmark_id": "phase1_mixed",
+      "baseline_id": "agent_attention_agent_tuned",
+      "ablation_id": "aa_lexical_router",
+      "final": {
+        "success_label": "pass",
+        "task_success": true,
+        "failure_reason": null,
+        "final_answer_present": true
+      },
+      "process": {
+        "activation_cost": 2.35,
+        "cost_normalized_success": 0.298507,
+        "module_calls": 8,
+        "verifier_calls": 1,
+        "budget_rejections": 0,
+        "repeated_action_ratio": 0.5,
+        "invalid_tool_call_ratio": 0.0,
+        "loop_stuck": false,
+        "budget_exhaustion": false,
+        "step_exhaustion": false,
+        "premature_halt": false
+      },
+      "routing": {
+        "route_events": 4,
+        "route_candidates": 19,
+        "selected_candidates": 7,
+        "route_reject_rate": 0.631579,
+        "route_entropy": 1.811278,
+        "selected_route_score_mean": 0.486043,
+        "selected_route_cost_mean": 0.285714,
+        "oracle_route_regret_mean": null,
+        "proxy_route_regret_mean": 0.2625,
+        "activated_modules": [
+          "code_agent",
+          "memory",
+          "aggregator",
+          "memory",
+          "aggregator",
+          "memory",
+          "aggregator",
+          "verifier"
+        ]
+      },
+      "memory": {
+        "memory_reads": 4,
+        "useful_memory_reads": 4,
+        "harmful_memory_reads": 0,
+        "neutral_memory_reads": 0,
+        "unknown_memory_reads": 0,
+        "useful_memory_reuse_rate": 1.0,
+        "negative_transfer_cases": 0
+      },
+      "verifier": {
+        "verifier_statuses": [
+          "skipped",
+          "skipped",
+          "skipped",
+          "pass"
+        ],
+        "verifier_failures": 0,
+        "verifier_catches": 0,
+        "verifier_catch_rate": null
+      },
+      "known_deviations": [
+        "faithful_toy_runtime_not_real_llm",
+        "oracle_route_regret_unavailable",
+        "toy_route_oracle_success_label",
+        "toy_scalar_activation_cost_not_full_cost_delta"
+      ],
+      "oracle_route_regret": 0.0,
+      "router_id": "aa_lexical_router"
+    },
+    {
+      "trajectory_path": "/home/myuser/Agent/experiments/trajectories/phase4_learned_routing/phase4_router__aa_rule_router__phase1_code_config_001.json",
+      "task_id": "phase1_code_config_001",
+      "benchmark_id": "phase1_mixed",
+      "baseline_id": "agent_attention_agent_tuned",
+      "ablation_id": "aa_rule_router",
+      "final": {
+        "success_label": "fail",
+        "task_success": false,
+        "failure_reason": "loop_stuck",
+        "final_answer_present": true
+      },
+      "process": {
+        "activation_cost": 1.2,
+        "cost_normalized_success": 0.0,
+        "module_calls": 6,
+        "verifier_calls": 0,
+        "budget_rejections": 0,
+        "repeated_action_ratio": 0.666667,
+        "invalid_tool_call_ratio": 0.0,
+        "loop_stuck": true,
+        "budget_exhaustion": false,
+        "step_exhaustion": false,
+        "premature_halt": false
+      },
+      "routing": {
+        "route_events": 4,
+        "route_candidates": 19,
+        "selected_candidates": 6,
+        "route_reject_rate": 0.684211,
+        "route_entropy": 1.0,
+        "selected_route_score_mean": 1.403717,
+        "selected_route_cost_mean": 0.2,
+        "oracle_route_regret_mean": null,
+        "proxy_route_regret_mean": 0.39745,
+        "activated_modules": [
+          "memory",
+          "aggregator",
+          "memory",
+          "aggregator",
+          "memory",
+          "aggregator"
+        ]
+      },
+      "memory": {
+        "memory_reads": 4,
+        "useful_memory_reads": 4,
+        "harmful_memory_reads": 0,
+        "neutral_memory_reads": 0,
+        "unknown_memory_reads": 0,
+        "useful_memory_reuse_rate": 1.0,
+        "negative_transfer_cases": 0
+      },
+      "verifier": {
+        "verifier_statuses": [
+          "skipped",
+          "skipped",
+          "skipped",
+          "skipped"
+        ],
+        "verifier_failures": 0,
+        "verifier_catches": 0,
+        "verifier_catch_rate": null
+      },
+      "known_deviations": [
+        "faithful_toy_runtime_not_real_llm",
+        "oracle_route_regret_unavailable",
+        "toy_route_oracle_success_label",
+        "toy_scalar_activation_cost_not_full_cost_delta"
+      ],
+      "oracle_route_regret": 1.15,
+      "router_id": "aa_rule_router"
+    },
+    {
+      "trajectory_path": "/home/myuser/Agent/experiments/trajectories/phase4_learned_routing/phase4_router__aa_learned_router_replay__phase1_code_config_001.json",
+      "task_id": "phase1_code_config_001",
+      "benchmark_id": "phase1_mixed",
+      "baseline_id": "agent_attention_agent_tuned",
+      "ablation_id": "aa_learned_router_replay",
+      "final": {
+        "success_label": "pass",
+        "task_success": true,
+        "failure_reason": null,
+        "final_answer_present": true
+      },
+      "process": {
+        "activation_cost": 2.35,
+        "cost_normalized_success": 0.298507,
+        "module_calls": 8,
+        "verifier_calls": 1,
+        "budget_rejections": 0,
+        "repeated_action_ratio": 0.5,
+        "invalid_tool_call_ratio": 0.0,
+        "loop_stuck": false,
+        "budget_exhaustion": false,
+        "step_exhaustion": false,
+        "premature_halt": false
+      },
+      "routing": {
+        "route_events": 4,
+        "route_candidates": 19,
+        "selected_candidates": 7,
+        "route_reject_rate": 0.631579,
+        "route_entropy": 1.811278,
+        "selected_route_score_mean": 0.7796,
+        "selected_route_cost_mean": 0.285714,
+        "oracle_route_regret_mean": null,
+        "proxy_route_regret_mean": 0.486975,
+        "activated_modules": [
+          "code_agent",
+          "memory",
+          "aggregator",
+          "memory",
+          "aggregator",
+          "memory",
+          "aggregator",
+          "verifier"
+        ]
+      },
+      "memory": {
+        "memory_reads": 4,
+        "useful_memory_reads": 4,
+        "harmful_memory_reads": 0,
+        "neutral_memory_reads": 0,
+        "unknown_memory_reads": 0,
+        "useful_memory_reuse_rate": 1.0,
+        "negative_transfer_cases": 0
+      },
+      "verifier": {
+        "verifier_statuses": [
+          "skipped",
+          "skipped",
+          "skipped",
+          "pass"
+        ],
+        "verifier_failures": 0,
+        "verifier_catches": 0,
+        "verifier_catch_rate": null
+      },
+      "known_deviations": [
+        "faithful_toy_runtime_not_real_llm",
+        "oracle_route_regret_unavailable",
+        "toy_route_oracle_success_label",
+        "toy_scalar_activation_cost_not_full_cost_delta"
+      ],
+      "oracle_route_regret": 0.0,
+      "router_id": "aa_learned_router_replay"
+    },
+    {
+      "trajectory_path": "/home/myuser/Agent/experiments/trajectories/phase4_learned_routing/phase4_router__aa_oracle_router__phase1_code_config_001.json",
+      "task_id": "phase1_code_config_001",
+      "benchmark_id": "phase1_mixed",
+      "baseline_id": "agent_attention_agent_tuned",
+      "ablation_id": "aa_oracle_router",
+      "final": {
+        "success_label": "pass",
+        "task_success": true,
+        "failure_reason": null,
+        "final_answer_present": true
+      },
+      "process": {
+        "activation_cost": 2.2,
+        "cost_normalized_success": 0.3125,
+        "module_calls": 7,
+        "verifier_calls": 0,
+        "budget_rejections": 0,
+        "repeated_action_ratio": 0.428571,
+        "invalid_tool_call_ratio": 0.0,
+        "loop_stuck": false,
+        "budget_exhaustion": false,
+        "step_exhaustion": true,
+        "premature_halt": false
+      },
+      "routing": {
+        "route_events": 4,
+        "route_candidates": 19,
+        "selected_candidates": 7,
+        "route_reject_rate": 0.631579,
+        "route_entropy": 1.842371,
+        "selected_route_score_mean": 0.5767,
+        "selected_route_cost_mean": 0.314286,
+        "oracle_route_regret_mean": null,
+        "proxy_route_regret_mean": 0.71,
+        "activated_modules": [
+          "code_agent",
+          "memory",
+          "aggregator",
+          "critic_agent",
+          "memory",
+          "aggregator",
+          "memory"
+        ]
+      },
+      "memory": {
+        "memory_reads": 4,
+        "useful_memory_reads": 4,
+        "harmful_memory_reads": 0,
+        "neutral_memory_reads": 0,
+        "unknown_memory_reads": 0,
+        "useful_memory_reuse_rate": 1.0,
+        "negative_transfer_cases": 0
+      },
+      "verifier": {
+        "verifier_statuses": [
+          "skipped",
+          "skipped",
+          "skipped",
+          "skipped"
+        ],
+        "verifier_failures": 0,
+        "verifier_catches": 0,
+        "verifier_catch_rate": null
+      },
+      "known_deviations": [
+        "faithful_toy_runtime_not_real_llm",
+        "oracle_route_regret_unavailable",
+        "toy_route_oracle_success_label",
+        "toy_scalar_activation_cost_not_full_cost_delta"
+      ],
+      "oracle_route_regret": 0.0,
+      "router_id": "aa_oracle_router"
+    },
+    {
+      "trajectory_path": "/home/myuser/Agent/experiments/trajectories/phase4_learned_routing/phase4_router__aa_lexical_router__phase1_code_doc_001.json",
+      "task_id": "phase1_code_doc_001",
+      "benchmark_id": "phase1_mixed",
+      "baseline_id": "agent_attention_agent_tuned",
+      "ablation_id": "aa_lexical_router",
+      "final": {
+        "success_label": "fail",
+        "task_success": false,
+        "failure_reason": "max_steps_reached",
+        "final_answer_present": true
+      },
+      "process": {
+        "activation_cost": 1.4,
+        "cost_normalized_success": 0.0,
+        "module_calls": 6,
+        "verifier_calls": 0,
+        "budget_rejections": 0,
+        "repeated_action_ratio": 0.5,
+        "invalid_tool_call_ratio": 0.0,
+        "loop_stuck": false,
+        "budget_exhaustion": false,
+        "step_exhaustion": true,
+        "premature_halt": false
+      },
+      "routing": {
+        "route_events": 4,
+        "route_candidates": 19,
+        "selected_candidates": 6,
+        "route_reject_rate": 0.684211,
+        "route_entropy": 1.459148,
+        "selected_route_score_mean": 0.5013,
+        "selected_route_cost_mean": 0.233333,
+        "oracle_route_regret_mean": null,
+        "proxy_route_regret_mean": 0.37075,
+        "activated_modules": [
+          "memory",
+          "aggregator",
+          "memory",
+          "aggregator",
+          "memory",
+          "critic_agent"
+        ]
+      },
+      "memory": {
+        "memory_reads": 4,
+        "useful_memory_reads": 4,
+        "harmful_memory_reads": 0,
+        "neutral_memory_reads": 0,
+        "unknown_memory_reads": 0,
+        "useful_memory_reuse_rate": 1.0,
+        "negative_transfer_cases": 0
+      },
+      "verifier": {
+        "verifier_statuses": [
+          "skipped",
+          "skipped",
+          "skipped",
+          "skipped"
+        ],
+        "verifier_failures": 0,
+        "verifier_catches": 0,
+        "verifier_catch_rate": null
+      },
+      "known_deviations": [
+        "faithful_toy_runtime_not_real_llm",
+        "oracle_route_regret_unavailable",
+        "toy_route_oracle_success_label",
+        "toy_scalar_activation_cost_not_full_cost_delta"
+      ],
+      "oracle_route_regret": 1.15,
+      "router_id": "aa_lexical_router"
+    },
+    {
+      "trajectory_path": "/home/myuser/Agent/experiments/trajectories/phase4_learned_routing/phase4_router__aa_rule_router__phase1_code_doc_001.json",
+      "task_id": "phase1_code_doc_001",
+      "benchmark_id": "phase1_mixed",
+      "baseline_id": "agent_attention_agent_tuned",
+      "ablation_id": "aa_rule_router",
+      "final": {
+        "success_label": "fail",
+        "task_success": false,
+        "failure_reason": "max_steps_reached",
+        "final_answer_present": true
+      },
+      "process": {
+        "activation_cost": 1.8,
+        "cost_normalized_success": 0.0,
+        "module_calls": 6,
+        "verifier_calls": 0,
+        "budget_rejections": 0,
+        "repeated_action_ratio": 0.5,
+        "invalid_tool_call_ratio": 0.0,
+        "loop_stuck": false,
+        "budget_exhaustion": false,
+        "step_exhaustion": true,
+        "premature_halt": false
+      },
+      "routing": {
+        "route_events": 4,
+        "route_candidates": 19,
+        "selected_candidates": 6,
+        "route_reject_rate": 0.684211,
+        "route_entropy": 1.459148,
+        "selected_route_score_mean": 1.50255,
+        "selected_route_cost_mean": 0.3,
+        "oracle_route_regret_mean": null,
+        "proxy_route_regret_mean": 0.377575,
+        "activated_modules": [
+          "memory",
+          "critic_agent",
+          "aggregator",
+          "critic_agent",
+          "aggregator",
+          "aggregator"
+        ]
+      },
+      "memory": {
+        "memory_reads": 4,
+        "useful_memory_reads": 4,
+        "harmful_memory_reads": 0,
+        "neutral_memory_reads": 0,
+        "unknown_memory_reads": 0,
+        "useful_memory_reuse_rate": 1.0,
+        "negative_transfer_cases": 0
+      },
+      "verifier": {
+        "verifier_statuses": [
+          "skipped",
+          "skipped",
+          "skipped",
+          "skipped"
+        ],
+        "verifier_failures": 0,
+        "verifier_catches": 0,
+        "verifier_catch_rate": null
+      },
+      "known_deviations": [
+        "faithful_toy_runtime_not_real_llm",
+        "oracle_route_regret_unavailable",
+        "toy_route_oracle_success_label",
+        "toy_scalar_activation_cost_not_full_cost_delta"
+      ],
+      "oracle_route_regret": 1.15,
+      "router_id": "aa_rule_router"
+    },
+    {
+      "trajectory_path": "/home/myuser/Agent/experiments/trajectories/phase4_learned_routing/phase4_router__aa_learned_router_replay__phase1_code_doc_001.json",
+      "task_id": "phase1_code_doc_001",
+      "benchmark_id": "phase1_mixed",
+      "baseline_id": "agent_attention_agent_tuned",
+      "ablation_id": "aa_learned_router_replay",
+      "final": {
+        "success_label": "fail",
+        "task_success": false,
+        "failure_reason": "max_steps_reached",
+        "final_answer_present": true
+      },
+      "process": {
+        "activation_cost": 2.25,
+        "cost_normalized_success": 0.0,
+        "module_calls": 7,
+        "verifier_calls": 0,
+        "budget_rejections": 0,
+        "repeated_action_ratio": 0.571429,
+        "invalid_tool_call_ratio": 0.0,
+        "loop_stuck": false,
+        "budget_exhaustion": false,
+        "step_exhaustion": true,
+        "premature_halt": false
+      },
+      "routing": {
+        "route_events": 4,
+        "route_candidates": 19,
+        "selected_candidates": 7,
+        "route_reject_rate": 0.631579,
+        "route_entropy": 1.448816,
+        "selected_route_score_mean": 1.048229,
+        "selected_route_cost_mean": 0.321429,
+        "oracle_route_regret_mean": null,
+        "proxy_route_regret_mean": 0.492225,
+        "activated_modules": [
+          "critic_agent",
+          "memory",
+          "critic_agent",
+          "aggregator",
+          "critic_agent",
+          "aggregator",
+          "aggregator"
+        ]
+      },
+      "memory": {
+        "memory_reads": 4,
+        "useful_memory_reads": 4,
+        "harmful_memory_reads": 0,
+        "neutral_memory_reads": 0,
+        "unknown_memory_reads": 0,
+        "useful_memory_reuse_rate": 1.0,
+        "negative_transfer_cases": 0
+      },
+      "verifier": {
+        "verifier_statuses": [
+          "skipped",
+          "skipped",
+          "skipped",
+          "skipped"
+        ],
+        "verifier_failures": 0,
+        "verifier_catches": 0,
+        "verifier_catch_rate": null
+      },
+      "known_deviations": [
+        "faithful_toy_runtime_not_real_llm",
+        "oracle_route_regret_unavailable",
+        "toy_route_oracle_success_label",
+        "toy_scalar_activation_cost_not_full_cost_delta"
+      ],
+      "oracle_route_regret": 1.15,
+      "router_id": "aa_learned_router_replay"
+    },
+    {
+      "trajectory_path": "/home/myuser/Agent/experiments/trajectories/phase4_learned_routing/phase4_router__aa_oracle_router__phase1_code_doc_001.json",
+      "task_id": "phase1_code_doc_001",
+      "benchmark_id": "phase1_mixed",
+      "baseline_id": "agent_attention_agent_tuned",
+      "ablation_id": "aa_oracle_router",
+      "final": {
+        "success_label": "pass",
+        "task_success": true,
+        "failure_reason": null,
+        "final_answer_present": true
+      },
+      "process": {
+        "activation_cost": 2.2,
+        "cost_normalized_success": 0.3125,
+        "module_calls": 7,
+        "verifier_calls": 0,
+        "budget_rejections": 0,
+        "repeated_action_ratio": 0.428571,
+        "invalid_tool_call_ratio": 0.0,
+        "loop_stuck": false,
+        "budget_exhaustion": false,
+        "step_exhaustion": true,
+        "premature_halt": false
+      },
+      "routing": {
+        "route_events": 4,
+        "route_candidates": 19,
+        "selected_candidates": 7,
+        "route_reject_rate": 0.631579,
+        "route_entropy": 1.842371,
+        "selected_route_score_mean": 0.572086,
+        "selected_route_cost_mean": 0.314286,
+        "oracle_route_regret_mean": null,
+        "proxy_route_regret_mean": 0.706875,
+        "activated_modules": [
+          "code_agent",
+          "memory",
+          "aggregator",
+          "critic_agent",
+          "memory",
+          "aggregator",
+          "memory"
+        ]
+      },
+      "memory": {
+        "memory_reads": 4,
+        "useful_memory_reads": 4,
+        "harmful_memory_reads": 0,
+        "neutral_memory_reads": 0,
+        "unknown_memory_reads": 0,
+        "useful_memory_reuse_rate": 1.0,
+        "negative_transfer_cases": 0
+      },
+      "verifier": {
+        "verifier_statuses": [
+          "skipped",
+          "skipped",
+          "skipped",
+          "skipped"
+        ],
+        "verifier_failures": 0,
+        "verifier_catches": 0,
+        "verifier_catch_rate": null
+      },
+      "known_deviations": [
+        "faithful_toy_runtime_not_real_llm",
+        "oracle_route_regret_unavailable",
+        "toy_route_oracle_success_label",
+        "toy_scalar_activation_cost_not_full_cost_delta"
+      ],
+      "oracle_route_regret": 0.0,
+      "router_id": "aa_oracle_router"
+    },
+    {
+      "trajectory_path": "/home/myuser/Agent/experiments/trajectories/phase4_learned_routing/phase4_router__aa_lexical_router__phase1_code_import_001.json",
+      "task_id": "phase1_code_import_001",
+      "benchmark_id": "phase1_mixed",
+      "baseline_id": "agent_attention_agent_tuned",
+      "ablation_id": "aa_lexical_router",
+      "final": {
+        "success_label": "fail",
+        "task_success": false,
+        "failure_reason": "loop_stuck",
+        "final_answer_present": true
+      },
+      "process": {
+        "activation_cost": 1.2,
+        "cost_normalized_success": 0.0,
+        "module_calls": 6,
+        "verifier_calls": 0,
+        "budget_rejections": 0,
+        "repeated_action_ratio": 0.666667,
+        "invalid_tool_call_ratio": 0.0,
+        "loop_stuck": true,
+        "budget_exhaustion": false,
+        "step_exhaustion": false,
+        "premature_halt": false
+      },
+      "routing": {
+        "route_events": 4,
+        "route_candidates": 19,
+        "selected_candidates": 6,
+        "route_reject_rate": 0.684211,
+        "route_entropy": 1.0,
+        "selected_route_score_mean": 0.470783,
+        "selected_route_cost_mean": 0.2,
+        "oracle_route_regret_mean": null,
+        "proxy_route_regret_mean": 0.3615,
+        "activated_modules": [
+          "memory",
+          "aggregator",
+          "memory",
+          "aggregator",
+          "memory",
+          "aggregator"
+        ]
+      },
+      "memory": {
+        "memory_reads": 4,
+        "useful_memory_reads": 4,
+        "harmful_memory_reads": 0,
+        "neutral_memory_reads": 0,
+        "unknown_memory_reads": 0,
+        "useful_memory_reuse_rate": 1.0,
+        "negative_transfer_cases": 0
+      },
+      "verifier": {
+        "verifier_statuses": [
+          "skipped",
+          "skipped",
+          "skipped",
+          "skipped"
+        ],
+        "verifier_failures": 0,
+        "verifier_catches": 0,
+        "verifier_catch_rate": null
+      },
+      "known_deviations": [
+        "faithful_toy_runtime_not_real_llm",
+        "oracle_route_regret_unavailable",
+        "toy_route_oracle_success_label",
+        "toy_scalar_activation_cost_not_full_cost_delta"
+      ],
+      "oracle_route_regret": 1.15,
+      "router_id": "aa_lexical_router"
+    },
+    {
+      "trajectory_path": "/home/myuser/Agent/experiments/trajectories/phase4_learned_routing/phase4_router__aa_rule_router__phase1_code_import_001.json",
+      "task_id": "phase1_code_import_001",
+      "benchmark_id": "phase1_mixed",
+      "baseline_id": "agent_attention_agent_tuned",
+      "ablation_id": "aa_rule_router",
+      "final": {
+        "success_label": "fail",
+        "task_success": false,
+        "failure_reason": "loop_stuck",
+        "final_answer_present": true
+      },
+      "process": {
+        "activation_cost": 1.2,
+        "cost_normalized_success": 0.0,
+        "module_calls": 6,
+        "verifier_calls": 0,
+        "budget_rejections": 0,
+        "repeated_action_ratio": 0.666667,
+        "invalid_tool_call_ratio": 0.0,
+        "loop_stuck": true,
+        "budget_exhaustion": false,
+        "step_exhaustion": false,
+        "premature_halt": false
+      },
+      "routing": {
+        "route_events": 4,
+        "route_candidates": 19,
+        "selected_candidates": 6,
+        "route_reject_rate": 0.684211,
+        "route_entropy": 1.0,
+        "selected_route_score_mean": 1.398083,
+        "selected_route_cost_mean": 0.2,
+        "oracle_route_regret_mean": null,
+        "proxy_route_regret_mean": 0.3948,
+        "activated_modules": [
+          "memory",
+          "aggregator",
+          "memory",
+          "aggregator",
+          "memory",
+          "aggregator"
+        ]
+      },
+      "memory": {
+        "memory_reads": 4,
+        "useful_memory_reads": 4,
+        "harmful_memory_reads": 0,
+        "neutral_memory_reads": 0,
+        "unknown_memory_reads": 0,
+        "useful_memory_reuse_rate": 1.0,
+        "negative_transfer_cases": 0
+      },
+      "verifier": {
+        "verifier_statuses": [
+          "skipped",
+          "skipped",
+          "skipped",
+          "skipped"
+        ],
+        "verifier_failures": 0,
+        "verifier_catches": 0,
+        "verifier_catch_rate": null
+      },
+      "known_deviations": [
+        "faithful_toy_runtime_not_real_llm",
+        "oracle_route_regret_unavailable",
+        "toy_route_oracle_success_label",
+        "toy_scalar_activation_cost_not_full_cost_delta"
+      ],
+      "oracle_route_regret": 1.15,
+      "router_id": "aa_rule_router"
+    },
+    {
+      "trajectory_path": "/home/myuser/Agent/experiments/trajectories/phase4_learned_routing/phase4_router__aa_learned_router_replay__phase1_code_import_001.json",
+      "task_id": "phase1_code_import_001",
+      "benchmark_id": "phase1_mixed",
+      "baseline_id": "agent_attention_agent_tuned",
+      "ablation_id": "aa_learned_router_replay",
+      "final": {
+        "success_label": "pass",
+        "task_success": true,
+        "failure_reason": null,
+        "final_answer_present": true
+      },
+      "process": {
+        "activation_cost": 2.35,
+        "cost_normalized_success": 0.298507,
+        "module_calls": 8,
+        "verifier_calls": 1,
+        "budget_rejections": 0,
+        "repeated_action_ratio": 0.5,
+        "invalid_tool_call_ratio": 0.0,
+        "loop_stuck": false,
+        "budget_exhaustion": false,
+        "step_exhaustion": false,
+        "premature_halt": false
+      },
+      "routing": {
+        "route_events": 4,
+        "route_candidates": 19,
+        "selected_candidates": 7,
+        "route_reject_rate": 0.631579,
+        "route_entropy": 1.811278,
+        "selected_route_score_mean": 0.769171,
+        "selected_route_cost_mean": 0.285714,
+        "oracle_route_regret_mean": null,
+        "proxy_route_regret_mean": 0.477,
+        "activated_modules": [
+          "code_agent",
+          "memory",
+          "aggregator",
+          "memory",
+          "aggregator",
+          "memory",
+          "aggregator",
+          "verifier"
+        ]
+      },
+      "memory": {
+        "memory_reads": 4,
+        "useful_memory_reads": 4,
+        "harmful_memory_reads": 0,
+        "neutral_memory_reads": 0,
+        "unknown_memory_reads": 0,
+        "useful_memory_reuse_rate": 1.0,
+        "negative_transfer_cases": 0
+      },
+      "verifier": {
+        "verifier_statuses": [
+          "skipped",
+          "skipped",
+          "skipped",
+          "pass"
+        ],
+        "verifier_failures": 0,
+        "verifier_catches": 0,
+        "verifier_catch_rate": null
+      },
+      "known_deviations": [
+        "faithful_toy_runtime_not_real_llm",
+        "oracle_route_regret_unavailable",
+        "toy_route_oracle_success_label",
+        "toy_scalar_activation_cost_not_full_cost_delta"
+      ],
+      "oracle_route_regret": 0.0,
+      "router_id": "aa_learned_router_replay"
+    },
+    {
+      "trajectory_path": "/home/myuser/Agent/experiments/trajectories/phase4_learned_routing/phase4_router__aa_oracle_router__phase1_code_import_001.json",
+      "task_id": "phase1_code_import_001",
+      "benchmark_id": "phase1_mixed",
+      "baseline_id": "agent_attention_agent_tuned",
+      "ablation_id": "aa_oracle_router",
+      "final": {
+        "success_label": "pass",
+        "task_success": true,
+        "failure_reason": null,
+        "final_answer_present": true
+      },
+      "process": {
+        "activation_cost": 2.2,
+        "cost_normalized_success": 0.3125,
+        "module_calls": 7,
+        "verifier_calls": 0,
+        "budget_rejections": 0,
+        "repeated_action_ratio": 0.428571,
+        "invalid_tool_call_ratio": 0.0,
+        "loop_stuck": false,
+        "budget_exhaustion": false,
+        "step_exhaustion": true,
+        "premature_halt": false
+      },
+      "routing": {
+        "route_events": 4,
+        "route_candidates": 19,
+        "selected_candidates": 7,
+        "route_reject_rate": 0.631579,
+        "route_entropy": 1.842371,
+        "selected_route_score_mean": 0.570329,
+        "selected_route_cost_mean": 0.314286,
+        "oracle_route_regret_mean": null,
+        "proxy_route_regret_mean": 0.706875,
+        "activated_modules": [
+          "code_agent",
+          "memory",
+          "aggregator",
+          "critic_agent",
+          "memory",
+          "aggregator",
+          "memory"
+        ]
+      },
+      "memory": {
+        "memory_reads": 4,
+        "useful_memory_reads": 4,
+        "harmful_memory_reads": 0,
+        "neutral_memory_reads": 0,
+        "unknown_memory_reads": 0,
+        "useful_memory_reuse_rate": 1.0,
+        "negative_transfer_cases": 0
+      },
+      "verifier": {
+        "verifier_statuses": [
+          "skipped",
+          "skipped",
+          "skipped",
+          "skipped"
+        ],
+        "verifier_failures": 0,
+        "verifier_catches": 0,
+        "verifier_catch_rate": null
+      },
+      "known_deviations": [
+        "faithful_toy_runtime_not_real_llm",
+        "oracle_route_regret_unavailable",
+        "toy_route_oracle_success_label",
+        "toy_scalar_activation_cost_not_full_cost_delta"
+      ],
+      "oracle_route_regret": 0.0,
+      "router_id": "aa_oracle_router"
+    },
+    {
+      "trajectory_path": "/home/myuser/Agent/experiments/trajectories/phase4_learned_routing/phase4_router__aa_lexical_router__phase1_code_edge_001.json",
+      "task_id": "phase1_code_edge_001",
+      "benchmark_id": "phase1_mixed",
+      "baseline_id": "agent_attention_agent_tuned",
+      "ablation_id": "aa_lexical_router",
+      "final": {
+        "success_label": "pass",
+        "task_success": true,
+        "failure_reason": null,
+        "final_answer_present": true
+      },
+      "process": {
+        "activation_cost": 2.35,
+        "cost_normalized_success": 0.298507,
+        "module_calls": 8,
+        "verifier_calls": 1,
+        "budget_rejections": 0,
+        "repeated_action_ratio": 0.5,
+        "invalid_tool_call_ratio": 0.0,
+        "loop_stuck": false,
+        "budget_exhaustion": false,
+        "step_exhaustion": false,
+        "premature_halt": false
+      },
+      "routing": {
+        "route_events": 4,
+        "route_candidates": 19,
+        "selected_candidates": 7,
+        "route_reject_rate": 0.631579,
+        "route_entropy": 1.811278,
+        "selected_route_score_mean": 0.481814,
+        "selected_route_cost_mean": 0.285714,
+        "oracle_route_regret_mean": null,
+        "proxy_route_regret_mean": 0.2625,
+        "activated_modules": [
+          "code_agent",
+          "memory",
+          "aggregator",
+          "memory",
+          "aggregator",
+          "memory",
+          "aggregator",
+          "verifier"
+        ]
+      },
+      "memory": {
+        "memory_reads": 4,
+        "useful_memory_reads": 4,
+        "harmful_memory_reads": 0,
+        "neutral_memory_reads": 0,
+        "unknown_memory_reads": 0,
+        "useful_memory_reuse_rate": 1.0,
+        "negative_transfer_cases": 0
+      },
+      "verifier": {
+        "verifier_statuses": [
+          "skipped",
+          "skipped",
+          "skipped",
+          "pass"
+        ],
+        "verifier_failures": 0,
+        "verifier_catches": 0,
+        "verifier_catch_rate": null
+      },
+      "known_deviations": [
+        "faithful_toy_runtime_not_real_llm",
+        "oracle_route_regret_unavailable",
+        "toy_route_oracle_success_label",
+        "toy_scalar_activation_cost_not_full_cost_delta"
+      ],
+      "oracle_route_regret": 0.0,
+      "router_id": "aa_lexical_router"
+    },
+    {
+      "trajectory_path": "/home/myuser/Agent/experiments/trajectories/phase4_learned_routing/phase4_router__aa_rule_router__phase1_code_edge_001.json",
+      "task_id": "phase1_code_edge_001",
+      "benchmark_id": "phase1_mixed",
+      "baseline_id": "agent_attention_agent_tuned",
+      "ablation_id": "aa_rule_router",
+      "final": {
+        "success_label": "fail",
+        "task_success": false,
+        "failure_reason": "loop_stuck",
+        "final_answer_present": true
+      },
+      "process": {
+        "activation_cost": 1.2,
+        "cost_normalized_success": 0.0,
+        "module_calls": 6,
+        "verifier_calls": 0,
+        "budget_rejections": 0,
+        "repeated_action_ratio": 0.666667,
+        "invalid_tool_call_ratio": 0.0,
+        "loop_stuck": true,
+        "budget_exhaustion": false,
+        "step_exhaustion": false,
+        "premature_halt": false
+      },
+      "routing": {
+        "route_events": 4,
+        "route_candidates": 19,
+        "selected_candidates": 6,
+        "route_reject_rate": 0.684211,
+        "route_entropy": 1.0,
+        "selected_route_score_mean": 1.4049,
+        "selected_route_cost_mean": 0.2,
+        "oracle_route_regret_mean": null,
+        "proxy_route_regret_mean": 0.3985,
+        "activated_modules": [
+          "memory",
+          "aggregator",
+          "memory",
+          "aggregator",
+          "memory",
+          "aggregator"
+        ]
+      },
+      "memory": {
+        "memory_reads": 4,
+        "useful_memory_reads": 4,
+        "harmful_memory_reads": 0,
+        "neutral_memory_reads": 0,
+        "unknown_memory_reads": 0,
+        "useful_memory_reuse_rate": 1.0,
+        "negative_transfer_cases": 0
+      },
+      "verifier": {
+        "verifier_statuses": [
+          "skipped",
+          "skipped",
+          "skipped",
+          "skipped"
+        ],
+        "verifier_failures": 0,
+        "verifier_catches": 0,
+        "verifier_catch_rate": null
+      },
+      "known_deviations": [
+        "faithful_toy_runtime_not_real_llm",
+        "oracle_route_regret_unavailable",
+        "toy_route_oracle_success_label",
+        "toy_scalar_activation_cost_not_full_cost_delta"
+      ],
+      "oracle_route_regret": 1.15,
+      "router_id": "aa_rule_router"
+    },
+    {
+      "trajectory_path": "/home/myuser/Agent/experiments/trajectories/phase4_learned_routing/phase4_router__aa_learned_router_replay__phase1_code_edge_001.json",
+      "task_id": "phase1_code_edge_001",
+      "benchmark_id": "phase1_mixed",
+      "baseline_id": "agent_attention_agent_tuned",
+      "ablation_id": "aa_learned_router_replay",
+      "final": {
+        "success_label": "pass",
+        "task_success": true,
+        "failure_reason": null,
+        "final_answer_present": true
+      },
+      "process": {
+        "activation_cost": 2.35,
+        "cost_normalized_success": 0.298507,
+        "module_calls": 8,
+        "verifier_calls": 1,
+        "budget_rejections": 0,
+        "repeated_action_ratio": 0.5,
+        "invalid_tool_call_ratio": 0.0,
+        "loop_stuck": false,
+        "budget_exhaustion": false,
+        "step_exhaustion": false,
+        "premature_halt": false
+      },
+      "routing": {
+        "route_events": 4,
+        "route_candidates": 19,
+        "selected_candidates": 7,
+        "route_reject_rate": 0.631579,
+        "route_entropy": 1.811278,
+        "selected_route_score_mean": 0.7759,
+        "selected_route_cost_mean": 0.285714,
+        "oracle_route_regret_mean": null,
+        "proxy_route_regret_mean": 0.49065,
+        "activated_modules": [
+          "code_agent",
+          "memory",
+          "aggregator",
+          "memory",
+          "aggregator",
+          "memory",
+          "aggregator",
+          "verifier"
+        ]
+      },
+      "memory": {
+        "memory_reads": 4,
+        "useful_memory_reads": 4,
+        "harmful_memory_reads": 0,
+        "neutral_memory_reads": 0,
+        "unknown_memory_reads": 0,
+        "useful_memory_reuse_rate": 1.0,
+        "negative_transfer_cases": 0
+      },
+      "verifier": {
+        "verifier_statuses": [
+          "skipped",
+          "skipped",
+          "skipped",
+          "pass"
+        ],
+        "verifier_failures": 0,
+        "verifier_catches": 0,
+        "verifier_catch_rate": null
+      },
+      "known_deviations": [
+        "faithful_toy_runtime_not_real_llm",
+        "oracle_route_regret_unavailable",
+        "toy_route_oracle_success_label",
+        "toy_scalar_activation_cost_not_full_cost_delta"
+      ],
+      "oracle_route_regret": 0.0,
+      "router_id": "aa_learned_router_replay"
+    },
+    {
+      "trajectory_path": "/home/myuser/Agent/experiments/trajectories/phase4_learned_routing/phase4_router__aa_oracle_router__phase1_code_edge_001.json",
+      "task_id": "phase1_code_edge_001",
+      "benchmark_id": "phase1_mixed",
+      "baseline_id": "agent_attention_agent_tuned",
+      "ablation_id": "aa_oracle_router",
+      "final": {
+        "success_label": "pass",
+        "task_success": true,
+        "failure_reason": null,
+        "final_answer_present": true
+      },
+      "process": {
+        "activation_cost": 2.2,
+        "cost_normalized_success": 0.3125,
+        "module_calls": 7,
+        "verifier_calls": 0,
+        "budget_rejections": 0,
+        "repeated_action_ratio": 0.428571,
+        "invalid_tool_call_ratio": 0.0,
+        "loop_stuck": false,
+        "budget_exhaustion": false,
+        "step_exhaustion": true,
+        "premature_halt": false
+      },
+      "routing": {
+        "route_events": 4,
+        "route_candidates": 19,
+        "selected_candidates": 7,
+        "route_reject_rate": 0.631579,
+        "route_entropy": 1.842371,
+        "selected_route_score_mean": 0.577271,
+        "selected_route_cost_mean": 0.314286,
+        "oracle_route_regret_mean": null,
+        "proxy_route_regret_mean": 0.707875,
+        "activated_modules": [
+          "code_agent",
+          "memory",
+          "aggregator",
+          "critic_agent",
+          "memory",
+          "aggregator",
+          "memory"
+        ]
+      },
+      "memory": {
+        "memory_reads": 4,
+        "useful_memory_reads": 4,
+        "harmful_memory_reads": 0,
+        "neutral_memory_reads": 0,
+        "unknown_memory_reads": 0,
+        "useful_memory_reuse_rate": 1.0,
+        "negative_transfer_cases": 0
+      },
+      "verifier": {
+        "verifier_statuses": [
+          "skipped",
+          "skipped",
+          "skipped",
+          "skipped"
+        ],
+        "verifier_failures": 0,
+        "verifier_catches": 0,
+        "verifier_catch_rate": null
+      },
+      "known_deviations": [
+        "faithful_toy_runtime_not_real_llm",
+        "oracle_route_regret_unavailable",
+        "toy_route_oracle_success_label",
+        "toy_scalar_activation_cost_not_full_cost_delta"
+      ],
+      "oracle_route_regret": 0.0,
+      "router_id": "aa_oracle_router"
+    },
+    {
+      "trajectory_path": "/home/myuser/Agent/experiments/trajectories/phase4_learned_routing/phase4_router__aa_lexical_router__phase1_search_conflict_001.json",
+      "task_id": "phase1_search_conflict_001",
+      "benchmark_id": "phase1_mixed",
+      "baseline_id": "agent_attention_agent_tuned",
+      "ablation_id": "aa_lexical_router",
+      "final": {
+        "success_label": "fail",
+        "task_success": false,
+        "failure_reason": "max_steps_reached",
+        "final_answer_present": true
+      },
+      "process": {
+        "activation_cost": 1.9,
+        "cost_normalized_success": 0.0,
+        "module_calls": 7,
+        "verifier_calls": 0,
+        "budget_rejections": 0,
+        "repeated_action_ratio": 0.571429,
+        "invalid_tool_call_ratio": 0.0,
+        "loop_stuck": false,
+        "budget_exhaustion": false,
+        "step_exhaustion": true,
+        "premature_halt": false
+      },
+      "routing": {
+        "route_events": 4,
+        "route_candidates": 19,
+        "selected_candidates": 7,
+        "route_reject_rate": 0.631579,
+        "route_entropy": 1.448816,
+        "selected_route_score_mean": 0.540657,
+        "selected_route_cost_mean": 0.271429,
+        "oracle_route_regret_mean": null,
+        "proxy_route_regret_mean": 0.6125,
+        "activated_modules": [
+          "search_agent",
+          "memory",
+          "aggregator",
+          "memory",
+          "aggregator",
+          "memory",
+          "aggregator"
+        ]
+      },
+      "memory": {
+        "memory_reads": 4,
+        "useful_memory_reads": 4,
+        "harmful_memory_reads": 0,
+        "neutral_memory_reads": 0,
+        "unknown_memory_reads": 0,
+        "useful_memory_reuse_rate": 1.0,
+        "negative_transfer_cases": 0
+      },
+      "verifier": {
+        "verifier_statuses": [
+          "skipped",
+          "skipped",
+          "skipped",
+          "skipped"
+        ],
+        "verifier_failures": 0,
+        "verifier_catches": 0,
+        "verifier_catch_rate": null
+      },
+      "known_deviations": [
+        "faithful_toy_runtime_not_real_llm",
+        "oracle_route_regret_unavailable",
+        "toy_route_oracle_success_label",
+        "toy_scalar_activation_cost_not_full_cost_delta"
+      ],
+      "oracle_route_regret": 0.35,
+      "router_id": "aa_lexical_router"
+    },
+    {
+      "trajectory_path": "/home/myuser/Agent/experiments/trajectories/phase4_learned_routing/phase4_router__aa_rule_router__phase1_search_conflict_001.json",
+      "task_id": "phase1_search_conflict_001",
+      "benchmark_id": "phase1_mixed",
+      "baseline_id": "agent_attention_agent_tuned",
+      "ablation_id": "aa_rule_router",
+      "final": {
+        "success_label": "fail",
+        "task_success": false,
+        "failure_reason": "max_steps_reached",
+        "final_answer_present": true
+      },
+      "process": {
+        "activation_cost": 1.9,
+        "cost_normalized_success": 0.0,
+        "module_calls": 7,
+        "verifier_calls": 0,
+        "budget_rejections": 0,
+        "repeated_action_ratio": 0.571429,
+        "invalid_tool_call_ratio": 0.0,
+        "loop_stuck": false,
+        "budget_exhaustion": false,
+        "step_exhaustion": true,
+        "premature_halt": false
+      },
+      "routing": {
+        "route_events": 4,
+        "route_candidates": 19,
+        "selected_candidates": 7,
+        "route_reject_rate": 0.631579,
+        "route_entropy": 1.448816,
+        "selected_route_score_mean": 1.422329,
+        "selected_route_cost_mean": 0.271429,
+        "oracle_route_regret_mean": null,
+        "proxy_route_regret_mean": 0.6125,
+        "activated_modules": [
+          "search_agent",
+          "memory",
+          "aggregator",
+          "memory",
+          "aggregator",
+          "memory",
+          "aggregator"
+        ]
+      },
+      "memory": {
+        "memory_reads": 4,
+        "useful_memory_reads": 4,
+        "harmful_memory_reads": 0,
+        "neutral_memory_reads": 0,
+        "unknown_memory_reads": 0,
+        "useful_memory_reuse_rate": 1.0,
+        "negative_transfer_cases": 0
+      },
+      "verifier": {
+        "verifier_statuses": [
+          "skipped",
+          "skipped",
+          "skipped",
+          "skipped"
+        ],
+        "verifier_failures": 0,
+        "verifier_catches": 0,
+        "verifier_catch_rate": null
+      },
+      "known_deviations": [
+        "faithful_toy_runtime_not_real_llm",
+        "oracle_route_regret_unavailable",
+        "toy_route_oracle_success_label",
+        "toy_scalar_activation_cost_not_full_cost_delta"
+      ],
+      "oracle_route_regret": 0.35,
+      "router_id": "aa_rule_router"
+    },
+    {
+      "trajectory_path": "/home/myuser/Agent/experiments/trajectories/phase4_learned_routing/phase4_router__aa_learned_router_replay__phase1_search_conflict_001.json",
+      "task_id": "phase1_search_conflict_001",
+      "benchmark_id": "phase1_mixed",
+      "baseline_id": "agent_attention_agent_tuned",
+      "ablation_id": "aa_learned_router_replay",
+      "final": {
+        "success_label": "fail",
+        "task_success": false,
+        "failure_reason": "max_steps_reached",
+        "final_answer_present": true
+      },
+      "process": {
+        "activation_cost": 1.9,
+        "cost_normalized_success": 0.0,
+        "module_calls": 7,
+        "verifier_calls": 0,
+        "budget_rejections": 0,
+        "repeated_action_ratio": 0.571429,
+        "invalid_tool_call_ratio": 0.0,
+        "loop_stuck": false,
+        "budget_exhaustion": false,
+        "step_exhaustion": true,
+        "premature_halt": false
+      },
+      "routing": {
+        "route_events": 4,
+        "route_candidates": 19,
+        "selected_candidates": 7,
+        "route_reject_rate": 0.631579,
+        "route_entropy": 1.448816,
+        "selected_route_score_mean": 0.930443,
+        "selected_route_cost_mean": 0.271429,
+        "oracle_route_regret_mean": null,
+        "proxy_route_regret_mean": 0.6444,
+        "activated_modules": [
+          "search_agent",
+          "memory",
+          "aggregator",
+          "memory",
+          "aggregator",
+          "memory",
+          "aggregator"
+        ]
+      },
+      "memory": {
+        "memory_reads": 4,
+        "useful_memory_reads": 4,
+        "harmful_memory_reads": 0,
+        "neutral_memory_reads": 0,
+        "unknown_memory_reads": 0,
+        "useful_memory_reuse_rate": 1.0,
+        "negative_transfer_cases": 0
+      },
+      "verifier": {
+        "verifier_statuses": [
+          "skipped",
+          "skipped",
+          "skipped",
+          "skipped"
+        ],
+        "verifier_failures": 0,
+        "verifier_catches": 0,
+        "verifier_catch_rate": null
+      },
+      "known_deviations": [
+        "faithful_toy_runtime_not_real_llm",
+        "oracle_route_regret_unavailable",
+        "toy_route_oracle_success_label",
+        "toy_scalar_activation_cost_not_full_cost_delta"
+      ],
+      "oracle_route_regret": 0.35,
+      "router_id": "aa_learned_router_replay"
+    },
+    {
+      "trajectory_path": "/home/myuser/Agent/experiments/trajectories/phase4_learned_routing/phase4_router__aa_oracle_router__phase1_search_conflict_001.json",
+      "task_id": "phase1_search_conflict_001",
+      "benchmark_id": "phase1_mixed",
+      "baseline_id": "agent_attention_agent_tuned",
+      "ablation_id": "aa_oracle_router",
+      "final": {
+        "success_label": "pass",
+        "task_success": true,
+        "failure_reason": null,
+        "final_answer_present": true
+      },
+      "process": {
+        "activation_cost": 2.4,
+        "cost_normalized_success": 0.294118,
+        "module_calls": 7,
+        "verifier_calls": 0,
+        "budget_rejections": 0,
+        "repeated_action_ratio": 0.428571,
+        "invalid_tool_call_ratio": 0.0,
+        "loop_stuck": false,
+        "budget_exhaustion": false,
+        "step_exhaustion": true,
+        "premature_halt": false
+      },
+      "routing": {
+        "route_events": 4,
+        "route_candidates": 19,
+        "selected_candidates": 7,
+        "route_reject_rate": 0.631579,
+        "route_entropy": 1.950212,
+        "selected_route_score_mean": 0.815,
+        "selected_route_cost_mean": 0.342857,
+        "oracle_route_regret_mean": null,
+        "proxy_route_regret_mean": 0.706125,
+        "activated_modules": [
+          "critic_agent",
+          "search_agent",
+          "critic_agent",
+          "memory",
+          "aggregator",
+          "memory",
+          "aggregator"
+        ]
+      },
+      "memory": {
+        "memory_reads": 4,
+        "useful_memory_reads": 4,
+        "harmful_memory_reads": 0,
+        "neutral_memory_reads": 0,
+        "unknown_memory_reads": 0,
+        "useful_memory_reuse_rate": 1.0,
+        "negative_transfer_cases": 0
+      },
+      "verifier": {
+        "verifier_statuses": [
+          "skipped",
+          "skipped",
+          "skipped",
+          "skipped"
+        ],
+        "verifier_failures": 0,
+        "verifier_catches": 0,
+        "verifier_catch_rate": null
+      },
+      "known_deviations": [
+        "faithful_toy_runtime_not_real_llm",
+        "oracle_route_regret_unavailable",
+        "toy_route_oracle_success_label",
+        "toy_scalar_activation_cost_not_full_cost_delta"
+      ],
+      "oracle_route_regret": 0.0,
+      "router_id": "aa_oracle_router"
+    },
+    {
+      "trajectory_path": "/home/myuser/Agent/experiments/trajectories/phase4_learned_routing/phase4_router__aa_lexical_router__phase1_search_recency_001.json",
+      "task_id": "phase1_search_recency_001",
+      "benchmark_id": "phase1_mixed",
+      "baseline_id": "agent_attention_agent_tuned",
+      "ablation_id": "aa_lexical_router",
+      "final": {
+        "success_label": "pass",
+        "task_success": true,
+        "failure_reason": null,
+        "final_answer_present": true
+      },
+      "process": {
+        "activation_cost": 1.9,
+        "cost_normalized_success": 0.344828,
+        "module_calls": 7,
+        "verifier_calls": 0,
+        "budget_rejections": 0,
+        "repeated_action_ratio": 0.571429,
+        "invalid_tool_call_ratio": 0.0,
+        "loop_stuck": false,
+        "budget_exhaustion": false,
+        "step_exhaustion": true,
+        "premature_halt": false
+      },
+      "routing": {
+        "route_events": 4,
+        "route_candidates": 19,
+        "selected_candidates": 7,
+        "route_reject_rate": 0.631579,
+        "route_entropy": 1.448816,
+        "selected_route_score_mean": 0.524571,
+        "selected_route_cost_mean": 0.271429,
+        "oracle_route_regret_mean": null,
+        "proxy_route_regret_mean": 0.2625,
+        "activated_modules": [
+          "search_agent",
+          "memory",
+          "aggregator",
+          "memory",
+          "aggregator",
+          "memory",
+          "aggregator"
+        ]
+      },
+      "memory": {
+        "memory_reads": 4,
+        "useful_memory_reads": 4,
+        "harmful_memory_reads": 0,
+        "neutral_memory_reads": 0,
+        "unknown_memory_reads": 0,
+        "useful_memory_reuse_rate": 1.0,
+        "negative_transfer_cases": 0
+      },
+      "verifier": {
+        "verifier_statuses": [
+          "skipped",
+          "skipped",
+          "skipped",
+          "skipped"
+        ],
+        "verifier_failures": 0,
+        "verifier_catches": 0,
+        "verifier_catch_rate": null
+      },
+      "known_deviations": [
+        "faithful_toy_runtime_not_real_llm",
+        "oracle_route_regret_unavailable",
+        "toy_route_oracle_success_label",
+        "toy_scalar_activation_cost_not_full_cost_delta"
+      ],
+      "oracle_route_regret": 0.0,
+      "router_id": "aa_lexical_router"
+    },
+    {
+      "trajectory_path": "/home/myuser/Agent/experiments/trajectories/phase4_learned_routing/phase4_router__aa_rule_router__phase1_search_recency_001.json",
+      "task_id": "phase1_search_recency_001",
+      "benchmark_id": "phase1_mixed",
+      "baseline_id": "agent_attention_agent_tuned",
+      "ablation_id": "aa_rule_router",
+      "final": {
+        "success_label": "pass",
+        "task_success": true,
+        "failure_reason": null,
+        "final_answer_present": true
+      },
+      "process": {
+        "activation_cost": 1.9,
+        "cost_normalized_success": 0.344828,
+        "module_calls": 7,
+        "verifier_calls": 0,
+        "budget_rejections": 0,
+        "repeated_action_ratio": 0.571429,
+        "invalid_tool_call_ratio": 0.0,
+        "loop_stuck": false,
+        "budget_exhaustion": false,
+        "step_exhaustion": true,
+        "premature_halt": false
+      },
+      "routing": {
+        "route_events": 4,
+        "route_candidates": 19,
+        "selected_candidates": 7,
+        "route_reject_rate": 0.631579,
+        "route_entropy": 1.448816,
+        "selected_route_score_mean": 1.415686,
+        "selected_route_cost_mean": 0.271429,
+        "oracle_route_regret_mean": null,
+        "proxy_route_regret_mean": 0.2625,
+        "activated_modules": [
+          "search_agent",
+          "memory",
+          "aggregator",
+          "memory",
+          "aggregator",
+          "memory",
+          "aggregator"
+        ]
+      },
+      "memory": {
+        "memory_reads": 4,
+        "useful_memory_reads": 4,
+        "harmful_memory_reads": 0,
+        "neutral_memory_reads": 0,
+        "unknown_memory_reads": 0,
+        "useful_memory_reuse_rate": 1.0,
+        "negative_transfer_cases": 0
+      },
+      "verifier": {
+        "verifier_statuses": [
+          "skipped",
+          "skipped",
+          "skipped",
+          "skipped"
+        ],
+        "verifier_failures": 0,
+        "verifier_catches": 0,
+        "verifier_catch_rate": null
+      },
+      "known_deviations": [
+        "faithful_toy_runtime_not_real_llm",
+        "oracle_route_regret_unavailable",
+        "toy_route_oracle_success_label",
+        "toy_scalar_activation_cost_not_full_cost_delta"
+      ],
+      "oracle_route_regret": 0.0,
+      "router_id": "aa_rule_router"
+    },
+    {
+      "trajectory_path": "/home/myuser/Agent/experiments/trajectories/phase4_learned_routing/phase4_router__aa_learned_router_replay__phase1_search_recency_001.json",
+      "task_id": "phase1_search_recency_001",
+      "benchmark_id": "phase1_mixed",
+      "baseline_id": "agent_attention_agent_tuned",
+      "ablation_id": "aa_learned_router_replay",
+      "final": {
+        "success_label": "pass",
+        "task_success": true,
+        "failure_reason": null,
+        "final_answer_present": true
+      },
+      "process": {
+        "activation_cost": 1.9,
+        "cost_normalized_success": 0.344828,
+        "module_calls": 7,
+        "verifier_calls": 0,
+        "budget_rejections": 0,
+        "repeated_action_ratio": 0.571429,
+        "invalid_tool_call_ratio": 0.0,
+        "loop_stuck": false,
+        "budget_exhaustion": false,
+        "step_exhaustion": true,
+        "premature_halt": false
+      },
+      "routing": {
+        "route_events": 4,
+        "route_candidates": 19,
+        "selected_candidates": 7,
+        "route_reject_rate": 0.631579,
+        "route_entropy": 1.448816,
+        "selected_route_score_mean": 0.921743,
+        "selected_route_cost_mean": 0.271429,
+        "oracle_route_regret_mean": null,
+        "proxy_route_regret_mean": 0.294675,
+        "activated_modules": [
+          "search_agent",
+          "memory",
+          "aggregator",
+          "memory",
+          "aggregator",
+          "memory",
+          "aggregator"
+        ]
+      },
+      "memory": {
+        "memory_reads": 4,
+        "useful_memory_reads": 4,
+        "harmful_memory_reads": 0,
+        "neutral_memory_reads": 0,
+        "unknown_memory_reads": 0,
+        "useful_memory_reuse_rate": 1.0,
+        "negative_transfer_cases": 0
+      },
+      "verifier": {
+        "verifier_statuses": [
+          "skipped",
+          "skipped",
+          "skipped",
+          "skipped"
+        ],
+        "verifier_failures": 0,
+        "verifier_catches": 0,
+        "verifier_catch_rate": null
+      },
+      "known_deviations": [
+        "faithful_toy_runtime_not_real_llm",
+        "oracle_route_regret_unavailable",
+        "toy_route_oracle_success_label",
+        "toy_scalar_activation_cost_not_full_cost_delta"
+      ],
+      "oracle_route_regret": 0.0,
+      "router_id": "aa_learned_router_replay"
+    },
+    {
+      "trajectory_path": "/home/myuser/Agent/experiments/trajectories/phase4_learned_routing/phase4_router__aa_oracle_router__phase1_search_recency_001.json",
+      "task_id": "phase1_search_recency_001",
+      "benchmark_id": "phase1_mixed",
+      "baseline_id": "agent_attention_agent_tuned",
+      "ablation_id": "aa_oracle_router",
+      "final": {
+        "success_label": "pass",
+        "task_success": true,
+        "failure_reason": null,
+        "final_answer_present": true
+      },
+      "process": {
+        "activation_cost": 2.35,
+        "cost_normalized_success": 0.298507,
+        "module_calls": 7,
+        "verifier_calls": 0,
+        "budget_rejections": 0,
+        "repeated_action_ratio": 0.571429,
+        "invalid_tool_call_ratio": 0.0,
+        "loop_stuck": false,
+        "budget_exhaustion": false,
+        "step_exhaustion": true,
+        "premature_halt": false
+      },
+      "routing": {
+        "route_events": 4,
+        "route_candidates": 19,
+        "selected_candidates": 7,
+        "route_reject_rate": 0.631579,
+        "route_entropy": 1.556657,
+        "selected_route_score_mean": 0.650457,
+        "selected_route_cost_mean": 0.335714,
+        "oracle_route_regret_mean": null,
+        "proxy_route_regret_mean": 0.4415,
+        "activated_modules": [
+          "search_agent",
+          "memory",
+          "search_agent",
+          "aggregator",
+          "memory",
+          "aggregator",
+          "memory"
+        ]
+      },
+      "memory": {
+        "memory_reads": 4,
+        "useful_memory_reads": 4,
+        "harmful_memory_reads": 0,
+        "neutral_memory_reads": 0,
+        "unknown_memory_reads": 0,
+        "useful_memory_reuse_rate": 1.0,
+        "negative_transfer_cases": 0
+      },
+      "verifier": {
+        "verifier_statuses": [
+          "skipped",
+          "skipped",
+          "skipped",
+          "skipped"
+        ],
+        "verifier_failures": 0,
+        "verifier_catches": 0,
+        "verifier_catch_rate": null
+      },
+      "known_deviations": [
+        "faithful_toy_runtime_not_real_llm",
+        "oracle_route_regret_unavailable",
+        "toy_route_oracle_success_label",
+        "toy_scalar_activation_cost_not_full_cost_delta"
+      ],
+      "oracle_route_regret": 0.0,
+      "router_id": "aa_oracle_router"
+    },
+    {
+      "trajectory_path": "/home/myuser/Agent/experiments/trajectories/phase4_learned_routing/phase4_router__aa_lexical_router__phase1_search_evidence_002.json",
+      "task_id": "phase1_search_evidence_002",
+      "benchmark_id": "phase1_mixed",
+      "baseline_id": "agent_attention_agent_tuned",
+      "ablation_id": "aa_lexical_router",
+      "final": {
+        "success_label": "pass",
+        "task_success": true,
+        "failure_reason": null,
+        "final_answer_present": true
+      },
+      "process": {
+        "activation_cost": 1.9,
+        "cost_normalized_success": 0.344828,
+        "module_calls": 7,
+        "verifier_calls": 0,
+        "budget_rejections": 0,
+        "repeated_action_ratio": 0.571429,
+        "invalid_tool_call_ratio": 0.0,
+        "loop_stuck": false,
+        "budget_exhaustion": false,
+        "step_exhaustion": true,
+        "premature_halt": false
+      },
+      "routing": {
+        "route_events": 4,
+        "route_candidates": 19,
+        "selected_candidates": 7,
+        "route_reject_rate": 0.631579,
+        "route_entropy": 1.448816,
+        "selected_route_score_mean": 0.517071,
+        "selected_route_cost_mean": 0.271429,
+        "oracle_route_regret_mean": null,
+        "proxy_route_regret_mean": 0.2625,
+        "activated_modules": [
+          "search_agent",
+          "memory",
+          "aggregator",
+          "memory",
+          "aggregator",
+          "memory",
+          "aggregator"
+        ]
+      },
+      "memory": {
+        "memory_reads": 4,
+        "useful_memory_reads": 4,
+        "harmful_memory_reads": 0,
+        "neutral_memory_reads": 0,
+        "unknown_memory_reads": 0,
+        "useful_memory_reuse_rate": 1.0,
+        "negative_transfer_cases": 0
+      },
+      "verifier": {
+        "verifier_statuses": [
+          "skipped",
+          "skipped",
+          "skipped",
+          "skipped"
+        ],
+        "verifier_failures": 0,
+        "verifier_catches": 0,
+        "verifier_catch_rate": null
+      },
+      "known_deviations": [
+        "faithful_toy_runtime_not_real_llm",
+        "oracle_route_regret_unavailable",
+        "toy_route_oracle_success_label",
+        "toy_scalar_activation_cost_not_full_cost_delta"
+      ],
+      "oracle_route_regret": 0.0,
+      "router_id": "aa_lexical_router"
+    },
+    {
+      "trajectory_path": "/home/myuser/Agent/experiments/trajectories/phase4_learned_routing/phase4_router__aa_rule_router__phase1_search_evidence_002.json",
+      "task_id": "phase1_search_evidence_002",
+      "benchmark_id": "phase1_mixed",
+      "baseline_id": "agent_attention_agent_tuned",
+      "ablation_id": "aa_rule_router",
+      "final": {
+        "success_label": "pass",
+        "task_success": true,
+        "failure_reason": null,
+        "final_answer_present": true
+      },
+      "process": {
+        "activation_cost": 1.9,
+        "cost_normalized_success": 0.344828,
+        "module_calls": 7,
+        "verifier_calls": 0,
+        "budget_rejections": 0,
+        "repeated_action_ratio": 0.571429,
+        "invalid_tool_call_ratio": 0.0,
+        "loop_stuck": false,
+        "budget_exhaustion": false,
+        "step_exhaustion": true,
+        "premature_halt": false
+      },
+      "routing": {
+        "route_events": 4,
+        "route_candidates": 19,
+        "selected_candidates": 7,
+        "route_reject_rate": 0.631579,
+        "route_entropy": 1.448816,
+        "selected_route_score_mean": 1.423086,
+        "selected_route_cost_mean": 0.271429,
+        "oracle_route_regret_mean": null,
+        "proxy_route_regret_mean": 0.2625,
+        "activated_modules": [
+          "search_agent",
+          "memory",
+          "aggregator",
+          "memory",
+          "aggregator",
+          "memory",
+          "aggregator"
+        ]
+      },
+      "memory": {
+        "memory_reads": 4,
+        "useful_memory_reads": 4,
+        "harmful_memory_reads": 0,
+        "neutral_memory_reads": 0,
+        "unknown_memory_reads": 0,
+        "useful_memory_reuse_rate": 1.0,
+        "negative_transfer_cases": 0
+      },
+      "verifier": {
+        "verifier_statuses": [
+          "skipped",
+          "skipped",
+          "skipped",
+          "skipped"
+        ],
+        "verifier_failures": 0,
+        "verifier_catches": 0,
+        "verifier_catch_rate": null
+      },
+      "known_deviations": [
+        "faithful_toy_runtime_not_real_llm",
+        "oracle_route_regret_unavailable",
+        "toy_route_oracle_success_label",
+        "toy_scalar_activation_cost_not_full_cost_delta"
+      ],
+      "oracle_route_regret": 0.0,
+      "router_id": "aa_rule_router"
+    },
+    {
+      "trajectory_path": "/home/myuser/Agent/experiments/trajectories/phase4_learned_routing/phase4_router__aa_learned_router_replay__phase1_search_evidence_002.json",
+      "task_id": "phase1_search_evidence_002",
+      "benchmark_id": "phase1_mixed",
+      "baseline_id": "agent_attention_agent_tuned",
+      "ablation_id": "aa_learned_router_replay",
+      "final": {
+        "success_label": "pass",
+        "task_success": true,
+        "failure_reason": null,
+        "final_answer_present": true
+      },
+      "process": {
+        "activation_cost": 2.8,
+        "cost_normalized_success": 0.263158,
+        "module_calls": 8,
+        "verifier_calls": 1,
+        "budget_rejections": 0,
+        "repeated_action_ratio": 0.5,
+        "invalid_tool_call_ratio": 0.0,
+        "loop_stuck": false,
+        "budget_exhaustion": false,
+        "step_exhaustion": false,
+        "premature_halt": false
+      },
+      "routing": {
+        "route_events": 4,
+        "route_candidates": 19,
+        "selected_candidates": 7,
+        "route_reject_rate": 0.631579,
+        "route_entropy": 1.905639,
+        "selected_route_score_mean": 1.075343,
+        "selected_route_cost_mean": 0.35,
+        "oracle_route_regret_mean": null,
+        "proxy_route_regret_mean": 0.175,
+        "activated_modules": [
+          "search_agent",
+          "memory",
+          "search_agent",
+          "aggregator",
+          "aggregator",
+          "memory",
+          "aggregator",
+          "verifier"
+        ]
+      },
+      "memory": {
+        "memory_reads": 4,
+        "useful_memory_reads": 4,
+        "harmful_memory_reads": 0,
+        "neutral_memory_reads": 0,
+        "unknown_memory_reads": 0,
+        "useful_memory_reuse_rate": 1.0,
+        "negative_transfer_cases": 0
+      },
+      "verifier": {
+        "verifier_statuses": [
+          "skipped",
+          "skipped",
+          "skipped",
+          "pass"
+        ],
+        "verifier_failures": 0,
+        "verifier_catches": 0,
+        "verifier_catch_rate": null
+      },
+      "known_deviations": [
+        "faithful_toy_runtime_not_real_llm",
+        "oracle_route_regret_unavailable",
+        "toy_route_oracle_success_label",
+        "toy_scalar_activation_cost_not_full_cost_delta"
+      ],
+      "oracle_route_regret": 0.0,
+      "router_id": "aa_learned_router_replay"
+    },
+    {
+      "trajectory_path": "/home/myuser/Agent/experiments/trajectories/phase4_learned_routing/phase4_router__aa_oracle_router__phase1_search_evidence_002.json",
+      "task_id": "phase1_search_evidence_002",
+      "benchmark_id": "phase1_mixed",
+      "baseline_id": "agent_attention_agent_tuned",
+      "ablation_id": "aa_oracle_router",
+      "final": {
+        "success_label": "pass",
+        "task_success": true,
+        "failure_reason": null,
+        "final_answer_present": true
+      },
+      "process": {
+        "activation_cost": 2.35,
+        "cost_normalized_success": 0.298507,
+        "module_calls": 7,
+        "verifier_calls": 0,
+        "budget_rejections": 0,
+        "repeated_action_ratio": 0.571429,
+        "invalid_tool_call_ratio": 0.0,
+        "loop_stuck": false,
+        "budget_exhaustion": false,
+        "step_exhaustion": true,
+        "premature_halt": false
+      },
+      "routing": {
+        "route_events": 4,
+        "route_candidates": 19,
+        "selected_candidates": 7,
+        "route_reject_rate": 0.631579,
+        "route_entropy": 1.556657,
+        "selected_route_score_mean": 0.658486,
+        "selected_route_cost_mean": 0.335714,
+        "oracle_route_regret_mean": null,
+        "proxy_route_regret_mean": 0.4415,
+        "activated_modules": [
+          "search_agent",
+          "memory",
+          "search_agent",
+          "aggregator",
+          "memory",
+          "aggregator",
+          "memory"
+        ]
+      },
+      "memory": {
+        "memory_reads": 4,
+        "useful_memory_reads": 4,
+        "harmful_memory_reads": 0,
+        "neutral_memory_reads": 0,
+        "unknown_memory_reads": 0,
+        "useful_memory_reuse_rate": 1.0,
+        "negative_transfer_cases": 0
+      },
+      "verifier": {
+        "verifier_statuses": [
+          "skipped",
+          "skipped",
+          "skipped",
+          "skipped"
+        ],
+        "verifier_failures": 0,
+        "verifier_catches": 0,
+        "verifier_catch_rate": null
+      },
+      "known_deviations": [
+        "faithful_toy_runtime_not_real_llm",
+        "oracle_route_regret_unavailable",
+        "toy_route_oracle_success_label",
+        "toy_scalar_activation_cost_not_full_cost_delta"
+      ],
+      "oracle_route_regret": 0.0,
+      "router_id": "aa_oracle_router"
+    },
+    {
+      "trajectory_path": "/home/myuser/Agent/experiments/trajectories/phase4_learned_routing/phase4_router__aa_lexical_router__phase1_research_taxonomy_001.json",
+      "task_id": "phase1_research_taxonomy_001",
+      "benchmark_id": "phase1_mixed",
+      "baseline_id": "agent_attention_agent_tuned",
+      "ablation_id": "aa_lexical_router",
+      "final": {
+        "success_label": "pass",
+        "task_success": true,
+        "failure_reason": null,
+        "final_answer_present": true
+      },
+      "process": {
+        "activation_cost": 2.45,
+        "cost_normalized_success": 0.289855,
+        "module_calls": 9,
+        "verifier_calls": 1,
+        "budget_rejections": 0,
+        "repeated_action_ratio": 0.555556,
+        "invalid_tool_call_ratio": 0.0,
+        "loop_stuck": false,
+        "budget_exhaustion": false,
+        "step_exhaustion": false,
+        "premature_halt": false
+      },
+      "routing": {
+        "route_events": 5,
+        "route_candidates": 24,
+        "selected_candidates": 8,
+        "route_reject_rate": 0.666667,
+        "route_entropy": 1.891061,
+        "selected_route_score_mean": 0.515025,
+        "selected_route_cost_mean": 0.2625,
+        "oracle_route_regret_mean": null,
+        "proxy_route_regret_mean": 0.35,
+        "activated_modules": [
+          "critic_agent",
+          "memory",
+          "aggregator",
+          "memory",
+          "aggregator",
+          "memory",
+          "critic_agent",
+          "aggregator",
+          "verifier"
+        ]
+      },
+      "memory": {
+        "memory_reads": 0,
+        "useful_memory_reads": 0,
+        "harmful_memory_reads": 0,
+        "neutral_memory_reads": 0,
+        "unknown_memory_reads": 0,
+        "useful_memory_reuse_rate": null,
+        "negative_transfer_cases": 0
+      },
+      "verifier": {
+        "verifier_statuses": [
+          "skipped",
+          "skipped",
+          "skipped",
+          "skipped",
+          "pass"
+        ],
+        "verifier_failures": 0,
+        "verifier_catches": 0,
+        "verifier_catch_rate": null
+      },
+      "known_deviations": [
+        "faithful_toy_runtime_not_real_llm",
+        "oracle_route_regret_unavailable",
+        "toy_route_oracle_success_label",
+        "toy_scalar_activation_cost_not_full_cost_delta"
+      ],
+      "oracle_route_regret": 0.0,
+      "router_id": "aa_lexical_router"
+    },
+    {
+      "trajectory_path": "/home/myuser/Agent/experiments/trajectories/phase4_learned_routing/phase4_router__aa_rule_router__phase1_research_taxonomy_001.json",
+      "task_id": "phase1_research_taxonomy_001",
+      "benchmark_id": "phase1_mixed",
+      "baseline_id": "agent_attention_agent_tuned",
+      "ablation_id": "aa_rule_router",
+      "final": {
+        "success_label": "pass",
+        "task_success": true,
+        "failure_reason": null,
+        "final_answer_present": true
+      },
+      "process": {
+        "activation_cost": 2.75,
+        "cost_normalized_success": 0.266667,
+        "module_calls": 9,
+        "verifier_calls": 1,
+        "budget_rejections": 0,
+        "repeated_action_ratio": 0.555556,
+        "invalid_tool_call_ratio": 0.0,
+        "loop_stuck": false,
+        "budget_exhaustion": false,
+        "step_exhaustion": false,
+        "premature_halt": false
+      },
+      "routing": {
+        "route_events": 5,
+        "route_candidates": 24,
+        "selected_candidates": 8,
+        "route_reject_rate": 0.666667,
+        "route_entropy": 1.891061,
+        "selected_route_score_mean": 1.221575,
+        "selected_route_cost_mean": 0.3,
+        "oracle_route_regret_mean": null,
+        "proxy_route_regret_mean": 0.28,
+        "activated_modules": [
+          "critic_agent",
+          "memory",
+          "aggregator",
+          "memory",
+          "critic_agent",
+          "aggregator",
+          "critic_agent",
+          "aggregator",
+          "verifier"
+        ]
+      },
+      "memory": {
+        "memory_reads": 0,
+        "useful_memory_reads": 0,
+        "harmful_memory_reads": 0,
+        "neutral_memory_reads": 0,
+        "unknown_memory_reads": 0,
+        "useful_memory_reuse_rate": null,
+        "negative_transfer_cases": 0
+      },
+      "verifier": {
+        "verifier_statuses": [
+          "skipped",
+          "skipped",
+          "skipped",
+          "skipped",
+          "pass"
+        ],
+        "verifier_failures": 0,
+        "verifier_catches": 0,
+        "verifier_catch_rate": null
+      },
+      "known_deviations": [
+        "faithful_toy_runtime_not_real_llm",
+        "oracle_route_regret_unavailable",
+        "toy_route_oracle_success_label",
+        "toy_scalar_activation_cost_not_full_cost_delta"
+      ],
+      "oracle_route_regret": 0.0,
+      "router_id": "aa_rule_router"
+    },
+    {
+      "trajectory_path": "/home/myuser/Agent/experiments/trajectories/phase4_learned_routing/phase4_router__aa_learned_router_replay__phase1_research_taxonomy_001.json",
+      "task_id": "phase1_research_taxonomy_001",
+      "benchmark_id": "phase1_mixed",
+      "baseline_id": "agent_attention_agent_tuned",
+      "ablation_id": "aa_learned_router_replay",
+      "final": {
+        "success_label": "pass",
+        "task_success": true,
+        "failure_reason": null,
+        "final_answer_present": true
+      },
+      "process": {
+        "activation_cost": 2.75,
+        "cost_normalized_success": 0.266667,
+        "module_calls": 9,
+        "verifier_calls": 1,
+        "budget_rejections": 0,
+        "repeated_action_ratio": 0.555556,
+        "invalid_tool_call_ratio": 0.0,
+        "loop_stuck": false,
+        "budget_exhaustion": false,
+        "step_exhaustion": false,
+        "premature_halt": false
+      },
+      "routing": {
+        "route_events": 5,
+        "route_candidates": 24,
+        "selected_candidates": 8,
+        "route_reject_rate": 0.666667,
+        "route_entropy": 1.891061,
+        "selected_route_score_mean": 1.216412,
+        "selected_route_cost_mean": 0.3,
+        "oracle_route_regret_mean": null,
+        "proxy_route_regret_mean": 0.28,
+        "activated_modules": [
+          "critic_agent",
+          "memory",
+          "aggregator",
+          "memory",
+          "critic_agent",
+          "aggregator",
+          "critic_agent",
+          "aggregator",
+          "verifier"
+        ]
+      },
+      "memory": {
+        "memory_reads": 0,
+        "useful_memory_reads": 0,
+        "harmful_memory_reads": 0,
+        "neutral_memory_reads": 0,
+        "unknown_memory_reads": 0,
+        "useful_memory_reuse_rate": null,
+        "negative_transfer_cases": 0
+      },
+      "verifier": {
+        "verifier_statuses": [
+          "skipped",
+          "skipped",
+          "skipped",
+          "skipped",
+          "pass"
+        ],
+        "verifier_failures": 0,
+        "verifier_catches": 0,
+        "verifier_catch_rate": null
+      },
+      "known_deviations": [
+        "faithful_toy_runtime_not_real_llm",
+        "oracle_route_regret_unavailable",
+        "toy_route_oracle_success_label",
+        "toy_scalar_activation_cost_not_full_cost_delta"
+      ],
+      "oracle_route_regret": 0.0,
+      "router_id": "aa_learned_router_replay"
+    },
+    {
+      "trajectory_path": "/home/myuser/Agent/experiments/trajectories/phase4_learned_routing/phase4_router__aa_oracle_router__phase1_research_taxonomy_001.json",
+      "task_id": "phase1_research_taxonomy_001",
+      "benchmark_id": "phase1_mixed",
+      "baseline_id": "agent_attention_agent_tuned",
+      "ablation_id": "aa_oracle_router",
+      "final": {
+        "success_label": "pass",
+        "task_success": true,
+        "failure_reason": null,
+        "final_answer_present": true
+      },
+      "process": {
+        "activation_cost": 2.85,
+        "cost_normalized_success": 0.25974,
+        "module_calls": 9,
+        "verifier_calls": 1,
+        "budget_rejections": 0,
+        "repeated_action_ratio": 0.555556,
+        "invalid_tool_call_ratio": 0.0,
+        "loop_stuck": false,
+        "budget_exhaustion": false,
+        "step_exhaustion": false,
+        "premature_halt": false
+      },
+      "routing": {
+        "route_events": 5,
+        "route_candidates": 24,
+        "selected_candidates": 8,
+        "route_reject_rate": 0.666667,
+        "route_entropy": 1.752715,
+        "selected_route_score_mean": 1.086812,
+        "selected_route_cost_mean": 0.3125,
+        "oracle_route_regret_mean": null,
+        "proxy_route_regret_mean": 0.21,
+        "activated_modules": [
+          "critic_agent",
+          "memory",
+          "aggregator",
+          "critic_agent",
+          "aggregator",
+          "critic_agent",
+          "aggregator",
+          "aggregator",
+          "verifier"
+        ]
+      },
+      "memory": {
+        "memory_reads": 0,
+        "useful_memory_reads": 0,
+        "harmful_memory_reads": 0,
+        "neutral_memory_reads": 0,
+        "unknown_memory_reads": 0,
+        "useful_memory_reuse_rate": null,
+        "negative_transfer_cases": 0
+      },
+      "verifier": {
+        "verifier_statuses": [
+          "skipped",
+          "skipped",
+          "skipped",
+          "skipped",
+          "pass"
+        ],
+        "verifier_failures": 0,
+        "verifier_catches": 0,
+        "verifier_catch_rate": null
+      },
+      "known_deviations": [
+        "faithful_toy_runtime_not_real_llm",
+        "oracle_route_regret_unavailable",
+        "toy_route_oracle_success_label",
+        "toy_scalar_activation_cost_not_full_cost_delta"
+      ],
+      "oracle_route_regret": 0.0,
+      "router_id": "aa_oracle_router"
+    }
+  ],
+  "aggregate": {
+    "run_count": 48,
+    "success_rate": 0.6875,
+    "mean_cost_normalized_success": 0.209476,
+    "mean_activation_cost": 2.126042,
+    "mean_module_calls": 7.291667,
+    "mean_repeated_action_ratio": 0.535384,
+    "budget_exhaustion_rate": 0.0,
+    "premature_halt_rate": 0.0,
+    "loop_stuck_rate": 0.104167,
+    "step_exhaustion_rate": 0.604167,
+    "mean_route_entropy": 1.617302,
+    "mean_route_reject_rate": 0.646199,
+    "mean_oracle_route_regret": null,
+    "mean_proxy_route_regret": 0.433197,
+    "total_memory_reads": 160,
+    "total_negative_transfer_cases": 0,
+    "total_verifier_failures": 0,
+    "total_verifier_catches": 0,
+    "known_deviations": [
+      "faithful_toy_runtime_not_real_llm",
+      "oracle_route_regret_unavailable",
+      "toy_route_oracle_success_label",
+      "toy_scalar_activation_cost_not_full_cost_delta"
+    ]
+  }
+}

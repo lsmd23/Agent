@@ -1,0 +1,47 @@
+{
+  "version": "learned_router.v0.1",
+  "feature_names": [
+    "lexical_jaccard",
+    "intent_bonus",
+    "task_family_code",
+    "task_family_search",
+    "task_family_research",
+    "module_is_code",
+    "module_is_search",
+    "module_is_critic",
+    "module_is_memory",
+    "module_is_aggregator",
+    "step_fraction",
+    "failure_signal_count",
+    "remaining_budget_fraction",
+    "repetition_count",
+    "memory_bonus"
+  ],
+  "weights": [
+    2.643026268543683,
+    17.486995780134766,
+    -1.8025070598662754,
+    -0.556326904000013,
+    1.4031320896526411,
+    -0.4427042665712551,
+    -1.0598853900434273,
+    0.5420093915067485,
+    -0.8294943375108961,
+    0.8343727284051052,
+    0.3456336764629748,
+    0.0,
+    -0.9557018742137245,
+    0.0,
+    3.1906125969012207,
+    -0.9557018742137245
+  ],
+  "module_offsets": {
+    "memory": -0.8294943375108961,
+    "code_agent": -0.4427042665712551,
+    "search_agent": -1.0598853900434273,
+    "critic_agent": 0.5420093915067485,
+    "aggregator": 0.8343727284051052
+  },
+  "training_rows": 1523,
+  "training_accuracy": 0.793171
+}

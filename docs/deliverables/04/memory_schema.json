@@ -1,0 +1,430 @@
+{
+  "scope": {
+    "summary": "Memory KV-cache schema overlay for Agent-Attention Subtask 04.",
+    "purpose": "Define auditable memory read/write records, typed memory profiles, and metric events while remaining compatible with Subtask 02 memoryEntry, trajectoryEvent, failureSignal, and routeDecision.",
+    "out_of_scope": [
+      "Changing the core Subtask 02 schema definitions",
+      "Storing full raw transcripts as memory values",
+      "Implementing a runtime memory store outside docs/deliverables/04"
+    ]
+  },
+  "claims": [
+    {
+      "evidence_type": "文献",
+      "claim": "Reflexion and Voyager motivate storing behavioral feedback, failure reflections, and reusable skills, while Memory Networks motivate explicit read/write memory components."
+    },
+    {
+      "evidence_type": "原型",
+      "claim": "The Phase 0-1 formal model already exposes memoryEntry, trajectoryEvent, routeDecision, and failureSignal fields that can support auditable memory operations."
+    },
+    {
+      "evidence_type": "猜想",
+      "claim": "A memory cache improves agent routing only when each read/write is provenance-bound, usefulness-labeled, and allowed to decay or enter quarantine after harm."
+    }
+  ],
+  "design": {
+    "minimal_version": [
+      "Use one canonical Subtask 02 memoryEntry object for all memory types.",
+      "Require every memory write to include memory_type, key, value summary fields, provenance.evidence_refs, write_reason, and reuse_outcomes.",
+      "Log every memory read and write as a trajectoryEvent with action_type memory_read or memory_write, memory ids, usefulness label, route scores, and evidence refs.",
+      "Compute memory_bonus with a hard cap and negative-transfer penalty before route selection.",
+      "Initialize read usefulness as unknown unless immediate verifier evidence exists; later relabel as useful, harmful, neutral, or unknown from outcome logs."
+    ],
+    "enhanced_version": [
+      "Add audit envelopes around 02 memoryEntry objects to track route_signature, read/write operation ids, usefulness label provenance, freshness, quarantine status, and decay state.",
+      "Partition retrieval by task_family, memory_type, tool_schema_refs, and benchmark split before lexical or embedding scoring.",
+      "Use failure_memory as an operational profile encoded as memory_type behavior_kv with write_reason failure or negative_transfer, because 02 does not currently include a fifth memory_type enum.",
+      "Apply split-aware isolation so benchmark test memories cannot retrieve training answers unless the experiment explicitly permits cross-task transfer.",
+      "Require verifier-approved promotion before a quarantined memory can contribute positive memory_bonus again."
+    ],
+    "counterexamples": [
+      "A high-similarity episodic memory from a previous repo can activate the wrong build tool and reduce success.",
+      "A stale knowledge memory can override newer tool output if memory_bonus is uncapped.",
+      "A full trajectory stored as value can dominate retrieval with irrelevant tokens and hide the causal step that mattered.",
+      "A success-only cache can repeat workflows that succeeded for accidental reasons while failing to block known avoid patterns."
+    ]
+  },
+  "interfaces": {
+    "schema_version": "agent_attention.memory_kv_cache.v0.1",
+    "json_schema_dialect": "https://json-schema.org/draft/2020-12/schema",
+    "alignment_with_02": {
+      "memoryEntry": "All persisted memories must validate against docs/deliverables/02/schemas.json#/$defs/memoryEntry before optional audit wrapping.",
+      "trajectoryEvent": "Every read/write must emit a docs/deliverables/02 trajectoryEvent with action_type memory_read or memory_write.",
+      "failureSignal": "Harmful reads and stale-memory regressions must create or reference failureSignal.failure_type negative_transfer, contradiction, verifier_failed, test_failed, or low_confidence.",
+      "routeDecision": "Memory retrieval contributes only through routeDecision.candidates[].score_terms.memory_bonus and never bypasses candidate scoring."
+    },
+    "memory_type_profiles": {
+      "knowledge_memory": {
+        "contents": "Accepted facts, source summaries, API constraints, benchmark facts, or repository facts.",
+        "primary_key_fields": [
+          "task_signature",
+          "tool_schema_refs"
+        ],
+        "write_reason": [
+          "success",
+          "manual_seed",
+          "uncertainty"
+        ],
+        "promotion_rule": "May be reused only when evidence_refs point to tool output, verifier result, or cited source summaries."
+      },
+      "episodic_memory": {
+        "contents": "Compressed task trajectory, decision points, verifier outcomes, and final result.",
+        "primary_key_fields": [
+          "task_signature",
+          "route_signature",
+          "failure_success_features"
+        ],
+        "write_reason": [
+          "success",
+          "failure",
+          "negative_transfer"
+        ],
+        "promotion_rule": "Contributes to route selection only after a useful or neutral reuse outcome, or after direct verifier approval."
+      },
+      "skill_memory": {
+        "contents": "Reusable procedure, checklist, command pattern, or code-edit workflow referenced by reusable_skill_ref.",
+        "primary_key_fields": [
+          "task_signature",
+          "tool_schema_refs",
+          "route_signature"
+        ],
+        "write_reason": [
+          "success",
+          "manual_seed"
+        ],
+        "promotion_rule": "Requires successful replay or verifier-approved dry run before high confidence."
+      },
+      "behavior_kv": {
+        "contents": "Route-conditioned action preference, avoid pattern, verifier choice, or failure memory encoded as behavioral key-value guidance.",
+        "primary_key_fields": [
+          "route_signature",
+          "failure_success_features"
+        ],
+        "write_reason": [
+          "success",
+          "failure",
+          "negative_transfer",
+          "uncertainty"
+        ],
+        "promotion_rule": "Positive bonuses require useful_count > harmful_count; avoid-only entries may remain active while quarantined from positive bonuses."
+      },
+      "failure_memory": {
+        "status": "Alias profile, not a new 02 enum value.",
+        "encoding": "Persist as memory_type behavior_kv with write_reason failure or negative_transfer and failure_success_features containing failure signatures.",
+        "required_value_fields": [
+          "trajectory_summary",
+          "useful_reflection",
+          "successful_workflow as empty or mitigation workflow"
+        ]
+      }
+    },
+    "audit_requirements": {
+      "read_fields": [
+        "operation_id",
+        "memory_id",
+        "key.task_signature",
+        "value_summary",
+        "evidence_refs",
+        "route_signature",
+        "retrieval_score",
+        "usefulness_label",
+        "negative_transfer_count",
+        "freshness_days",
+        "quarantine_status"
+      ],
+      "write_fields": [
+        "operation_id",
+        "memory_id",
+        "memory_type",
+        "write_reason",
+        "key",
+        "value_summary",
+        "evidence_refs",
+        "route_signature",
+        "initial_usefulness_label",
+        "negative_transfer_count",
+        "retention_policy"
+      ],
+      "value_summary_rule": "Summarize the causal reusable content in at most 600 characters and store hashes or refs for longer artifacts."
+    },
+    "memory_bonus_guardrail": {
+      "formula": "memory_bonus_i = min(0.20, max(-0.40, mean_top_n(retrieval_score * usefulness_prior * route_match * freshness_decay) - negative_transfer_penalty))",
+      "hard_cap": 0.20,
+      "harm_floor": -0.40,
+      "fresh_evidence_override": "If current task evidence contradicts memory, set positive memory contribution to 0 and emit contradiction or negative_transfer signal.",
+      "stale_memory_decay": "freshness_decay = exp(-age_days / half_life_days), with default half_life_days 90 for knowledge_memory, 60 for episodic_memory, 120 for skill_memory, and 45 for behavior_kv.",
+      "quarantine_rule": "If harmful_count >= 2 or negative_transfer_count >= 2, quarantine the memory from positive memory_bonus until verifier-approved promotion."
+    }
+  },
+  "experiments": [
+    {
+      "id": "schema_memory_audit_fixture",
+      "description": "Create valid and invalid read/write fixtures for each memory profile and validate that every operation can be joined to 02 memoryEntry, trajectoryEvent, routeDecision, and failureSignal records.",
+      "controls": [
+        "valid complete audit logs",
+        "missing evidence refs",
+        "missing route signature",
+        "uncapped memory bonus",
+        "failure memory encoded as unsupported enum"
+      ],
+      "metrics": [
+        "schema_pass_rate",
+        "audit_field_coverage",
+        "invalid_operation_detection_rate"
+      ]
+    },
+    {
+      "id": "memory_bonus_guardrail_replay",
+      "description": "Replay routing decisions with useful, stale, and harmful memories while holding semantic_match fixed.",
+      "controls": [
+        "no memory_bonus cap",
+        "cap at 0.20 with decay",
+        "cap plus quarantine"
+      ],
+      "metrics": [
+        "wrong_route_activation_rate",
+        "negative_transfer_rate",
+        "cross_task_transfer_gain",
+        "stale_memory_rate"
+      ]
+    }
+  ],
+  "risks": [
+    "Encoding failure_memory as behavior_kv is compatible with 02 but may be semantically surprising.",
+    "Usefulness labels can lag behind the read event, so dashboards must support later label updates.",
+    "A strict audit envelope can increase logging volume and latency.",
+    "Freshness decay can suppress still-valid stable facts unless source evidence is reverified."
+  ],
+  "open_questions": [
+    "Should Subtask 02 add failure_memory as a fifth memory_type enum, or keep it as a behavior_kv profile?",
+    "What exact memory_bonus cap should Phase 0 use: 0.10, 0.20, or a budget-normalized value?",
+    "Who is authoritative for relabeling usefulness when verifier outcome and no-memory counterfactual disagree?",
+    "Should stale knowledge memories be refreshed automatically or only marked as low confidence?"
+  ],
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://agent-attention.local/schemas/memory_kv_cache.schema.json",
+  "title": "Agent-Attention Memory KV-Cache Audit Overlay",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "memory_entry",
+    "audit",
+    "policy_state"
+  ],
+  "properties": {
+    "memory_entry": {
+      "description": "A Subtask 02 memoryEntry-compatible object.",
+      "type": "object"
+    },
+    "audit": {
+      "$ref": "#/$defs/memoryAudit"
+    },
+    "policy_state": {
+      "$ref": "#/$defs/memoryPolicyState"
+    }
+  },
+  "$defs": {
+    "evidenceRefLite": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "ref_id",
+        "source_type"
+      ],
+      "properties": {
+        "ref_id": {
+          "type": "string"
+        },
+        "source_type": {
+          "enum": [
+            "trajectory_event",
+            "observation",
+            "tool_output",
+            "verifier_result",
+            "memory_entry",
+            "benchmark_oracle",
+            "internal_decomposition",
+            "none"
+          ]
+        },
+        "summary": {
+          "type": "string"
+        }
+      }
+    },
+    "memoryAudit": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "operation_id",
+        "operation_type",
+        "memory_id",
+        "memory_type",
+        "key_summary",
+        "value_summary",
+        "evidence_refs",
+        "route_signature",
+        "tool_schema_refs",
+        "usefulness_label",
+        "negative_transfer_count",
+        "trajectory_event_id",
+        "route_decision_id"
+      ],
+      "properties": {
+        "operation_id": {
+          "type": "string"
+        },
+        "operation_type": {
+          "enum": [
+            "read",
+            "write",
+            "promote",
+            "decay",
+            "quarantine",
+            "forget"
+          ]
+        },
+        "memory_id": {
+          "type": "string"
+        },
+        "memory_type": {
+          "enum": [
+            "knowledge_memory",
+            "episodic_memory",
+            "skill_memory",
+            "behavior_kv"
+          ]
+        },
+        "memory_profile": {
+          "enum": [
+            "knowledge_memory",
+            "episodic_memory",
+            "skill_memory",
+            "behavior_kv",
+            "failure_memory"
+          ]
+        },
+        "key_summary": {
+          "type": "string",
+          "maxLength": 600
+        },
+        "value_summary": {
+          "type": "string",
+          "maxLength": 600
+        },
+        "evidence_refs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/evidenceRefLite"
+          }
+        },
+        "route_signature": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "tool_schema_refs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "retrieval_score": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0,
+          "maximum": 1
+        },
+        "usefulness_label": {
+          "enum": [
+            "useful",
+            "harmful",
+            "neutral",
+            "unknown",
+            "not_applicable"
+          ]
+        },
+        "usefulness_label_source": {
+          "enum": [
+            "verifier",
+            "outcome",
+            "no_memory_counterfactual",
+            "human_review",
+            "initial_unknown",
+            "not_applicable"
+          ]
+        },
+        "negative_transfer_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "trajectory_event_id": {
+          "type": "string"
+        },
+        "route_decision_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "memoryPolicyState": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "freshness_days",
+        "freshness_decay",
+        "memory_bonus_cap",
+        "memory_bonus_applied",
+        "quarantine_status",
+        "retention_action"
+      ],
+      "properties": {
+        "freshness_days": {
+          "type": "number",
+          "minimum": 0
+        },
+        "freshness_decay": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "memory_bonus_cap": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "memory_bonus_applied": {
+          "type": "number",
+          "minimum": -1,
+          "maximum": 1
+        },
+        "quarantine_status": {
+          "enum": [
+            "active",
+            "decayed",
+            "quarantined",
+            "forgotten",
+            "manual_hold"
+          ]
+        },
+        "retention_action": {
+          "enum": [
+            "keep",
+            "decay",
+            "quarantine",
+            "forget",
+            "promote_after_verifier"
+          ]
+        },
+        "retention_reason": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

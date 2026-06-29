@@ -1,0 +1,65 @@
+{
+  "scope": "Unified real LLM evaluation.",
+  "baselines": {
+    "single_react_llm_agent": {
+      "runs": 20,
+      "accuracy": 1.0,
+      "partial_rate": 0.0,
+      "correct": 20,
+      "mean_latency_ms": 7152.75,
+      "mean_model_calls": 3.0
+    },
+    "fixed_workflow_llm_agent": {
+      "runs": 20,
+      "accuracy": 1.0,
+      "partial_rate": 0.0,
+      "correct": 20,
+      "mean_latency_ms": 8192.25,
+      "mean_model_calls": 3.0
+    },
+    "full_history_llm_agent": {
+      "runs": 20,
+      "accuracy": 0.95,
+      "partial_rate": 0.0,
+      "correct": 19,
+      "mean_latency_ms": 6781.8,
+      "mean_model_calls": 3.0
+    },
+    "retrieval_memory_llm_agent": {
+      "runs": 20,
+      "accuracy": 1.0,
+      "partial_rate": 0.0,
+      "correct": 20,
+      "mean_latency_ms": 7002.4,
+      "mean_model_calls": 3.0
+    },
+    "moa_style_llm_agent": {
+      "runs": 20,
+      "accuracy": 1.0,
+      "partial_rate": 0.0,
+      "correct": 20,
+      "mean_latency_ms": 12917.9,
+      "mean_model_calls": 5.0
+    },
+    "agent_attention_llm_agent": {
+      "runs": 20,
+      "accuracy": 0.7,
+      "partial_rate": 0.0,
+      "correct": 14,
+      "mean_latency_ms": 10608.1,
+      "mean_model_calls": 5.0
+    },
+    "agent_attention_llm_tuned": {
+      "runs": 20,
+      "accuracy": 0.9,
+      "partial_rate": 0.0,
+      "correct": 18,
+      "mean_latency_ms": 6028.5,
+      "mean_model_calls": 2.2
+    }
+  },
+  "suite": "gsm8k",
+  "provider": "openai",
+  "model": "Qwen3-30B-A3B-Instruct-2507",
+  "tasks": 20
+}

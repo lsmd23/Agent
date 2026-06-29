@@ -1,0 +1,57 @@
+{
+  "scope": "Unified real LLM evaluation.",
+  "baselines": {
+    "aa_tuned_control_llm": {
+      "runs": 12,
+      "accuracy": 0.75,
+      "partial_rate": 0.16666666666666666,
+      "correct": 9,
+      "mean_latency_ms": 9117.92,
+      "mean_model_calls": 2.17
+    },
+    "aa_no_memory_llm": {
+      "runs": 12,
+      "accuracy": 0.8333333333333334,
+      "partial_rate": 0.08333333333333333,
+      "correct": 10,
+      "mean_latency_ms": 9562.92,
+      "mean_model_calls": 2.17
+    },
+    "aa_memory_read_only_llm": {
+      "runs": 12,
+      "accuracy": 0.75,
+      "partial_rate": 0.16666666666666666,
+      "correct": 9,
+      "mean_latency_ms": 8167.5,
+      "mean_model_calls": 2.17
+    },
+    "aa_success_only_memory_write_llm": {
+      "runs": 12,
+      "accuracy": 0.75,
+      "partial_rate": 0.16666666666666666,
+      "correct": 9,
+      "mean_latency_ms": 8431.67,
+      "mean_model_calls": 2.17
+    },
+    "aa_unfiltered_memory_llm": {
+      "runs": 12,
+      "accuracy": 0.75,
+      "partial_rate": 0.16666666666666666,
+      "correct": 9,
+      "mean_latency_ms": 8104.67,
+      "mean_model_calls": 2.17
+    },
+    "aa_quarantine_aware_llm": {
+      "runs": 12,
+      "accuracy": 0.75,
+      "partial_rate": 0.16666666666666666,
+      "correct": 9,
+      "mean_latency_ms": 8282.08,
+      "mean_model_calls": 2.17
+    }
+  },
+  "suite": "phase1",
+  "provider": "openai",
+  "model": "Qwen3-30B-A3B-Instruct-2507",
+  "tasks": 12
+}

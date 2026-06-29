@@ -1,0 +1,1951 @@
+{
+  "schema_version": "agent_attention.benchmark_trajectory.v0.1",
+  "run_id": "phase3_replay__aa_tuned_control__phase1_code_doc_001",
+  "task_id": "phase1_code_doc_001",
+  "benchmark_id": "phase1_mixed",
+  "baseline_id": "agent_attention_agent_tuned",
+  "ablation_id": "aa_tuned_control",
+  "runtime_config": {
+    "baseline_config": {
+      "ablation_id": "aa_tuned_control",
+      "control_id": "aa_tuned_control",
+      "baseline_id": "agent_attention_agent_tuned",
+      "memory_enabled": true,
+      "memory_write_enabled": true,
+      "memory_write_policy": "success_plus_failure",
+      "quarantine_at_load": true,
+      "quarantine_aware": false,
+      "note": "P2 tuned control with default load-time quarantine."
+    },
+    "budget": {
+      "max_steps": 4,
+      "max_module_calls": 8,
+      "max_tool_calls": 3,
+      "max_verifier_calls": 2,
+      "max_tokens": 6000,
+      "max_latency_ms": 120000,
+      "max_activation_cost": 3.0
+    },
+    "simulation": false,
+    "faithful_baseline": true
+  },
+  "task_family": "code_agent_task",
+  "module_registry_snapshot": [],
+  "events": [
+    {
+      "event_id": 1,
+      "step": 0,
+      "kind": "start",
+      "payload": {
+        "goal": "Fix a Python unit test failure where documentation examples disagree with actual function behavior.",
+        "config": {
+          "top_k": 2,
+          "max_steps": 4,
+          "memory_enabled": true,
+          "verifier_enabled": true,
+          "router_strategy": "lexical",
+          "adaptive_top_k_enabled": true,
+          "max_top_k": 3,
+          "strong_budget_gate": true,
+          "budget_cost_fraction": 0.3,
+          "cost_quality_epsilon": 0.05,
+          "memory_write_enabled": true,
+          "memory_write_policy": "success_plus_failure",
+          "quarantine_aware": false,
+          "memory_bonus_cap": 0.2,
+          "memory_bonus_floor": -0.4
+        }
+      },
+      "timestamp": 1782714172.9415748
+    },
+    {
+      "event_id": 2,
+      "step": 1,
+      "kind": "memory_retrieval",
+      "payload": {
+        "enabled": true,
+        "items": [
+          {
+            "key": "python failing test inspect edit run tests code route",
+            "value_summary": "For code fixes, use inspect -> minimal edit -> test -> verifier; avoid broad refactors.",
+            "memory_type": "skill_memory",
+            "usefulness_label": "useful",
+            "retrieval_score": 0.2152,
+            "route_signature": "memory -> code_agent -> verifier",
+            "evidence_refs": [
+              "seed:code_route"
+            ],
+            "negative_transfer_count": 0,
+            "memory_bonus": 0.0073
+          }
+        ]
+      },
+      "timestamp": 1782714172.941616
+    },
+    {
+      "event_id": 3,
+      "step": 1,
+      "kind": "memory_read",
+      "payload": {
+        "key": "python failing test inspect edit run tests code route",
+        "value_summary": "For code fixes, use inspect -> minimal edit -> test -> verifier; avoid broad refactors.",
+        "memory_type": "skill_memory",
+        "usefulness_label": "useful",
+        "retrieval_score": 0.2152,
+        "route_signature": "memory -> code_agent -> verifier",
+        "evidence_refs": [
+          "seed:code_route"
+        ],
+        "negative_transfer_count": 0,
+        "memory_bonus": 0.0073
+      },
+      "timestamp": 1782714172.941626
+    },
+    {
+      "event_id": 4,
+      "step": 1,
+      "kind": "gates",
+      "payload": {
+        "decisions": [
+          {
+            "gate": "ToolGate",
+            "status": "open",
+            "reason": "tool_or_code_terms"
+          },
+          {
+            "gate": "SearchGate",
+            "status": "closed",
+            "reason": "no_external_evidence_need"
+          },
+          {
+            "gate": "MemoryGate",
+            "status": "open_read",
+            "reason": "memory_enabled"
+          },
+          {
+            "gate": "VerifierGate",
+            "status": "closed",
+            "reason": "not_required_or_disabled"
+          },
+          {
+            "gate": "HaltGate",
+            "status": "evaluate",
+            "reason": "checked_every_step"
+          },
+          {
+            "gate": "BudgetGate",
+            "status": "allow",
+            "reason": "remaining_budget_positive",
+            "remaining_budget": 3.0
+          },
+          {
+            "gate": "SafetyGate",
+            "status": "allow",
+            "reason": "read_only_toy_runtime"
+          }
+        ],
+        "budget_snapshot": {
+          "max_budget": 3.0,
+          "budget_used": 0.0,
+          "remaining_budget": 3.0
+        }
+      },
+      "timestamp": 1782714172.94164
+    },
+    {
+      "event_id": 5,
+      "step": 1,
+      "kind": "route",
+      "payload": {
+        "decision_id": "route-1",
+        "routing_policy": "lexical",
+        "top_k": 2,
+        "effective_top_k": 2,
+        "adaptive_top_k_enabled": true,
+        "strong_budget_gate": true,
+        "query": "Fix a Python unit test failure where documentation examples disagree with actual function behavior.   ",
+        "selected_modules": [
+          "memory"
+        ],
+        "candidates": [
+          {
+            "module_id": "code_agent",
+            "score": 0.5478,
+            "score_terms": {
+              "semantic_match": 0.377,
+              "reliability": 0.75,
+              "historical_success": 0.64,
+              "cost": 0.8,
+              "latency": 0.9,
+              "risk": 0.4,
+              "repetition": 0,
+              "memory_bonus": 0.0073
+            },
+            "score_weights": {
+              "semantic_match": 1.0,
+              "reliability": 0.45,
+              "historical_success": 0.25,
+              "cost": -0.18,
+              "latency": -0.1,
+              "risk": -0.25,
+              "repetition": -0.14,
+              "memory_bonus": 1.0
+            },
+            "selected": false,
+            "schema_valid": true,
+            "budget_valid": true,
+            "risk_valid": true,
+            "reject_reason": "below_top_k"
+          },
+          {
+            "module_id": "critic_agent",
+            "score": 0.509,
+            "score_terms": {
+              "semantic_match": 0.22,
+              "reliability": 0.7,
+              "historical_success": 0.58,
+              "cost": 0.45,
+              "latency": 0.4,
+              "risk": 0.2,
+              "repetition": 0,
+              "memory_bonus": 0.0
+            },
+            "score_weights": {
+              "semantic_match": 1.0,
+              "reliability": 0.45,
+              "historical_success": 0.25,
+              "cost": -0.18,
+              "latency": -0.1,
+              "risk": -0.25,
+              "repetition": -0.14,
+              "memory_bonus": 1.0
+            },
+            "selected": false,
+            "schema_valid": true,
+            "budget_valid": true,
+            "risk_valid": true,
+            "reject_reason": "below_top_k"
+          },
+          {
+            "module_id": "memory",
+            "score": 0.4648,
+            "score_terms": {
+              "semantic_match": 0.08,
+              "reliability": 0.66,
+              "historical_success": 0.62,
+              "cost": 0.15,
+              "latency": 0.1,
+              "risk": 0.15,
+              "repetition": 0,
+              "memory_bonus": 0.0073
+            },
+            "score_weights": {
+              "semantic_match": 1.0,
+              "reliability": 0.45,
+              "historical_success": 0.25,
+              "cost": -0.18,
+              "latency": -0.1,
+              "risk": -0.25,
+              "repetition": -0.14,
+              "memory_bonus": 1.0
+            },
+            "selected": true,
+            "schema_valid": true,
+            "budget_valid": true,
+            "risk_valid": true,
+            "reject_reason": null
+          },
+          {
+            "module_id": "search_agent",
+            "score": 0.1805,
+            "score_terms": {
+              "semantic_match": 0.0,
+              "reliability": 0.72,
+              "historical_success": 0.6,
+              "cost": 0.7,
+              "latency": 0.8,
+              "risk": 0.35,
+              "repetition": 0,
+              "memory_bonus": 0.0
+            },
+            "score_weights": {
+              "semantic_match": 1.0,
+              "reliability": 0.45,
+              "historical_success": 0.25,
+              "cost": -0.18,
+              "latency": -0.1,
+              "risk": -0.25,
+              "repetition": -0.14,
+              "memory_bonus": 1.0
+            },
+            "selected": false,
+            "schema_valid": true,
+            "budget_valid": true,
+            "risk_valid": true,
+            "reject_reason": "gate_closed"
+          }
+        ],
+        "route_scores": {
+          "code_agent": {
+            "semantic_match": 0.377,
+            "reliability": 0.75,
+            "historical_success": 0.64,
+            "cost": 0.8,
+            "latency": 0.9,
+            "risk": 0.4,
+            "repetition": 0,
+            "memory_bonus": 0.0073,
+            "score_total": 0.5478,
+            "reject_reason": "below_top_k"
+          },
+          "critic_agent": {
+            "semantic_match": 0.22,
+            "reliability": 0.7,
+            "historical_success": 0.58,
+            "cost": 0.45,
+            "latency": 0.4,
+            "risk": 0.2,
+            "repetition": 0,
+            "memory_bonus": 0.0,
+            "score_total": 0.509,
+            "reject_reason": "below_top_k"
+          },
+          "memory": {
+            "semantic_match": 0.08,
+            "reliability": 0.66,
+            "historical_success": 0.62,
+            "cost": 0.15,
+            "latency": 0.1,
+            "risk": 0.15,
+            "repetition": 0,
+            "memory_bonus": 0.0073,
+            "score_total": 0.4648,
+            "reject_reason": null
+          },
+          "search_agent": {
+            "semantic_match": 0.0,
+            "reliability": 0.72,
+            "historical_success": 0.6,
+            "cost": 0.7,
+            "latency": 0.8,
+            "risk": 0.35,
+            "repetition": 0,
+            "memory_bonus": 0.0,
+            "score_total": 0.1805,
+            "reject_reason": "gate_closed"
+          }
+        },
+        "budget_snapshot": {
+          "max_budget": 3.0,
+          "budget_used": 0.0,
+          "remaining_budget": 3.0
+        },
+        "oracle": {
+          "oracle_available": true,
+          "proxy_available": true,
+          "oracle_best_module_id": "code_agent",
+          "selected_score": 0.4648,
+          "oracle_best_score": 0.5478,
+          "oracle_regret": null,
+          "proxy_regret": 0.433,
+          "missing_required_modules": [
+            "code_agent"
+          ],
+          "selected_discouraged_modules": [],
+          "rationale": "Doc/code alignment fix."
+        }
+      },
+      "timestamp": 1782714172.941818
+    },
+    {
+      "event_id": 6,
+      "step": 1,
+      "kind": "budget_gate",
+      "payload": {
+        "module_id": "memory",
+        "decision": "allow",
+        "reason": "within_budget",
+        "module_cost": 0.15,
+        "budget_snapshot": {
+          "max_budget": 3.0,
+          "budget_used": 0.0,
+          "remaining_budget": 3.0
+        }
+      },
+      "timestamp": 1782714172.9418209
+    },
+    {
+      "event_id": 7,
+      "step": 1,
+      "kind": "module_execution",
+      "payload": {
+        "outputs": [
+          {
+            "module_id": "memory",
+            "content": "Reused 1 retrieved trajectory memories.",
+            "confidence": 0.68,
+            "evidence": [
+              "python failing test inspect edit run tests code route"
+            ],
+            "failure_signal": null
+          }
+        ]
+      },
+      "timestamp": 1782714172.941831
+    },
+    {
+      "event_id": 8,
+      "step": 1,
+      "kind": "state_update",
+      "payload": {
+        "action_type": "aggregate",
+        "state": {
+          "goal": "Fix a Python unit test failure where documentation examples disagree with actual function behavior.",
+          "step": 1,
+          "confidence": 0.306,
+          "risk": 0.1294,
+          "budget_used": 0.15,
+          "max_budget": 3.0,
+          "selected_modules": [
+            "memory",
+            "aggregator",
+            "memory",
+            "aggregator",
+            "memory",
+            "critic_agent"
+          ],
+          "failure_signals": [],
+          "memory_reads": [
+            "python failing test inspect edit run tests code route",
+            "python failing test inspect edit run tests code route",
+            "python failing test inspect edit run tests code route",
+            "python failing test inspect edit run tests code route"
+          ],
+          "memory_writes": [
+            "Fix a Python unit test failure where documentation examples disagree with actual function behavior. route memory -> aggregator -> memory -> aggregator -> memory -> critic_agent"
+          ],
+          "verifier_status": "skipped",
+          "final_answer": null
+        }
+      },
+      "timestamp": 1782714172.9418359
+    },
+    {
+      "event_id": 9,
+      "step": 1,
+      "kind": "verifier_result",
+      "payload": {
+        "enabled": true,
+        "required": false,
+        "status": "skipped",
+        "reason": "threshold_not_met",
+        "budget_snapshot": {
+          "max_budget": 3.0,
+          "budget_used": 0.15,
+          "remaining_budget": 2.85
+        }
+      },
+      "timestamp": 1782714172.9418385
+    },
+    {
+      "event_id": 10,
+      "step": 1,
+      "kind": "halt_gate",
+      "payload": {
+        "halt": false,
+        "reason": "continue",
+        "success_signal": "unknown",
+        "verifier_status": "skipped",
+        "budget_snapshot": {
+          "max_budget": 3.0,
+          "budget_used": 0.15,
+          "remaining_budget": 2.85
+        }
+      },
+      "timestamp": 1782714172.9418418
+    },
+    {
+      "event_id": 11,
+      "step": 2,
+      "kind": "memory_retrieval",
+      "payload": {
+        "enabled": true,
+        "items": [
+          {
+            "key": "python failing test inspect edit run tests code route",
+            "value_summary": "For code fixes, use inspect -> minimal edit -> test -> verifier; avoid broad refactors.",
+            "memory_type": "skill_memory",
+            "usefulness_label": "useful",
+            "retrieval_score": 0.1941,
+            "route_signature": "memory -> code_agent -> verifier",
+            "evidence_refs": [
+              "seed:code_route"
+            ],
+            "negative_transfer_count": 0,
+            "memory_bonus": 0.0044
+          }
+        ]
+      },
+      "timestamp": 1782714172.941866
+    },
+    {
+      "event_id": 12,
+      "step": 2,
+      "kind": "memory_read",
+      "payload": {
+        "key": "python failing test inspect edit run tests code route",
+        "value_summary": "For code fixes, use inspect -> minimal edit -> test -> verifier; avoid broad refactors.",
+        "memory_type": "skill_memory",
+        "usefulness_label": "useful",
+        "retrieval_score": 0.1941,
+        "route_signature": "memory -> code_agent -> verifier",
+        "evidence_refs": [
+          "seed:code_route"
+        ],
+        "negative_transfer_count": 0,
+        "memory_bonus": 0.0044
+      },
+      "timestamp": 1782714172.9418733
+    },
+    {
+      "event_id": 13,
+      "step": 2,
+      "kind": "gates",
+      "payload": {
+        "decisions": [
+          {
+            "gate": "ToolGate",
+            "status": "open",
+            "reason": "tool_or_code_terms"
+          },
+          {
+            "gate": "SearchGate",
+            "status": "closed",
+            "reason": "no_external_evidence_need"
+          },
+          {
+            "gate": "MemoryGate",
+            "status": "open_read",
+            "reason": "memory_enabled"
+          },
+          {
+            "gate": "VerifierGate",
+            "status": "closed",
+            "reason": "not_required_or_disabled"
+          },
+          {
+            "gate": "HaltGate",
+            "status": "evaluate",
+            "reason": "checked_every_step"
+          },
+          {
+            "gate": "BudgetGate",
+            "status": "allow",
+            "reason": "remaining_budget_positive",
+            "remaining_budget": 2.85
+          },
+          {
+            "gate": "SafetyGate",
+            "status": "allow",
+            "reason": "read_only_toy_runtime"
+          }
+        ],
+        "budget_snapshot": {
+          "max_budget": 3.0,
+          "budget_used": 0.15,
+          "remaining_budget": 2.85
+        }
+      },
+      "timestamp": 1782714172.9418805
+    },
+    {
+      "event_id": 14,
+      "step": 2,
+      "kind": "route",
+      "payload": {
+        "decision_id": "route-2",
+        "routing_policy": "lexical",
+        "top_k": 2,
+        "effective_top_k": 2,
+        "adaptive_top_k_enabled": true,
+        "strong_budget_gate": true,
+        "query": "Fix a Python unit test failure where documentation examples disagree with actual function behavior. memory: Reused 1 retrieved trajectory memories.  Reused 1 retrieved trajectory memories.",
+        "selected_modules": [
+          "aggregator",
+          "memory"
+        ],
+        "candidates": [
+          {
+            "module_id": "critic_agent",
+            "score": 0.629,
+            "score_terms": {
+              "semantic_match": 0.34,
+              "reliability": 0.7,
+              "historical_success": 0.58,
+              "cost": 0.45,
+              "latency": 0.4,
+              "risk": 0.2,
+              "repetition": 0,
+              "memory_bonus": 0.0
+            },
+            "score_weights": {
+              "semantic_match": 1.0,
+              "reliability": 0.45,
+              "historical_success": 0.25,
+              "cost": -0.18,
+              "latency": -0.1,
+              "risk": -0.25,
+              "repetition": -0.14,
+              "memory_bonus": 1.0
+            },
+            "selected": false,
+            "schema_valid": true,
+            "budget_valid": true,
+            "risk_valid": true,
+            "reject_reason": "below_top_k"
+          },
+          {
+            "module_id": "aggregator",
+            "score": 0.5898,
+            "score_terms": {
+              "semantic_match": 0.2123,
+              "reliability": 0.7,
+              "historical_success": 0.61,
+              "cost": 0.25,
+              "latency": 0.2,
+              "risk": 0.1,
+              "repetition": 0,
+              "memory_bonus": 0.0
+            },
+            "score_weights": {
+              "semantic_match": 1.0,
+              "reliability": 0.45,
+              "historical_success": 0.25,
+              "cost": -0.18,
+              "latency": -0.1,
+              "risk": -0.25,
+              "repetition": -0.14,
+              "memory_bonus": 1.0
+            },
+            "selected": true,
+            "schema_valid": true,
+            "budget_valid": true,
+            "risk_valid": true,
+            "reject_reason": null
+          },
+          {
+            "module_id": "code_agent",
+            "score": 0.5382,
+            "score_terms": {
+              "semantic_match": 0.3703,
+              "reliability": 0.75,
+              "historical_success": 0.64,
+              "cost": 0.8,
+              "latency": 0.9,
+              "risk": 0.4,
+              "repetition": 0,
+              "memory_bonus": 0.0044
+            },
+            "score_weights": {
+              "semantic_match": 1.0,
+              "reliability": 0.45,
+              "historical_success": 0.25,
+              "cost": -0.18,
+              "latency": -0.1,
+              "risk": -0.25,
+              "repetition": -0.14,
+              "memory_bonus": 1.0
+            },
+            "selected": false,
+            "schema_valid": true,
+            "budget_valid": true,
+            "risk_valid": true,
+            "reject_reason": "below_top_k"
+          },
+          {
+            "module_id": "memory",
+            "score": 0.3552,
+            "score_terms": {
+              "semantic_match": 0.1133,
+              "reliability": 0.66,
+              "historical_success": 0.62,
+              "cost": 0.15,
+              "latency": 0.1,
+              "risk": 0.15,
+              "repetition": 1,
+              "memory_bonus": 0.0044
+            },
+            "score_weights": {
+              "semantic_match": 1.0,
+              "reliability": 0.45,
+              "historical_success": 0.25,
+              "cost": -0.18,
+              "latency": -0.1,
+              "risk": -0.25,
+              "repetition": -0.14,
+              "memory_bonus": 1.0
+            },
+            "selected": true,
+            "schema_valid": true,
+            "budget_valid": true,
+            "risk_valid": true,
+            "reject_reason": null
+          },
+          {
+            "module_id": "search_agent",
+            "score": 0.1805,
+            "score_terms": {
+              "semantic_match": 0.0,
+              "reliability": 0.72,
+              "historical_success": 0.6,
+              "cost": 0.7,
+              "latency": 0.8,
+              "risk": 0.35,
+              "repetition": 0,
+              "memory_bonus": 0.0
+            },
+            "score_weights": {
+              "semantic_match": 1.0,
+              "reliability": 0.45,
+              "historical_success": 0.25,
+              "cost": -0.18,
+              "latency": -0.1,
+              "risk": -0.25,
+              "repetition": -0.14,
+              "memory_bonus": 1.0
+            },
+            "selected": false,
+            "schema_valid": true,
+            "budget_valid": true,
+            "risk_valid": true,
+            "reject_reason": "gate_closed"
+          }
+        ],
+        "route_scores": {
+          "critic_agent": {
+            "semantic_match": 0.34,
+            "reliability": 0.7,
+            "historical_success": 0.58,
+            "cost": 0.45,
+            "latency": 0.4,
+            "risk": 0.2,
+            "repetition": 0,
+            "memory_bonus": 0.0,
+            "score_total": 0.629,
+            "reject_reason": "below_top_k"
+          },
+          "aggregator": {
+            "semantic_match": 0.2123,
+            "reliability": 0.7,
+            "historical_success": 0.61,
+            "cost": 0.25,
+            "latency": 0.2,
+            "risk": 0.1,
+            "repetition": 0,
+            "memory_bonus": 0.0,
+            "score_total": 0.5898,
+            "reject_reason": null
+          },
+          "code_agent": {
+            "semantic_match": 0.3703,
+            "reliability": 0.75,
+            "historical_success": 0.64,
+            "cost": 0.8,
+            "latency": 0.9,
+            "risk": 0.4,
+            "repetition": 0,
+            "memory_bonus": 0.0044,
+            "score_total": 0.5382,
+            "reject_reason": "below_top_k"
+          },
+          "memory": {
+            "semantic_match": 0.1133,
+            "reliability": 0.66,
+            "historical_success": 0.62,
+            "cost": 0.15,
+            "latency": 0.1,
+            "risk": 0.15,
+            "repetition": 1,
+            "memory_bonus": 0.0044,
+            "score_total": 0.3552,
+            "reject_reason": null
+          },
+          "search_agent": {
+            "semantic_match": 0.0,
+            "reliability": 0.72,
+            "historical_success": 0.6,
+            "cost": 0.7,
+            "latency": 0.8,
+            "risk": 0.35,
+            "repetition": 0,
+            "memory_bonus": 0.0,
+            "score_total": 0.1805,
+            "reject_reason": "gate_closed"
+          }
+        },
+        "budget_snapshot": {
+          "max_budget": 3.0,
+          "budget_used": 0.15,
+          "remaining_budget": 2.85
+        },
+        "oracle": {
+          "oracle_available": true,
+          "proxy_available": true,
+          "oracle_best_module_id": "code_agent",
+          "selected_score": 0.5898,
+          "oracle_best_score": 0.5382,
+          "oracle_regret": null,
+          "proxy_regret": 0.35,
+          "missing_required_modules": [
+            "code_agent"
+          ],
+          "selected_discouraged_modules": [],
+          "rationale": "Doc/code alignment fix."
+        }
+      },
+      "timestamp": 1782714172.942067
+    },
+    {
+      "event_id": 15,
+      "step": 2,
+      "kind": "budget_gate",
+      "payload": {
+        "module_id": "aggregator",
+        "decision": "allow",
+        "reason": "within_budget",
+        "module_cost": 0.25,
+        "budget_snapshot": {
+          "max_budget": 3.0,
+          "budget_used": 0.15,
+          "remaining_budget": 2.85
+        }
+      },
+      "timestamp": 1782714172.942069
+    },
+    {
+      "event_id": 16,
+      "step": 2,
+      "kind": "budget_gate",
+      "payload": {
+        "module_id": "memory",
+        "decision": "allow",
+        "reason": "within_budget",
+        "module_cost": 0.15,
+        "budget_snapshot": {
+          "max_budget": 3.0,
+          "budget_used": 0.4,
+          "remaining_budget": 2.6
+        }
+      },
+      "timestamp": 1782714172.9420722
+    },
+    {
+      "event_id": 17,
+      "step": 2,
+      "kind": "module_execution",
+      "payload": {
+        "outputs": [
+          {
+            "module_id": "aggregator",
+            "content": "Aggregated active module outputs into a concise state update.",
+            "confidence": 0.7,
+            "evidence": [],
+            "failure_signal": null
+          },
+          {
+            "module_id": "memory",
+            "content": "Reused 2 retrieved trajectory memories.",
+            "confidence": 0.68,
+            "evidence": [
+              "python failing test inspect edit run tests code route",
+              "python failing test inspect edit run tests code route"
+            ],
+            "failure_signal": null
+          }
+        ]
+      },
+      "timestamp": 1782714172.9420843
+    },
+    {
+      "event_id": 18,
+      "step": 2,
+      "kind": "state_update",
+      "payload": {
+        "action_type": "aggregate",
+        "state": {
+          "goal": "Fix a Python unit test failure where documentation examples disagree with actual function behavior.",
+          "step": 2,
+          "confidence": 0.4833,
+          "risk": 0.0552,
+          "budget_used": 0.55,
+          "max_budget": 3.0,
+          "selected_modules": [
+            "memory",
+            "aggregator",
+            "memory",
+            "aggregator",
+            "memory",
+            "critic_agent"
+          ],
+          "failure_signals": [],
+          "memory_reads": [
+            "python failing test inspect edit run tests code route",
+            "python failing test inspect edit run tests code route",
+            "python failing test inspect edit run tests code route",
+            "python failing test inspect edit run tests code route"
+          ],
+          "memory_writes": [
+            "Fix a Python unit test failure where documentation examples disagree with actual function behavior. route memory -> aggregator -> memory -> aggregator -> memory -> critic_agent"
+          ],
+          "verifier_status": "skipped",
+          "final_answer": null
+        }
+      },
+      "timestamp": 1782714172.942088
+    },
+    {
+      "event_id": 19,
+      "step": 2,
+      "kind": "verifier_result",
+      "payload": {
+        "enabled": true,
+        "required": false,
+        "status": "skipped",
+        "reason": "threshold_not_met",
+        "budget_snapshot": {
+          "max_budget": 3.0,
+          "budget_used": 0.55,
+          "remaining_budget": 2.45
+        }
+      },
+      "timestamp": 1782714172.94209
+    },
+    {
+      "event_id": 20,
+      "step": 2,
+      "kind": "halt_gate",
+      "payload": {
+        "halt": false,
+        "reason": "continue",
+        "success_signal": "unknown",
+        "verifier_status": "skipped",
+        "budget_snapshot": {
+          "max_budget": 3.0,
+          "budget_used": 0.55,
+          "remaining_budget": 2.45
+        }
+      },
+      "timestamp": 1782714172.9420922
+    },
+    {
+      "event_id": 21,
+      "step": 3,
+      "kind": "memory_retrieval",
+      "payload": {
+        "enabled": true,
+        "items": [
+          {
+            "key": "python failing test inspect edit run tests code route",
+            "value_summary": "For code fixes, use inspect -> minimal edit -> test -> verifier; avoid broad refactors.",
+            "memory_type": "skill_memory",
+            "usefulness_label": "useful",
+            "retrieval_score": 0.1741,
+            "route_signature": "memory -> code_agent -> verifier",
+            "evidence_refs": [
+              "seed:code_route"
+            ],
+            "negative_transfer_count": 0,
+            "memory_bonus": 0.0023
+          }
+        ]
+      },
+      "timestamp": 1782714172.9421194
+    },
+    {
+      "event_id": 22,
+      "step": 3,
+      "kind": "memory_read",
+      "payload": {
+        "key": "python failing test inspect edit run tests code route",
+        "value_summary": "For code fixes, use inspect -> minimal edit -> test -> verifier; avoid broad refactors.",
+        "memory_type": "skill_memory",
+        "usefulness_label": "useful",
+        "retrieval_score": 0.1741,
+        "route_signature": "memory -> code_agent -> verifier",
+        "evidence_refs": [
+          "seed:code_route"
+        ],
+        "negative_transfer_count": 0,
+        "memory_bonus": 0.0023
+      },
+      "timestamp": 1782714172.942127
+    },
+    {
+      "event_id": 23,
+      "step": 3,
+      "kind": "gates",
+      "payload": {
+        "decisions": [
+          {
+            "gate": "ToolGate",
+            "status": "open",
+            "reason": "tool_or_code_terms"
+          },
+          {
+            "gate": "SearchGate",
+            "status": "closed",
+            "reason": "no_external_evidence_need"
+          },
+          {
+            "gate": "MemoryGate",
+            "status": "open_read",
+            "reason": "memory_enabled"
+          },
+          {
+            "gate": "VerifierGate",
+            "status": "closed",
+            "reason": "not_required_or_disabled"
+          },
+          {
+            "gate": "HaltGate",
+            "status": "evaluate",
+            "reason": "checked_every_step"
+          },
+          {
+            "gate": "BudgetGate",
+            "status": "allow",
+            "reason": "remaining_budget_positive",
+            "remaining_budget": 2.45
+          },
+          {
+            "gate": "SafetyGate",
+            "status": "allow",
+            "reason": "read_only_toy_runtime"
+          }
+        ],
+        "budget_snapshot": {
+          "max_budget": 3.0,
+          "budget_used": 0.55,
+          "remaining_budget": 2.45
+        }
+      },
+      "timestamp": 1782714172.9421337
+    },
+    {
+      "event_id": 24,
+      "step": 3,
+      "kind": "route",
+      "payload": {
+        "decision_id": "route-3",
+        "routing_policy": "lexical",
+        "top_k": 2,
+        "effective_top_k": 2,
+        "adaptive_top_k_enabled": true,
+        "strong_budget_gate": true,
+        "query": "Fix a Python unit test failure where documentation examples disagree with actual function behavior. memory: Reused 1 retrieved trajectory memories. aggregator: Aggregated active module outputs into a concise state update. memory: Reused 2 retrieved trajectory memories.  Reused 1 retrieved trajectory memories. Aggregated active module outputs into a concise state update. Reused 2 retrieved trajectory memories.",
+        "selected_modules": [
+          "aggregator",
+          "memory"
+        ],
+        "candidates": [
+          {
+            "module_id": "critic_agent",
+            "score": 0.629,
+            "score_terms": {
+              "semantic_match": 0.34,
+              "reliability": 0.7,
+              "historical_success": 0.58,
+              "cost": 0.45,
+              "latency": 0.4,
+              "risk": 0.2,
+              "repetition": 0,
+              "memory_bonus": 0.0
+            },
+            "score_weights": {
+              "semantic_match": 1.0,
+              "reliability": 0.45,
+              "historical_success": 0.25,
+              "cost": -0.18,
+              "latency": -0.1,
+              "risk": -0.25,
+              "repetition": -0.14,
+              "memory_bonus": 1.0
+            },
+            "selected": false,
+            "schema_valid": true,
+            "budget_valid": true,
+            "risk_valid": true,
+            "reject_reason": "below_top_k"
+          },
+          {
+            "module_id": "aggregator",
+            "score": 0.5842,
+            "score_terms": {
+              "semantic_match": 0.3467,
+              "reliability": 0.7,
+              "historical_success": 0.61,
+              "cost": 0.25,
+              "latency": 0.2,
+              "risk": 0.1,
+              "repetition": 1,
+              "memory_bonus": 0.0
+            },
+            "score_weights": {
+              "semantic_match": 1.0,
+              "reliability": 0.45,
+              "historical_success": 0.25,
+              "cost": -0.18,
+              "latency": -0.1,
+              "risk": -0.25,
+              "repetition": -0.14,
+              "memory_bonus": 1.0
+            },
+            "selected": true,
+            "schema_valid": true,
+            "budget_valid": true,
+            "risk_valid": true,
+            "reject_reason": null
+          },
+          {
+            "module_id": "code_agent",
+            "score": 0.5291,
+            "score_terms": {
+              "semantic_match": 0.3633,
+              "reliability": 0.75,
+              "historical_success": 0.64,
+              "cost": 0.8,
+              "latency": 0.9,
+              "risk": 0.4,
+              "repetition": 0,
+              "memory_bonus": 0.0023
+            },
+            "score_weights": {
+              "semantic_match": 1.0,
+              "reliability": 0.45,
+              "historical_success": 0.25,
+              "cost": -0.18,
+              "latency": -0.1,
+              "risk": -0.25,
+              "repetition": -0.14,
+              "memory_bonus": 1.0
+            },
+            "selected": false,
+            "schema_valid": true,
+            "budget_valid": false,
+            "risk_valid": true,
+            "reject_reason": "budget_high_cost_fraction"
+          },
+          {
+            "module_id": "memory",
+            "score": 0.2048,
+            "score_terms": {
+              "semantic_match": 0.105,
+              "reliability": 0.66,
+              "historical_success": 0.62,
+              "cost": 0.15,
+              "latency": 0.1,
+              "risk": 0.15,
+              "repetition": 2,
+              "memory_bonus": 0.0023
+            },
+            "score_weights": {
+              "semantic_match": 1.0,
+              "reliability": 0.45,
+              "historical_success": 0.25,
+              "cost": -0.18,
+              "latency": -0.1,
+              "risk": -0.25,
+              "repetition": -0.14,
+              "memory_bonus": 1.0
+            },
+            "selected": true,
+            "schema_valid": true,
+            "budget_valid": true,
+            "risk_valid": true,
+            "reject_reason": null
+          },
+          {
+            "module_id": "search_agent",
+            "score": 0.1805,
+            "score_terms": {
+              "semantic_match": 0.0,
+              "reliability": 0.72,
+              "historical_success": 0.6,
+              "cost": 0.7,
+              "latency": 0.8,
+              "risk": 0.35,
+              "repetition": 0,
+              "memory_bonus": 0.0
+            },
+            "score_weights": {
+              "semantic_match": 1.0,
+              "reliability": 0.45,
+              "historical_success": 0.25,
+              "cost": -0.18,
+              "latency": -0.1,
+              "risk": -0.25,
+              "repetition": -0.14,
+              "memory_bonus": 1.0
+            },
+            "selected": false,
+            "schema_valid": true,
+            "budget_valid": true,
+            "risk_valid": true,
+            "reject_reason": "gate_closed"
+          }
+        ],
+        "route_scores": {
+          "critic_agent": {
+            "semantic_match": 0.34,
+            "reliability": 0.7,
+            "historical_success": 0.58,
+            "cost": 0.45,
+            "latency": 0.4,
+            "risk": 0.2,
+            "repetition": 0,
+            "memory_bonus": 0.0,
+            "score_total": 0.629,
+            "reject_reason": "below_top_k"
+          },
+          "aggregator": {
+            "semantic_match": 0.3467,
+            "reliability": 0.7,
+            "historical_success": 0.61,
+            "cost": 0.25,
+            "latency": 0.2,
+            "risk": 0.1,
+            "repetition": 1,
+            "memory_bonus": 0.0,
+            "score_total": 0.5842,
+            "reject_reason": null
+          },
+          "code_agent": {
+            "semantic_match": 0.3633,
+            "reliability": 0.75,
+            "historical_success": 0.64,
+            "cost": 0.8,
+            "latency": 0.9,
+            "risk": 0.4,
+            "repetition": 0,
+            "memory_bonus": 0.0023,
+            "score_total": 0.5291,
+            "reject_reason": "budget_high_cost_fraction"
+          },
+          "memory": {
+            "semantic_match": 0.105,
+            "reliability": 0.66,
+            "historical_success": 0.62,
+            "cost": 0.15,
+            "latency": 0.1,
+            "risk": 0.15,
+            "repetition": 2,
+            "memory_bonus": 0.0023,
+            "score_total": 0.2048,
+            "reject_reason": null
+          },
+          "search_agent": {
+            "semantic_match": 0.0,
+            "reliability": 0.72,
+            "historical_success": 0.6,
+            "cost": 0.7,
+            "latency": 0.8,
+            "risk": 0.35,
+            "repetition": 0,
+            "memory_bonus": 0.0,
+            "score_total": 0.1805,
+            "reject_reason": "gate_closed"
+          }
+        },
+        "budget_snapshot": {
+          "max_budget": 3.0,
+          "budget_used": 0.55,
+          "remaining_budget": 2.45
+        },
+        "oracle": {
+          "oracle_available": true,
+          "proxy_available": true,
+          "oracle_best_module_id": "code_agent",
+          "selected_score": 0.5842,
+          "oracle_best_score": 0.5291,
+          "oracle_regret": null,
+          "proxy_regret": 0.35,
+          "missing_required_modules": [
+            "code_agent"
+          ],
+          "selected_discouraged_modules": [],
+          "rationale": "Doc/code alignment fix."
+        }
+      },
+      "timestamp": 1782714172.942334
+    },
+    {
+      "event_id": 25,
+      "step": 3,
+      "kind": "budget_gate",
+      "payload": {
+        "module_id": "aggregator",
+        "decision": "allow",
+        "reason": "within_budget",
+        "module_cost": 0.25,
+        "budget_snapshot": {
+          "max_budget": 3.0,
+          "budget_used": 0.55,
+          "remaining_budget": 2.45
+        }
+      },
+      "timestamp": 1782714172.9423366
+    },
+    {
+      "event_id": 26,
+      "step": 3,
+      "kind": "budget_gate",
+      "payload": {
+        "module_id": "memory",
+        "decision": "allow",
+        "reason": "within_budget",
+        "module_cost": 0.15,
+        "budget_snapshot": {
+          "max_budget": 3.0,
+          "budget_used": 0.8,
+          "remaining_budget": 2.2
+        }
+      },
+      "timestamp": 1782714172.9423394
+    },
+    {
+      "event_id": 27,
+      "step": 3,
+      "kind": "module_execution",
+      "payload": {
+        "outputs": [
+          {
+            "module_id": "aggregator",
+            "content": "Aggregated active module outputs into a concise state update.",
+            "confidence": 0.7,
+            "evidence": [],
+            "failure_signal": null
+          },
+          {
+            "module_id": "memory",
+            "content": "Reused 3 retrieved trajectory memories.",
+            "confidence": 0.68,
+            "evidence": [
+              "python failing test inspect edit run tests code route",
+              "python failing test inspect edit run tests code route"
+            ],
+            "failure_signal": null
+          }
+        ]
+      },
+      "timestamp": 1782714172.942351
+    },
+    {
+      "event_id": 28,
+      "step": 3,
+      "kind": "state_update",
+      "payload": {
+        "action_type": "aggregate",
+        "state": {
+          "goal": "Fix a Python unit test failure where documentation examples disagree with actual function behavior.",
+          "step": 3,
+          "confidence": 0.5808,
+          "risk": 0.02,
+          "budget_used": 0.95,
+          "max_budget": 3.0,
+          "selected_modules": [
+            "memory",
+            "aggregator",
+            "memory",
+            "aggregator",
+            "memory",
+            "critic_agent"
+          ],
+          "failure_signals": [],
+          "memory_reads": [
+            "python failing test inspect edit run tests code route",
+            "python failing test inspect edit run tests code route",
+            "python failing test inspect edit run tests code route",
+            "python failing test inspect edit run tests code route"
+          ],
+          "memory_writes": [
+            "Fix a Python unit test failure where documentation examples disagree with actual function behavior. route memory -> aggregator -> memory -> aggregator -> memory -> critic_agent"
+          ],
+          "verifier_status": "skipped",
+          "final_answer": null
+        }
+      },
+      "timestamp": 1782714172.9423554
+    },
+    {
+      "event_id": 29,
+      "step": 3,
+      "kind": "verifier_result",
+      "payload": {
+        "enabled": true,
+        "required": false,
+        "status": "skipped",
+        "reason": "threshold_not_met",
+        "budget_snapshot": {
+          "max_budget": 3.0,
+          "budget_used": 0.95,
+          "remaining_budget": 2.05
+        }
+      },
+      "timestamp": 1782714172.9423575
+    },
+    {
+      "event_id": 30,
+      "step": 3,
+      "kind": "halt_gate",
+      "payload": {
+        "halt": false,
+        "reason": "continue",
+        "success_signal": "unknown",
+        "verifier_status": "skipped",
+        "budget_snapshot": {
+          "max_budget": 3.0,
+          "budget_used": 0.95,
+          "remaining_budget": 2.05
+        }
+      },
+      "timestamp": 1782714172.9423602
+    },
+    {
+      "event_id": 31,
+      "step": 4,
+      "kind": "memory_retrieval",
+      "payload": {
+        "enabled": true,
+        "items": [
+          {
+            "key": "python failing test inspect edit run tests code route",
+            "value_summary": "For code fixes, use inspect -> minimal edit -> test -> verifier; avoid broad refactors.",
+            "memory_type": "skill_memory",
+            "usefulness_label": "useful",
+            "retrieval_score": 0.1741,
+            "route_signature": "memory -> code_agent -> verifier",
+            "evidence_refs": [
+              "seed:code_route"
+            ],
+            "negative_transfer_count": 0,
+            "memory_bonus": 0.0023
+          }
+        ]
+      },
+      "timestamp": 1782714172.9423883
+    },
+    {
+      "event_id": 32,
+      "step": 4,
+      "kind": "memory_read",
+      "payload": {
+        "key": "python failing test inspect edit run tests code route",
+        "value_summary": "For code fixes, use inspect -> minimal edit -> test -> verifier; avoid broad refactors.",
+        "memory_type": "skill_memory",
+        "usefulness_label": "useful",
+        "retrieval_score": 0.1741,
+        "route_signature": "memory -> code_agent -> verifier",
+        "evidence_refs": [
+          "seed:code_route"
+        ],
+        "negative_transfer_count": 0,
+        "memory_bonus": 0.0023
+      },
+      "timestamp": 1782714172.9423962
+    },
+    {
+      "event_id": 33,
+      "step": 4,
+      "kind": "gates",
+      "payload": {
+        "decisions": [
+          {
+            "gate": "ToolGate",
+            "status": "open",
+            "reason": "tool_or_code_terms"
+          },
+          {
+            "gate": "SearchGate",
+            "status": "closed",
+            "reason": "no_external_evidence_need"
+          },
+          {
+            "gate": "MemoryGate",
+            "status": "open_read",
+            "reason": "memory_enabled"
+          },
+          {
+            "gate": "VerifierGate",
+            "status": "closed",
+            "reason": "not_required_or_disabled"
+          },
+          {
+            "gate": "HaltGate",
+            "status": "evaluate",
+            "reason": "checked_every_step"
+          },
+          {
+            "gate": "BudgetGate",
+            "status": "allow",
+            "reason": "remaining_budget_positive",
+            "remaining_budget": 2.05
+          },
+          {
+            "gate": "SafetyGate",
+            "status": "allow",
+            "reason": "read_only_toy_runtime"
+          }
+        ],
+        "budget_snapshot": {
+          "max_budget": 3.0,
+          "budget_used": 0.95,
+          "remaining_budget": 2.05
+        }
+      },
+      "timestamp": 1782714172.9424026
+    },
+    {
+      "event_id": 34,
+      "step": 4,
+      "kind": "route",
+      "payload": {
+        "decision_id": "route-4",
+        "routing_policy": "lexical",
+        "top_k": 2,
+        "effective_top_k": 1,
+        "adaptive_top_k_enabled": true,
+        "strong_budget_gate": true,
+        "query": "Fix a Python unit test failure where documentation examples disagree with actual function behavior. aggregator: Aggregated active module outputs into a concise state update. memory: Reused 2 retrieved trajectory memories. aggregator: Aggregated active module outputs into a concise state update. memory: Reused 3 retrieved trajectory memories.  Reused 2 retrieved trajectory memories. Aggregated active module outputs into a concise state update. Reused 3 retrieved trajectory memories.",
+        "selected_modules": [
+          "critic_agent"
+        ],
+        "candidates": [
+          {
+            "module_id": "critic_agent",
+            "score": 0.809,
+            "score_terms": {
+              "semantic_match": 0.52,
+              "reliability": 0.7,
+              "historical_success": 0.58,
+              "cost": 0.45,
+              "latency": 0.4,
+              "risk": 0.2,
+              "repetition": 0,
+              "memory_bonus": 0.0
+            },
+            "score_weights": {
+              "semantic_match": 1.0,
+              "reliability": 0.45,
+              "historical_success": 0.25,
+              "cost": -0.18,
+              "latency": -0.1,
+              "risk": -0.25,
+              "repetition": -0.14,
+              "memory_bonus": 1.0
+            },
+            "selected": true,
+            "schema_valid": true,
+            "budget_valid": true,
+            "risk_valid": true,
+            "reject_reason": null
+          },
+          {
+            "module_id": "aggregator",
+            "score": 0.6242,
+            "score_terms": {
+              "semantic_match": 0.5267,
+              "reliability": 0.7,
+              "historical_success": 0.61,
+              "cost": 0.25,
+              "latency": 0.2,
+              "risk": 0.1,
+              "repetition": 2,
+              "memory_bonus": 0.0
+            },
+            "score_weights": {
+              "semantic_match": 1.0,
+              "reliability": 0.45,
+              "historical_success": 0.25,
+              "cost": -0.18,
+              "latency": -0.1,
+              "risk": -0.25,
+              "repetition": -0.14,
+              "memory_bonus": 1.0
+            },
+            "selected": false,
+            "schema_valid": true,
+            "budget_valid": true,
+            "risk_valid": true,
+            "reject_reason": "below_top_k"
+          },
+          {
+            "module_id": "code_agent",
+            "score": 0.5291,
+            "score_terms": {
+              "semantic_match": 0.3633,
+              "reliability": 0.75,
+              "historical_success": 0.64,
+              "cost": 0.8,
+              "latency": 0.9,
+              "risk": 0.4,
+              "repetition": 0,
+              "memory_bonus": 0.0023
+            },
+            "score_weights": {
+              "semantic_match": 1.0,
+              "reliability": 0.45,
+              "historical_success": 0.25,
+              "cost": -0.18,
+              "latency": -0.1,
+              "risk": -0.25,
+              "repetition": -0.14,
+              "memory_bonus": 1.0
+            },
+            "selected": false,
+            "schema_valid": true,
+            "budget_valid": false,
+            "risk_valid": true,
+            "reject_reason": "budget_high_cost_fraction"
+          },
+          {
+            "module_id": "search_agent",
+            "score": 0.1805,
+            "score_terms": {
+              "semantic_match": 0.0,
+              "reliability": 0.72,
+              "historical_success": 0.6,
+              "cost": 0.7,
+              "latency": 0.8,
+              "risk": 0.35,
+              "repetition": 0,
+              "memory_bonus": 0.0
+            },
+            "score_weights": {
+              "semantic_match": 1.0,
+              "reliability": 0.45,
+              "historical_success": 0.25,
+              "cost": -0.18,
+              "latency": -0.1,
+              "risk": -0.25,
+              "repetition": -0.14,
+              "memory_bonus": 1.0
+            },
+            "selected": false,
+            "schema_valid": true,
+            "budget_valid": false,
+            "risk_valid": true,
+            "reject_reason": "budget_high_cost_fraction"
+          },
+          {
+            "module_id": "memory",
+            "score": 0.0648,
+            "score_terms": {
+              "semantic_match": 0.105,
+              "reliability": 0.66,
+              "historical_success": 0.62,
+              "cost": 0.15,
+              "latency": 0.1,
+              "risk": 0.15,
+              "repetition": 3,
+              "memory_bonus": 0.0023
+            },
+            "score_weights": {
+              "semantic_match": 1.0,
+              "reliability": 0.45,
+              "historical_success": 0.25,
+              "cost": -0.18,
+              "latency": -0.1,
+              "risk": -0.25,
+              "repetition": -0.14,
+              "memory_bonus": 1.0
+            },
+            "selected": false,
+            "schema_valid": true,
+            "budget_valid": true,
+            "risk_valid": true,
+            "reject_reason": "below_top_k"
+          }
+        ],
+        "route_scores": {
+          "critic_agent": {
+            "semantic_match": 0.52,
+            "reliability": 0.7,
+            "historical_success": 0.58,
+            "cost": 0.45,
+            "latency": 0.4,
+            "risk": 0.2,
+            "repetition": 0,
+            "memory_bonus": 0.0,
+            "score_total": 0.809,
+            "reject_reason": null
+          },
+          "aggregator": {
+            "semantic_match": 0.5267,
+            "reliability": 0.7,
+            "historical_success": 0.61,
+            "cost": 0.25,
+            "latency": 0.2,
+            "risk": 0.1,
+            "repetition": 2,
+            "memory_bonus": 0.0,
+            "score_total": 0.6242,
+            "reject_reason": "below_top_k"
+          },
+          "code_agent": {
+            "semantic_match": 0.3633,
+            "reliability": 0.75,
+            "historical_success": 0.64,
+            "cost": 0.8,
+            "latency": 0.9,
+            "risk": 0.4,
+            "repetition": 0,
+            "memory_bonus": 0.0023,
+            "score_total": 0.5291,
+            "reject_reason": "budget_high_cost_fraction"
+          },
+          "search_agent": {
+            "semantic_match": 0.0,
+            "reliability": 0.72,
+            "historical_success": 0.6,
+            "cost": 0.7,
+            "latency": 0.8,
+            "risk": 0.35,
+            "repetition": 0,
+            "memory_bonus": 0.0,
+            "score_total": 0.1805,
+            "reject_reason": "budget_high_cost_fraction"
+          },
+          "memory": {
+            "semantic_match": 0.105,
+            "reliability": 0.66,
+            "historical_success": 0.62,
+            "cost": 0.15,
+            "latency": 0.1,
+            "risk": 0.15,
+            "repetition": 3,
+            "memory_bonus": 0.0023,
+            "score_total": 0.0648,
+            "reject_reason": "below_top_k"
+          }
+        },
+        "budget_snapshot": {
+          "max_budget": 3.0,
+          "budget_used": 0.95,
+          "remaining_budget": 2.05
+        },
+        "oracle": {
+          "oracle_available": true,
+          "proxy_available": true,
+          "oracle_best_module_id": "code_agent",
+          "selected_score": 0.809,
+          "oracle_best_score": 0.5291,
+          "oracle_regret": null,
+          "proxy_regret": 0.35,
+          "missing_required_modules": [
+            "code_agent"
+          ],
+          "selected_discouraged_modules": [],
+          "rationale": "Doc/code alignment fix."
+        }
+      },
+      "timestamp": 1782714172.9425933
+    },
+    {
+      "event_id": 35,
+      "step": 4,
+      "kind": "budget_gate",
+      "payload": {
+        "module_id": "critic_agent",
+        "decision": "allow",
+        "reason": "within_budget",
+        "module_cost": 0.45,
+        "budget_snapshot": {
+          "max_budget": 3.0,
+          "budget_used": 0.95,
+          "remaining_budget": 2.05
+        }
+      },
+      "timestamp": 1782714172.942595
+    },
+    {
+      "event_id": 36,
+      "step": 4,
+      "kind": "module_execution",
+      "payload": {
+        "outputs": [
+          {
+            "module_id": "critic_agent",
+            "content": "Critiqued current trajectory; unresolved signals: no explicit failures.",
+            "confidence": 0.66,
+            "evidence": [],
+            "failure_signal": null
+          }
+        ]
+      },
+      "timestamp": 1782714172.942602
+    },
+    {
+      "event_id": 37,
+      "step": 4,
+      "kind": "state_update",
+      "payload": {
+        "action_type": "aggregate",
+        "state": {
+          "goal": "Fix a Python unit test failure where documentation examples disagree with actual function behavior.",
+          "step": 4,
+          "confidence": 0.6164,
+          "risk": 0.02,
+          "budget_used": 1.4,
+          "max_budget": 3.0,
+          "selected_modules": [
+            "memory",
+            "aggregator",
+            "memory",
+            "aggregator",
+            "memory",
+            "critic_agent"
+          ],
+          "failure_signals": [],
+          "memory_reads": [
+            "python failing test inspect edit run tests code route",
+            "python failing test inspect edit run tests code route",
+            "python failing test inspect edit run tests code route",
+            "python failing test inspect edit run tests code route"
+          ],
+          "memory_writes": [
+            "Fix a Python unit test failure where documentation examples disagree with actual function behavior. route memory -> aggregator -> memory -> aggregator -> memory -> critic_agent"
+          ],
+          "verifier_status": "skipped",
+          "final_answer": null
+        }
+      },
+      "timestamp": 1782714172.942605
+    },
+    {
+      "event_id": 38,
+      "step": 4,
+      "kind": "verifier_result",
+      "payload": {
+        "enabled": true,
+        "required": false,
+        "status": "skipped",
+        "reason": "threshold_not_met",
+        "budget_snapshot": {
+          "max_budget": 3.0,
+          "budget_used": 1.4,
+          "remaining_budget": 1.6
+        }
+      },
+      "timestamp": 1782714172.942607
+    },
+    {
+      "event_id": 39,
+      "step": 4,
+      "kind": "halt_gate",
+      "payload": {
+        "halt": false,
+        "reason": "continue",
+        "success_signal": "unknown",
+        "verifier_status": "skipped",
+        "budget_snapshot": {
+          "max_budget": 3.0,
+          "budget_used": 1.4,
+          "remaining_budget": 1.6
+        }
+      },
+      "timestamp": 1782714172.9426088
+    },
+    {
+      "event_id": 40,
+      "step": 4,
+      "kind": "reflection",
+      "payload": {
+        "key": "Fix a Python unit test failure where documentation examples disagree with actual function behavior. route memory -> aggregator -> memory -> aggregator -> memory -> critic_agent",
+        "value": "Task 'Fix a Python unit test failure where documentation examples disagree with actual function behavior.' reached confidence 0.6164; route memory -> aggregator -> memory -> aggregator -> memory -> critic_agent was useful under budget 1.40.",
+        "usefulness": 0.75,
+        "failures": 0,
+        "memory_type": "behavior_kv",
+        "usefulness_label": "useful",
+        "route_signature": "memory -> aggregator -> memory -> aggregator -> memory -> critic_agent",
+        "evidence_refs": [
+          "event:36",
+          "event:37",
+          "event:38",
+          "event:39"
+        ],
+        "negative_transfer_count": 0,
+        "value_summary": "Task 'Fix a Python unit test failure where documentation examples disagree with actual function behavior.' reached confidence 0.6164; route memory -> aggregator -> memory -> aggregator -> memory -> critic_agent was useful under budget 1.40.",
+        "write_reason": "success"
+      },
+      "timestamp": 1782714172.9426277
+    },
+    {
+      "event_id": 41,
+      "step": 4,
+      "kind": "memory_write",
+      "payload": {
+        "key": "Fix a Python unit test failure where documentation examples disagree with actual function behavior. route memory -> aggregator -> memory -> aggregator -> memory -> critic_agent",
+        "value": "Task 'Fix a Python unit test failure where documentation examples disagree with actual function behavior.' reached confidence 0.6164; route memory -> aggregator -> memory -> aggregator -> memory -> critic_agent was useful under budget 1.40.",
+        "usefulness": 0.75,
+        "failures": 0,
+        "memory_type": "behavior_kv",
+        "usefulness_label": "useful",
+        "route_signature": "memory -> aggregator -> memory -> aggregator -> memory -> critic_agent",
+        "evidence_refs": [
+          "event:36",
+          "event:37",
+          "event:38",
+          "event:39"
+        ],
+        "negative_transfer_count": 0,
+        "value_summary": "Task 'Fix a Python unit test failure where documentation examples disagree with actual function behavior.' reached confidence 0.6164; route memory -> aggregator -> memory -> aggregator -> memory -> critic_agent was useful under budget 1.40.",
+        "write_reason": "success"
+      },
+      "timestamp": 1782714172.9426281
+    },
+    {
+      "event_id": 42,
+      "step": 4,
+      "kind": "finish",
+      "payload": {
+        "goal": "Fix a Python unit test failure where documentation examples disagree with actual function behavior.",
+        "step": 4,
+        "confidence": 0.6164,
+        "risk": 0.02,
+        "budget_used": 1.4,
+        "max_budget": 3.0,
+        "selected_modules": [
+          "memory",
+          "aggregator",
+          "memory",
+          "aggregator",
+          "memory",
+          "critic_agent"
+        ],
+        "failure_signals": [],
+        "memory_reads": [
+          "python failing test inspect edit run tests code route",
+          "python failing test inspect edit run tests code route",
+          "python failing test inspect edit run tests code route",
+          "python failing test inspect edit run tests code route"
+        ],
+        "memory_writes": [
+          "Fix a Python unit test failure where documentation examples disagree with actual function behavior. route memory -> aggregator -> memory -> aggregator -> memory -> critic_agent"
+        ],
+        "verifier_status": "skipped",
+        "final_answer": "Finalized because max_steps_reached. Selected modules: memory, aggregator, memory, aggregator, memory, critic_agent. Latest evidence: memory: Reused 2 retrieved trajectory memories. | aggregator: Aggregated active module outputs into a concise state update. | memory: Reused 3 retrieved trajectory memories. | critic_agent: Critiqued current trajectory; unresolved signals: no explicit failures.."
+      },
+      "timestamp": 1782714172.9426296
+    }
+  ],
+  "final_answer": "Finalized because max_steps_reached. Selected modules: memory, aggregator, memory, aggregator, memory, critic_agent. Latest evidence: memory: Reused 2 retrieved trajectory memories. | aggregator: Aggregated active module outputs into a concise state update. | memory: Reused 3 retrieved trajectory memories. | critic_agent: Critiqued current trajectory; unresolved signals: no explicit failures..",
+  "final_success_label": "fail",
+  "failure_reason": "max_steps_reached",
+  "known_deviations": [
+    "faithful_toy_runtime_not_real_llm",
+    "toy_route_oracle_success_label",
+    "toy_scalar_activation_cost_not_full_cost_delta",
+    "oracle_route_regret_unavailable"
+  ],
+  "metrics_summary": {}
+}

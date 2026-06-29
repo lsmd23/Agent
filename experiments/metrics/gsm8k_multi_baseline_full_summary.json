@@ -1,0 +1,514 @@
+{
+  "scope": "Real LLM GSM8K multi-baseline comparison.",
+  "baselines": {
+    "llm_direct_agent": {
+      "runs": 20,
+      "accuracy": 0.95,
+      "correct": 19,
+      "mean_latency_ms": 1838.1,
+      "mean_model_calls": 1.0,
+      "results": [
+        {
+          "task_id": "gsm8k_test_0000",
+          "success": "pass",
+          "prediction": "18",
+          "gold_answer": "18",
+          "latency_ms": 2326,
+          "model_calls": 1
+        },
+        {
+          "task_id": "gsm8k_test_0001",
+          "success": "pass",
+          "prediction": "3",
+          "gold_answer": "3",
+          "latency_ms": 2074,
+          "model_calls": 1
+        },
+        {
+          "task_id": "gsm8k_test_0002",
+          "success": "pass",
+          "prediction": "70000",
+          "gold_answer": "70000",
+          "latency_ms": 2289,
+          "model_calls": 1
+        },
+        {
+          "task_id": "gsm8k_test_0003",
+          "success": "pass",
+          "prediction": "540",
+          "gold_answer": "540",
+          "latency_ms": 1175,
+          "model_calls": 1
+        },
+        {
+          "task_id": "gsm8k_test_0004",
+          "success": "pass",
+          "prediction": "20",
+          "gold_answer": "20",
+          "latency_ms": 1311,
+          "model_calls": 1
+        },
+        {
+          "task_id": "gsm8k_test_0005",
+          "success": "pass",
+          "prediction": "64",
+          "gold_answer": "64",
+          "latency_ms": 2199,
+          "model_calls": 1
+        },
+        {
+          "task_id": "gsm8k_test_0006",
+          "success": "pass",
+          "prediction": "260",
+          "gold_answer": "260",
+          "latency_ms": 1185,
+          "model_calls": 1
+        },
+        {
+          "task_id": "gsm8k_test_0007",
+          "success": "pass",
+          "prediction": "160",
+          "gold_answer": "160",
+          "latency_ms": 2450,
+          "model_calls": 1
+        },
+        {
+          "task_id": "gsm8k_test_0008",
+          "success": "pass",
+          "prediction": "45",
+          "gold_answer": "45",
+          "latency_ms": 1984,
+          "model_calls": 1
+        },
+        {
+          "task_id": "gsm8k_test_0009",
+          "success": "pass",
+          "prediction": "460",
+          "gold_answer": "460",
+          "latency_ms": 1662,
+          "model_calls": 1
+        },
+        {
+          "task_id": "gsm8k_test_0010",
+          "success": "pass",
+          "prediction": "366",
+          "gold_answer": "366",
+          "latency_ms": 3155,
+          "model_calls": 1
+        },
+        {
+          "task_id": "gsm8k_test_0011",
+          "success": "pass",
+          "prediction": "694",
+          "gold_answer": "694",
+          "latency_ms": 1266,
+          "model_calls": 1
+        },
+        {
+          "task_id": "gsm8k_test_0012",
+          "success": "fail",
+          "prediction": "12",
+          "gold_answer": "13",
+          "latency_ms": 1760,
+          "model_calls": 1
+        },
+        {
+          "task_id": "gsm8k_test_0013",
+          "success": "pass",
+          "prediction": "18",
+          "gold_answer": "18",
+          "latency_ms": 2984,
+          "model_calls": 1
+        },
+        {
+          "task_id": "gsm8k_test_0014",
+          "success": "pass",
+          "prediction": "60",
+          "gold_answer": "60",
+          "latency_ms": 1596,
+          "model_calls": 1
+        },
+        {
+          "task_id": "gsm8k_test_0015",
+          "success": "pass",
+          "prediction": "125",
+          "gold_answer": "125",
+          "latency_ms": 1552,
+          "model_calls": 1
+        },
+        {
+          "task_id": "gsm8k_test_0016",
+          "success": "pass",
+          "prediction": "230",
+          "gold_answer": "230",
+          "latency_ms": 1403,
+          "model_calls": 1
+        },
+        {
+          "task_id": "gsm8k_test_0017",
+          "success": "pass",
+          "prediction": "57500",
+          "gold_answer": "57500",
+          "latency_ms": 1549,
+          "model_calls": 1
+        },
+        {
+          "task_id": "gsm8k_test_0018",
+          "success": "pass",
+          "prediction": "7",
+          "gold_answer": "7",
+          "latency_ms": 1071,
+          "model_calls": 1
+        },
+        {
+          "task_id": "gsm8k_test_0019",
+          "success": "pass",
+          "prediction": "6",
+          "gold_answer": "6",
+          "latency_ms": 1771,
+          "model_calls": 1
+        }
+      ]
+    },
+    "llm_react_agent": {
+      "runs": 20,
+      "accuracy": 1.0,
+      "correct": 20,
+      "mean_latency_ms": 2309.3,
+      "mean_model_calls": 1.0,
+      "results": [
+        {
+          "task_id": "gsm8k_test_0000",
+          "success": "pass",
+          "prediction": "18",
+          "gold_answer": "18",
+          "latency_ms": 2930,
+          "model_calls": 1
+        },
+        {
+          "task_id": "gsm8k_test_0001",
+          "success": "pass",
+          "prediction": "3",
+          "gold_answer": "3",
+          "latency_ms": 1254,
+          "model_calls": 1
+        },
+        {
+          "task_id": "gsm8k_test_0002",
+          "success": "pass",
+          "prediction": "70000",
+          "gold_answer": "70000",
+          "latency_ms": 2900,
+          "model_calls": 1
+        },
+        {
+          "task_id": "gsm8k_test_0003",
+          "success": "pass",
+          "prediction": "540",
+          "gold_answer": "540",
+          "latency_ms": 1772,
+          "model_calls": 1
+        },
+        {
+          "task_id": "gsm8k_test_0004",
+          "success": "pass",
+          "prediction": "20",
+          "gold_answer": "20",
+          "latency_ms": 1694,
+          "model_calls": 1
+        },
+        {
+          "task_id": "gsm8k_test_0005",
+          "success": "pass",
+          "prediction": "64",
+          "gold_answer": "64",
+          "latency_ms": 2495,
+          "model_calls": 1
+        },
+        {
+          "task_id": "gsm8k_test_0006",
+          "success": "pass",
+          "prediction": "260",
+          "gold_answer": "260",
+          "latency_ms": 1459,
+          "model_calls": 1
+        },
+        {
+          "task_id": "gsm8k_test_0007",
+          "success": "pass",
+          "prediction": "160",
+          "gold_answer": "160",
+          "latency_ms": 2740,
+          "model_calls": 1
+        },
+        {
+          "task_id": "gsm8k_test_0008",
+          "success": "pass",
+          "prediction": "45",
+          "gold_answer": "45",
+          "latency_ms": 2765,
+          "model_calls": 1
+        },
+        {
+          "task_id": "gsm8k_test_0009",
+          "success": "pass",
+          "prediction": "460",
+          "gold_answer": "460",
+          "latency_ms": 2319,
+          "model_calls": 1
+        },
+        {
+          "task_id": "gsm8k_test_0010",
+          "success": "pass",
+          "prediction": "366",
+          "gold_answer": "366",
+          "latency_ms": 2255,
+          "model_calls": 1
+        },
+        {
+          "task_id": "gsm8k_test_0011",
+          "success": "pass",
+          "prediction": "694",
+          "gold_answer": "694",
+          "latency_ms": 1993,
+          "model_calls": 1
+        },
+        {
+          "task_id": "gsm8k_test_0012",
+          "success": "pass",
+          "prediction": "13",
+          "gold_answer": "13",
+          "latency_ms": 3073,
+          "model_calls": 1
+        },
+        {
+          "task_id": "gsm8k_test_0013",
+          "success": "pass",
+          "prediction": "18",
+          "gold_answer": "18",
+          "latency_ms": 3839,
+          "model_calls": 1
+        },
+        {
+          "task_id": "gsm8k_test_0014",
+          "success": "pass",
+          "prediction": "60",
+          "gold_answer": "60",
+          "latency_ms": 2053,
+          "model_calls": 1
+        },
+        {
+          "task_id": "gsm8k_test_0015",
+          "success": "pass",
+          "prediction": "125",
+          "gold_answer": "125",
+          "latency_ms": 2494,
+          "model_calls": 1
+        },
+        {
+          "task_id": "gsm8k_test_0016",
+          "success": "pass",
+          "prediction": "230",
+          "gold_answer": "230",
+          "latency_ms": 1644,
+          "model_calls": 1
+        },
+        {
+          "task_id": "gsm8k_test_0017",
+          "success": "pass",
+          "prediction": "57500",
+          "gold_answer": "57500",
+          "latency_ms": 2316,
+          "model_calls": 1
+        },
+        {
+          "task_id": "gsm8k_test_0018",
+          "success": "pass",
+          "prediction": "7",
+          "gold_answer": "7",
+          "latency_ms": 1882,
+          "model_calls": 1
+        },
+        {
+          "task_id": "gsm8k_test_0019",
+          "success": "pass",
+          "prediction": "6",
+          "gold_answer": "6",
+          "latency_ms": 2309,
+          "model_calls": 1
+        }
+      ]
+    },
+    "agent_attention_llm_tuned": {
+      "runs": 20,
+      "accuracy": 1.0,
+      "correct": 20,
+      "mean_latency_ms": 3232.7,
+      "mean_model_calls": 1.05,
+      "results": [
+        {
+          "task_id": "gsm8k_test_0000",
+          "success": "pass",
+          "prediction": "18",
+          "gold_answer": "18",
+          "latency_ms": 2378,
+          "model_calls": 1
+        },
+        {
+          "task_id": "gsm8k_test_0001",
+          "success": "pass",
+          "prediction": "3",
+          "gold_answer": "3",
+          "latency_ms": 1985,
+          "model_calls": 1
+        },
+        {
+          "task_id": "gsm8k_test_0002",
+          "success": "pass",
+          "prediction": "70000",
+          "gold_answer": "70000",
+          "latency_ms": 6316,
+          "model_calls": 2
+        },
+        {
+          "task_id": "gsm8k_test_0003",
+          "success": "pass",
+          "prediction": "540",
+          "gold_answer": "540",
+          "latency_ms": 1646,
+          "model_calls": 1
+        },
+        {
+          "task_id": "gsm8k_test_0004",
+          "success": "pass",
+          "prediction": "20",
+          "gold_answer": "20",
+          "latency_ms": 2791,
+          "model_calls": 1
+        },
+        {
+          "task_id": "gsm8k_test_0005",
+          "success": "pass",
+          "prediction": "64",
+          "gold_answer": "64",
+          "latency_ms": 3610,
+          "model_calls": 1
+        },
+        {
+          "task_id": "gsm8k_test_0006",
+          "success": "pass",
+          "prediction": "260",
+          "gold_answer": "260",
+          "latency_ms": 1682,
+          "model_calls": 1
+        },
+        {
+          "task_id": "gsm8k_test_0007",
+          "success": "pass",
+          "prediction": "160",
+          "gold_answer": "160",
+          "latency_ms": 3674,
+          "model_calls": 1
+        },
+        {
+          "task_id": "gsm8k_test_0008",
+          "success": "pass",
+          "prediction": "45",
+          "gold_answer": "45",
+          "latency_ms": 4040,
+          "model_calls": 1
+        },
+        {
+          "task_id": "gsm8k_test_0009",
+          "success": "pass",
+          "prediction": "460",
+          "gold_answer": "460",
+          "latency_ms": 2904,
+          "model_calls": 1
+        },
+        {
+          "task_id": "gsm8k_test_0010",
+          "success": "pass",
+          "prediction": "366",
+          "gold_answer": "366",
+          "latency_ms": 3018,
+          "model_calls": 1
+        },
+        {
+          "task_id": "gsm8k_test_0011",
+          "success": "pass",
+          "prediction": "694",
+          "gold_answer": "694",
+          "latency_ms": 1799,
+          "model_calls": 1
+        },
+        {
+          "task_id": "gsm8k_test_0012",
+          "success": "pass",
+          "prediction": "13",
+          "gold_answer": "13",
+          "latency_ms": 3414,
+          "model_calls": 1
+        },
+        {
+          "task_id": "gsm8k_test_0013",
+          "success": "pass",
+          "prediction": "18",
+          "gold_answer": "18",
+          "latency_ms": 7422,
+          "model_calls": 1
+        },
+        {
+          "task_id": "gsm8k_test_0014",
+          "success": "pass",
+          "prediction": "60",
+          "gold_answer": "60",
+          "latency_ms": 3606,
+          "model_calls": 1
+        },
+        {
+          "task_id": "gsm8k_test_0015",
+          "success": "pass",
+          "prediction": "125",
+          "gold_answer": "125",
+          "latency_ms": 3708,
+          "model_calls": 1
+        },
+        {
+          "task_id": "gsm8k_test_0016",
+          "success": "pass",
+          "prediction": "230",
+          "gold_answer": "230",
+          "latency_ms": 2146,
+          "model_calls": 1
+        },
+        {
+          "task_id": "gsm8k_test_0017",
+          "success": "pass",
+          "prediction": "57500",
+          "gold_answer": "57500",
+          "latency_ms": 1778,
+          "model_calls": 1
+        },
+        {
+          "task_id": "gsm8k_test_0018",
+          "success": "pass",
+          "prediction": "7",
+          "gold_answer": "7",
+          "latency_ms": 2028,
+          "model_calls": 1
+        },
+        {
+          "task_id": "gsm8k_test_0019",
+          "success": "pass",
+          "prediction": "6",
+          "gold_answer": "6",
+          "latency_ms": 4709,
+          "model_calls": 1
+        }
+      ]
+    }
+  },
+  "provider": "openai",
+  "model": "Qwen3-30B-A3B-Instruct-2507"
+}
