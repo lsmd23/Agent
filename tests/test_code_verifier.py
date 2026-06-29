@@ -7,7 +7,9 @@ import unittest
 from experiments.baselines.faithful_runners import build_faithful_runtime
 from experiments.real_benchmarks.code_verifier import (
     broken_repo_fails,
+    build_fixture_context,
     golden_repo_passes,
+    select_code_patch,
     verify_code_task,
 )
 from experiments.real_benchmarks.task_oracles import evaluate_task_success
@@ -64,6 +66,24 @@ class CodeVerifierTests(unittest.TestCase):
         self.assertEqual(metrics["oracle_type"], "executable_pytest")
         self.assertTrue(metrics["end_task_success"])
 
+    def test_build_fixture_context_includes_repo_and_failure(self) -> None:
+        context = build_fixture_context("phase0_seed_code_fix_001")
+        self.assertIsNotNone(context)
+        assert context is not None
+        self.assertIn("add_fn_001", context)
+        self.assertIn("lib/calc.py", context)
+        self.assertIn("unittest", context.lower())
+
+    def test_select_code_patch_strips_file_hint_on_apply(self) -> None:
+        patch = select_code_patch(
+            "```python\n# file: lib/calc.py\ndef add(a, b):\n    return a + b\n```",
+            ["lib/calc.py"],
+        )
+        self.assertIsNotNone(patch)
+        result = verify_code_task("phase0_seed_code_fix_001", patch or "")
+        self.assertTrue(result.passed)
+        self.assertIn(result.apply_mode, {"hinted_code_block", "single_code_block", "golden_code_block", "marker_match"})
+
     def test_toy_runtime_envelope_can_score_code_end_task(self) -> None:
         task = {
             "task_id": "phase1_code_import_001",
@@ -80,7 +100,7 @@ class CodeVerifierTests(unittest.TestCase):
         }
         runtime = build_faithful_runtime("single_react_agent", task, max_steps=2)
         state = runtime.run(task["prompt"], max_budget=3.0)
-        state.final_answer = "```python\ndef foo():\n    return 1\n```"
+        state.final_answer = "```python\n# file: mypkg/core.py\ndef foo():\n    return 1\n```"
         label, metrics = evaluate_task_success(task, state)
         self.assertEqual(metrics["oracle_type"], "executable_pytest")
         self.assertTrue(metrics["end_task_success"])

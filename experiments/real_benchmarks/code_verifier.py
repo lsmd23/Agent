@@ -54,6 +54,100 @@ def fixture_id_for_task(task_id: str) -> str | None:
     return load_manifest(fixture_dir).get("fixture_id")
 
 
+def fix_paths_for_task(task_id: str) -> list[str]:
+    fixture_dir = fixture_dir_for_task(task_id)
+    if fixture_dir is None:
+        return []
+    manifest = load_manifest(fixture_dir)
+    return [str(spec["path"]) for spec in manifest.get("fix_files", [])]
+
+
+def strip_file_hint(body: str) -> str:
+    lines = body.splitlines()
+    if lines and re.match(r"^#\s*(?:file|path)\s*:", lines[0].strip(), flags=re.IGNORECASE):
+        body = "\n".join(lines[1:])
+    cleaned = body.strip()
+    return f"{cleaned}\n" if cleaned else ""
+
+
+def format_code_patch(body: str, *, file_path: str | None = None) -> str:
+    cleaned = body.strip()
+    if file_path and not re.match(r"^#\s*(?:file|path)\s*:", cleaned, flags=re.IGNORECASE):
+        cleaned = f"# file: {file_path}\n{cleaned}"
+    return f"```python\n{cleaned}\n```"
+
+
+def select_code_patch(text: str, fix_paths: list[str]) -> str | None:
+    blocks = extract_python_blocks(text)
+    if not blocks:
+        return None
+    normalized_paths = [path.replace("\\", "/") for path in fix_paths]
+
+    for hint, block in reversed(blocks):
+        if hint:
+            hint_norm = hint.replace("\\", "/")
+            if any(hint_norm.endswith(path) or path.endswith(hint_norm) for path in normalized_paths):
+                return format_code_patch(block, file_path=hint)
+    if len(fix_paths) == 1 and blocks:
+        _, block = blocks[-1]
+        return format_code_patch(block, file_path=fix_paths[0])
+    if blocks:
+        _, block = blocks[-1]
+        return format_code_patch(block)
+    return None
+
+
+def build_fixture_context(
+    task_id: str,
+    *,
+    max_file_chars: int = 4000,
+    max_test_output_chars: int = 2500,
+) -> str | None:
+    fixture_dir = fixture_dir_for_task(task_id)
+    if fixture_dir is None:
+        return None
+
+    manifest = load_manifest(fixture_dir)
+    repo_root = fixture_dir / "repo"
+    fix_paths = fix_paths_for_task(task_id)
+
+    sections: list[str] = [
+        f"Fixture ID: {manifest.get('fixture_id', fixture_dir.name)}",
+        f"Bug summary: {manifest.get('description', '').strip()}",
+    ]
+    if fix_paths:
+        sections.append("Target file(s) to create or modify: " + ", ".join(fix_paths))
+
+    sections.append("\nRepository snapshot:")
+    seen_paths: set[str] = set()
+    for path in sorted(repo_root.rglob("*.py")):
+        if "__pycache__" in path.parts:
+            continue
+        rel = path.relative_to(repo_root).as_posix()
+        seen_paths.add(rel)
+        content = path.read_text(encoding="utf-8")
+        if len(content) > max_file_chars:
+            content = content[:max_file_chars] + "\n# ... truncated ..."
+        sections.append(f"\n--- {rel} ---\n{content.rstrip()}")
+
+    for rel_path in fix_paths:
+        if rel_path not in seen_paths:
+            sections.append(f"\n--- {rel_path} ---\n# (file missing in repo; create it)")
+
+    proc = run_tests(repo_root)
+    if proc.returncode != 0:
+        failure = (proc.stdout + "\n" + proc.stderr).strip()
+        if len(failure) > max_test_output_chars:
+            failure = failure[-max_test_output_chars:]
+        sections.append("\nCurrent unittest failure output:\n" + failure)
+
+    sections.append(
+        "\nRespond with the complete corrected file in a fenced ```python block. "
+        "First line inside the block must be `# file: <relative/path>`."
+    )
+    return "\n".join(sections)
+
+
 def extract_python_blocks(text: str) -> list[tuple[str | None, str]]:
     blocks: list[tuple[str | None, str]] = []
     for match in PYTHON_BLOCK_RE.finditer(text):
@@ -96,20 +190,23 @@ def _apply_fix_file(repo_root: Path, fixture_dir: Path, fix_spec: dict[str, Any]
 
     golden_text = golden_path.read_text(encoding="utf-8").strip()
     for _hint, block in extract_python_blocks(agent_text):
-        if block.strip() == golden_text or block.strip() in golden_text or golden_text in block:
-            target.write_text(block if block.endswith("\n") else block + "\n", encoding="utf-8")
+        block_body = strip_file_hint(block)
+        if block_body.strip() == golden_text or block_body.strip() in golden_text or golden_text in block_body:
+            target.write_text(block_body if block_body.endswith("\n") else block_body + "\n", encoding="utf-8")
             return True, "golden_code_block"
 
     blocks = extract_python_blocks(agent_text)
     hinted = [(hint, block) for hint, block in blocks if hint and hint.replace("\\", "/").endswith(rel_path.replace("\\", "/"))]
     if hinted:
         _, block = hinted[-1]
-        target.write_text(block if block.endswith("\n") else block + "\n", encoding="utf-8")
+        block_body = strip_file_hint(block)
+        target.write_text(block_body if block_body.endswith("\n") else block_body + "\n", encoding="utf-8")
         return True, "hinted_code_block"
 
     if fix_spec.get("_single_block_only", False) and len(blocks) == 1:
         _, block = blocks[0]
-        target.write_text(block if block.endswith("\n") else block + "\n", encoding="utf-8")
+        block_body = strip_file_hint(block)
+        target.write_text(block_body if block_body.endswith("\n") else block_body + "\n", encoding="utf-8")
         return True, "single_code_block"
 
     return False, "not_applied"

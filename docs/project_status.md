@@ -28,7 +28,9 @@ Metrics: `experiments/metrics/phase{1,2,3,4}_*_summary.json`
 | Task oracles | `experiments/real_benchmarks/task_oracles.py` |
 | Fixture validator | `experiments/real_benchmarks/validate_code_fixtures.py` |
 
-Code tasks in `experiments/tasks/phase1_tasks.jsonl` use `success_oracle.oracle_type: pytest_passes`. Toy `envelope_for()` and real-LLM envelope both score **end-task pass/fail** when a fixture is registered.
+Code tasks in `experiments/tasks/phase1_tasks.jsonl` use `success_oracle.oracle_type: pytest_passes`. Real-LLM code prompts inject fixture repo snapshot + failing unittest output; models must return a `# file:` python block.
+
+Latest executable eval (6 code tasks × 7 baselines): `experiments/metrics/real_llm_phase1_code_executable_v2.json` — end-task accuracy 0% → **88–100%** per baseline after fixture-aware prompts (prior v1: all 0%).
 
 ```bash
 python3 experiments/real_benchmarks/validate_code_fixtures.py
@@ -49,20 +51,21 @@ Comparison vs toy: `experiments/metrics/real_vs_toy_comparison.json`
 
 1. Phase1 **search/research** tasks still use route-proxy or rubric placeholders.
 2. GSM8K does not stress routing; good sanity check only.
-3. Real-LLM Phase1 code runs not yet re-scored with executable oracle (prior trajectories on disk).
+3. Real-LLM Phase1 code runs scored with executable oracle v2 (88–100% end-task pass); v1 trajectories lacked fixture context.
 4. Trajectories gitignored; regenerate with `run_real_llm_eval.py`.
 
 ## Next Iteration
 
-1. Re-run real LLM on 6 code tasks with executable end-task scoring.
+1. Re-run real LLM on 6 code tasks with executable end-task scoring. **Done (v2): fixture-aware prompts; see `real_llm_phase1_code_executable_v2.json`.**
 2. Expand task count per family (≥50) + bootstrap CI.
 3. **Cost–quality Pareto** figure (matched token budget).
 4. Search/research rubric oracles.
+5. Publication gap audit: `docs/publication_gap_assessment.md`.
 
 ## Tests
 
 ```bash
-python3 -m unittest discover -s tests   # 55 passing
+python3 -m unittest discover -s tests   # 57 passing
 ```
 
 ## Key Docs

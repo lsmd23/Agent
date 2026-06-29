@@ -35,12 +35,23 @@ PHASE1_TASK = {
     },
     "memory_setup": {"injected_memory_ids": ["seed:code_route"], "quarantined_memory_ids": []},
     "negative_transfer_probe": {"enabled": False},
+    "success_oracle": {"oracle_type": "pytest_passes", "fixture_id": "version_parse_001"},
 }
 
 
 def mock_complete(_self, prompt: str, *, module_id: str = "llm"):
     if "math" in prompt.lower() or "egg" in prompt.lower() or "####" in prompt:
         text = "Reasoning steps.\n#### 18"
+    elif "Repository snapshot:" in prompt:
+        text = (
+            "```python\n"
+            "# file: lib/version_util.py\n"
+            "def parse_version(version: str) -> tuple[int, ...]:\n"
+            "    return tuple(int(part) for part in version.split('.'))\n\n"
+            "def is_compatible(required: str, installed: str) -> bool:\n"
+            "    return parse_version(installed) >= parse_version(required)\n"
+            "```"
+        )
     else:
         text = (
             f"Module {module_id}: inspect repo, patch requirements.txt, run pytest. "
@@ -76,7 +87,8 @@ class FaithfulLLMRunnerTests(unittest.TestCase):
     def test_single_react_llm_phase1_route_oracle(self) -> None:
         traj = run_faithful_llm("single_react_llm_agent", PHASE1_TASK, self._client())
         self.assertEqual(traj["baseline_id"], "single_react_llm_agent")
-        self.assertIn(traj["final_success_label"], {"pass", "partial", "fail"})
+        self.assertEqual(traj["final_success_label"], "pass")
+        self.assertTrue(traj["metrics_summary"]["end_task_success"])
 
     @patch.object(LLMClient, "complete", mock_complete)
     def test_memory_ablation_llm_runs(self) -> None:
