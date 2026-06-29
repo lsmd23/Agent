@@ -1,14 +1,14 @@
 # Project Status
 
-Last updated: 2026-06-29
+Last updated: 2026-06-26
 
-## Milestone: Instrumentation + Real LLM Matrix Complete
+## Milestone: Executable Code Verifier (Phase A)
 
-Path A (instrumentation-first) through Phase 4 on **toy runtime**, plus **344 real-LLM runs** across 19 baselines. Ready to iterate toward **publication-grade end-task evaluation**.
+Phase1 **code tasks** now have pytest fixtures + end-task scoring. Real-LLM matrix from prior milestone remains on route-proxy for non-code tasks.
 
-## What Works (committed evidence)
+## What Works
 
-### Runtime & toy experiments (route-proxy)
+### Runtime & toy experiments
 
 | Phase | Scope | Key result |
 |-------|-------|------------|
@@ -18,6 +18,22 @@ Path A (instrumentation-first) through Phase 4 on **toy runtime**, plus **344 re
 | Phase 4 | 4 router variants | learned replay 75% > lexical 66.7% |
 
 Metrics: `experiments/metrics/phase{1,2,3,4}_*_summary.json`
+
+### Executable code verifier (new)
+
+| Component | Path |
+|-----------|------|
+| 5 fixtures (6 code tasks) | `experiments/fixtures/code/` |
+| Verifier | `experiments/real_benchmarks/code_verifier.py` |
+| Task oracles | `experiments/real_benchmarks/task_oracles.py` |
+| Fixture validator | `experiments/real_benchmarks/validate_code_fixtures.py` |
+
+Code tasks in `experiments/tasks/phase1_tasks.jsonl` use `success_oracle.oracle_type: pytest_passes`. Toy `envelope_for()` and real-LLM envelope both score **end-task pass/fail** when a fixture is registered.
+
+```bash
+python3 experiments/real_benchmarks/validate_code_fixtures.py
+python3 -m unittest tests.test_code_verifier -v
+```
 
 ### Real LLM (Qwen3-30B via Paratera)
 
@@ -29,24 +45,24 @@ Metrics: `experiments/metrics/phase{1,2,3,4}_*_summary.json`
 
 Comparison vs toy: `experiments/metrics/real_vs_toy_comparison.json`
 
-## Known Limitations (not bugs — scope boundaries)
+## Known Limitations
 
-1. Phase1 success = **route-proxy**, not executable task completion.
+1. Phase1 **search/research** tasks still use route-proxy or rubric placeholders.
 2. GSM8K does not stress routing; good sanity check only.
-3. Real-LLM Pass vs Partial splits understate ReAct (Pass+Partial ≈ toy).
+3. Real-LLM Phase1 code runs not yet re-scored with executable oracle (prior trajectories on disk).
 4. Trajectories gitignored; regenerate with `run_real_llm_eval.py`.
 
-## Next Iteration (publication path)
+## Next Iteration
 
-1. **Executable code verifier** for Phase1 code tasks (pytest sandbox).
+1. Re-run real LLM on 6 code tasks with executable end-task scoring.
 2. Expand task count per family (≥50) + bootstrap CI.
 3. **Cost–quality Pareto** figure (matched token budget).
-4. Demote route-proxy to mechanism appendix; promote end-task to Table 1.
+4. Search/research rubric oracles.
 
 ## Tests
 
 ```bash
-python3 -m unittest discover -s tests   # 49 passing
+python3 -m unittest discover -s tests   # 55 passing
 ```
 
 ## Key Docs

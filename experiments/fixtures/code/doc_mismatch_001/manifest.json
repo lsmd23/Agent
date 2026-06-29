@@ -1,0 +1,12 @@
+{
+  "fixture_id": "doc_mismatch_001",
+  "task_ids": ["phase1_code_doc_001"],
+  "description": "normalize() docstring says lowercase but implementation uppercases.",
+  "fix_files": [
+    {
+      "path": "lib/textutil.py",
+      "golden": "golden/lib/textutil.py",
+      "markers": [".lower()"]
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "fixture_id": "import_path_001",
+  "task_ids": ["phase1_code_import_001"],
+  "description": "Missing mypkg.core module; add core.py with foo().",
+  "fix_files": [
+    {
+      "path": "mypkg/core.py",
+      "golden": "golden/mypkg/core.py",
+      "markers": ["def foo"]
+    }
+  ]
+}

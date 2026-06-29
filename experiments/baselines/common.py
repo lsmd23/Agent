@@ -191,16 +191,28 @@ def envelope_for(
     run_prefix: str = "phase1_faithful",
     ablation_id: str | None = None,
 ) -> dict[str, Any]:
-    success_label = success_label_for(task, state)
+    from experiments.real_benchmarks.task_oracles import evaluate_task_success
+
+    oracle = task.get("success_oracle", {})
+    if oracle.get("oracle_type") == "pytest_passes" or oracle.get("fixture_id"):
+        success_label, oracle_metrics = evaluate_task_success(task, state)
+    else:
+        success_label = success_label_for(task, state)
+        oracle_metrics = {"oracle_type": "route_proxy", "route_oracle_label": success_label}
     run_id = f"{run_prefix}__{baseline_id}__{task['task_id']}"
     if ablation_id:
         run_id = f"{run_prefix}__{ablation_id}__{task['task_id']}"
     known_deviations = [
         "faithful_toy_runtime_not_real_llm",
-        "toy_route_oracle_success_label",
         "toy_scalar_activation_cost_not_full_cost_delta",
         "oracle_route_regret_unavailable",
     ]
+    if oracle_metrics.get("oracle_type") == "route_proxy":
+        known_deviations.append("toy_route_oracle_success_label")
+    if oracle_metrics.get("oracle_type") == "executable_pytest":
+        known_deviations.append("executable_pytest_end_task_label")
+        if oracle_metrics.get("route_oracle_label"):
+            known_deviations.append("route_proxy_reported_in_metrics_summary")
     if simulation:
         known_deviations.append("phase1_toy_baseline_simulation")
 
@@ -226,5 +238,5 @@ def envelope_for(
         "final_success_label": success_label,
         "failure_reason": final_failure_reason(state.final_answer, success_label),
         "known_deviations": known_deviations,
-        "metrics_summary": {},
+        "metrics_summary": oracle_metrics,
     }

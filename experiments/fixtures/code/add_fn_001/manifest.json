@@ -1,0 +1,12 @@
+{
+  "fixture_id": "add_fn_001",
+  "task_ids": ["phase0_seed_code_fix_001", "phase0_seed_negative_memory_001"],
+  "description": "Broken add() uses subtraction; fix returns a + b.",
+  "fix_files": [
+    {
+      "path": "lib/calc.py",
+      "golden": "golden/lib/calc.py",
+      "markers": ["return a + b"]
+    }
+  ]
+}

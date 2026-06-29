@@ -1,0 +1,12 @@
+{
+  "fixture_id": "version_parse_001",
+  "task_ids": ["phase1_code_config_001"],
+  "description": "Version comparator treats patch levels incorrectly.",
+  "fix_files": [
+    {
+      "path": "lib/version_util.py",
+      "golden": "golden/lib/version_util.py",
+      "markers": ["parse_version(installed) >= parse_version(required)"]
+    }
+  ]
+}

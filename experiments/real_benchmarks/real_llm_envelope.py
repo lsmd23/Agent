@@ -38,6 +38,10 @@ def envelope_for_real_llm(
     ]
     if oracle_metrics.get("oracle_type") == "route_proxy":
         known_deviations.append("route_proxy_success_label")
+    if oracle_metrics.get("oracle_type") == "executable_pytest":
+        known_deviations.append("executable_pytest_end_task_label")
+        if oracle_metrics.get("route_oracle_label"):
+            known_deviations.append("route_proxy_reported_in_metrics_summary")
     if extra_known_deviations:
         known_deviations.extend(extra_known_deviations)
 

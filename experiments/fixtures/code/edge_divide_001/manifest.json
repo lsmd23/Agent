@@ -1,0 +1,12 @@
+{
+  "fixture_id": "edge_divide_001",
+  "task_ids": ["phase1_code_edge_001"],
+  "description": "safe_divide should return 0.0 for zero divisor edge case.",
+  "fix_files": [
+    {
+      "path": "lib/mathutil.py",
+      "golden": "golden/lib/mathutil.py",
+      "markers": ["return 0.0"]
+    }
+  ]
+}
