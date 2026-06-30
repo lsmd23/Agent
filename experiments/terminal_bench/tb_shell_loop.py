@@ -8,7 +8,11 @@ from dataclasses import dataclass, field
 from typing import Any
 
 from experiments.real_benchmarks.llm_client import LLMClient
-from experiments.terminal_bench.adapter import _sanitize_shell_commands, extract_shell_commands
+from experiments.terminal_bench.adapter import (
+    _sanitize_shell_commands,
+    compress_observation,
+    extract_shell_commands,
+)
 
 try:
     from terminal_bench.terminal.tmux_session import TmuxSession
@@ -21,6 +25,7 @@ class StepResponse:
     commands: list[str] = field(default_factory=list)
     is_task_complete: bool = False
     explanation: str = ""
+    parse_status: str = "ok"  # ok | empty | truncated_json | prose_only
 
 
 BASELINE_STEP_HINTS: dict[str, str] = {
@@ -75,8 +80,11 @@ def parse_step_response(text: str) -> StepResponse:
                 explanation=str(payload.get("explanation", "")),
             )
     except json.JSONDecodeError:
-        pass
-    return StepResponse()
+        if '"commands"' in cleaned:
+            return StepResponse(parse_status="truncated_json")
+    if raw and not commands:
+        return StepResponse(parse_status="prose_only")
+    return StepResponse(parse_status="empty")
 
 
 def _workflow_phase_hint(step: int) -> str:
@@ -95,7 +103,9 @@ def build_step_prompt(
     hint = BASELINE_STEP_HINTS.get(baseline_id, BASELINE_STEP_HINTS["single_react_llm_agent"])
     history_lines: list[str] = []
     for item in history[-6:]:
-        history_lines.append(f"$ {item['command']}\n{item['output'][-1500:]}")
+        history_lines.append(
+            f"$ {item['command']}\n{compress_observation(item['output'], max_chars=1200)}"
+        )
 
     phase_block = ""
     if baseline_id == "fixed_workflow_llm_agent":
@@ -113,7 +123,7 @@ def build_step_prompt(
         f"- Step {step + 1} of {max_steps}.\n"
         f"{phase_block}\n"
         f"Task instruction:\n{instruction}\n\n"
-        f"Terminal state:\n{terminal_state}\n\n"
+        f"Terminal state:\n{compress_observation(terminal_state)}\n\n"
         + ("Prior commands:\n" + "\n---\n".join(history_lines) + "\n\n" if history_lines else "")
         + "Next JSON response:"
     )
@@ -130,6 +140,7 @@ def run_shell_loop(
     """Run observe→act loop. Returns (step_log, total_tokens)."""
     history: list[dict[str, str]] = []
     step_log: list[dict[str, Any]] = []
+    last_command: str | None = None
 
     for step in range(max_steps):
         terminal_state = session.get_incremental_output()
@@ -143,12 +154,25 @@ def run_shell_loop(
         )
         text, _meta, latency_ms = client.complete(prompt, module_id=f"tb_shell_step_{step}")
         parsed = parse_step_response(text)
+
+        if not parsed.commands and parsed.parse_status in {"truncated_json", "empty", "prose_only"}:
+            retry_prompt = (
+                prompt
+                + "\n\nYour last response had no executable commands. "
+                "Reply with JSON only. Keep each command under 120 characters; "
+                "split long writes into smaller steps.\n"
+                f"Failed parse ({parsed.parse_status}). Next JSON response:"
+            )
+            text, _meta, latency_ms = client.complete(retry_prompt, module_id=f"tb_shell_step_{step}_retry")
+            parsed = parse_step_response(text)
+
         step_record: dict[str, Any] = {
             "step": step,
             "latency_ms": latency_ms,
             "explanation": parsed.explanation,
             "commands": parsed.commands,
             "is_task_complete": parsed.is_task_complete,
+            "parse_status": parsed.parse_status,
             "raw_response": text[:4000],
         }
         step_log.append(step_record)
@@ -157,13 +181,17 @@ def run_shell_loop(
             break
 
         if not parsed.commands:
-            # Nudge: list directory before giving up
-            parsed.commands = ["pwd", "ls -la"]
+            step_record["invalid_shell"] = parsed.parse_status
+            continue
 
         for command in parsed.commands:
+            if command == last_command:
+                step_record.setdefault("skipped_duplicates", []).append(command)
+                continue
             session.send_keys([command, "Enter"], block=True)
             output = session.capture_pane(capture_entire=False)
             history.append({"command": command, "output": output})
+            last_command = command
 
         if parsed.is_task_complete:
             break

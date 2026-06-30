@@ -1,0 +1,154 @@
+{
+  "brief": "F",
+  "title": "Terminal ACI Mechanic",
+  "date": "2026-06-30",
+  "evidence_outcome": "supports_direction",
+  "failure_taxonomy": {
+    "combined_t2_t3": {
+      "total_runs": 30,
+      "pass": 6,
+      "agent_failure": 19,
+      "environment_failure": 5,
+      "timeout": 0,
+      "shares": {
+        "pass": 0.2,
+        "agent_failure": 0.633,
+        "environment_failure": 0.167
+      }
+    },
+    "t2_only": {
+      "total_runs": 15,
+      "pass": 2,
+      "agent_failure": 13,
+      "environment_failure": 0,
+      "note": "single-shot shell bridge; no env failures detected"
+    },
+    "t3_only": {
+      "total_runs": 15,
+      "pass": 4,
+      "agent_failure": 6,
+      "environment_failure": 5,
+      "environment_breakdown": {
+        "apt_mirror_failure": 2,
+        "test_setup_failed": 3
+      }
+    },
+    "invalid_shell_from_trajectories": {
+      "trajectories_analyzed": 10,
+      "total_steps": 76,
+      "empty_parse_steps": 3,
+      "truncated_json_steps": 3,
+      "nudge_fallback_steps": 0,
+      "duplicate_command_instances": 42,
+      "invalid_shell_step_rate": 0.039
+    }
+  },
+  "architecture_vs_interface": {
+    "environment": {
+      "share_of_failures": 0.208,
+      "verdict": "Not agent architecture; exclude or tag in scoring"
+    },
+    "invalid_shell": {
+      "share_of_steps": 0.039,
+      "verdict": "Interface failure; remediable without routing changes"
+    },
+    "agent_incomplete": {
+      "share_of_failures": 0.792,
+      "verdict": "Task difficulty + step budget; not primarily AA routing at pilot N"
+    }
+  },
+  "recommended_fixes": [
+    {
+      "id": "aci_observation_compression",
+      "priority": "P0",
+      "status": "implemented",
+      "files": ["experiments/terminal_bench/adapter.py", "experiments/terminal_bench/tb_shell_loop.py"],
+      "description": "Tail-preserving terminal observation compression with error-line retention",
+      "expected_impact": "Reduce context overflow; fewer truncated JSON responses"
+    },
+    {
+      "id": "aci_truncated_json_recovery",
+      "priority": "P0",
+      "status": "implemented",
+      "files": ["experiments/terminal_bench/adapter.py", "experiments/terminal_bench/tb_shell_loop.py"],
+      "description": "Recover commands from partial JSON; re-prompt on parse failure instead of pwd/ls nudge",
+      "expected_impact": "Recover ~1 command per truncated step; eliminate blind no-op nudges"
+    },
+    {
+      "id": "aci_patch_tool_lite",
+      "priority": "P1",
+      "status": "implemented",
+      "files": ["experiments/terminal_bench/adapter.py"],
+      "description": "Convert # file: code blocks to shell heredoc writes",
+      "expected_impact": "Bridge code-suite patch format to TB shell without executing Python as shell"
+    },
+    {
+      "id": "aci_command_allowlist_expand",
+      "priority": "P1",
+      "status": "implemented",
+      "files": ["experiments/terminal_bench/adapter.py"],
+      "description": "Allow git, tee, systemctl, pip, uv, apt-get in sanitizer",
+      "expected_impact": "Prevent false drops on server/git tasks"
+    },
+    {
+      "id": "aci_duplicate_command_skip",
+      "priority": "P2",
+      "status": "implemented",
+      "files": ["experiments/terminal_bench/tb_shell_loop.py"],
+      "description": "Skip consecutive identical shell commands",
+      "expected_impact": "Reclaim wasted steps on fix-permissions-style loops"
+    },
+    {
+      "id": "aci_envelope_parse_logging",
+      "priority": "P2",
+      "status": "proposed",
+      "files": ["experiments/terminal_bench/faithful_tb_agent.py", "experiments/terminal_bench/adapter.py"],
+      "description": "Emit parse_status and invalid_shell counts in trajectory envelope metrics_summary",
+      "expected_impact": "Automated invalid-shell rate in future matrix summaries"
+    },
+    {
+      "id": "aci_step_budget_server_tasks",
+      "priority": "P1",
+      "status": "proposed",
+      "files": ["experiments/tasks/terminal_bench_subset_manifest.json"],
+      "description": "Raise max_shell_steps to 12 for fibonacci-server and configure-git-webserver",
+      "expected_impact": "Address agent_failure on multi-phase server setup"
+    },
+    {
+      "id": "env_no_apt_manifest",
+      "priority": "P0",
+      "status": "proposed",
+      "description": "Run only pre-registered no-apt subset; tag apt_mirror_failure runs as excluded",
+      "expected_impact": "Cut environment_failure share from ~17% toward <10%"
+    }
+  ],
+  "larger_tb_matrix_justified": {
+    "verdict": "partial",
+    "infrastructure": true,
+    "architecture_science": false,
+    "rationale": [
+      "Harness end-to-end stable (oracle + faithful runs complete)",
+      "Multi-step loop improved fix-permissions 1-2/5 to 4/5",
+      "17% env failure rate and 63% agent failure on hard tasks limit baseline discrimination",
+      "Need ACI patch smoke rerun (3x5 pilot) before 7x5 or 20+ task claims"
+    ],
+    "recommended_next_run": {
+      "command": "python3 experiments/terminal_bench/run_t3_matrix.py --limit-tasks 3",
+      "estimated_wall_minutes": 15,
+      "success_criteria": {
+        "invalid_shell_step_rate_below": 0.02,
+        "environment_failure_rate_below": 0.1,
+        "fix_permissions_pass_rate_at_least": 0.8
+      }
+    }
+  },
+  "smoke_metrics": {
+    "unit_tests_run": "tests.test_terminal_bench_adapter",
+    "unit_tests_pass": 13,
+    "unit_tests_skip": 2,
+    "full_tb_matrix_run": false,
+    "before_invalid_shell_step_rate": 0.039,
+    "after_invalid_shell_step_rate": null,
+    "note": "After-rate requires T3 pilot rerun with patched code; not executed in this brief"
+  }
+}

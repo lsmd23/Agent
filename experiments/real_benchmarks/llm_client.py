@@ -52,21 +52,30 @@ def call_openai_compatible(model: str, prompt: str, max_tokens: int, temperature
     if not api_key:
         raise RuntimeError("OPENAI_API_KEY is not set")
     base_url = os.environ.get("OPENAI_BASE_URL", "https://api.openai.com/v1").rstrip("/")
-    response = requests.post(
-        f"{base_url}/chat/completions",
-        headers={"Authorization": f"Bearer {api_key}", "Content-Type": "application/json"},
-        json={
-            "model": model,
-            "messages": [{"role": "user", "content": prompt}],
-            "temperature": temperature,
-            "max_tokens": max_tokens,
-        },
-        timeout=120,
-    )
-    response.raise_for_status()
-    data = response.json()
-    text = data["choices"][0]["message"]["content"]
-    return text, {"provider_response_id": data.get("id"), "usage": data.get("usage", {})}
+    last_response: requests.Response | None = None
+    for attempt in range(4):
+        response = requests.post(
+            f"{base_url}/chat/completions",
+            headers={"Authorization": f"Bearer {api_key}", "Content-Type": "application/json"},
+            json={
+                "model": model,
+                "messages": [{"role": "user", "content": prompt}],
+                "temperature": temperature,
+                "max_tokens": max_tokens,
+            },
+            timeout=120,
+        )
+        last_response = response
+        if response.status_code == 429 and attempt < 3:
+            time.sleep(2**attempt)
+            continue
+        response.raise_for_status()
+        data = response.json()
+        text = data["choices"][0]["message"]["content"]
+        return text, {"provider_response_id": data.get("id"), "usage": data.get("usage", {})}
+    if last_response is not None:
+        last_response.raise_for_status()
+    raise RuntimeError("OpenAI-compatible call failed without response")
 
 
 def call_ollama(model: str, prompt: str, max_tokens: int, temperature: float) -> tuple[str, dict[str, Any]]:

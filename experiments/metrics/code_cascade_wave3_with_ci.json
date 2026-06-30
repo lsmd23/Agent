@@ -1,0 +1,37 @@
+{
+  "scope": "Bootstrap task-level accuracy CIs and paired deltas.",
+  "tasks": 26,
+  "model": "Qwen3-30B-A3B-Instruct-2507",
+  "provider": "openai",
+  "baselines": {
+    "cascade_react_moa_llm": {
+      "mean": 0.9230769230769231,
+      "ci_low": 0.8076923076923077,
+      "ci_high": 1.0,
+      "mean_model_calls": 1.65,
+      "mean_total_tokens": 848.27,
+      "mean_latency_ms": 1954.54,
+      "cost_normalized_success": 0.5581
+    },
+    "cascade_react_aa_lite_llm": {
+      "mean": 1.0,
+      "ci_low": 1.0,
+      "ci_high": 1.0,
+      "mean_model_calls": 1.5,
+      "mean_total_tokens": 764.96,
+      "mean_latency_ms": 2119.19,
+      "cost_normalized_success": 0.6667
+    },
+    "cascade_react_aa_moa_llm": {
+      "mean": 1.0,
+      "ci_low": 1.0,
+      "ci_high": 1.0,
+      "mean_model_calls": 1.69,
+      "mean_total_tokens": 824.42,
+      "mean_latency_ms": 2282.92,
+      "cost_normalized_success": 0.5909
+    }
+  },
+  "paired_comparisons": [],
+  "source_summary": "experiments/metrics/code_cascade_wave3_summary.json"
+}

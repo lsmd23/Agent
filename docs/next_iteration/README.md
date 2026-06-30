@@ -19,6 +19,10 @@ Every dispatched agent must read these files before doing task work:
 5. The assigned task file under `docs/next_iteration/tasks/`
 6. Any source files named in that task file
 
+For exploratory direction-setting rather than strict task execution, use:
+
+- `docs/next_iteration/research_directions/README.md`
+
 ## Current Local Environment
 
 Known environment snapshot:

@@ -19,6 +19,8 @@ if str(_ROOT) not in sys.path:
 
 from experiments.baselines.faithful_runners import FAITHFUL_BASELINE_IDS  # noqa: E402
 from experiments.baselines.memory_ablations import MEMORY_ABLATION_IDS  # noqa: E402
+from experiments.cascade.cascade_policy import CASCADE_LLM_BASELINE_IDS  # noqa: E402
+from experiments.cascade.cascade_runner import run_cascade_baseline_llm  # noqa: E402
 from experiments.phase4.learned_router_policy import LearnedRouterPolicy  # noqa: E402
 from experiments.phase4.router_variants import PHASE4_ROUTER_IDS  # noqa: E402
 from experiments.real_benchmarks.faithful_llm_runners import (  # noqa: E402
@@ -41,9 +43,14 @@ STANDALONE_BASELINES = ("llm_direct_agent", "llm_react_agent")
 FAITHFUL_LLM_BASELINES = tuple(FAITHFUL_LLM_ID_MAP.values())
 MEMORY_LLM_BASELINES = tuple(MEMORY_LLM_ID_MAP.values())
 ROUTER_LLM_BASELINES = tuple(ROUTER_LLM_ID_MAP.values())
+CASCADE_LLM_BASELINES = CASCADE_LLM_BASELINE_IDS
 
 ALL_REAL_LLM_BASELINES = (
-    STANDALONE_BASELINES + FAITHFUL_LLM_BASELINES + MEMORY_LLM_BASELINES + ROUTER_LLM_BASELINES
+    STANDALONE_BASELINES
+    + FAITHFUL_LLM_BASELINES
+    + MEMORY_LLM_BASELINES
+    + ROUTER_LLM_BASELINES
+    + CASCADE_LLM_BASELINES
 )
 
 SUITE_TASKS = {
@@ -100,7 +107,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--model", default=os.environ.get("LLM_MODEL") or os.environ.get("OPENAI_MODEL") or "gpt-4o-mini")
     parser.add_argument("--limit", type=int)
     parser.add_argument("--baselines", nargs="+", choices=list(ALL_REAL_LLM_BASELINES))
-    parser.add_argument("--family", choices=["standalone", "faithful", "memory", "router", "all"], default="all")
+    parser.add_argument("--family", choices=["standalone", "faithful", "memory", "router", "cascade", "all"], default="all")
     parser.add_argument("--output-dir", default="experiments/llm_runs/real_eval")
     parser.add_argument("--summary-output")
     parser.add_argument("--max-tokens", type=int, default=512)
@@ -120,6 +127,8 @@ def baselines_for_family(family: str) -> list[str]:
         return list(MEMORY_LLM_BASELINES)
     if family == "router":
         return list(ROUTER_LLM_BASELINES)
+    if family == "cascade":
+        return list(CASCADE_LLM_BASELINES)
     return list(ALL_REAL_LLM_BASELINES)
 
 
@@ -142,6 +151,10 @@ def resolve_runner(baseline_id: str) -> Callable[..., dict[str, Any]]:
                 learned_policy=kwargs.get("learned_policy"),
                 oracle_utilities=kwargs.get("oracle_utilities"),
             )
+    if baseline_id in CASCADE_LLM_BASELINES:
+        return lambda task, client, baseline_id=baseline_id, **kwargs: run_cascade_baseline_llm(
+            baseline_id, task, client
+        )
     raise ValueError(f"Unknown baseline_id={baseline_id!r}")
 
 

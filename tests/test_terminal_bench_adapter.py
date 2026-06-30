@@ -10,13 +10,16 @@ from unittest.mock import MagicMock, patch
 from experiments.terminal_bench.adapter import (
     build_faithful_agent_import_path,
     build_tb_run_command,
+    compress_observation,
     docker_available,
     envelope_from_tb_run,
+    extract_file_patch_commands,
     extract_shell_commands,
     list_task_ids,
     run_adapter_smoke,
     TBRunSpec,
 )
+from experiments.terminal_bench.tb_shell_loop import parse_step_response
 
 
 class TerminalBenchAdapterTests(unittest.TestCase):
@@ -43,6 +46,30 @@ class TerminalBenchAdapterTests(unittest.TestCase):
     def test_extract_shell_commands_from_codeblock(self) -> None:
         text = "```bash\necho hello\nls -la\n```"
         self.assertEqual(extract_shell_commands(text), ["echo hello", "ls -la"])
+
+    def test_extract_shell_commands_from_truncated_json(self) -> None:
+        text = '{"commands": ["mkdir -p /tmp/foo", "echo incomplete'
+        self.assertEqual(extract_shell_commands(text), ["mkdir -p /tmp/foo"])
+
+    def test_extract_file_patch_commands(self) -> None:
+        text = "```python\n# file: app/server.py\nprint('ok')\n```"
+        cmds = extract_file_patch_commands(text)
+        self.assertEqual(len(cmds), 2)
+        self.assertIn("mkdir -p app", cmds[0])
+        self.assertIn("cat > app/server.py", cmds[1])
+
+    def test_compress_observation_preserves_errors(self) -> None:
+        long_text = "\n".join([f"line {i}" for i in range(400)] + ["ERROR: build failed"])
+        compressed = compress_observation(long_text, max_chars=500)
+        self.assertLess(len(compressed), len(long_text))
+        self.assertIn("ERROR: build failed", compressed)
+
+    def test_parse_step_response_marks_truncated_json(self) -> None:
+        parsed = parse_step_response('{"commands": ["echo hi", "incomplete')
+        self.assertEqual(parsed.commands, ["echo hi"])
+        parsed_empty = parse_step_response("I will now fix the permissions.")
+        self.assertEqual(parsed_empty.parse_status, "prose_only")
+        self.assertEqual(parsed_empty.commands, [])
 
     def test_envelope_from_tb_run_marks_failure(self) -> None:
         proc = MagicMock(returncode=1, stdout="", stderr="error")

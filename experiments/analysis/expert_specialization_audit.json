@@ -1,0 +1,2831 @@
+{
+  "scope": "Expert Specialization Auditor (Brief H / Objective 5).",
+  "source_summary": "experiments/metrics/code_full_matrix_summary.json",
+  "trajectory_root": "experiments/llm_runs/code_full_matrix/code_all",
+  "baselines_analyzed": [
+    "agent_attention_llm_tuned",
+    "moa_style_llm_agent"
+  ],
+  "runs_analyzed": 52,
+  "aggregate": {
+    "runs_analyzed": 52,
+    "multi_proposer_steps": 52,
+    "disagreement_steps": 16,
+    "disagreement_rate": 0.3077,
+    "runs_with_redundant_signals": 50,
+    "redundant_activation_rate": 0.9615,
+    "unique_rescue_count": 4,
+    "cross_baseline_sole_rescue_count": 1,
+    "search_agent_activations": 1,
+    "code_critic_pass_rate_spread": 0.0007,
+    "evidence_outcome": "falsified_or_blocked"
+  },
+  "module_specialization_table": [
+    {
+      "baseline_id": "agent_attention_llm_tuned",
+      "module_id": "code_agent",
+      "activations": 26,
+      "runs_with_output": 26,
+      "pytest_pass_count": 23,
+      "pytest_pass_rate_given_output": 0.8846,
+      "specialist_precision": 0.8462,
+      "specialist_recall": 0.0435,
+      "unique_rescue_count": 1,
+      "success_by_task_family": {
+        "code_agent_task": 26
+      },
+      "failure_modes": {
+        "patch_fails_pytest": 3
+      }
+    },
+    {
+      "baseline_id": "agent_attention_llm_tuned",
+      "module_id": "critic_agent",
+      "activations": 26,
+      "runs_with_output": 26,
+      "pytest_pass_count": 23,
+      "pytest_pass_rate_given_output": 0.8846,
+      "specialist_precision": 0.8462,
+      "specialist_recall": 0.0435,
+      "unique_rescue_count": 1,
+      "success_by_task_family": {
+        "code_agent_task": 26
+      },
+      "failure_modes": {
+        "patch_fails_pytest": 3
+      }
+    },
+    {
+      "baseline_id": "agent_attention_llm_tuned",
+      "module_id": "verifier",
+      "activations": 50,
+      "runs_with_output": 0,
+      "pytest_pass_count": 0,
+      "pytest_pass_rate_given_output": null,
+      "specialist_precision": 0.88,
+      "specialist_recall": null,
+      "unique_rescue_count": 0,
+      "success_by_task_family": {
+        "code_agent_task": 50
+      },
+      "failure_modes": {}
+    },
+    {
+      "baseline_id": "moa_style_llm_agent",
+      "module_id": "code_agent",
+      "activations": 27,
+      "runs_with_output": 27,
+      "pytest_pass_count": 26,
+      "pytest_pass_rate_given_output": 0.963,
+      "specialist_precision": 0.963,
+      "specialist_recall": 0.0385,
+      "unique_rescue_count": 1,
+      "success_by_task_family": {
+        "code_agent_task": 27
+      },
+      "failure_modes": {
+        "patch_fails_pytest": 1
+      }
+    },
+    {
+      "baseline_id": "moa_style_llm_agent",
+      "module_id": "critic_agent",
+      "activations": 26,
+      "runs_with_output": 26,
+      "pytest_pass_count": 25,
+      "pytest_pass_rate_given_output": 0.9615,
+      "specialist_precision": 0.9615,
+      "specialist_recall": 0.04,
+      "unique_rescue_count": 1,
+      "success_by_task_family": {
+        "code_agent_task": 26
+      },
+      "failure_modes": {
+        "patch_fails_pytest": 1
+      }
+    },
+    {
+      "baseline_id": "moa_style_llm_agent",
+      "module_id": "search_agent",
+      "activations": 1,
+      "runs_with_output": 1,
+      "pytest_pass_count": 1,
+      "pytest_pass_rate_given_output": 1.0,
+      "specialist_precision": 1.0,
+      "specialist_recall": 0.0,
+      "unique_rescue_count": 0,
+      "success_by_task_family": {
+        "code_agent_task": 1
+      },
+      "failure_modes": {}
+    },
+    {
+      "baseline_id": "moa_style_llm_agent",
+      "module_id": "verifier",
+      "activations": 24,
+      "runs_with_output": 0,
+      "pytest_pass_count": 0,
+      "pytest_pass_rate_given_output": null,
+      "specialist_precision": 0.9583,
+      "specialist_recall": null,
+      "unique_rescue_count": 0,
+      "success_by_task_family": {
+        "code_agent_task": 24
+      },
+      "failure_modes": {}
+    }
+  ],
+  "unique_rescue_cases": [
+    {
+      "task_id": "phase1_code_email_001",
+      "task_family": "code_agent_task",
+      "baseline_id": "agent_attention_llm_tuned",
+      "sole_passing_module": "code_agent",
+      "run_success": true,
+      "other_modules": {
+        "critic_agent": false
+      }
+    },
+    {
+      "task_id": "phase1_code_env_flag_001",
+      "task_family": "code_agent_task",
+      "baseline_id": "agent_attention_llm_tuned",
+      "sole_passing_module": "critic_agent",
+      "run_success": false,
+      "other_modules": {
+        "code_agent": false
+      }
+    },
+    {
+      "task_id": "phase1_code_sanitize_001",
+      "task_family": "code_agent_task",
+      "baseline_id": "moa_style_llm_agent",
+      "sole_passing_module": "critic_agent",
+      "run_success": false,
+      "other_modules": {
+        "code_agent": false
+      }
+    },
+    {
+      "task_id": "phase1_code_slugify_001",
+      "task_family": "code_agent_task",
+      "baseline_id": "moa_style_llm_agent",
+      "sole_passing_module": "code_agent",
+      "run_success": true,
+      "other_modules": {
+        "critic_agent": false
+      }
+    }
+  ],
+  "cross_baseline_sole_rescues": [
+    {
+      "task_id": "phase1_code_slugify_001",
+      "sole_passing_module": "code_agent",
+      "baseline_results": {
+        "agent_attention_llm_tuned": false,
+        "moa_style_llm_agent": true
+      }
+    }
+  ],
+  "redundant_activation_examples": [
+    {
+      "task_id": "phase0_seed_code_fix_001",
+      "baseline_id": "agent_attention_llm_tuned",
+      "redundant_signals": [
+        "empty_module_execution_steps=1",
+        "no_module_activated_failure_signal",
+        "duplicate_passing_proposer_patches"
+      ]
+    },
+    {
+      "task_id": "phase0_seed_negative_memory_001",
+      "baseline_id": "agent_attention_llm_tuned",
+      "redundant_signals": [
+        "empty_module_execution_steps=1",
+        "no_module_activated_failure_signal",
+        "duplicate_passing_proposer_patches"
+      ]
+    },
+    {
+      "task_id": "phase1_code_binary_search_001",
+      "baseline_id": "agent_attention_llm_tuned",
+      "redundant_signals": [
+        "empty_module_execution_steps=1",
+        "no_module_activated_failure_signal",
+        "multiple_distinct_passing_proposers"
+      ]
+    },
+    {
+      "task_id": "phase1_code_clamp_001",
+      "baseline_id": "agent_attention_llm_tuned",
+      "redundant_signals": [
+        "empty_module_execution_steps=1",
+        "no_module_activated_failure_signal",
+        "duplicate_passing_proposer_patches"
+      ]
+    },
+    {
+      "task_id": "phase1_code_config_001",
+      "baseline_id": "agent_attention_llm_tuned",
+      "redundant_signals": [
+        "empty_module_execution_steps=3",
+        "no_module_activated_failure_signal"
+      ]
+    },
+    {
+      "task_id": "phase1_code_config_get_001",
+      "baseline_id": "agent_attention_llm_tuned",
+      "redundant_signals": [
+        "empty_module_execution_steps=1",
+        "no_module_activated_failure_signal",
+        "duplicate_passing_proposer_patches"
+      ]
+    },
+    {
+      "task_id": "phase1_code_csv_001",
+      "baseline_id": "agent_attention_llm_tuned",
+      "redundant_signals": [
+        "empty_module_execution_steps=1",
+        "no_module_activated_failure_signal",
+        "duplicate_passing_proposer_patches"
+      ]
+    },
+    {
+      "task_id": "phase1_code_doc_001",
+      "baseline_id": "agent_attention_llm_tuned",
+      "redundant_signals": [
+        "empty_module_execution_steps=1",
+        "no_module_activated_failure_signal",
+        "duplicate_passing_proposer_patches"
+      ]
+    },
+    {
+      "task_id": "phase1_code_edge_001",
+      "baseline_id": "agent_attention_llm_tuned",
+      "redundant_signals": [
+        "empty_module_execution_steps=1",
+        "no_module_activated_failure_signal",
+        "duplicate_passing_proposer_patches"
+      ]
+    },
+    {
+      "task_id": "phase1_code_email_001",
+      "baseline_id": "agent_attention_llm_tuned",
+      "redundant_signals": [
+        "empty_module_execution_steps=1",
+        "no_module_activated_failure_signal"
+      ]
+    },
+    {
+      "task_id": "phase1_code_env_flag_001",
+      "baseline_id": "agent_attention_llm_tuned",
+      "redundant_signals": [
+        "empty_module_execution_steps=1",
+        "no_module_activated_failure_signal"
+      ]
+    },
+    {
+      "task_id": "phase1_code_flatten_001",
+      "baseline_id": "agent_attention_llm_tuned",
+      "redundant_signals": [
+        "empty_module_execution_steps=1",
+        "no_module_activated_failure_signal",
+        "multiple_distinct_passing_proposers"
+      ]
+    },
+    {
+      "task_id": "phase1_code_hash_001",
+      "baseline_id": "agent_attention_llm_tuned",
+      "redundant_signals": [
+        "empty_module_execution_steps=1",
+        "no_module_activated_failure_signal",
+        "duplicate_passing_proposer_patches"
+      ]
+    },
+    {
+      "task_id": "phase1_code_import_001",
+      "baseline_id": "agent_attention_llm_tuned",
+      "redundant_signals": [
+        "empty_module_execution_steps=1",
+        "no_module_activated_failure_signal",
+        "duplicate_passing_proposer_patches"
+      ]
+    },
+    {
+      "task_id": "phase1_code_json_001",
+      "baseline_id": "agent_attention_llm_tuned",
+      "redundant_signals": [
+        "empty_module_execution_steps=1",
+        "no_module_activated_failure_signal",
+        "multiple_distinct_passing_proposers"
+      ]
+    },
+    {
+      "task_id": "phase1_code_mean_001",
+      "baseline_id": "agent_attention_llm_tuned",
+      "redundant_signals": [
+        "empty_module_execution_steps=1",
+        "no_module_activated_failure_signal",
+        "duplicate_passing_proposer_patches"
+      ]
+    },
+    {
+      "task_id": "phase1_code_merge_001",
+      "baseline_id": "agent_attention_llm_tuned",
+      "redundant_signals": [
+        "empty_module_execution_steps=1",
+        "no_module_activated_failure_signal",
+        "duplicate_passing_proposer_patches"
+      ]
+    },
+    {
+      "task_id": "phase1_code_palindrome_001",
+      "baseline_id": "agent_attention_llm_tuned",
+      "redundant_signals": [
+        "empty_module_execution_steps=1",
+        "no_module_activated_failure_signal",
+        "duplicate_passing_proposer_patches"
+      ]
+    },
+    {
+      "task_id": "phase1_code_parse_int_001",
+      "baseline_id": "agent_attention_llm_tuned",
+      "redundant_signals": [
+        "empty_module_execution_steps=1",
+        "no_module_activated_failure_signal",
+        "duplicate_passing_proposer_patches"
+      ]
+    },
+    {
+      "task_id": "phase1_code_pkg_helper_001",
+      "baseline_id": "agent_attention_llm_tuned",
+      "redundant_signals": [
+        "empty_module_execution_steps=1",
+        "no_module_activated_failure_signal",
+        "duplicate_passing_proposer_patches"
+      ]
+    },
+    {
+      "task_id": "phase1_code_refactor_001",
+      "baseline_id": "agent_attention_llm_tuned",
+      "redundant_signals": [
+        "empty_module_execution_steps=1",
+        "no_module_activated_failure_signal",
+        "duplicate_passing_proposer_patches"
+      ]
+    },
+    {
+      "task_id": "phase1_code_sanitize_001",
+      "baseline_id": "agent_attention_llm_tuned",
+      "redundant_signals": [
+        "empty_module_execution_steps=1",
+        "no_module_activated_failure_signal",
+        "multiple_distinct_passing_proposers"
+      ]
+    },
+    {
+      "task_id": "phase1_code_slugify_001",
+      "baseline_id": "agent_attention_llm_tuned",
+      "redundant_signals": [
+        "empty_module_execution_steps=3",
+        "no_module_activated_failure_signal"
+      ]
+    },
+    {
+      "task_id": "phase1_code_strip_tags_001",
+      "baseline_id": "agent_attention_llm_tuned",
+      "redundant_signals": [
+        "empty_module_execution_steps=1",
+        "no_module_activated_failure_signal",
+        "duplicate_passing_proposer_patches"
+      ]
+    },
+    {
+      "task_id": "phase1_code_trim_lines_001",
+      "baseline_id": "agent_attention_llm_tuned",
+      "redundant_signals": [
+        "empty_module_execution_steps=1",
+        "no_module_activated_failure_signal",
+        "multiple_distinct_passing_proposers"
+      ]
+    },
+    {
+      "task_id": "phase1_code_url_001",
+      "baseline_id": "agent_attention_llm_tuned",
+      "redundant_signals": [
+        "empty_module_execution_steps=1",
+        "no_module_activated_failure_signal",
+        "multiple_distinct_passing_proposers"
+      ]
+    },
+    {
+      "task_id": "phase0_seed_code_fix_001",
+      "baseline_id": "moa_style_llm_agent",
+      "redundant_signals": [
+        "duplicate_passing_proposer_patches"
+      ]
+    },
+    {
+      "task_id": "phase0_seed_negative_memory_001",
+      "baseline_id": "moa_style_llm_agent",
+      "redundant_signals": [
+        "duplicate_passing_proposer_patches"
+      ]
+    },
+    {
+      "task_id": "phase1_code_binary_search_001",
+      "baseline_id": "moa_style_llm_agent",
+      "redundant_signals": [
+        "duplicate_passing_proposer_patches"
+      ]
+    },
+    {
+      "task_id": "phase1_code_clamp_001",
+      "baseline_id": "moa_style_llm_agent",
+      "redundant_signals": [
+        "duplicate_passing_proposer_patches"
+      ]
+    },
+    {
+      "task_id": "phase1_code_config_001",
+      "baseline_id": "moa_style_llm_agent",
+      "redundant_signals": [
+        "multiple_distinct_passing_proposers"
+      ]
+    },
+    {
+      "task_id": "phase1_code_config_get_001",
+      "baseline_id": "moa_style_llm_agent",
+      "redundant_signals": [
+        "duplicate_passing_proposer_patches"
+      ]
+    },
+    {
+      "task_id": "phase1_code_csv_001",
+      "baseline_id": "moa_style_llm_agent",
+      "redundant_signals": [
+        "multiple_distinct_passing_proposers"
+      ]
+    },
+    {
+      "task_id": "phase1_code_doc_001",
+      "baseline_id": "moa_style_llm_agent",
+      "redundant_signals": [
+        "duplicate_passing_proposer_patches"
+      ]
+    },
+    {
+      "task_id": "phase1_code_edge_001",
+      "baseline_id": "moa_style_llm_agent",
+      "redundant_signals": [
+        "duplicate_passing_proposer_patches"
+      ]
+    },
+    {
+      "task_id": "phase1_code_email_001",
+      "baseline_id": "moa_style_llm_agent",
+      "redundant_signals": [
+        "multiple_distinct_passing_proposers"
+      ]
+    },
+    {
+      "task_id": "phase1_code_env_flag_001",
+      "baseline_id": "moa_style_llm_agent",
+      "redundant_signals": [
+        "duplicate_passing_proposer_patches"
+      ]
+    },
+    {
+      "task_id": "phase1_code_flatten_001",
+      "baseline_id": "moa_style_llm_agent",
+      "redundant_signals": [
+        "multiple_distinct_passing_proposers"
+      ]
+    },
+    {
+      "task_id": "phase1_code_hash_001",
+      "baseline_id": "moa_style_llm_agent",
+      "redundant_signals": [
+        "duplicate_passing_proposer_patches"
+      ]
+    },
+    {
+      "task_id": "phase1_code_import_001",
+      "baseline_id": "moa_style_llm_agent",
+      "redundant_signals": [
+        "duplicate_passing_proposer_patches"
+      ]
+    },
+    {
+      "task_id": "phase1_code_json_001",
+      "baseline_id": "moa_style_llm_agent",
+      "redundant_signals": [
+        "multiple_distinct_passing_proposers"
+      ]
+    },
+    {
+      "task_id": "phase1_code_mean_001",
+      "baseline_id": "moa_style_llm_agent",
+      "redundant_signals": [
+        "duplicate_passing_proposer_patches"
+      ]
+    },
+    {
+      "task_id": "phase1_code_merge_001",
+      "baseline_id": "moa_style_llm_agent",
+      "redundant_signals": [
+        "duplicate_passing_proposer_patches"
+      ]
+    },
+    {
+      "task_id": "phase1_code_palindrome_001",
+      "baseline_id": "moa_style_llm_agent",
+      "redundant_signals": [
+        "duplicate_passing_proposer_patches"
+      ]
+    },
+    {
+      "task_id": "phase1_code_parse_int_001",
+      "baseline_id": "moa_style_llm_agent",
+      "redundant_signals": [
+        "multiple_distinct_passing_proposers"
+      ]
+    },
+    {
+      "task_id": "phase1_code_pkg_helper_001",
+      "baseline_id": "moa_style_llm_agent",
+      "redundant_signals": [
+        "duplicate_passing_proposer_patches"
+      ]
+    },
+    {
+      "task_id": "phase1_code_refactor_001",
+      "baseline_id": "moa_style_llm_agent",
+      "redundant_signals": [
+        "duplicate_passing_proposer_patches"
+      ]
+    },
+    {
+      "task_id": "phase1_code_strip_tags_001",
+      "baseline_id": "moa_style_llm_agent",
+      "redundant_signals": [
+        "duplicate_passing_proposer_patches"
+      ]
+    },
+    {
+      "task_id": "phase1_code_trim_lines_001",
+      "baseline_id": "moa_style_llm_agent",
+      "redundant_signals": [
+        "duplicate_passing_proposer_patches"
+      ]
+    },
+    {
+      "task_id": "phase1_code_url_001",
+      "baseline_id": "moa_style_llm_agent",
+      "redundant_signals": [
+        "multiple_distinct_passing_proposers"
+      ]
+    }
+  ],
+  "disagreement_examples": [
+    {
+      "task_id": "phase1_code_binary_search_001",
+      "baseline_id": "agent_attention_llm_tuned",
+      "disagreements": [
+        {
+          "event_id": 19,
+          "step": 2,
+          "modules": [
+            "critic_agent",
+            "code_agent"
+          ],
+          "fingerprints": {
+            "critic_agent": "489bcec84fc8c4d0",
+            "code_agent": "9387e0ec6a714c62"
+          }
+        }
+      ]
+    },
+    {
+      "task_id": "phase1_code_config_001",
+      "baseline_id": "agent_attention_llm_tuned",
+      "disagreements": [
+        {
+          "event_id": 19,
+          "step": 2,
+          "modules": [
+            "critic_agent",
+            "code_agent"
+          ],
+          "fingerprints": {
+            "critic_agent": "01259fc5e9883d07",
+            "code_agent": "04d47c65c6088ec1"
+          }
+        }
+      ]
+    },
+    {
+      "task_id": "phase1_code_env_flag_001",
+      "baseline_id": "agent_attention_llm_tuned",
+      "disagreements": [
+        {
+          "event_id": 19,
+          "step": 2,
+          "modules": [
+            "critic_agent",
+            "code_agent"
+          ],
+          "fingerprints": {
+            "critic_agent": "103c6e81cbfbd247",
+            "code_agent": "05df6c2f030b5fe6"
+          }
+        }
+      ]
+    },
+    {
+      "task_id": "phase1_code_flatten_001",
+      "baseline_id": "agent_attention_llm_tuned",
+      "disagreements": [
+        {
+          "event_id": 19,
+          "step": 2,
+          "modules": [
+            "critic_agent",
+            "code_agent"
+          ],
+          "fingerprints": {
+            "critic_agent": "1a745e0196bda11b",
+            "code_agent": "99cb6a5bd5487214"
+          }
+        }
+      ]
+    },
+    {
+      "task_id": "phase1_code_json_001",
+      "baseline_id": "agent_attention_llm_tuned",
+      "disagreements": [
+        {
+          "event_id": 19,
+          "step": 2,
+          "modules": [
+            "critic_agent",
+            "code_agent"
+          ],
+          "fingerprints": {
+            "critic_agent": "3e7fcae666c3f191",
+            "code_agent": "0a0d171a6cbb0d16"
+          }
+        }
+      ]
+    },
+    {
+      "task_id": "phase1_code_sanitize_001",
+      "baseline_id": "agent_attention_llm_tuned",
+      "disagreements": [
+        {
+          "event_id": 19,
+          "step": 2,
+          "modules": [
+            "critic_agent",
+            "code_agent"
+          ],
+          "fingerprints": {
+            "critic_agent": "47000120ce841a2c",
+            "code_agent": "a480bee7cfa1b59c"
+          }
+        }
+      ]
+    },
+    {
+      "task_id": "phase1_code_trim_lines_001",
+      "baseline_id": "agent_attention_llm_tuned",
+      "disagreements": [
+        {
+          "event_id": 19,
+          "step": 2,
+          "modules": [
+            "critic_agent",
+            "code_agent"
+          ],
+          "fingerprints": {
+            "critic_agent": "622a606c727a2c68",
+            "code_agent": "51d3df60928a61d0"
+          }
+        }
+      ]
+    },
+    {
+      "task_id": "phase1_code_url_001",
+      "baseline_id": "agent_attention_llm_tuned",
+      "disagreements": [
+        {
+          "event_id": 19,
+          "step": 2,
+          "modules": [
+            "critic_agent",
+            "code_agent"
+          ],
+          "fingerprints": {
+            "critic_agent": "9ed0828513c0ca32",
+            "code_agent": "19fa0e07b2a58548"
+          }
+        }
+      ]
+    },
+    {
+      "task_id": "phase1_code_config_001",
+      "baseline_id": "moa_style_llm_agent",
+      "disagreements": [
+        {
+          "event_id": 9,
+          "step": 1,
+          "modules": [
+            "code_agent",
+            "critic_agent"
+          ],
+          "fingerprints": {
+            "code_agent": "01259fc5e9883d07",
+            "critic_agent": "b7059e3735abb6be"
+          }
+        }
+      ]
+    },
+    {
+      "task_id": "phase1_code_csv_001",
+      "baseline_id": "moa_style_llm_agent",
+      "disagreements": [
+        {
+          "event_id": 9,
+          "step": 1,
+          "modules": [
+            "code_agent",
+            "critic_agent"
+          ],
+          "fingerprints": {
+            "code_agent": "500bc3a9f753ec37",
+            "critic_agent": "47d4b1de494f903d"
+          }
+        }
+      ]
+    }
+  ],
+  "specialist_proposals": [
+    "Scope code_agent to repo edit + pytest loop with file-write tool; forbid free-form rewrites without test feedback.",
+    "Scope critic_agent to diff review against failing assertion only; must output structured issue list before optional patch.",
+    "Activate search_agent only when task manifest marks external_evidence=true; bind to retrieval tool I/O.",
+    "Treat aggregator as fusion layer, not a fourth proposer—run only when proposer fingerprints disagree.",
+    "AA router: block verifier-first routes on code tasks; require code_agent before verifier/critic."
+  ],
+  "per_run": [
+    {
+      "run_id": "real_llm__agent_attention_llm_tuned__openai__Qwen3-30B-A3B-Instruct-2507__phase0_seed_code_fix_001",
+      "task_id": "phase0_seed_code_fix_001",
+      "task_family": "code_agent_task",
+      "baseline_id": "agent_attention_llm_tuned",
+      "run_success": true,
+      "selected_modules": [
+        "verifier",
+        "code_agent",
+        "critic_agent",
+        "verifier"
+      ],
+      "route_selections": [
+        [
+          "code_agent",
+          "critic_agent"
+        ]
+      ],
+      "module_outputs_present": [
+        "code_agent",
+        "critic_agent"
+      ],
+      "per_module_pytest_pass": {
+        "code_agent": true,
+        "critic_agent": true
+      },
+      "disagreements": [],
+      "disagreement_count": 0,
+      "multi_proposer_steps": 1,
+      "redundant_signals": [
+        "empty_module_execution_steps=1",
+        "no_module_activated_failure_signal",
+        "duplicate_passing_proposer_patches"
+      ],
+      "model_call_count": 2,
+      "empty_module_execution_steps": 1
+    },
+    {
+      "run_id": "real_llm__agent_attention_llm_tuned__openai__Qwen3-30B-A3B-Instruct-2507__phase0_seed_negative_memory_001",
+      "task_id": "phase0_seed_negative_memory_001",
+      "task_family": "code_agent_task",
+      "baseline_id": "agent_attention_llm_tuned",
+      "run_success": true,
+      "selected_modules": [
+        "verifier",
+        "critic_agent",
+        "code_agent",
+        "verifier"
+      ],
+      "route_selections": [
+        [
+          "critic_agent",
+          "code_agent"
+        ]
+      ],
+      "module_outputs_present": [
+        "code_agent",
+        "critic_agent"
+      ],
+      "per_module_pytest_pass": {
+        "critic_agent": true,
+        "code_agent": true
+      },
+      "disagreements": [],
+      "disagreement_count": 0,
+      "multi_proposer_steps": 1,
+      "redundant_signals": [
+        "empty_module_execution_steps=1",
+        "no_module_activated_failure_signal",
+        "duplicate_passing_proposer_patches"
+      ],
+      "model_call_count": 2,
+      "empty_module_execution_steps": 1
+    },
+    {
+      "run_id": "real_llm__agent_attention_llm_tuned__openai__Qwen3-30B-A3B-Instruct-2507__phase1_code_binary_search_001",
+      "task_id": "phase1_code_binary_search_001",
+      "task_family": "code_agent_task",
+      "baseline_id": "agent_attention_llm_tuned",
+      "run_success": true,
+      "selected_modules": [
+        "verifier",
+        "critic_agent",
+        "code_agent",
+        "verifier"
+      ],
+      "route_selections": [
+        [
+          "critic_agent",
+          "code_agent"
+        ]
+      ],
+      "module_outputs_present": [
+        "code_agent",
+        "critic_agent"
+      ],
+      "per_module_pytest_pass": {
+        "critic_agent": true,
+        "code_agent": true
+      },
+      "disagreements": [
+        {
+          "event_id": 19,
+          "step": 2,
+          "modules": [
+            "critic_agent",
+            "code_agent"
+          ],
+          "fingerprints": {
+            "critic_agent": "489bcec84fc8c4d0",
+            "code_agent": "9387e0ec6a714c62"
+          }
+        }
+      ],
+      "disagreement_count": 1,
+      "multi_proposer_steps": 1,
+      "redundant_signals": [
+        "empty_module_execution_steps=1",
+        "no_module_activated_failure_signal",
+        "multiple_distinct_passing_proposers"
+      ],
+      "model_call_count": 2,
+      "empty_module_execution_steps": 1
+    },
+    {
+      "run_id": "real_llm__agent_attention_llm_tuned__openai__Qwen3-30B-A3B-Instruct-2507__phase1_code_clamp_001",
+      "task_id": "phase1_code_clamp_001",
+      "task_family": "code_agent_task",
+      "baseline_id": "agent_attention_llm_tuned",
+      "run_success": true,
+      "selected_modules": [
+        "verifier",
+        "critic_agent",
+        "code_agent",
+        "verifier"
+      ],
+      "route_selections": [
+        [
+          "critic_agent",
+          "code_agent"
+        ]
+      ],
+      "module_outputs_present": [
+        "code_agent",
+        "critic_agent"
+      ],
+      "per_module_pytest_pass": {
+        "critic_agent": true,
+        "code_agent": true
+      },
+      "disagreements": [],
+      "disagreement_count": 0,
+      "multi_proposer_steps": 1,
+      "redundant_signals": [
+        "empty_module_execution_steps=1",
+        "no_module_activated_failure_signal",
+        "duplicate_passing_proposer_patches"
+      ],
+      "model_call_count": 2,
+      "empty_module_execution_steps": 1
+    },
+    {
+      "run_id": "real_llm__agent_attention_llm_tuned__openai__Qwen3-30B-A3B-Instruct-2507__phase1_code_config_001",
+      "task_id": "phase1_code_config_001",
+      "task_family": "code_agent_task",
+      "baseline_id": "agent_attention_llm_tuned",
+      "run_success": false,
+      "selected_modules": [
+        "verifier",
+        "critic_agent",
+        "code_agent"
+      ],
+      "route_selections": [
+        [
+          "critic_agent",
+          "code_agent"
+        ]
+      ],
+      "module_outputs_present": [
+        "code_agent",
+        "critic_agent"
+      ],
+      "per_module_pytest_pass": {
+        "critic_agent": false,
+        "code_agent": false
+      },
+      "disagreements": [
+        {
+          "event_id": 19,
+          "step": 2,
+          "modules": [
+            "critic_agent",
+            "code_agent"
+          ],
+          "fingerprints": {
+            "critic_agent": "01259fc5e9883d07",
+            "code_agent": "04d47c65c6088ec1"
+          }
+        }
+      ],
+      "disagreement_count": 1,
+      "multi_proposer_steps": 1,
+      "redundant_signals": [
+        "empty_module_execution_steps=3",
+        "no_module_activated_failure_signal"
+      ],
+      "model_call_count": 2,
+      "empty_module_execution_steps": 3
+    },
+    {
+      "run_id": "real_llm__agent_attention_llm_tuned__openai__Qwen3-30B-A3B-Instruct-2507__phase1_code_config_get_001",
+      "task_id": "phase1_code_config_get_001",
+      "task_family": "code_agent_task",
+      "baseline_id": "agent_attention_llm_tuned",
+      "run_success": true,
+      "selected_modules": [
+        "verifier",
+        "critic_agent",
+        "code_agent",
+        "verifier"
+      ],
+      "route_selections": [
+        [
+          "critic_agent",
+          "code_agent"
+        ]
+      ],
+      "module_outputs_present": [
+        "code_agent",
+        "critic_agent"
+      ],
+      "per_module_pytest_pass": {
+        "critic_agent": true,
+        "code_agent": true
+      },
+      "disagreements": [],
+      "disagreement_count": 0,
+      "multi_proposer_steps": 1,
+      "redundant_signals": [
+        "empty_module_execution_steps=1",
+        "no_module_activated_failure_signal",
+        "duplicate_passing_proposer_patches"
+      ],
+      "model_call_count": 2,
+      "empty_module_execution_steps": 1
+    },
+    {
+      "run_id": "real_llm__agent_attention_llm_tuned__openai__Qwen3-30B-A3B-Instruct-2507__phase1_code_csv_001",
+      "task_id": "phase1_code_csv_001",
+      "task_family": "code_agent_task",
+      "baseline_id": "agent_attention_llm_tuned",
+      "run_success": true,
+      "selected_modules": [
+        "verifier",
+        "critic_agent",
+        "code_agent",
+        "verifier"
+      ],
+      "route_selections": [
+        [
+          "critic_agent",
+          "code_agent"
+        ]
+      ],
+      "module_outputs_present": [
+        "code_agent",
+        "critic_agent"
+      ],
+      "per_module_pytest_pass": {
+        "critic_agent": true,
+        "code_agent": true
+      },
+      "disagreements": [],
+      "disagreement_count": 0,
+      "multi_proposer_steps": 1,
+      "redundant_signals": [
+        "empty_module_execution_steps=1",
+        "no_module_activated_failure_signal",
+        "duplicate_passing_proposer_patches"
+      ],
+      "model_call_count": 2,
+      "empty_module_execution_steps": 1
+    },
+    {
+      "run_id": "real_llm__agent_attention_llm_tuned__openai__Qwen3-30B-A3B-Instruct-2507__phase1_code_doc_001",
+      "task_id": "phase1_code_doc_001",
+      "task_family": "code_agent_task",
+      "baseline_id": "agent_attention_llm_tuned",
+      "run_success": true,
+      "selected_modules": [
+        "verifier",
+        "critic_agent",
+        "code_agent",
+        "verifier"
+      ],
+      "route_selections": [
+        [
+          "critic_agent",
+          "code_agent"
+        ]
+      ],
+      "module_outputs_present": [
+        "code_agent",
+        "critic_agent"
+      ],
+      "per_module_pytest_pass": {
+        "critic_agent": true,
+        "code_agent": true
+      },
+      "disagreements": [],
+      "disagreement_count": 0,
+      "multi_proposer_steps": 1,
+      "redundant_signals": [
+        "empty_module_execution_steps=1",
+        "no_module_activated_failure_signal",
+        "duplicate_passing_proposer_patches"
+      ],
+      "model_call_count": 2,
+      "empty_module_execution_steps": 1
+    },
+    {
+      "run_id": "real_llm__agent_attention_llm_tuned__openai__Qwen3-30B-A3B-Instruct-2507__phase1_code_edge_001",
+      "task_id": "phase1_code_edge_001",
+      "task_family": "code_agent_task",
+      "baseline_id": "agent_attention_llm_tuned",
+      "run_success": true,
+      "selected_modules": [
+        "verifier",
+        "code_agent",
+        "critic_agent",
+        "verifier"
+      ],
+      "route_selections": [
+        [
+          "code_agent",
+          "critic_agent"
+        ]
+      ],
+      "module_outputs_present": [
+        "code_agent",
+        "critic_agent"
+      ],
+      "per_module_pytest_pass": {
+        "code_agent": true,
+        "critic_agent": true
+      },
+      "disagreements": [],
+      "disagreement_count": 0,
+      "multi_proposer_steps": 1,
+      "redundant_signals": [
+        "empty_module_execution_steps=1",
+        "no_module_activated_failure_signal",
+        "duplicate_passing_proposer_patches"
+      ],
+      "model_call_count": 2,
+      "empty_module_execution_steps": 1
+    },
+    {
+      "run_id": "real_llm__agent_attention_llm_tuned__openai__Qwen3-30B-A3B-Instruct-2507__phase1_code_email_001",
+      "task_id": "phase1_code_email_001",
+      "task_family": "code_agent_task",
+      "baseline_id": "agent_attention_llm_tuned",
+      "run_success": true,
+      "selected_modules": [
+        "verifier",
+        "critic_agent",
+        "code_agent",
+        "verifier"
+      ],
+      "route_selections": [
+        [
+          "critic_agent",
+          "code_agent"
+        ]
+      ],
+      "module_outputs_present": [
+        "code_agent",
+        "critic_agent"
+      ],
+      "per_module_pytest_pass": {
+        "critic_agent": false,
+        "code_agent": true
+      },
+      "disagreements": [],
+      "disagreement_count": 0,
+      "multi_proposer_steps": 1,
+      "redundant_signals": [
+        "empty_module_execution_steps=1",
+        "no_module_activated_failure_signal"
+      ],
+      "model_call_count": 2,
+      "empty_module_execution_steps": 1
+    },
+    {
+      "run_id": "real_llm__agent_attention_llm_tuned__openai__Qwen3-30B-A3B-Instruct-2507__phase1_code_env_flag_001",
+      "task_id": "phase1_code_env_flag_001",
+      "task_family": "code_agent_task",
+      "baseline_id": "agent_attention_llm_tuned",
+      "run_success": false,
+      "selected_modules": [
+        "verifier",
+        "critic_agent",
+        "code_agent",
+        "verifier"
+      ],
+      "route_selections": [
+        [
+          "critic_agent",
+          "code_agent"
+        ]
+      ],
+      "module_outputs_present": [
+        "code_agent",
+        "critic_agent"
+      ],
+      "per_module_pytest_pass": {
+        "critic_agent": true,
+        "code_agent": false
+      },
+      "disagreements": [
+        {
+          "event_id": 19,
+          "step": 2,
+          "modules": [
+            "critic_agent",
+            "code_agent"
+          ],
+          "fingerprints": {
+            "critic_agent": "103c6e81cbfbd247",
+            "code_agent": "05df6c2f030b5fe6"
+          }
+        }
+      ],
+      "disagreement_count": 1,
+      "multi_proposer_steps": 1,
+      "redundant_signals": [
+        "empty_module_execution_steps=1",
+        "no_module_activated_failure_signal"
+      ],
+      "model_call_count": 2,
+      "empty_module_execution_steps": 1
+    },
+    {
+      "run_id": "real_llm__agent_attention_llm_tuned__openai__Qwen3-30B-A3B-Instruct-2507__phase1_code_flatten_001",
+      "task_id": "phase1_code_flatten_001",
+      "task_family": "code_agent_task",
+      "baseline_id": "agent_attention_llm_tuned",
+      "run_success": true,
+      "selected_modules": [
+        "verifier",
+        "critic_agent",
+        "code_agent",
+        "verifier"
+      ],
+      "route_selections": [
+        [
+          "critic_agent",
+          "code_agent"
+        ]
+      ],
+      "module_outputs_present": [
+        "code_agent",
+        "critic_agent"
+      ],
+      "per_module_pytest_pass": {
+        "critic_agent": true,
+        "code_agent": true
+      },
+      "disagreements": [
+        {
+          "event_id": 19,
+          "step": 2,
+          "modules": [
+            "critic_agent",
+            "code_agent"
+          ],
+          "fingerprints": {
+            "critic_agent": "1a745e0196bda11b",
+            "code_agent": "99cb6a5bd5487214"
+          }
+        }
+      ],
+      "disagreement_count": 1,
+      "multi_proposer_steps": 1,
+      "redundant_signals": [
+        "empty_module_execution_steps=1",
+        "no_module_activated_failure_signal",
+        "multiple_distinct_passing_proposers"
+      ],
+      "model_call_count": 2,
+      "empty_module_execution_steps": 1
+    },
+    {
+      "run_id": "real_llm__agent_attention_llm_tuned__openai__Qwen3-30B-A3B-Instruct-2507__phase1_code_hash_001",
+      "task_id": "phase1_code_hash_001",
+      "task_family": "code_agent_task",
+      "baseline_id": "agent_attention_llm_tuned",
+      "run_success": true,
+      "selected_modules": [
+        "verifier",
+        "critic_agent",
+        "code_agent",
+        "verifier"
+      ],
+      "route_selections": [
+        [
+          "critic_agent",
+          "code_agent"
+        ]
+      ],
+      "module_outputs_present": [
+        "code_agent",
+        "critic_agent"
+      ],
+      "per_module_pytest_pass": {
+        "critic_agent": true,
+        "code_agent": true
+      },
+      "disagreements": [],
+      "disagreement_count": 0,
+      "multi_proposer_steps": 1,
+      "redundant_signals": [
+        "empty_module_execution_steps=1",
+        "no_module_activated_failure_signal",
+        "duplicate_passing_proposer_patches"
+      ],
+      "model_call_count": 2,
+      "empty_module_execution_steps": 1
+    },
+    {
+      "run_id": "real_llm__agent_attention_llm_tuned__openai__Qwen3-30B-A3B-Instruct-2507__phase1_code_import_001",
+      "task_id": "phase1_code_import_001",
+      "task_family": "code_agent_task",
+      "baseline_id": "agent_attention_llm_tuned",
+      "run_success": true,
+      "selected_modules": [
+        "verifier",
+        "critic_agent",
+        "code_agent",
+        "verifier"
+      ],
+      "route_selections": [
+        [
+          "critic_agent",
+          "code_agent"
+        ]
+      ],
+      "module_outputs_present": [
+        "code_agent",
+        "critic_agent"
+      ],
+      "per_module_pytest_pass": {
+        "critic_agent": true,
+        "code_agent": true
+      },
+      "disagreements": [],
+      "disagreement_count": 0,
+      "multi_proposer_steps": 1,
+      "redundant_signals": [
+        "empty_module_execution_steps=1",
+        "no_module_activated_failure_signal",
+        "duplicate_passing_proposer_patches"
+      ],
+      "model_call_count": 2,
+      "empty_module_execution_steps": 1
+    },
+    {
+      "run_id": "real_llm__agent_attention_llm_tuned__openai__Qwen3-30B-A3B-Instruct-2507__phase1_code_json_001",
+      "task_id": "phase1_code_json_001",
+      "task_family": "code_agent_task",
+      "baseline_id": "agent_attention_llm_tuned",
+      "run_success": true,
+      "selected_modules": [
+        "verifier",
+        "critic_agent",
+        "code_agent",
+        "verifier"
+      ],
+      "route_selections": [
+        [
+          "critic_agent",
+          "code_agent"
+        ]
+      ],
+      "module_outputs_present": [
+        "code_agent",
+        "critic_agent"
+      ],
+      "per_module_pytest_pass": {
+        "critic_agent": true,
+        "code_agent": true
+      },
+      "disagreements": [
+        {
+          "event_id": 19,
+          "step": 2,
+          "modules": [
+            "critic_agent",
+            "code_agent"
+          ],
+          "fingerprints": {
+            "critic_agent": "3e7fcae666c3f191",
+            "code_agent": "0a0d171a6cbb0d16"
+          }
+        }
+      ],
+      "disagreement_count": 1,
+      "multi_proposer_steps": 1,
+      "redundant_signals": [
+        "empty_module_execution_steps=1",
+        "no_module_activated_failure_signal",
+        "multiple_distinct_passing_proposers"
+      ],
+      "model_call_count": 2,
+      "empty_module_execution_steps": 1
+    },
+    {
+      "run_id": "real_llm__agent_attention_llm_tuned__openai__Qwen3-30B-A3B-Instruct-2507__phase1_code_mean_001",
+      "task_id": "phase1_code_mean_001",
+      "task_family": "code_agent_task",
+      "baseline_id": "agent_attention_llm_tuned",
+      "run_success": true,
+      "selected_modules": [
+        "verifier",
+        "critic_agent",
+        "code_agent",
+        "verifier"
+      ],
+      "route_selections": [
+        [
+          "critic_agent",
+          "code_agent"
+        ]
+      ],
+      "module_outputs_present": [
+        "code_agent",
+        "critic_agent"
+      ],
+      "per_module_pytest_pass": {
+        "critic_agent": true,
+        "code_agent": true
+      },
+      "disagreements": [],
+      "disagreement_count": 0,
+      "multi_proposer_steps": 1,
+      "redundant_signals": [
+        "empty_module_execution_steps=1",
+        "no_module_activated_failure_signal",
+        "duplicate_passing_proposer_patches"
+      ],
+      "model_call_count": 2,
+      "empty_module_execution_steps": 1
+    },
+    {
+      "run_id": "real_llm__agent_attention_llm_tuned__openai__Qwen3-30B-A3B-Instruct-2507__phase1_code_merge_001",
+      "task_id": "phase1_code_merge_001",
+      "task_family": "code_agent_task",
+      "baseline_id": "agent_attention_llm_tuned",
+      "run_success": true,
+      "selected_modules": [
+        "verifier",
+        "critic_agent",
+        "code_agent",
+        "verifier"
+      ],
+      "route_selections": [
+        [
+          "critic_agent",
+          "code_agent"
+        ]
+      ],
+      "module_outputs_present": [
+        "code_agent",
+        "critic_agent"
+      ],
+      "per_module_pytest_pass": {
+        "critic_agent": true,
+        "code_agent": true
+      },
+      "disagreements": [],
+      "disagreement_count": 0,
+      "multi_proposer_steps": 1,
+      "redundant_signals": [
+        "empty_module_execution_steps=1",
+        "no_module_activated_failure_signal",
+        "duplicate_passing_proposer_patches"
+      ],
+      "model_call_count": 2,
+      "empty_module_execution_steps": 1
+    },
+    {
+      "run_id": "real_llm__agent_attention_llm_tuned__openai__Qwen3-30B-A3B-Instruct-2507__phase1_code_palindrome_001",
+      "task_id": "phase1_code_palindrome_001",
+      "task_family": "code_agent_task",
+      "baseline_id": "agent_attention_llm_tuned",
+      "run_success": true,
+      "selected_modules": [
+        "verifier",
+        "critic_agent",
+        "code_agent",
+        "verifier"
+      ],
+      "route_selections": [
+        [
+          "critic_agent",
+          "code_agent"
+        ]
+      ],
+      "module_outputs_present": [
+        "code_agent",
+        "critic_agent"
+      ],
+      "per_module_pytest_pass": {
+        "critic_agent": true,
+        "code_agent": true
+      },
+      "disagreements": [],
+      "disagreement_count": 0,
+      "multi_proposer_steps": 1,
+      "redundant_signals": [
+        "empty_module_execution_steps=1",
+        "no_module_activated_failure_signal",
+        "duplicate_passing_proposer_patches"
+      ],
+      "model_call_count": 2,
+      "empty_module_execution_steps": 1
+    },
+    {
+      "run_id": "real_llm__agent_attention_llm_tuned__openai__Qwen3-30B-A3B-Instruct-2507__phase1_code_parse_int_001",
+      "task_id": "phase1_code_parse_int_001",
+      "task_family": "code_agent_task",
+      "baseline_id": "agent_attention_llm_tuned",
+      "run_success": true,
+      "selected_modules": [
+        "verifier",
+        "critic_agent",
+        "code_agent",
+        "verifier"
+      ],
+      "route_selections": [
+        [
+          "critic_agent",
+          "code_agent"
+        ]
+      ],
+      "module_outputs_present": [
+        "code_agent",
+        "critic_agent"
+      ],
+      "per_module_pytest_pass": {
+        "critic_agent": true,
+        "code_agent": true
+      },
+      "disagreements": [],
+      "disagreement_count": 0,
+      "multi_proposer_steps": 1,
+      "redundant_signals": [
+        "empty_module_execution_steps=1",
+        "no_module_activated_failure_signal",
+        "duplicate_passing_proposer_patches"
+      ],
+      "model_call_count": 2,
+      "empty_module_execution_steps": 1
+    },
+    {
+      "run_id": "real_llm__agent_attention_llm_tuned__openai__Qwen3-30B-A3B-Instruct-2507__phase1_code_pkg_helper_001",
+      "task_id": "phase1_code_pkg_helper_001",
+      "task_family": "code_agent_task",
+      "baseline_id": "agent_attention_llm_tuned",
+      "run_success": true,
+      "selected_modules": [
+        "verifier",
+        "critic_agent",
+        "code_agent",
+        "verifier"
+      ],
+      "route_selections": [
+        [
+          "critic_agent",
+          "code_agent"
+        ]
+      ],
+      "module_outputs_present": [
+        "code_agent",
+        "critic_agent"
+      ],
+      "per_module_pytest_pass": {
+        "critic_agent": true,
+        "code_agent": true
+      },
+      "disagreements": [],
+      "disagreement_count": 0,
+      "multi_proposer_steps": 1,
+      "redundant_signals": [
+        "empty_module_execution_steps=1",
+        "no_module_activated_failure_signal",
+        "duplicate_passing_proposer_patches"
+      ],
+      "model_call_count": 2,
+      "empty_module_execution_steps": 1
+    },
+    {
+      "run_id": "real_llm__agent_attention_llm_tuned__openai__Qwen3-30B-A3B-Instruct-2507__phase1_code_refactor_001",
+      "task_id": "phase1_code_refactor_001",
+      "task_family": "code_agent_task",
+      "baseline_id": "agent_attention_llm_tuned",
+      "run_success": true,
+      "selected_modules": [
+        "verifier",
+        "critic_agent",
+        "code_agent",
+        "verifier"
+      ],
+      "route_selections": [
+        [
+          "critic_agent",
+          "code_agent"
+        ]
+      ],
+      "module_outputs_present": [
+        "code_agent",
+        "critic_agent"
+      ],
+      "per_module_pytest_pass": {
+        "critic_agent": true,
+        "code_agent": true
+      },
+      "disagreements": [],
+      "disagreement_count": 0,
+      "multi_proposer_steps": 1,
+      "redundant_signals": [
+        "empty_module_execution_steps=1",
+        "no_module_activated_failure_signal",
+        "duplicate_passing_proposer_patches"
+      ],
+      "model_call_count": 2,
+      "empty_module_execution_steps": 1
+    },
+    {
+      "run_id": "real_llm__agent_attention_llm_tuned__openai__Qwen3-30B-A3B-Instruct-2507__phase1_code_sanitize_001",
+      "task_id": "phase1_code_sanitize_001",
+      "task_family": "code_agent_task",
+      "baseline_id": "agent_attention_llm_tuned",
+      "run_success": true,
+      "selected_modules": [
+        "verifier",
+        "critic_agent",
+        "code_agent",
+        "verifier"
+      ],
+      "route_selections": [
+        [
+          "critic_agent",
+          "code_agent"
+        ]
+      ],
+      "module_outputs_present": [
+        "code_agent",
+        "critic_agent"
+      ],
+      "per_module_pytest_pass": {
+        "critic_agent": true,
+        "code_agent": true
+      },
+      "disagreements": [
+        {
+          "event_id": 19,
+          "step": 2,
+          "modules": [
+            "critic_agent",
+            "code_agent"
+          ],
+          "fingerprints": {
+            "critic_agent": "47000120ce841a2c",
+            "code_agent": "a480bee7cfa1b59c"
+          }
+        }
+      ],
+      "disagreement_count": 1,
+      "multi_proposer_steps": 1,
+      "redundant_signals": [
+        "empty_module_execution_steps=1",
+        "no_module_activated_failure_signal",
+        "multiple_distinct_passing_proposers"
+      ],
+      "model_call_count": 2,
+      "empty_module_execution_steps": 1
+    },
+    {
+      "run_id": "real_llm__agent_attention_llm_tuned__openai__Qwen3-30B-A3B-Instruct-2507__phase1_code_slugify_001",
+      "task_id": "phase1_code_slugify_001",
+      "task_family": "code_agent_task",
+      "baseline_id": "agent_attention_llm_tuned",
+      "run_success": false,
+      "selected_modules": [
+        "verifier",
+        "critic_agent",
+        "code_agent"
+      ],
+      "route_selections": [
+        [
+          "critic_agent",
+          "code_agent"
+        ]
+      ],
+      "module_outputs_present": [
+        "code_agent",
+        "critic_agent"
+      ],
+      "per_module_pytest_pass": {
+        "critic_agent": false,
+        "code_agent": false
+      },
+      "disagreements": [],
+      "disagreement_count": 0,
+      "multi_proposer_steps": 1,
+      "redundant_signals": [
+        "empty_module_execution_steps=3",
+        "no_module_activated_failure_signal"
+      ],
+      "model_call_count": 2,
+      "empty_module_execution_steps": 3
+    },
+    {
+      "run_id": "real_llm__agent_attention_llm_tuned__openai__Qwen3-30B-A3B-Instruct-2507__phase1_code_strip_tags_001",
+      "task_id": "phase1_code_strip_tags_001",
+      "task_family": "code_agent_task",
+      "baseline_id": "agent_attention_llm_tuned",
+      "run_success": false,
+      "selected_modules": [
+        "verifier",
+        "critic_agent",
+        "code_agent",
+        "verifier"
+      ],
+      "route_selections": [
+        [
+          "critic_agent",
+          "code_agent"
+        ]
+      ],
+      "module_outputs_present": [
+        "code_agent",
+        "critic_agent"
+      ],
+      "per_module_pytest_pass": {
+        "critic_agent": true,
+        "code_agent": true
+      },
+      "disagreements": [],
+      "disagreement_count": 0,
+      "multi_proposer_steps": 1,
+      "redundant_signals": [
+        "empty_module_execution_steps=1",
+        "no_module_activated_failure_signal",
+        "duplicate_passing_proposer_patches"
+      ],
+      "model_call_count": 2,
+      "empty_module_execution_steps": 1
+    },
+    {
+      "run_id": "real_llm__agent_attention_llm_tuned__openai__Qwen3-30B-A3B-Instruct-2507__phase1_code_trim_lines_001",
+      "task_id": "phase1_code_trim_lines_001",
+      "task_family": "code_agent_task",
+      "baseline_id": "agent_attention_llm_tuned",
+      "run_success": true,
+      "selected_modules": [
+        "verifier",
+        "critic_agent",
+        "code_agent",
+        "verifier"
+      ],
+      "route_selections": [
+        [
+          "critic_agent",
+          "code_agent"
+        ]
+      ],
+      "module_outputs_present": [
+        "code_agent",
+        "critic_agent"
+      ],
+      "per_module_pytest_pass": {
+        "critic_agent": true,
+        "code_agent": true
+      },
+      "disagreements": [
+        {
+          "event_id": 19,
+          "step": 2,
+          "modules": [
+            "critic_agent",
+            "code_agent"
+          ],
+          "fingerprints": {
+            "critic_agent": "622a606c727a2c68",
+            "code_agent": "51d3df60928a61d0"
+          }
+        }
+      ],
+      "disagreement_count": 1,
+      "multi_proposer_steps": 1,
+      "redundant_signals": [
+        "empty_module_execution_steps=1",
+        "no_module_activated_failure_signal",
+        "multiple_distinct_passing_proposers"
+      ],
+      "model_call_count": 2,
+      "empty_module_execution_steps": 1
+    },
+    {
+      "run_id": "real_llm__agent_attention_llm_tuned__openai__Qwen3-30B-A3B-Instruct-2507__phase1_code_url_001",
+      "task_id": "phase1_code_url_001",
+      "task_family": "code_agent_task",
+      "baseline_id": "agent_attention_llm_tuned",
+      "run_success": true,
+      "selected_modules": [
+        "verifier",
+        "critic_agent",
+        "code_agent",
+        "verifier"
+      ],
+      "route_selections": [
+        [
+          "critic_agent",
+          "code_agent"
+        ]
+      ],
+      "module_outputs_present": [
+        "code_agent",
+        "critic_agent"
+      ],
+      "per_module_pytest_pass": {
+        "critic_agent": true,
+        "code_agent": true
+      },
+      "disagreements": [
+        {
+          "event_id": 19,
+          "step": 2,
+          "modules": [
+            "critic_agent",
+            "code_agent"
+          ],
+          "fingerprints": {
+            "critic_agent": "9ed0828513c0ca32",
+            "code_agent": "19fa0e07b2a58548"
+          }
+        }
+      ],
+      "disagreement_count": 1,
+      "multi_proposer_steps": 1,
+      "redundant_signals": [
+        "empty_module_execution_steps=1",
+        "no_module_activated_failure_signal",
+        "multiple_distinct_passing_proposers"
+      ],
+      "model_call_count": 2,
+      "empty_module_execution_steps": 1
+    },
+    {
+      "run_id": "real_llm__moa_style_llm_agent__openai__Qwen3-30B-A3B-Instruct-2507__phase0_seed_code_fix_001",
+      "task_id": "phase0_seed_code_fix_001",
+      "task_family": "code_agent_task",
+      "baseline_id": "moa_style_llm_agent",
+      "run_success": true,
+      "selected_modules": [
+        "code_agent",
+        "critic_agent",
+        "verifier"
+      ],
+      "route_selections": [
+        [
+          "code_agent",
+          "critic_agent"
+        ]
+      ],
+      "module_outputs_present": [
+        "code_agent",
+        "critic_agent"
+      ],
+      "per_module_pytest_pass": {
+        "code_agent": true,
+        "critic_agent": true
+      },
+      "disagreements": [],
+      "disagreement_count": 0,
+      "multi_proposer_steps": 1,
+      "redundant_signals": [
+        "duplicate_passing_proposer_patches"
+      ],
+      "model_call_count": 2,
+      "empty_module_execution_steps": 0
+    },
+    {
+      "run_id": "real_llm__moa_style_llm_agent__openai__Qwen3-30B-A3B-Instruct-2507__phase0_seed_negative_memory_001",
+      "task_id": "phase0_seed_negative_memory_001",
+      "task_family": "code_agent_task",
+      "baseline_id": "moa_style_llm_agent",
+      "run_success": true,
+      "selected_modules": [
+        "search_agent",
+        "code_agent",
+        "critic_agent"
+      ],
+      "route_selections": [
+        [
+          "search_agent",
+          "code_agent",
+          "critic_agent"
+        ]
+      ],
+      "module_outputs_present": [
+        "code_agent",
+        "critic_agent",
+        "search_agent"
+      ],
+      "per_module_pytest_pass": {
+        "search_agent": true,
+        "code_agent": true,
+        "critic_agent": true
+      },
+      "disagreements": [],
+      "disagreement_count": 0,
+      "multi_proposer_steps": 1,
+      "redundant_signals": [
+        "duplicate_passing_proposer_patches"
+      ],
+      "model_call_count": 3,
+      "empty_module_execution_steps": 0
+    },
+    {
+      "run_id": "real_llm__moa_style_llm_agent__openai__Qwen3-30B-A3B-Instruct-2507__phase1_code_binary_search_001",
+      "task_id": "phase1_code_binary_search_001",
+      "task_family": "code_agent_task",
+      "baseline_id": "moa_style_llm_agent",
+      "run_success": true,
+      "selected_modules": [
+        "code_agent",
+        "critic_agent",
+        "verifier"
+      ],
+      "route_selections": [
+        [
+          "code_agent",
+          "critic_agent"
+        ]
+      ],
+      "module_outputs_present": [
+        "code_agent",
+        "critic_agent"
+      ],
+      "per_module_pytest_pass": {
+        "code_agent": true,
+        "critic_agent": true
+      },
+      "disagreements": [],
+      "disagreement_count": 0,
+      "multi_proposer_steps": 1,
+      "redundant_signals": [
+        "duplicate_passing_proposer_patches"
+      ],
+      "model_call_count": 2,
+      "empty_module_execution_steps": 0
+    },
+    {
+      "run_id": "real_llm__moa_style_llm_agent__openai__Qwen3-30B-A3B-Instruct-2507__phase1_code_clamp_001",
+      "task_id": "phase1_code_clamp_001",
+      "task_family": "code_agent_task",
+      "baseline_id": "moa_style_llm_agent",
+      "run_success": true,
+      "selected_modules": [
+        "code_agent",
+        "critic_agent",
+        "verifier"
+      ],
+      "route_selections": [
+        [
+          "code_agent",
+          "critic_agent"
+        ]
+      ],
+      "module_outputs_present": [
+        "code_agent",
+        "critic_agent"
+      ],
+      "per_module_pytest_pass": {
+        "code_agent": true,
+        "critic_agent": true
+      },
+      "disagreements": [],
+      "disagreement_count": 0,
+      "multi_proposer_steps": 1,
+      "redundant_signals": [
+        "duplicate_passing_proposer_patches"
+      ],
+      "model_call_count": 2,
+      "empty_module_execution_steps": 0
+    },
+    {
+      "run_id": "real_llm__moa_style_llm_agent__openai__Qwen3-30B-A3B-Instruct-2507__phase1_code_config_001",
+      "task_id": "phase1_code_config_001",
+      "task_family": "code_agent_task",
+      "baseline_id": "moa_style_llm_agent",
+      "run_success": true,
+      "selected_modules": [
+        "code_agent",
+        "critic_agent",
+        "verifier"
+      ],
+      "route_selections": [
+        [
+          "code_agent",
+          "critic_agent"
+        ]
+      ],
+      "module_outputs_present": [
+        "code_agent",
+        "critic_agent"
+      ],
+      "per_module_pytest_pass": {
+        "code_agent": true,
+        "critic_agent": true
+      },
+      "disagreements": [
+        {
+          "event_id": 9,
+          "step": 1,
+          "modules": [
+            "code_agent",
+            "critic_agent"
+          ],
+          "fingerprints": {
+            "code_agent": "01259fc5e9883d07",
+            "critic_agent": "b7059e3735abb6be"
+          }
+        }
+      ],
+      "disagreement_count": 1,
+      "multi_proposer_steps": 1,
+      "redundant_signals": [
+        "multiple_distinct_passing_proposers"
+      ],
+      "model_call_count": 2,
+      "empty_module_execution_steps": 0
+    },
+    {
+      "run_id": "real_llm__moa_style_llm_agent__openai__Qwen3-30B-A3B-Instruct-2507__phase1_code_config_get_001",
+      "task_id": "phase1_code_config_get_001",
+      "task_family": "code_agent_task",
+      "baseline_id": "moa_style_llm_agent",
+      "run_success": true,
+      "selected_modules": [
+        "code_agent",
+        "critic_agent",
+        "verifier"
+      ],
+      "route_selections": [
+        [
+          "code_agent",
+          "critic_agent"
+        ]
+      ],
+      "module_outputs_present": [
+        "code_agent",
+        "critic_agent"
+      ],
+      "per_module_pytest_pass": {
+        "code_agent": true,
+        "critic_agent": true
+      },
+      "disagreements": [],
+      "disagreement_count": 0,
+      "multi_proposer_steps": 1,
+      "redundant_signals": [
+        "duplicate_passing_proposer_patches"
+      ],
+      "model_call_count": 2,
+      "empty_module_execution_steps": 0
+    },
+    {
+      "run_id": "real_llm__moa_style_llm_agent__openai__Qwen3-30B-A3B-Instruct-2507__phase1_code_csv_001",
+      "task_id": "phase1_code_csv_001",
+      "task_family": "code_agent_task",
+      "baseline_id": "moa_style_llm_agent",
+      "run_success": true,
+      "selected_modules": [
+        "code_agent",
+        "critic_agent",
+        "verifier"
+      ],
+      "route_selections": [
+        [
+          "code_agent",
+          "critic_agent"
+        ]
+      ],
+      "module_outputs_present": [
+        "code_agent",
+        "critic_agent"
+      ],
+      "per_module_pytest_pass": {
+        "code_agent": true,
+        "critic_agent": true
+      },
+      "disagreements": [
+        {
+          "event_id": 9,
+          "step": 1,
+          "modules": [
+            "code_agent",
+            "critic_agent"
+          ],
+          "fingerprints": {
+            "code_agent": "500bc3a9f753ec37",
+            "critic_agent": "47d4b1de494f903d"
+          }
+        }
+      ],
+      "disagreement_count": 1,
+      "multi_proposer_steps": 1,
+      "redundant_signals": [
+        "multiple_distinct_passing_proposers"
+      ],
+      "model_call_count": 2,
+      "empty_module_execution_steps": 0
+    },
+    {
+      "run_id": "real_llm__moa_style_llm_agent__openai__Qwen3-30B-A3B-Instruct-2507__phase1_code_doc_001",
+      "task_id": "phase1_code_doc_001",
+      "task_family": "code_agent_task",
+      "baseline_id": "moa_style_llm_agent",
+      "run_success": true,
+      "selected_modules": [
+        "code_agent",
+        "critic_agent",
+        "verifier"
+      ],
+      "route_selections": [
+        [
+          "code_agent",
+          "critic_agent"
+        ]
+      ],
+      "module_outputs_present": [
+        "code_agent",
+        "critic_agent"
+      ],
+      "per_module_pytest_pass": {
+        "code_agent": true,
+        "critic_agent": true
+      },
+      "disagreements": [],
+      "disagreement_count": 0,
+      "multi_proposer_steps": 1,
+      "redundant_signals": [
+        "duplicate_passing_proposer_patches"
+      ],
+      "model_call_count": 2,
+      "empty_module_execution_steps": 0
+    },
+    {
+      "run_id": "real_llm__moa_style_llm_agent__openai__Qwen3-30B-A3B-Instruct-2507__phase1_code_edge_001",
+      "task_id": "phase1_code_edge_001",
+      "task_family": "code_agent_task",
+      "baseline_id": "moa_style_llm_agent",
+      "run_success": true,
+      "selected_modules": [
+        "code_agent",
+        "critic_agent",
+        "verifier"
+      ],
+      "route_selections": [
+        [
+          "code_agent",
+          "critic_agent"
+        ]
+      ],
+      "module_outputs_present": [
+        "code_agent",
+        "critic_agent"
+      ],
+      "per_module_pytest_pass": {
+        "code_agent": true,
+        "critic_agent": true
+      },
+      "disagreements": [],
+      "disagreement_count": 0,
+      "multi_proposer_steps": 1,
+      "redundant_signals": [
+        "duplicate_passing_proposer_patches"
+      ],
+      "model_call_count": 2,
+      "empty_module_execution_steps": 0
+    },
+    {
+      "run_id": "real_llm__moa_style_llm_agent__openai__Qwen3-30B-A3B-Instruct-2507__phase1_code_email_001",
+      "task_id": "phase1_code_email_001",
+      "task_family": "code_agent_task",
+      "baseline_id": "moa_style_llm_agent",
+      "run_success": true,
+      "selected_modules": [
+        "code_agent",
+        "critic_agent",
+        "verifier"
+      ],
+      "route_selections": [
+        [
+          "code_agent",
+          "critic_agent"
+        ]
+      ],
+      "module_outputs_present": [
+        "code_agent",
+        "critic_agent"
+      ],
+      "per_module_pytest_pass": {
+        "code_agent": true,
+        "critic_agent": true
+      },
+      "disagreements": [
+        {
+          "event_id": 9,
+          "step": 1,
+          "modules": [
+            "code_agent",
+            "critic_agent"
+          ],
+          "fingerprints": {
+            "code_agent": "bd65dda32446b922",
+            "critic_agent": "3e1c6fd97e8be0b2"
+          }
+        }
+      ],
+      "disagreement_count": 1,
+      "multi_proposer_steps": 1,
+      "redundant_signals": [
+        "multiple_distinct_passing_proposers"
+      ],
+      "model_call_count": 2,
+      "empty_module_execution_steps": 0
+    },
+    {
+      "run_id": "real_llm__moa_style_llm_agent__openai__Qwen3-30B-A3B-Instruct-2507__phase1_code_env_flag_001",
+      "task_id": "phase1_code_env_flag_001",
+      "task_family": "code_agent_task",
+      "baseline_id": "moa_style_llm_agent",
+      "run_success": true,
+      "selected_modules": [
+        "code_agent",
+        "critic_agent",
+        "verifier"
+      ],
+      "route_selections": [
+        [
+          "code_agent",
+          "critic_agent"
+        ]
+      ],
+      "module_outputs_present": [
+        "code_agent",
+        "critic_agent"
+      ],
+      "per_module_pytest_pass": {
+        "code_agent": true,
+        "critic_agent": true
+      },
+      "disagreements": [],
+      "disagreement_count": 0,
+      "multi_proposer_steps": 1,
+      "redundant_signals": [
+        "duplicate_passing_proposer_patches"
+      ],
+      "model_call_count": 2,
+      "empty_module_execution_steps": 0
+    },
+    {
+      "run_id": "real_llm__moa_style_llm_agent__openai__Qwen3-30B-A3B-Instruct-2507__phase1_code_flatten_001",
+      "task_id": "phase1_code_flatten_001",
+      "task_family": "code_agent_task",
+      "baseline_id": "moa_style_llm_agent",
+      "run_success": true,
+      "selected_modules": [
+        "code_agent",
+        "critic_agent",
+        "verifier"
+      ],
+      "route_selections": [
+        [
+          "code_agent",
+          "critic_agent"
+        ]
+      ],
+      "module_outputs_present": [
+        "code_agent",
+        "critic_agent"
+      ],
+      "per_module_pytest_pass": {
+        "code_agent": true,
+        "critic_agent": true
+      },
+      "disagreements": [
+        {
+          "event_id": 9,
+          "step": 1,
+          "modules": [
+            "code_agent",
+            "critic_agent"
+          ],
+          "fingerprints": {
+            "code_agent": "99cb6a5bd5487214",
+            "critic_agent": "1a745e0196bda11b"
+          }
+        }
+      ],
+      "disagreement_count": 1,
+      "multi_proposer_steps": 1,
+      "redundant_signals": [
+        "multiple_distinct_passing_proposers"
+      ],
+      "model_call_count": 2,
+      "empty_module_execution_steps": 0
+    },
+    {
+      "run_id": "real_llm__moa_style_llm_agent__openai__Qwen3-30B-A3B-Instruct-2507__phase1_code_hash_001",
+      "task_id": "phase1_code_hash_001",
+      "task_family": "code_agent_task",
+      "baseline_id": "moa_style_llm_agent",
+      "run_success": true,
+      "selected_modules": [
+        "code_agent",
+        "critic_agent",
+        "verifier"
+      ],
+      "route_selections": [
+        [
+          "code_agent",
+          "critic_agent"
+        ]
+      ],
+      "module_outputs_present": [
+        "code_agent",
+        "critic_agent"
+      ],
+      "per_module_pytest_pass": {
+        "code_agent": true,
+        "critic_agent": true
+      },
+      "disagreements": [],
+      "disagreement_count": 0,
+      "multi_proposer_steps": 1,
+      "redundant_signals": [
+        "duplicate_passing_proposer_patches"
+      ],
+      "model_call_count": 2,
+      "empty_module_execution_steps": 0
+    },
+    {
+      "run_id": "real_llm__moa_style_llm_agent__openai__Qwen3-30B-A3B-Instruct-2507__phase1_code_import_001",
+      "task_id": "phase1_code_import_001",
+      "task_family": "code_agent_task",
+      "baseline_id": "moa_style_llm_agent",
+      "run_success": true,
+      "selected_modules": [
+        "code_agent",
+        "critic_agent",
+        "verifier"
+      ],
+      "route_selections": [
+        [
+          "code_agent",
+          "critic_agent"
+        ]
+      ],
+      "module_outputs_present": [
+        "code_agent",
+        "critic_agent"
+      ],
+      "per_module_pytest_pass": {
+        "code_agent": true,
+        "critic_agent": true
+      },
+      "disagreements": [],
+      "disagreement_count": 0,
+      "multi_proposer_steps": 1,
+      "redundant_signals": [
+        "duplicate_passing_proposer_patches"
+      ],
+      "model_call_count": 2,
+      "empty_module_execution_steps": 0
+    },
+    {
+      "run_id": "real_llm__moa_style_llm_agent__openai__Qwen3-30B-A3B-Instruct-2507__phase1_code_json_001",
+      "task_id": "phase1_code_json_001",
+      "task_family": "code_agent_task",
+      "baseline_id": "moa_style_llm_agent",
+      "run_success": true,
+      "selected_modules": [
+        "code_agent",
+        "critic_agent",
+        "verifier"
+      ],
+      "route_selections": [
+        [
+          "code_agent",
+          "critic_agent"
+        ]
+      ],
+      "module_outputs_present": [
+        "code_agent",
+        "critic_agent"
+      ],
+      "per_module_pytest_pass": {
+        "code_agent": true,
+        "critic_agent": true
+      },
+      "disagreements": [
+        {
+          "event_id": 9,
+          "step": 1,
+          "modules": [
+            "code_agent",
+            "critic_agent"
+          ],
+          "fingerprints": {
+            "code_agent": "0a0d171a6cbb0d16",
+            "critic_agent": "3e7fcae666c3f191"
+          }
+        }
+      ],
+      "disagreement_count": 1,
+      "multi_proposer_steps": 1,
+      "redundant_signals": [
+        "multiple_distinct_passing_proposers"
+      ],
+      "model_call_count": 2,
+      "empty_module_execution_steps": 0
+    },
+    {
+      "run_id": "real_llm__moa_style_llm_agent__openai__Qwen3-30B-A3B-Instruct-2507__phase1_code_mean_001",
+      "task_id": "phase1_code_mean_001",
+      "task_family": "code_agent_task",
+      "baseline_id": "moa_style_llm_agent",
+      "run_success": true,
+      "selected_modules": [
+        "code_agent",
+        "critic_agent",
+        "verifier"
+      ],
+      "route_selections": [
+        [
+          "code_agent",
+          "critic_agent"
+        ]
+      ],
+      "module_outputs_present": [
+        "code_agent",
+        "critic_agent"
+      ],
+      "per_module_pytest_pass": {
+        "code_agent": true,
+        "critic_agent": true
+      },
+      "disagreements": [],
+      "disagreement_count": 0,
+      "multi_proposer_steps": 1,
+      "redundant_signals": [
+        "duplicate_passing_proposer_patches"
+      ],
+      "model_call_count": 2,
+      "empty_module_execution_steps": 0
+    },
+    {
+      "run_id": "real_llm__moa_style_llm_agent__openai__Qwen3-30B-A3B-Instruct-2507__phase1_code_merge_001",
+      "task_id": "phase1_code_merge_001",
+      "task_family": "code_agent_task",
+      "baseline_id": "moa_style_llm_agent",
+      "run_success": true,
+      "selected_modules": [
+        "code_agent",
+        "critic_agent",
+        "verifier"
+      ],
+      "route_selections": [
+        [
+          "code_agent",
+          "critic_agent"
+        ]
+      ],
+      "module_outputs_present": [
+        "code_agent",
+        "critic_agent"
+      ],
+      "per_module_pytest_pass": {
+        "code_agent": true,
+        "critic_agent": true
+      },
+      "disagreements": [],
+      "disagreement_count": 0,
+      "multi_proposer_steps": 1,
+      "redundant_signals": [
+        "duplicate_passing_proposer_patches"
+      ],
+      "model_call_count": 2,
+      "empty_module_execution_steps": 0
+    },
+    {
+      "run_id": "real_llm__moa_style_llm_agent__openai__Qwen3-30B-A3B-Instruct-2507__phase1_code_palindrome_001",
+      "task_id": "phase1_code_palindrome_001",
+      "task_family": "code_agent_task",
+      "baseline_id": "moa_style_llm_agent",
+      "run_success": true,
+      "selected_modules": [
+        "code_agent",
+        "critic_agent",
+        "verifier"
+      ],
+      "route_selections": [
+        [
+          "code_agent",
+          "critic_agent"
+        ]
+      ],
+      "module_outputs_present": [
+        "code_agent",
+        "critic_agent"
+      ],
+      "per_module_pytest_pass": {
+        "code_agent": true,
+        "critic_agent": true
+      },
+      "disagreements": [],
+      "disagreement_count": 0,
+      "multi_proposer_steps": 1,
+      "redundant_signals": [
+        "duplicate_passing_proposer_patches"
+      ],
+      "model_call_count": 2,
+      "empty_module_execution_steps": 0
+    },
+    {
+      "run_id": "real_llm__moa_style_llm_agent__openai__Qwen3-30B-A3B-Instruct-2507__phase1_code_parse_int_001",
+      "task_id": "phase1_code_parse_int_001",
+      "task_family": "code_agent_task",
+      "baseline_id": "moa_style_llm_agent",
+      "run_success": true,
+      "selected_modules": [
+        "code_agent",
+        "critic_agent",
+        "verifier"
+      ],
+      "route_selections": [
+        [
+          "code_agent",
+          "critic_agent"
+        ]
+      ],
+      "module_outputs_present": [
+        "code_agent",
+        "critic_agent"
+      ],
+      "per_module_pytest_pass": {
+        "code_agent": true,
+        "critic_agent": true
+      },
+      "disagreements": [
+        {
+          "event_id": 9,
+          "step": 1,
+          "modules": [
+            "code_agent",
+            "critic_agent"
+          ],
+          "fingerprints": {
+            "code_agent": "5e377ea783f3bc8e",
+            "critic_agent": "788ce4eb34cb5a9b"
+          }
+        }
+      ],
+      "disagreement_count": 1,
+      "multi_proposer_steps": 1,
+      "redundant_signals": [
+        "multiple_distinct_passing_proposers"
+      ],
+      "model_call_count": 2,
+      "empty_module_execution_steps": 0
+    },
+    {
+      "run_id": "real_llm__moa_style_llm_agent__openai__Qwen3-30B-A3B-Instruct-2507__phase1_code_pkg_helper_001",
+      "task_id": "phase1_code_pkg_helper_001",
+      "task_family": "code_agent_task",
+      "baseline_id": "moa_style_llm_agent",
+      "run_success": true,
+      "selected_modules": [
+        "code_agent",
+        "critic_agent",
+        "verifier"
+      ],
+      "route_selections": [
+        [
+          "code_agent",
+          "critic_agent"
+        ]
+      ],
+      "module_outputs_present": [
+        "code_agent",
+        "critic_agent"
+      ],
+      "per_module_pytest_pass": {
+        "code_agent": true,
+        "critic_agent": true
+      },
+      "disagreements": [],
+      "disagreement_count": 0,
+      "multi_proposer_steps": 1,
+      "redundant_signals": [
+        "duplicate_passing_proposer_patches"
+      ],
+      "model_call_count": 2,
+      "empty_module_execution_steps": 0
+    },
+    {
+      "run_id": "real_llm__moa_style_llm_agent__openai__Qwen3-30B-A3B-Instruct-2507__phase1_code_refactor_001",
+      "task_id": "phase1_code_refactor_001",
+      "task_family": "code_agent_task",
+      "baseline_id": "moa_style_llm_agent",
+      "run_success": true,
+      "selected_modules": [
+        "code_agent",
+        "critic_agent",
+        "verifier"
+      ],
+      "route_selections": [
+        [
+          "code_agent",
+          "critic_agent"
+        ]
+      ],
+      "module_outputs_present": [
+        "code_agent",
+        "critic_agent"
+      ],
+      "per_module_pytest_pass": {
+        "code_agent": true,
+        "critic_agent": true
+      },
+      "disagreements": [],
+      "disagreement_count": 0,
+      "multi_proposer_steps": 1,
+      "redundant_signals": [
+        "duplicate_passing_proposer_patches"
+      ],
+      "model_call_count": 2,
+      "empty_module_execution_steps": 0
+    },
+    {
+      "run_id": "real_llm__moa_style_llm_agent__openai__Qwen3-30B-A3B-Instruct-2507__phase1_code_sanitize_001",
+      "task_id": "phase1_code_sanitize_001",
+      "task_family": "code_agent_task",
+      "baseline_id": "moa_style_llm_agent",
+      "run_success": false,
+      "selected_modules": [
+        "code_agent",
+        "critic_agent",
+        "verifier"
+      ],
+      "route_selections": [
+        [
+          "code_agent",
+          "critic_agent"
+        ]
+      ],
+      "module_outputs_present": [
+        "code_agent",
+        "critic_agent"
+      ],
+      "per_module_pytest_pass": {
+        "code_agent": false,
+        "critic_agent": true
+      },
+      "disagreements": [
+        {
+          "event_id": 9,
+          "step": 1,
+          "modules": [
+            "code_agent",
+            "critic_agent"
+          ],
+          "fingerprints": {
+            "code_agent": "a480bee7cfa1b59c",
+            "critic_agent": "1af20462ed54f552"
+          }
+        }
+      ],
+      "disagreement_count": 1,
+      "multi_proposer_steps": 1,
+      "redundant_signals": [],
+      "model_call_count": 2,
+      "empty_module_execution_steps": 0
+    },
+    {
+      "run_id": "real_llm__moa_style_llm_agent__openai__Qwen3-30B-A3B-Instruct-2507__phase1_code_slugify_001",
+      "task_id": "phase1_code_slugify_001",
+      "task_family": "code_agent_task",
+      "baseline_id": "moa_style_llm_agent",
+      "run_success": true,
+      "selected_modules": [
+        "code_agent",
+        "critic_agent",
+        "code_agent"
+      ],
+      "route_selections": [
+        [
+          "code_agent",
+          "critic_agent"
+        ],
+        [
+          "code_agent"
+        ]
+      ],
+      "module_outputs_present": [
+        "code_agent",
+        "critic_agent"
+      ],
+      "per_module_pytest_pass": {
+        "code_agent": true,
+        "critic_agent": false
+      },
+      "disagreements": [],
+      "disagreement_count": 0,
+      "multi_proposer_steps": 1,
+      "redundant_signals": [],
+      "model_call_count": 3,
+      "empty_module_execution_steps": 0
+    },
+    {
+      "run_id": "real_llm__moa_style_llm_agent__openai__Qwen3-30B-A3B-Instruct-2507__phase1_code_strip_tags_001",
+      "task_id": "phase1_code_strip_tags_001",
+      "task_family": "code_agent_task",
+      "baseline_id": "moa_style_llm_agent",
+      "run_success": true,
+      "selected_modules": [
+        "code_agent",
+        "critic_agent",
+        "verifier"
+      ],
+      "route_selections": [
+        [
+          "code_agent",
+          "critic_agent"
+        ]
+      ],
+      "module_outputs_present": [
+        "code_agent",
+        "critic_agent"
+      ],
+      "per_module_pytest_pass": {
+        "code_agent": true,
+        "critic_agent": true
+      },
+      "disagreements": [],
+      "disagreement_count": 0,
+      "multi_proposer_steps": 1,
+      "redundant_signals": [
+        "duplicate_passing_proposer_patches"
+      ],
+      "model_call_count": 2,
+      "empty_module_execution_steps": 0
+    },
+    {
+      "run_id": "real_llm__moa_style_llm_agent__openai__Qwen3-30B-A3B-Instruct-2507__phase1_code_trim_lines_001",
+      "task_id": "phase1_code_trim_lines_001",
+      "task_family": "code_agent_task",
+      "baseline_id": "moa_style_llm_agent",
+      "run_success": true,
+      "selected_modules": [
+        "code_agent",
+        "critic_agent",
+        "verifier"
+      ],
+      "route_selections": [
+        [
+          "code_agent",
+          "critic_agent"
+        ]
+      ],
+      "module_outputs_present": [
+        "code_agent",
+        "critic_agent"
+      ],
+      "per_module_pytest_pass": {
+        "code_agent": true,
+        "critic_agent": true
+      },
+      "disagreements": [],
+      "disagreement_count": 0,
+      "multi_proposer_steps": 1,
+      "redundant_signals": [
+        "duplicate_passing_proposer_patches"
+      ],
+      "model_call_count": 2,
+      "empty_module_execution_steps": 0
+    },
+    {
+      "run_id": "real_llm__moa_style_llm_agent__openai__Qwen3-30B-A3B-Instruct-2507__phase1_code_url_001",
+      "task_id": "phase1_code_url_001",
+      "task_family": "code_agent_task",
+      "baseline_id": "moa_style_llm_agent",
+      "run_success": true,
+      "selected_modules": [
+        "code_agent",
+        "critic_agent",
+        "verifier"
+      ],
+      "route_selections": [
+        [
+          "code_agent",
+          "critic_agent"
+        ]
+      ],
+      "module_outputs_present": [
+        "code_agent",
+        "critic_agent"
+      ],
+      "per_module_pytest_pass": {
+        "code_agent": true,
+        "critic_agent": true
+      },
+      "disagreements": [
+        {
+          "event_id": 9,
+          "step": 1,
+          "modules": [
+            "code_agent",
+            "critic_agent"
+          ],
+          "fingerprints": {
+            "code_agent": "d68e5af2e9630dcb",
+            "critic_agent": "28eea7ae404e9716"
+          }
+        }
+      ],
+      "disagreement_count": 1,
+      "multi_proposer_steps": 1,
+      "redundant_signals": [
+        "multiple_distinct_passing_proposers"
+      ],
+      "model_call_count": 2,
+      "empty_module_execution_steps": 0
+    }
+  ]
+}

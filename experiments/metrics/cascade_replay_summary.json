@@ -1,0 +1,1284 @@
+{
+  "scope": "Cascade replay on existing matrix (Brief B pilot, zero new LLM calls).",
+  "source_summary": "experiments/metrics/code_full_matrix_summary.json",
+  "suite": "code_all",
+  "tasks": 26,
+  "model": "Qwen3-30B-A3B-Instruct-2507",
+  "provider": "openai",
+  "policies": {
+    "react_aa_moa": {
+      "policy_id": "react_aa_moa",
+      "policy_label": "direct → AA → MoA",
+      "stages": [
+        "single_react_llm_agent",
+        "agent_attention_llm_tuned",
+        "moa_style_llm_agent"
+      ],
+      "baseline_id": "cascade_react_aa_moa_llm",
+      "tasks": 26,
+      "correct": 26,
+      "accuracy": 1.0,
+      "mean_model_calls": 1.5385,
+      "mean_total_tokens": 735.12,
+      "mean_latency_ms": 1885.04,
+      "cost_normalized_success": 0.65,
+      "escalation_rate": 0.1154,
+      "escalation_success_gain": 0.1154,
+      "rescued_task_count": 3,
+      "cost_per_rescued_task": 2.6667,
+      "mean_extra_calls_on_escalated": 2.6667,
+      "per_task": [
+        {
+          "task_id": "phase0_seed_code_fix_001",
+          "success": true,
+          "final_success_label": "pass",
+          "halt_stage": "single_react_llm_agent",
+          "stages_run": 1,
+          "escalated": false,
+          "rescued_by": null,
+          "model_calls": 1,
+          "total_tokens": 390,
+          "latency_ms": 954,
+          "cost_normalized_success": 1.0,
+          "stage_details": [
+            {
+              "baseline_id": "single_react_llm_agent",
+              "success": true,
+              "model_calls": 1,
+              "total_tokens": 390,
+              "latency_ms": 954
+            }
+          ]
+        },
+        {
+          "task_id": "phase0_seed_negative_memory_001",
+          "success": true,
+          "final_success_label": "pass",
+          "halt_stage": "single_react_llm_agent",
+          "stages_run": 1,
+          "escalated": false,
+          "rescued_by": null,
+          "model_calls": 1,
+          "total_tokens": 392,
+          "latency_ms": 650,
+          "cost_normalized_success": 1.0,
+          "stage_details": [
+            {
+              "baseline_id": "single_react_llm_agent",
+              "success": true,
+              "model_calls": 1,
+              "total_tokens": 392,
+              "latency_ms": 650
+            }
+          ]
+        },
+        {
+          "task_id": "phase1_code_binary_search_001",
+          "success": true,
+          "final_success_label": "pass",
+          "halt_stage": "single_react_llm_agent",
+          "stages_run": 1,
+          "escalated": false,
+          "rescued_by": null,
+          "model_calls": 1,
+          "total_tokens": 575,
+          "latency_ms": 2692,
+          "cost_normalized_success": 1.0,
+          "stage_details": [
+            {
+              "baseline_id": "single_react_llm_agent",
+              "success": true,
+              "model_calls": 1,
+              "total_tokens": 575,
+              "latency_ms": 2692
+            }
+          ]
+        },
+        {
+          "task_id": "phase1_code_clamp_001",
+          "success": true,
+          "final_success_label": "pass",
+          "halt_stage": "single_react_llm_agent",
+          "stages_run": 1,
+          "escalated": false,
+          "rescued_by": null,
+          "model_calls": 1,
+          "total_tokens": 441,
+          "latency_ms": 693,
+          "cost_normalized_success": 1.0,
+          "stage_details": [
+            {
+              "baseline_id": "single_react_llm_agent",
+              "success": true,
+              "model_calls": 1,
+              "total_tokens": 441,
+              "latency_ms": 693
+            }
+          ]
+        },
+        {
+          "task_id": "phase1_code_config_001",
+          "success": true,
+          "final_success_label": "pass",
+          "halt_stage": "single_react_llm_agent",
+          "stages_run": 1,
+          "escalated": false,
+          "rescued_by": null,
+          "model_calls": 1,
+          "total_tokens": 498,
+          "latency_ms": 1211,
+          "cost_normalized_success": 1.0,
+          "stage_details": [
+            {
+              "baseline_id": "single_react_llm_agent",
+              "success": true,
+              "model_calls": 1,
+              "total_tokens": 498,
+              "latency_ms": 1211
+            }
+          ]
+        },
+        {
+          "task_id": "phase1_code_config_get_001",
+          "success": true,
+          "final_success_label": "pass",
+          "halt_stage": "single_react_llm_agent",
+          "stages_run": 1,
+          "escalated": false,
+          "rescued_by": null,
+          "model_calls": 1,
+          "total_tokens": 441,
+          "latency_ms": 979,
+          "cost_normalized_success": 1.0,
+          "stage_details": [
+            {
+              "baseline_id": "single_react_llm_agent",
+              "success": true,
+              "model_calls": 1,
+              "total_tokens": 441,
+              "latency_ms": 979
+            }
+          ]
+        },
+        {
+          "task_id": "phase1_code_csv_001",
+          "success": true,
+          "final_success_label": "pass",
+          "halt_stage": "agent_attention_llm_tuned",
+          "stages_run": 2,
+          "escalated": true,
+          "rescued_by": "agent_attention_llm_tuned",
+          "model_calls": 3,
+          "total_tokens": 1971,
+          "latency_ms": 4826,
+          "cost_normalized_success": 0.333333,
+          "stage_details": [
+            {
+              "baseline_id": "single_react_llm_agent",
+              "success": false,
+              "model_calls": 1,
+              "total_tokens": 698,
+              "latency_ms": 2208
+            },
+            {
+              "baseline_id": "agent_attention_llm_tuned",
+              "success": true,
+              "model_calls": 2,
+              "total_tokens": 1273,
+              "latency_ms": 2618
+            }
+          ]
+        },
+        {
+          "task_id": "phase1_code_doc_001",
+          "success": true,
+          "final_success_label": "pass",
+          "halt_stage": "single_react_llm_agent",
+          "stages_run": 1,
+          "escalated": false,
+          "rescued_by": null,
+          "model_calls": 1,
+          "total_tokens": 413,
+          "latency_ms": 549,
+          "cost_normalized_success": 1.0,
+          "stage_details": [
+            {
+              "baseline_id": "single_react_llm_agent",
+              "success": true,
+              "model_calls": 1,
+              "total_tokens": 413,
+              "latency_ms": 549
+            }
+          ]
+        },
+        {
+          "task_id": "phase1_code_edge_001",
+          "success": true,
+          "final_success_label": "pass",
+          "halt_stage": "single_react_llm_agent",
+          "stages_run": 1,
+          "escalated": false,
+          "rescued_by": null,
+          "model_calls": 1,
+          "total_tokens": 515,
+          "latency_ms": 1006,
+          "cost_normalized_success": 1.0,
+          "stage_details": [
+            {
+              "baseline_id": "single_react_llm_agent",
+              "success": true,
+              "model_calls": 1,
+              "total_tokens": 515,
+              "latency_ms": 1006
+            }
+          ]
+        },
+        {
+          "task_id": "phase1_code_email_001",
+          "success": true,
+          "final_success_label": "pass",
+          "halt_stage": "agent_attention_llm_tuned",
+          "stages_run": 2,
+          "escalated": true,
+          "rescued_by": "agent_attention_llm_tuned",
+          "model_calls": 3,
+          "total_tokens": 1405,
+          "latency_ms": 3983,
+          "cost_normalized_success": 0.333333,
+          "stage_details": [
+            {
+              "baseline_id": "single_react_llm_agent",
+              "success": false,
+              "model_calls": 1,
+              "total_tokens": 435,
+              "latency_ms": 1237
+            },
+            {
+              "baseline_id": "agent_attention_llm_tuned",
+              "success": true,
+              "model_calls": 2,
+              "total_tokens": 970,
+              "latency_ms": 2746
+            }
+          ]
+        },
+        {
+          "task_id": "phase1_code_env_flag_001",
+          "success": true,
+          "final_success_label": "pass",
+          "halt_stage": "moa_style_llm_agent",
+          "stages_run": 3,
+          "escalated": true,
+          "rescued_by": "moa_style_llm_agent",
+          "model_calls": 7,
+          "total_tokens": 3069,
+          "latency_ms": 6947,
+          "cost_normalized_success": 0.142857,
+          "stage_details": [
+            {
+              "baseline_id": "single_react_llm_agent",
+              "success": false,
+              "model_calls": 3,
+              "total_tokens": 1331,
+              "latency_ms": 2627
+            },
+            {
+              "baseline_id": "agent_attention_llm_tuned",
+              "success": false,
+              "model_calls": 2,
+              "total_tokens": 925,
+              "latency_ms": 2506
+            },
+            {
+              "baseline_id": "moa_style_llm_agent",
+              "success": true,
+              "model_calls": 2,
+              "total_tokens": 813,
+              "latency_ms": 1814
+            }
+          ]
+        },
+        {
+          "task_id": "phase1_code_flatten_001",
+          "success": true,
+          "final_success_label": "pass",
+          "halt_stage": "single_react_llm_agent",
+          "stages_run": 1,
+          "escalated": false,
+          "rescued_by": null,
+          "model_calls": 1,
+          "total_tokens": 527,
+          "latency_ms": 1180,
+          "cost_normalized_success": 1.0,
+          "stage_details": [
+            {
+              "baseline_id": "single_react_llm_agent",
+              "success": true,
+              "model_calls": 1,
+              "total_tokens": 527,
+              "latency_ms": 1180
+            }
+          ]
+        },
+        {
+          "task_id": "phase1_code_hash_001",
+          "success": true,
+          "final_success_label": "pass",
+          "halt_stage": "single_react_llm_agent",
+          "stages_run": 1,
+          "escalated": false,
+          "rescued_by": null,
+          "model_calls": 1,
+          "total_tokens": 403,
+          "latency_ms": 749,
+          "cost_normalized_success": 1.0,
+          "stage_details": [
+            {
+              "baseline_id": "single_react_llm_agent",
+              "success": true,
+              "model_calls": 1,
+              "total_tokens": 403,
+              "latency_ms": 749
+            }
+          ]
+        },
+        {
+          "task_id": "phase1_code_import_001",
+          "success": true,
+          "final_success_label": "pass",
+          "halt_stage": "single_react_llm_agent",
+          "stages_run": 1,
+          "escalated": false,
+          "rescued_by": null,
+          "model_calls": 1,
+          "total_tokens": 450,
+          "latency_ms": 794,
+          "cost_normalized_success": 1.0,
+          "stage_details": [
+            {
+              "baseline_id": "single_react_llm_agent",
+              "success": true,
+              "model_calls": 1,
+              "total_tokens": 450,
+              "latency_ms": 794
+            }
+          ]
+        },
+        {
+          "task_id": "phase1_code_json_001",
+          "success": true,
+          "final_success_label": "pass",
+          "halt_stage": "single_react_llm_agent",
+          "stages_run": 1,
+          "escalated": false,
+          "rescued_by": null,
+          "model_calls": 1,
+          "total_tokens": 448,
+          "latency_ms": 1129,
+          "cost_normalized_success": 1.0,
+          "stage_details": [
+            {
+              "baseline_id": "single_react_llm_agent",
+              "success": true,
+              "model_calls": 1,
+              "total_tokens": 448,
+              "latency_ms": 1129
+            }
+          ]
+        },
+        {
+          "task_id": "phase1_code_mean_001",
+          "success": true,
+          "final_success_label": "pass",
+          "halt_stage": "single_react_llm_agent",
+          "stages_run": 1,
+          "escalated": false,
+          "rescued_by": null,
+          "model_calls": 1,
+          "total_tokens": 445,
+          "latency_ms": 959,
+          "cost_normalized_success": 1.0,
+          "stage_details": [
+            {
+              "baseline_id": "single_react_llm_agent",
+              "success": true,
+              "model_calls": 1,
+              "total_tokens": 445,
+              "latency_ms": 959
+            }
+          ]
+        },
+        {
+          "task_id": "phase1_code_merge_001",
+          "success": true,
+          "final_success_label": "pass",
+          "halt_stage": "single_react_llm_agent",
+          "stages_run": 1,
+          "escalated": false,
+          "rescued_by": null,
+          "model_calls": 1,
+          "total_tokens": 572,
+          "latency_ms": 3748,
+          "cost_normalized_success": 1.0,
+          "stage_details": [
+            {
+              "baseline_id": "single_react_llm_agent",
+              "success": true,
+              "model_calls": 1,
+              "total_tokens": 572,
+              "latency_ms": 3748
+            }
+          ]
+        },
+        {
+          "task_id": "phase1_code_palindrome_001",
+          "success": true,
+          "final_success_label": "pass",
+          "halt_stage": "single_react_llm_agent",
+          "stages_run": 1,
+          "escalated": false,
+          "rescued_by": null,
+          "model_calls": 1,
+          "total_tokens": 409,
+          "latency_ms": 1051,
+          "cost_normalized_success": 1.0,
+          "stage_details": [
+            {
+              "baseline_id": "single_react_llm_agent",
+              "success": true,
+              "model_calls": 1,
+              "total_tokens": 409,
+              "latency_ms": 1051
+            }
+          ]
+        },
+        {
+          "task_id": "phase1_code_parse_int_001",
+          "success": true,
+          "final_success_label": "pass",
+          "halt_stage": "single_react_llm_agent",
+          "stages_run": 1,
+          "escalated": false,
+          "rescued_by": null,
+          "model_calls": 1,
+          "total_tokens": 455,
+          "latency_ms": 3603,
+          "cost_normalized_success": 1.0,
+          "stage_details": [
+            {
+              "baseline_id": "single_react_llm_agent",
+              "success": true,
+              "model_calls": 1,
+              "total_tokens": 455,
+              "latency_ms": 3603
+            }
+          ]
+        },
+        {
+          "task_id": "phase1_code_pkg_helper_001",
+          "success": true,
+          "final_success_label": "pass",
+          "halt_stage": "single_react_llm_agent",
+          "stages_run": 1,
+          "escalated": false,
+          "rescued_by": null,
+          "model_calls": 3,
+          "total_tokens": 1457,
+          "latency_ms": 2339,
+          "cost_normalized_success": 0.333333,
+          "stage_details": [
+            {
+              "baseline_id": "single_react_llm_agent",
+              "success": true,
+              "model_calls": 3,
+              "total_tokens": 1457,
+              "latency_ms": 2339
+            }
+          ]
+        },
+        {
+          "task_id": "phase1_code_refactor_001",
+          "success": true,
+          "final_success_label": "pass",
+          "halt_stage": "single_react_llm_agent",
+          "stages_run": 1,
+          "escalated": false,
+          "rescued_by": null,
+          "model_calls": 1,
+          "total_tokens": 517,
+          "latency_ms": 775,
+          "cost_normalized_success": 1.0,
+          "stage_details": [
+            {
+              "baseline_id": "single_react_llm_agent",
+              "success": true,
+              "model_calls": 1,
+              "total_tokens": 517,
+              "latency_ms": 775
+            }
+          ]
+        },
+        {
+          "task_id": "phase1_code_sanitize_001",
+          "success": true,
+          "final_success_label": "pass",
+          "halt_stage": "single_react_llm_agent",
+          "stages_run": 1,
+          "escalated": false,
+          "rescued_by": null,
+          "model_calls": 1,
+          "total_tokens": 449,
+          "latency_ms": 783,
+          "cost_normalized_success": 1.0,
+          "stage_details": [
+            {
+              "baseline_id": "single_react_llm_agent",
+              "success": true,
+              "model_calls": 1,
+              "total_tokens": 449,
+              "latency_ms": 783
+            }
+          ]
+        },
+        {
+          "task_id": "phase1_code_slugify_001",
+          "success": true,
+          "final_success_label": "pass",
+          "halt_stage": "single_react_llm_agent",
+          "stages_run": 1,
+          "escalated": false,
+          "rescued_by": null,
+          "model_calls": 1,
+          "total_tokens": 424,
+          "latency_ms": 1410,
+          "cost_normalized_success": 1.0,
+          "stage_details": [
+            {
+              "baseline_id": "single_react_llm_agent",
+              "success": true,
+              "model_calls": 1,
+              "total_tokens": 424,
+              "latency_ms": 1410
+            }
+          ]
+        },
+        {
+          "task_id": "phase1_code_strip_tags_001",
+          "success": true,
+          "final_success_label": "pass",
+          "halt_stage": "single_react_llm_agent",
+          "stages_run": 1,
+          "escalated": false,
+          "rescued_by": null,
+          "model_calls": 1,
+          "total_tokens": 440,
+          "latency_ms": 672,
+          "cost_normalized_success": 1.0,
+          "stage_details": [
+            {
+              "baseline_id": "single_react_llm_agent",
+              "success": true,
+              "model_calls": 1,
+              "total_tokens": 440,
+              "latency_ms": 672
+            }
+          ]
+        },
+        {
+          "task_id": "phase1_code_trim_lines_001",
+          "success": true,
+          "final_success_label": "pass",
+          "halt_stage": "single_react_llm_agent",
+          "stages_run": 1,
+          "escalated": false,
+          "rescued_by": null,
+          "model_calls": 3,
+          "total_tokens": 1511,
+          "latency_ms": 4331,
+          "cost_normalized_success": 0.333333,
+          "stage_details": [
+            {
+              "baseline_id": "single_react_llm_agent",
+              "success": true,
+              "model_calls": 3,
+              "total_tokens": 1511,
+              "latency_ms": 4331
+            }
+          ]
+        },
+        {
+          "task_id": "phase1_code_url_001",
+          "success": true,
+          "final_success_label": "pass",
+          "halt_stage": "single_react_llm_agent",
+          "stages_run": 1,
+          "escalated": false,
+          "rescued_by": null,
+          "model_calls": 1,
+          "total_tokens": 496,
+          "latency_ms": 998,
+          "cost_normalized_success": 1.0,
+          "stage_details": [
+            {
+              "baseline_id": "single_react_llm_agent",
+              "success": true,
+              "model_calls": 1,
+              "total_tokens": 496,
+              "latency_ms": 998
+            }
+          ]
+        }
+      ]
+    },
+    "react_moa": {
+      "policy_id": "react_moa",
+      "policy_label": "direct → MoA rescue",
+      "stages": [
+        "single_react_llm_agent",
+        "moa_style_llm_agent"
+      ],
+      "baseline_id": "cascade_react_moa_llm",
+      "tasks": 26,
+      "correct": 26,
+      "accuracy": 1.0,
+      "mean_model_calls": 1.4615,
+      "mean_total_tokens": 694.27,
+      "mean_latency_ms": 1802.85,
+      "cost_normalized_success": 0.6842,
+      "escalation_rate": 0.1154,
+      "escalation_success_gain": 0.1154,
+      "rescued_task_count": 3,
+      "cost_per_rescued_task": 2.0,
+      "mean_extra_calls_on_escalated": 2.0,
+      "per_task": [
+        {
+          "task_id": "phase0_seed_code_fix_001",
+          "success": true,
+          "final_success_label": "pass",
+          "halt_stage": "single_react_llm_agent",
+          "stages_run": 1,
+          "escalated": false,
+          "rescued_by": null,
+          "model_calls": 1,
+          "total_tokens": 390,
+          "latency_ms": 954,
+          "cost_normalized_success": 1.0,
+          "stage_details": [
+            {
+              "baseline_id": "single_react_llm_agent",
+              "success": true,
+              "model_calls": 1,
+              "total_tokens": 390,
+              "latency_ms": 954
+            }
+          ]
+        },
+        {
+          "task_id": "phase0_seed_negative_memory_001",
+          "success": true,
+          "final_success_label": "pass",
+          "halt_stage": "single_react_llm_agent",
+          "stages_run": 1,
+          "escalated": false,
+          "rescued_by": null,
+          "model_calls": 1,
+          "total_tokens": 392,
+          "latency_ms": 650,
+          "cost_normalized_success": 1.0,
+          "stage_details": [
+            {
+              "baseline_id": "single_react_llm_agent",
+              "success": true,
+              "model_calls": 1,
+              "total_tokens": 392,
+              "latency_ms": 650
+            }
+          ]
+        },
+        {
+          "task_id": "phase1_code_binary_search_001",
+          "success": true,
+          "final_success_label": "pass",
+          "halt_stage": "single_react_llm_agent",
+          "stages_run": 1,
+          "escalated": false,
+          "rescued_by": null,
+          "model_calls": 1,
+          "total_tokens": 575,
+          "latency_ms": 2692,
+          "cost_normalized_success": 1.0,
+          "stage_details": [
+            {
+              "baseline_id": "single_react_llm_agent",
+              "success": true,
+              "model_calls": 1,
+              "total_tokens": 575,
+              "latency_ms": 2692
+            }
+          ]
+        },
+        {
+          "task_id": "phase1_code_clamp_001",
+          "success": true,
+          "final_success_label": "pass",
+          "halt_stage": "single_react_llm_agent",
+          "stages_run": 1,
+          "escalated": false,
+          "rescued_by": null,
+          "model_calls": 1,
+          "total_tokens": 441,
+          "latency_ms": 693,
+          "cost_normalized_success": 1.0,
+          "stage_details": [
+            {
+              "baseline_id": "single_react_llm_agent",
+              "success": true,
+              "model_calls": 1,
+              "total_tokens": 441,
+              "latency_ms": 693
+            }
+          ]
+        },
+        {
+          "task_id": "phase1_code_config_001",
+          "success": true,
+          "final_success_label": "pass",
+          "halt_stage": "single_react_llm_agent",
+          "stages_run": 1,
+          "escalated": false,
+          "rescued_by": null,
+          "model_calls": 1,
+          "total_tokens": 498,
+          "latency_ms": 1211,
+          "cost_normalized_success": 1.0,
+          "stage_details": [
+            {
+              "baseline_id": "single_react_llm_agent",
+              "success": true,
+              "model_calls": 1,
+              "total_tokens": 498,
+              "latency_ms": 1211
+            }
+          ]
+        },
+        {
+          "task_id": "phase1_code_config_get_001",
+          "success": true,
+          "final_success_label": "pass",
+          "halt_stage": "single_react_llm_agent",
+          "stages_run": 1,
+          "escalated": false,
+          "rescued_by": null,
+          "model_calls": 1,
+          "total_tokens": 441,
+          "latency_ms": 979,
+          "cost_normalized_success": 1.0,
+          "stage_details": [
+            {
+              "baseline_id": "single_react_llm_agent",
+              "success": true,
+              "model_calls": 1,
+              "total_tokens": 441,
+              "latency_ms": 979
+            }
+          ]
+        },
+        {
+          "task_id": "phase1_code_csv_001",
+          "success": true,
+          "final_success_label": "pass",
+          "halt_stage": "moa_style_llm_agent",
+          "stages_run": 2,
+          "escalated": true,
+          "rescued_by": "moa_style_llm_agent",
+          "model_calls": 3,
+          "total_tokens": 1941,
+          "latency_ms": 5822,
+          "cost_normalized_success": 0.333333,
+          "stage_details": [
+            {
+              "baseline_id": "single_react_llm_agent",
+              "success": false,
+              "model_calls": 1,
+              "total_tokens": 698,
+              "latency_ms": 2208
+            },
+            {
+              "baseline_id": "moa_style_llm_agent",
+              "success": true,
+              "model_calls": 2,
+              "total_tokens": 1243,
+              "latency_ms": 3614
+            }
+          ]
+        },
+        {
+          "task_id": "phase1_code_doc_001",
+          "success": true,
+          "final_success_label": "pass",
+          "halt_stage": "single_react_llm_agent",
+          "stages_run": 1,
+          "escalated": false,
+          "rescued_by": null,
+          "model_calls": 1,
+          "total_tokens": 413,
+          "latency_ms": 549,
+          "cost_normalized_success": 1.0,
+          "stage_details": [
+            {
+              "baseline_id": "single_react_llm_agent",
+              "success": true,
+              "model_calls": 1,
+              "total_tokens": 413,
+              "latency_ms": 549
+            }
+          ]
+        },
+        {
+          "task_id": "phase1_code_edge_001",
+          "success": true,
+          "final_success_label": "pass",
+          "halt_stage": "single_react_llm_agent",
+          "stages_run": 1,
+          "escalated": false,
+          "rescued_by": null,
+          "model_calls": 1,
+          "total_tokens": 515,
+          "latency_ms": 1006,
+          "cost_normalized_success": 1.0,
+          "stage_details": [
+            {
+              "baseline_id": "single_react_llm_agent",
+              "success": true,
+              "model_calls": 1,
+              "total_tokens": 515,
+              "latency_ms": 1006
+            }
+          ]
+        },
+        {
+          "task_id": "phase1_code_email_001",
+          "success": true,
+          "final_success_label": "pass",
+          "halt_stage": "moa_style_llm_agent",
+          "stages_run": 2,
+          "escalated": true,
+          "rescued_by": "moa_style_llm_agent",
+          "model_calls": 3,
+          "total_tokens": 1298,
+          "latency_ms": 3356,
+          "cost_normalized_success": 0.333333,
+          "stage_details": [
+            {
+              "baseline_id": "single_react_llm_agent",
+              "success": false,
+              "model_calls": 1,
+              "total_tokens": 435,
+              "latency_ms": 1237
+            },
+            {
+              "baseline_id": "moa_style_llm_agent",
+              "success": true,
+              "model_calls": 2,
+              "total_tokens": 863,
+              "latency_ms": 2119
+            }
+          ]
+        },
+        {
+          "task_id": "phase1_code_env_flag_001",
+          "success": true,
+          "final_success_label": "pass",
+          "halt_stage": "moa_style_llm_agent",
+          "stages_run": 2,
+          "escalated": true,
+          "rescued_by": "moa_style_llm_agent",
+          "model_calls": 5,
+          "total_tokens": 2144,
+          "latency_ms": 4441,
+          "cost_normalized_success": 0.2,
+          "stage_details": [
+            {
+              "baseline_id": "single_react_llm_agent",
+              "success": false,
+              "model_calls": 3,
+              "total_tokens": 1331,
+              "latency_ms": 2627
+            },
+            {
+              "baseline_id": "moa_style_llm_agent",
+              "success": true,
+              "model_calls": 2,
+              "total_tokens": 813,
+              "latency_ms": 1814
+            }
+          ]
+        },
+        {
+          "task_id": "phase1_code_flatten_001",
+          "success": true,
+          "final_success_label": "pass",
+          "halt_stage": "single_react_llm_agent",
+          "stages_run": 1,
+          "escalated": false,
+          "rescued_by": null,
+          "model_calls": 1,
+          "total_tokens": 527,
+          "latency_ms": 1180,
+          "cost_normalized_success": 1.0,
+          "stage_details": [
+            {
+              "baseline_id": "single_react_llm_agent",
+              "success": true,
+              "model_calls": 1,
+              "total_tokens": 527,
+              "latency_ms": 1180
+            }
+          ]
+        },
+        {
+          "task_id": "phase1_code_hash_001",
+          "success": true,
+          "final_success_label": "pass",
+          "halt_stage": "single_react_llm_agent",
+          "stages_run": 1,
+          "escalated": false,
+          "rescued_by": null,
+          "model_calls": 1,
+          "total_tokens": 403,
+          "latency_ms": 749,
+          "cost_normalized_success": 1.0,
+          "stage_details": [
+            {
+              "baseline_id": "single_react_llm_agent",
+              "success": true,
+              "model_calls": 1,
+              "total_tokens": 403,
+              "latency_ms": 749
+            }
+          ]
+        },
+        {
+          "task_id": "phase1_code_import_001",
+          "success": true,
+          "final_success_label": "pass",
+          "halt_stage": "single_react_llm_agent",
+          "stages_run": 1,
+          "escalated": false,
+          "rescued_by": null,
+          "model_calls": 1,
+          "total_tokens": 450,
+          "latency_ms": 794,
+          "cost_normalized_success": 1.0,
+          "stage_details": [
+            {
+              "baseline_id": "single_react_llm_agent",
+              "success": true,
+              "model_calls": 1,
+              "total_tokens": 450,
+              "latency_ms": 794
+            }
+          ]
+        },
+        {
+          "task_id": "phase1_code_json_001",
+          "success": true,
+          "final_success_label": "pass",
+          "halt_stage": "single_react_llm_agent",
+          "stages_run": 1,
+          "escalated": false,
+          "rescued_by": null,
+          "model_calls": 1,
+          "total_tokens": 448,
+          "latency_ms": 1129,
+          "cost_normalized_success": 1.0,
+          "stage_details": [
+            {
+              "baseline_id": "single_react_llm_agent",
+              "success": true,
+              "model_calls": 1,
+              "total_tokens": 448,
+              "latency_ms": 1129
+            }
+          ]
+        },
+        {
+          "task_id": "phase1_code_mean_001",
+          "success": true,
+          "final_success_label": "pass",
+          "halt_stage": "single_react_llm_agent",
+          "stages_run": 1,
+          "escalated": false,
+          "rescued_by": null,
+          "model_calls": 1,
+          "total_tokens": 445,
+          "latency_ms": 959,
+          "cost_normalized_success": 1.0,
+          "stage_details": [
+            {
+              "baseline_id": "single_react_llm_agent",
+              "success": true,
+              "model_calls": 1,
+              "total_tokens": 445,
+              "latency_ms": 959
+            }
+          ]
+        },
+        {
+          "task_id": "phase1_code_merge_001",
+          "success": true,
+          "final_success_label": "pass",
+          "halt_stage": "single_react_llm_agent",
+          "stages_run": 1,
+          "escalated": false,
+          "rescued_by": null,
+          "model_calls": 1,
+          "total_tokens": 572,
+          "latency_ms": 3748,
+          "cost_normalized_success": 1.0,
+          "stage_details": [
+            {
+              "baseline_id": "single_react_llm_agent",
+              "success": true,
+              "model_calls": 1,
+              "total_tokens": 572,
+              "latency_ms": 3748
+            }
+          ]
+        },
+        {
+          "task_id": "phase1_code_palindrome_001",
+          "success": true,
+          "final_success_label": "pass",
+          "halt_stage": "single_react_llm_agent",
+          "stages_run": 1,
+          "escalated": false,
+          "rescued_by": null,
+          "model_calls": 1,
+          "total_tokens": 409,
+          "latency_ms": 1051,
+          "cost_normalized_success": 1.0,
+          "stage_details": [
+            {
+              "baseline_id": "single_react_llm_agent",
+              "success": true,
+              "model_calls": 1,
+              "total_tokens": 409,
+              "latency_ms": 1051
+            }
+          ]
+        },
+        {
+          "task_id": "phase1_code_parse_int_001",
+          "success": true,
+          "final_success_label": "pass",
+          "halt_stage": "single_react_llm_agent",
+          "stages_run": 1,
+          "escalated": false,
+          "rescued_by": null,
+          "model_calls": 1,
+          "total_tokens": 455,
+          "latency_ms": 3603,
+          "cost_normalized_success": 1.0,
+          "stage_details": [
+            {
+              "baseline_id": "single_react_llm_agent",
+              "success": true,
+              "model_calls": 1,
+              "total_tokens": 455,
+              "latency_ms": 3603
+            }
+          ]
+        },
+        {
+          "task_id": "phase1_code_pkg_helper_001",
+          "success": true,
+          "final_success_label": "pass",
+          "halt_stage": "single_react_llm_agent",
+          "stages_run": 1,
+          "escalated": false,
+          "rescued_by": null,
+          "model_calls": 3,
+          "total_tokens": 1457,
+          "latency_ms": 2339,
+          "cost_normalized_success": 0.333333,
+          "stage_details": [
+            {
+              "baseline_id": "single_react_llm_agent",
+              "success": true,
+              "model_calls": 3,
+              "total_tokens": 1457,
+              "latency_ms": 2339
+            }
+          ]
+        },
+        {
+          "task_id": "phase1_code_refactor_001",
+          "success": true,
+          "final_success_label": "pass",
+          "halt_stage": "single_react_llm_agent",
+          "stages_run": 1,
+          "escalated": false,
+          "rescued_by": null,
+          "model_calls": 1,
+          "total_tokens": 517,
+          "latency_ms": 775,
+          "cost_normalized_success": 1.0,
+          "stage_details": [
+            {
+              "baseline_id": "single_react_llm_agent",
+              "success": true,
+              "model_calls": 1,
+              "total_tokens": 517,
+              "latency_ms": 775
+            }
+          ]
+        },
+        {
+          "task_id": "phase1_code_sanitize_001",
+          "success": true,
+          "final_success_label": "pass",
+          "halt_stage": "single_react_llm_agent",
+          "stages_run": 1,
+          "escalated": false,
+          "rescued_by": null,
+          "model_calls": 1,
+          "total_tokens": 449,
+          "latency_ms": 783,
+          "cost_normalized_success": 1.0,
+          "stage_details": [
+            {
+              "baseline_id": "single_react_llm_agent",
+              "success": true,
+              "model_calls": 1,
+              "total_tokens": 449,
+              "latency_ms": 783
+            }
+          ]
+        },
+        {
+          "task_id": "phase1_code_slugify_001",
+          "success": true,
+          "final_success_label": "pass",
+          "halt_stage": "single_react_llm_agent",
+          "stages_run": 1,
+          "escalated": false,
+          "rescued_by": null,
+          "model_calls": 1,
+          "total_tokens": 424,
+          "latency_ms": 1410,
+          "cost_normalized_success": 1.0,
+          "stage_details": [
+            {
+              "baseline_id": "single_react_llm_agent",
+              "success": true,
+              "model_calls": 1,
+              "total_tokens": 424,
+              "latency_ms": 1410
+            }
+          ]
+        },
+        {
+          "task_id": "phase1_code_strip_tags_001",
+          "success": true,
+          "final_success_label": "pass",
+          "halt_stage": "single_react_llm_agent",
+          "stages_run": 1,
+          "escalated": false,
+          "rescued_by": null,
+          "model_calls": 1,
+          "total_tokens": 440,
+          "latency_ms": 672,
+          "cost_normalized_success": 1.0,
+          "stage_details": [
+            {
+              "baseline_id": "single_react_llm_agent",
+              "success": true,
+              "model_calls": 1,
+              "total_tokens": 440,
+              "latency_ms": 672
+            }
+          ]
+        },
+        {
+          "task_id": "phase1_code_trim_lines_001",
+          "success": true,
+          "final_success_label": "pass",
+          "halt_stage": "single_react_llm_agent",
+          "stages_run": 1,
+          "escalated": false,
+          "rescued_by": null,
+          "model_calls": 3,
+          "total_tokens": 1511,
+          "latency_ms": 4331,
+          "cost_normalized_success": 0.333333,
+          "stage_details": [
+            {
+              "baseline_id": "single_react_llm_agent",
+              "success": true,
+              "model_calls": 3,
+              "total_tokens": 1511,
+              "latency_ms": 4331
+            }
+          ]
+        },
+        {
+          "task_id": "phase1_code_url_001",
+          "success": true,
+          "final_success_label": "pass",
+          "halt_stage": "single_react_llm_agent",
+          "stages_run": 1,
+          "escalated": false,
+          "rescued_by": null,
+          "model_calls": 1,
+          "total_tokens": 496,
+          "latency_ms": 998,
+          "cost_normalized_success": 1.0,
+          "stage_details": [
+            {
+              "baseline_id": "single_react_llm_agent",
+              "success": true,
+              "model_calls": 1,
+              "total_tokens": 496,
+              "latency_ms": 998
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "primary_policy_id": "react_aa_moa",
+  "comparison_vs_baselines": {
+    "accuracy_delta_vs_react": 0.1154,
+    "accuracy_delta_vs_moa": 0.0385,
+    "accuracy_delta_vs_aa": 0.1538,
+    "calls_delta_vs_react": 0.3085,
+    "calls_delta_vs_moa": -0.5415,
+    "calls_delta_vs_aa": -0.4615,
+    "cost_norm_delta_vs_aa": 0.2269
+  },
+  "evidence_outcome": "supports_direction",
+  "escalation_trigger_table": [
+    {
+      "stage": "1 → 2",
+      "from": "single_react_llm_agent",
+      "to": "agent_attention_llm_tuned",
+      "trigger": "executable_pytest end-task label == fail",
+      "future": "verifier confidence < threshold OR repeated patch apply failure"
+    },
+    {
+      "stage": "2 → 3",
+      "from": "agent_attention_llm_tuned",
+      "to": "moa_style_llm_agent",
+      "trigger": "executable_pytest end-task label == fail after AA attempt",
+      "future": "low aggregator confidence OR critic failure signal"
+    },
+    {
+      "stage": "1 → 2 (react_moa only)",
+      "from": "single_react_llm_agent",
+      "to": "moa_style_llm_agent",
+      "trigger": "executable_pytest end-task label == fail",
+      "future": "same as react_aa_moa stage-1 trigger"
+    }
+  ]
+}

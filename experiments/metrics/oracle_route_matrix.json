@@ -1,0 +1,1599 @@
+{
+  "scope": "Oracle route matrix and route-opportunity audit (Brief A).",
+  "source_summary": "experiments/metrics/code_full_matrix_summary.json",
+  "suite": "code_all",
+  "tasks": 26,
+  "model": "Qwen3-30B-A3B-Instruct-2507",
+  "provider": "openai",
+  "baselines": [
+    "agent_attention_llm_tuned",
+    "fixed_workflow_llm_agent",
+    "moa_style_llm_agent",
+    "retrieval_memory_llm_agent",
+    "single_react_llm_agent"
+  ],
+  "aggregate": {
+    "oracle_success": 1.0,
+    "oracle_cost_normalized_success": 0.961538,
+    "oracle_mean_model_calls_at_success": 1.0769,
+    "winner_entropy_cheapest_successful": 1.505313,
+    "winner_entropy_best_reward": 1.815072,
+    "max_entropy_baselines": 2.321928,
+    "cheapest_successful_winner_counts": {
+      "fixed_workflow_llm_agent": 11,
+      "moa_style_llm_agent": 2,
+      "retrieval_memory_llm_agent": 1,
+      "single_react_llm_agent": 12
+    },
+    "best_reward_winner_counts": {
+      "agent_attention_llm_tuned": 1,
+      "fixed_workflow_llm_agent": 4,
+      "moa_style_llm_agent": 1,
+      "retrieval_memory_llm_agent": 8,
+      "single_react_llm_agent": 12
+    },
+    "unique_solo_success_counts": {
+      "moa_style_llm_agent": 1
+    },
+    "best_single_baseline_by_success": "moa_style_llm_agent",
+    "best_single_success_rate": 0.961538,
+    "best_single_baseline_by_cost_norm": "single_react_llm_agent",
+    "best_single_cost_normalized_success": 0.7187,
+    "oracle_vs_best_single_success_gap": 0.038462,
+    "route_opportunity_gap": 0.242838,
+    "dominant_cheapest_baseline": "single_react_llm_agent",
+    "dominant_cheapest_share": 0.461538,
+    "mean_regret_vs_oracle_reward": {
+      "agent_attention_llm_tuned": 0.283899,
+      "fixed_workflow_llm_agent": 0.364201,
+      "moa_style_llm_agent": 0.18222,
+      "retrieval_memory_llm_agent": 0.194492,
+      "single_react_llm_agent": 0.139622
+    },
+    "single_policy_summary": {
+      "agent_attention_llm_tuned": {
+        "accuracy": 0.8461538461538461,
+        "correct": 22,
+        "mean_model_calls": 2.0,
+        "cost_normalized_success": 0.4231
+      },
+      "fixed_workflow_llm_agent": {
+        "accuracy": 0.6538461538461539,
+        "correct": 17,
+        "mean_model_calls": 1.19,
+        "cost_normalized_success": 0.5484
+      },
+      "moa_style_llm_agent": {
+        "accuracy": 0.9615384615384616,
+        "correct": 25,
+        "mean_model_calls": 2.08,
+        "cost_normalized_success": 0.463
+      },
+      "retrieval_memory_llm_agent": {
+        "accuracy": 0.8461538461538461,
+        "correct": 22,
+        "mean_model_calls": 1.35,
+        "cost_normalized_success": 0.6286
+      },
+      "single_react_llm_agent": {
+        "accuracy": 0.8846153846153846,
+        "correct": 23,
+        "mean_model_calls": 1.23,
+        "cost_normalized_success": 0.7187
+      }
+    },
+    "evidence_outcome": "supports_direction"
+  },
+  "per_task": [
+    {
+      "task_id": "phase0_seed_code_fix_001",
+      "any_route_success": true,
+      "oracle_success": 1,
+      "cheapest_successful_route": "single_react_llm_agent",
+      "cheapest_successful_model_calls": 1,
+      "best_reward_route": "retrieval_memory_llm_agent",
+      "oracle_route_reward": 0.88403,
+      "oracle_cost_normalized_success": 1.0,
+      "solo_success_baselines": [],
+      "baselines": {
+        "agent_attention_llm_tuned": {
+          "success": true,
+          "model_calls": 2,
+          "total_tokens": 885,
+          "latency_ms": 4961,
+          "route_reward": 0.69653,
+          "cost_normalized_success": 0.5,
+          "regret_vs_oracle_reward": 0.1875
+        },
+        "fixed_workflow_llm_agent": {
+          "success": true,
+          "model_calls": 3,
+          "total_tokens": 1215,
+          "latency_ms": 2240,
+          "route_reward": 0.65445,
+          "cost_normalized_success": 0.333333,
+          "regret_vs_oracle_reward": 0.22958
+        },
+        "moa_style_llm_agent": {
+          "success": true,
+          "model_calls": 2,
+          "total_tokens": 772,
+          "latency_ms": 1658,
+          "route_reward": 0.76824,
+          "cost_normalized_success": 0.5,
+          "regret_vs_oracle_reward": 0.11579
+        },
+        "retrieval_memory_llm_agent": {
+          "success": true,
+          "model_calls": 1,
+          "total_tokens": 409,
+          "latency_ms": 776,
+          "route_reward": 0.88403,
+          "cost_normalized_success": 1.0,
+          "regret_vs_oracle_reward": 0.0
+        },
+        "single_react_llm_agent": {
+          "success": true,
+          "model_calls": 1,
+          "total_tokens": 390,
+          "latency_ms": 954,
+          "route_reward": 0.88142,
+          "cost_normalized_success": 1.0,
+          "regret_vs_oracle_reward": 0.00261
+        }
+      }
+    },
+    {
+      "task_id": "phase0_seed_negative_memory_001",
+      "any_route_success": true,
+      "oracle_success": 1,
+      "cheapest_successful_route": "fixed_workflow_llm_agent",
+      "cheapest_successful_model_calls": 1,
+      "best_reward_route": "fixed_workflow_llm_agent",
+      "oracle_route_reward": 0.88749,
+      "oracle_cost_normalized_success": 1.0,
+      "solo_success_baselines": [],
+      "baselines": {
+        "agent_attention_llm_tuned": {
+          "success": true,
+          "model_calls": 2,
+          "total_tokens": 889,
+          "latency_ms": 1758,
+          "route_reward": 0.76039,
+          "cost_normalized_success": 0.5,
+          "regret_vs_oracle_reward": 0.1271
+        },
+        "fixed_workflow_llm_agent": {
+          "success": true,
+          "model_calls": 1,
+          "total_tokens": 389,
+          "latency_ms": 653,
+          "route_reward": 0.88749,
+          "cost_normalized_success": 1.0,
+          "regret_vs_oracle_reward": 0.0
+        },
+        "moa_style_llm_agent": {
+          "success": true,
+          "model_calls": 3,
+          "total_tokens": 1146,
+          "latency_ms": 2494,
+          "route_reward": 0.65282,
+          "cost_normalized_success": 0.333333,
+          "regret_vs_oracle_reward": 0.23467
+        },
+        "retrieval_memory_llm_agent": {
+          "success": true,
+          "model_calls": 1,
+          "total_tokens": 411,
+          "latency_ms": 698,
+          "route_reward": 0.88549,
+          "cost_normalized_success": 1.0,
+          "regret_vs_oracle_reward": 0.002
+        },
+        "single_react_llm_agent": {
+          "success": true,
+          "model_calls": 1,
+          "total_tokens": 392,
+          "latency_ms": 650,
+          "route_reward": 0.8874,
+          "cost_normalized_success": 1.0,
+          "regret_vs_oracle_reward": 9e-05
+        }
+      }
+    },
+    {
+      "task_id": "phase1_code_binary_search_001",
+      "any_route_success": true,
+      "oracle_success": 1,
+      "cheapest_successful_route": "single_react_llm_agent",
+      "cheapest_successful_model_calls": 1,
+      "best_reward_route": "retrieval_memory_llm_agent",
+      "oracle_route_reward": 0.85722,
+      "oracle_cost_normalized_success": 1.0,
+      "solo_success_baselines": [],
+      "baselines": {
+        "agent_attention_llm_tuned": {
+          "success": true,
+          "model_calls": 2,
+          "total_tokens": 1267,
+          "latency_ms": 3018,
+          "route_reward": 0.71629,
+          "cost_normalized_success": 0.5,
+          "regret_vs_oracle_reward": 0.14093
+        },
+        "fixed_workflow_llm_agent": {
+          "success": true,
+          "model_calls": 1,
+          "total_tokens": 667,
+          "latency_ms": 2102,
+          "route_reward": 0.84461,
+          "cost_normalized_success": 1.0,
+          "regret_vs_oracle_reward": 0.01261
+        },
+        "moa_style_llm_agent": {
+          "success": true,
+          "model_calls": 2,
+          "total_tokens": 1147,
+          "latency_ms": 3436,
+          "route_reward": 0.71393,
+          "cost_normalized_success": 0.5,
+          "regret_vs_oracle_reward": 0.14329
+        },
+        "retrieval_memory_llm_agent": {
+          "success": true,
+          "model_calls": 1,
+          "total_tokens": 594,
+          "latency_ms": 1654,
+          "route_reward": 0.85722,
+          "cost_normalized_success": 1.0,
+          "regret_vs_oracle_reward": 0.0
+        },
+        "single_react_llm_agent": {
+          "success": true,
+          "model_calls": 1,
+          "total_tokens": 575,
+          "latency_ms": 2692,
+          "route_reward": 0.83741,
+          "cost_normalized_success": 1.0,
+          "regret_vs_oracle_reward": 0.01981
+        }
+      }
+    },
+    {
+      "task_id": "phase1_code_clamp_001",
+      "any_route_success": true,
+      "oracle_success": 1,
+      "cheapest_successful_route": "single_react_llm_agent",
+      "cheapest_successful_model_calls": 1,
+      "best_reward_route": "single_react_llm_agent",
+      "oracle_route_reward": 0.88409,
+      "oracle_cost_normalized_success": 1.0,
+      "solo_success_baselines": [],
+      "baselines": {
+        "agent_attention_llm_tuned": {
+          "success": true,
+          "model_calls": 2,
+          "total_tokens": 982,
+          "latency_ms": 4045,
+          "route_reward": 0.71,
+          "cost_normalized_success": 0.5,
+          "regret_vs_oracle_reward": 0.17409
+        },
+        "fixed_workflow_llm_agent": {
+          "success": true,
+          "model_calls": 2,
+          "total_tokens": 924,
+          "latency_ms": 2065,
+          "route_reward": 0.7525,
+          "cost_normalized_success": 0.5,
+          "regret_vs_oracle_reward": 0.13159
+        },
+        "moa_style_llm_agent": {
+          "success": true,
+          "model_calls": 2,
+          "total_tokens": 879,
+          "latency_ms": 5373,
+          "route_reward": 0.68859,
+          "cost_normalized_success": 0.5,
+          "regret_vs_oracle_reward": 0.1955
+        },
+        "retrieval_memory_llm_agent": {
+          "success": true,
+          "model_calls": 1,
+          "total_tokens": 460,
+          "latency_ms": 976,
+          "route_reward": 0.87748,
+          "cost_normalized_success": 1.0,
+          "regret_vs_oracle_reward": 0.00661
+        },
+        "single_react_llm_agent": {
+          "success": true,
+          "model_calls": 1,
+          "total_tokens": 441,
+          "latency_ms": 693,
+          "route_reward": 0.88409,
+          "cost_normalized_success": 1.0,
+          "regret_vs_oracle_reward": 0.0
+        }
+      }
+    },
+    {
+      "task_id": "phase1_code_config_001",
+      "any_route_success": true,
+      "oracle_success": 1,
+      "cheapest_successful_route": "single_react_llm_agent",
+      "cheapest_successful_model_calls": 1,
+      "best_reward_route": "single_react_llm_agent",
+      "oracle_route_reward": 0.87088,
+      "oracle_cost_normalized_success": 1.0,
+      "solo_success_baselines": [],
+      "baselines": {
+        "agent_attention_llm_tuned": {
+          "success": false,
+          "model_calls": 2,
+          "total_tokens": 1152,
+          "latency_ms": 3084,
+          "route_reward": -0.27928,
+          "cost_normalized_success": 0.0,
+          "regret_vs_oracle_reward": 1.15016
+        },
+        "fixed_workflow_llm_agent": {
+          "success": false,
+          "model_calls": 1,
+          "total_tokens": 579,
+          "latency_ms": 1915,
+          "route_reward": -0.14725,
+          "cost_normalized_success": 0.0,
+          "regret_vs_oracle_reward": 1.01813
+        },
+        "moa_style_llm_agent": {
+          "success": true,
+          "model_calls": 2,
+          "total_tokens": 1052,
+          "latency_ms": 2720,
+          "route_reward": 0.733,
+          "cost_normalized_success": 0.5,
+          "regret_vs_oracle_reward": 0.13788
+        },
+        "retrieval_memory_llm_agent": {
+          "success": false,
+          "model_calls": 1,
+          "total_tokens": 575,
+          "latency_ms": 1691,
+          "route_reward": -0.14257,
+          "cost_normalized_success": 0.0,
+          "regret_vs_oracle_reward": 1.01345
+        },
+        "single_react_llm_agent": {
+          "success": true,
+          "model_calls": 1,
+          "total_tokens": 498,
+          "latency_ms": 1211,
+          "route_reward": 0.87088,
+          "cost_normalized_success": 1.0,
+          "regret_vs_oracle_reward": 0.0
+        }
+      }
+    },
+    {
+      "task_id": "phase1_code_config_get_001",
+      "any_route_success": true,
+      "oracle_success": 1,
+      "cheapest_successful_route": "fixed_workflow_llm_agent",
+      "cheapest_successful_model_calls": 1,
+      "best_reward_route": "retrieval_memory_llm_agent",
+      "oracle_route_reward": 0.88234,
+      "oracle_cost_normalized_success": 1.0,
+      "solo_success_baselines": [],
+      "baselines": {
+        "agent_attention_llm_tuned": {
+          "success": true,
+          "model_calls": 2,
+          "total_tokens": 987,
+          "latency_ms": 1477,
+          "route_reward": 0.76111,
+          "cost_normalized_success": 0.5,
+          "regret_vs_oracle_reward": 0.12123
+        },
+        "fixed_workflow_llm_agent": {
+          "success": true,
+          "model_calls": 1,
+          "total_tokens": 438,
+          "latency_ms": 862,
+          "route_reward": 0.88086,
+          "cost_normalized_success": 1.0,
+          "regret_vs_oracle_reward": 0.00148
+        },
+        "moa_style_llm_agent": {
+          "success": true,
+          "model_calls": 2,
+          "total_tokens": 879,
+          "latency_ms": 2688,
+          "route_reward": 0.74229,
+          "cost_normalized_success": 0.5,
+          "regret_vs_oracle_reward": 0.14005
+        },
+        "retrieval_memory_llm_agent": {
+          "success": true,
+          "model_calls": 1,
+          "total_tokens": 460,
+          "latency_ms": 733,
+          "route_reward": 0.88234,
+          "cost_normalized_success": 1.0,
+          "regret_vs_oracle_reward": 0.0
+        },
+        "single_react_llm_agent": {
+          "success": true,
+          "model_calls": 1,
+          "total_tokens": 441,
+          "latency_ms": 979,
+          "route_reward": 0.87837,
+          "cost_normalized_success": 1.0,
+          "regret_vs_oracle_reward": 0.00397
+        }
+      }
+    },
+    {
+      "task_id": "phase1_code_csv_001",
+      "any_route_success": true,
+      "oracle_success": 1,
+      "cheapest_successful_route": "moa_style_llm_agent",
+      "cheapest_successful_model_calls": 2,
+      "best_reward_route": "agent_attention_llm_tuned",
+      "oracle_route_reward": 0.72399,
+      "oracle_cost_normalized_success": 0.5,
+      "solo_success_baselines": [],
+      "baselines": {
+        "agent_attention_llm_tuned": {
+          "success": true,
+          "model_calls": 2,
+          "total_tokens": 1273,
+          "latency_ms": 2618,
+          "route_reward": 0.72399,
+          "cost_normalized_success": 0.5,
+          "regret_vs_oracle_reward": 0.0
+        },
+        "fixed_workflow_llm_agent": {
+          "success": false,
+          "model_calls": 1,
+          "total_tokens": 617,
+          "latency_ms": 1595,
+          "route_reward": -0.14275,
+          "cost_normalized_success": 0.0,
+          "regret_vs_oracle_reward": 0.86674
+        },
+        "moa_style_llm_agent": {
+          "success": true,
+          "model_calls": 2,
+          "total_tokens": 1243,
+          "latency_ms": 3614,
+          "route_reward": 0.70557,
+          "cost_normalized_success": 0.5,
+          "regret_vs_oracle_reward": 0.01842
+        },
+        "retrieval_memory_llm_agent": {
+          "success": true,
+          "model_calls": 2,
+          "total_tokens": 1446,
+          "latency_ms": 3449,
+          "route_reward": 0.69872,
+          "cost_normalized_success": 0.5,
+          "regret_vs_oracle_reward": 0.02527
+        },
+        "single_react_llm_agent": {
+          "success": false,
+          "model_calls": 1,
+          "total_tokens": 698,
+          "latency_ms": 2208,
+          "route_reward": -0.15906,
+          "cost_normalized_success": 0.0,
+          "regret_vs_oracle_reward": 0.88305
+        }
+      }
+    },
+    {
+      "task_id": "phase1_code_doc_001",
+      "any_route_success": true,
+      "oracle_success": 1,
+      "cheapest_successful_route": "fixed_workflow_llm_agent",
+      "cheapest_successful_model_calls": 1,
+      "best_reward_route": "single_react_llm_agent",
+      "oracle_route_reward": 0.88837,
+      "oracle_cost_normalized_success": 1.0,
+      "solo_success_baselines": [],
+      "baselines": {
+        "agent_attention_llm_tuned": {
+          "success": true,
+          "model_calls": 2,
+          "total_tokens": 931,
+          "latency_ms": 1600,
+          "route_reward": 0.76145,
+          "cost_normalized_success": 0.5,
+          "regret_vs_oracle_reward": 0.12692
+        },
+        "fixed_workflow_llm_agent": {
+          "success": true,
+          "model_calls": 1,
+          "total_tokens": 410,
+          "latency_ms": 3323,
+          "route_reward": 0.83304,
+          "cost_normalized_success": 1.0,
+          "regret_vs_oracle_reward": 0.05533
+        },
+        "moa_style_llm_agent": {
+          "success": true,
+          "model_calls": 2,
+          "total_tokens": 823,
+          "latency_ms": 1693,
+          "route_reward": 0.76499,
+          "cost_normalized_success": 0.5,
+          "regret_vs_oracle_reward": 0.12338
+        },
+        "retrieval_memory_llm_agent": {
+          "success": true,
+          "model_calls": 2,
+          "total_tokens": 920,
+          "latency_ms": 5688,
+          "route_reward": 0.68024,
+          "cost_normalized_success": 0.5,
+          "regret_vs_oracle_reward": 0.20813
+        },
+        "single_react_llm_agent": {
+          "success": true,
+          "model_calls": 1,
+          "total_tokens": 413,
+          "latency_ms": 549,
+          "route_reward": 0.88837,
+          "cost_normalized_success": 1.0,
+          "regret_vs_oracle_reward": 0.0
+        }
+      }
+    },
+    {
+      "task_id": "phase1_code_edge_001",
+      "any_route_success": true,
+      "oracle_success": 1,
+      "cheapest_successful_route": "fixed_workflow_llm_agent",
+      "cheapest_successful_model_calls": 1,
+      "best_reward_route": "fixed_workflow_llm_agent",
+      "oracle_route_reward": 0.87462,
+      "oracle_cost_normalized_success": 1.0,
+      "solo_success_baselines": [],
+      "baselines": {
+        "agent_attention_llm_tuned": {
+          "success": true,
+          "model_calls": 2,
+          "total_tokens": 1135,
+          "latency_ms": 1623,
+          "route_reward": 0.75079,
+          "cost_normalized_success": 0.5,
+          "regret_vs_oracle_reward": 0.12383
+        },
+        "fixed_workflow_llm_agent": {
+          "success": true,
+          "model_calls": 1,
+          "total_tokens": 512,
+          "latency_ms": 989,
+          "route_reward": 0.87462,
+          "cost_normalized_success": 1.0,
+          "regret_vs_oracle_reward": 0.0
+        },
+        "moa_style_llm_agent": {
+          "success": true,
+          "model_calls": 2,
+          "total_tokens": 1027,
+          "latency_ms": 5490,
+          "route_reward": 0.67885,
+          "cost_normalized_success": 0.5,
+          "regret_vs_oracle_reward": 0.19577
+        },
+        "retrieval_memory_llm_agent": {
+          "success": true,
+          "model_calls": 3,
+          "total_tokens": 1808,
+          "latency_ms": 4766,
+          "route_reward": 0.57428,
+          "cost_normalized_success": 0.333333,
+          "regret_vs_oracle_reward": 0.30034
+        },
+        "single_react_llm_agent": {
+          "success": true,
+          "model_calls": 1,
+          "total_tokens": 515,
+          "latency_ms": 1006,
+          "route_reward": 0.87413,
+          "cost_normalized_success": 1.0,
+          "regret_vs_oracle_reward": 0.00049
+        }
+      }
+    },
+    {
+      "task_id": "phase1_code_email_001",
+      "any_route_success": true,
+      "oracle_success": 1,
+      "cheapest_successful_route": "retrieval_memory_llm_agent",
+      "cheapest_successful_model_calls": 1,
+      "best_reward_route": "retrieval_memory_llm_agent",
+      "oracle_route_reward": 0.87694,
+      "oracle_cost_normalized_success": 1.0,
+      "solo_success_baselines": [],
+      "baselines": {
+        "agent_attention_llm_tuned": {
+          "success": true,
+          "model_calls": 2,
+          "total_tokens": 970,
+          "latency_ms": 2746,
+          "route_reward": 0.73658,
+          "cost_normalized_success": 0.5,
+          "regret_vs_oracle_reward": 0.14036
+        },
+        "fixed_workflow_llm_agent": {
+          "success": false,
+          "model_calls": 1,
+          "total_tokens": 432,
+          "latency_ms": 841,
+          "route_reward": -0.11842,
+          "cost_normalized_success": 0.0,
+          "regret_vs_oracle_reward": 0.99536
+        },
+        "moa_style_llm_agent": {
+          "success": true,
+          "model_calls": 2,
+          "total_tokens": 863,
+          "latency_ms": 2119,
+          "route_reward": 0.75447,
+          "cost_normalized_success": 0.5,
+          "regret_vs_oracle_reward": 0.12247
+        },
+        "retrieval_memory_llm_agent": {
+          "success": true,
+          "model_calls": 1,
+          "total_tokens": 454,
+          "latency_ms": 1018,
+          "route_reward": 0.87694,
+          "cost_normalized_success": 1.0,
+          "regret_vs_oracle_reward": 0.0
+        },
+        "single_react_llm_agent": {
+          "success": false,
+          "model_calls": 1,
+          "total_tokens": 435,
+          "latency_ms": 1237,
+          "route_reward": -0.12649,
+          "cost_normalized_success": 0.0,
+          "regret_vs_oracle_reward": 1.00343
+        }
+      }
+    },
+    {
+      "task_id": "phase1_code_env_flag_001",
+      "any_route_success": true,
+      "oracle_success": 1,
+      "cheapest_successful_route": "moa_style_llm_agent",
+      "cheapest_successful_model_calls": 2,
+      "best_reward_route": "moa_style_llm_agent",
+      "oracle_route_reward": 0.76307,
+      "oracle_cost_normalized_success": 0.5,
+      "solo_success_baselines": [
+        "moa_style_llm_agent"
+      ],
+      "baselines": {
+        "agent_attention_llm_tuned": {
+          "success": false,
+          "model_calls": 2,
+          "total_tokens": 925,
+          "latency_ms": 2506,
+          "route_reward": -0.25637,
+          "cost_normalized_success": 0.0,
+          "regret_vs_oracle_reward": 1.01944
+        },
+        "fixed_workflow_llm_agent": {
+          "success": false,
+          "model_calls": 1,
+          "total_tokens": 447,
+          "latency_ms": 1248,
+          "route_reward": -0.12731,
+          "cost_normalized_success": 0.0,
+          "regret_vs_oracle_reward": 0.89038
+        },
+        "moa_style_llm_agent": {
+          "success": true,
+          "model_calls": 2,
+          "total_tokens": 813,
+          "latency_ms": 1814,
+          "route_reward": 0.76307,
+          "cost_normalized_success": 0.5,
+          "regret_vs_oracle_reward": 0.0
+        },
+        "retrieval_memory_llm_agent": {
+          "success": false,
+          "model_calls": 3,
+          "total_tokens": 1460,
+          "latency_ms": 2239,
+          "route_reward": -0.35778,
+          "cost_normalized_success": 0.0,
+          "regret_vs_oracle_reward": 1.12085
+        },
+        "single_react_llm_agent": {
+          "success": false,
+          "model_calls": 3,
+          "total_tokens": 1331,
+          "latency_ms": 2627,
+          "route_reward": -0.35909,
+          "cost_normalized_success": 0.0,
+          "regret_vs_oracle_reward": 1.12216
+        }
+      }
+    },
+    {
+      "task_id": "phase1_code_flatten_001",
+      "any_route_success": true,
+      "oracle_success": 1,
+      "cheapest_successful_route": "single_react_llm_agent",
+      "cheapest_successful_model_calls": 1,
+      "best_reward_route": "retrieval_memory_llm_agent",
+      "oracle_route_reward": 0.87298,
+      "oracle_cost_normalized_success": 1.0,
+      "solo_success_baselines": [],
+      "baselines": {
+        "agent_attention_llm_tuned": {
+          "success": true,
+          "model_calls": 2,
+          "total_tokens": 1167,
+          "latency_ms": 2031,
+          "route_reward": 0.74103,
+          "cost_normalized_success": 0.5,
+          "regret_vs_oracle_reward": 0.13195
+        },
+        "fixed_workflow_llm_agent": {
+          "success": true,
+          "model_calls": 1,
+          "total_tokens": 532,
+          "latency_ms": 1920,
+          "route_reward": 0.855,
+          "cost_normalized_success": 1.0,
+          "regret_vs_oracle_reward": 0.01798
+        },
+        "moa_style_llm_agent": {
+          "success": true,
+          "model_calls": 2,
+          "total_tokens": 1059,
+          "latency_ms": 5610,
+          "route_reward": 0.67485,
+          "cost_normalized_success": 0.5,
+          "regret_vs_oracle_reward": 0.19813
+        },
+        "retrieval_memory_llm_agent": {
+          "success": true,
+          "model_calls": 1,
+          "total_tokens": 546,
+          "latency_ms": 986,
+          "route_reward": 0.87298,
+          "cost_normalized_success": 1.0,
+          "regret_vs_oracle_reward": 0.0
+        },
+        "single_react_llm_agent": {
+          "success": true,
+          "model_calls": 1,
+          "total_tokens": 527,
+          "latency_ms": 1180,
+          "route_reward": 0.87005,
+          "cost_normalized_success": 1.0,
+          "regret_vs_oracle_reward": 0.00293
+        }
+      }
+    },
+    {
+      "task_id": "phase1_code_hash_001",
+      "any_route_success": true,
+      "oracle_success": 1,
+      "cheapest_successful_route": "fixed_workflow_llm_agent",
+      "cheapest_successful_model_calls": 1,
+      "best_reward_route": "single_react_llm_agent",
+      "oracle_route_reward": 0.88487,
+      "oracle_cost_normalized_success": 1.0,
+      "solo_success_baselines": [],
+      "baselines": {
+        "agent_attention_llm_tuned": {
+          "success": true,
+          "model_calls": 2,
+          "total_tokens": 911,
+          "latency_ms": 3267,
+          "route_reward": 0.72911,
+          "cost_normalized_success": 0.5,
+          "regret_vs_oracle_reward": 0.15576
+        },
+        "fixed_workflow_llm_agent": {
+          "success": true,
+          "model_calls": 1,
+          "total_tokens": 400,
+          "latency_ms": 770,
+          "route_reward": 0.8846,
+          "cost_normalized_success": 1.0,
+          "regret_vs_oracle_reward": 0.00027
+        },
+        "moa_style_llm_agent": {
+          "success": true,
+          "model_calls": 2,
+          "total_tokens": 803,
+          "latency_ms": 3162,
+          "route_reward": 0.73661,
+          "cost_normalized_success": 0.5,
+          "regret_vs_oracle_reward": 0.14826
+        },
+        "retrieval_memory_llm_agent": {
+          "success": true,
+          "model_calls": 1,
+          "total_tokens": 422,
+          "latency_ms": 778,
+          "route_reward": 0.88334,
+          "cost_normalized_success": 1.0,
+          "regret_vs_oracle_reward": 0.00153
+        },
+        "single_react_llm_agent": {
+          "success": true,
+          "model_calls": 1,
+          "total_tokens": 403,
+          "latency_ms": 749,
+          "route_reward": 0.88487,
+          "cost_normalized_success": 1.0,
+          "regret_vs_oracle_reward": 0.0
+        }
+      }
+    },
+    {
+      "task_id": "phase1_code_import_001",
+      "any_route_success": true,
+      "oracle_success": 1,
+      "cheapest_successful_route": "single_react_llm_agent",
+      "cheapest_successful_model_calls": 1,
+      "best_reward_route": "single_react_llm_agent",
+      "oracle_route_reward": 0.88162,
+      "oracle_cost_normalized_success": 1.0,
+      "solo_success_baselines": [],
+      "baselines": {
+        "agent_attention_llm_tuned": {
+          "success": true,
+          "model_calls": 2,
+          "total_tokens": 1000,
+          "latency_ms": 1410,
+          "route_reward": 0.7618,
+          "cost_normalized_success": 0.5,
+          "regret_vs_oracle_reward": 0.11982
+        },
+        "fixed_workflow_llm_agent": {
+          "success": true,
+          "model_calls": 2,
+          "total_tokens": 909,
+          "latency_ms": 4004,
+          "route_reward": 0.71447,
+          "cost_normalized_success": 0.5,
+          "regret_vs_oracle_reward": 0.16715
+        },
+        "moa_style_llm_agent": {
+          "success": true,
+          "model_calls": 2,
+          "total_tokens": 897,
+          "latency_ms": 1244,
+          "route_reward": 0.77027,
+          "cost_normalized_success": 0.5,
+          "regret_vs_oracle_reward": 0.11135
+        },
+        "retrieval_memory_llm_agent": {
+          "success": true,
+          "model_calls": 1,
+          "total_tokens": 469,
+          "latency_ms": 990,
+          "route_reward": 0.87675,
+          "cost_normalized_success": 1.0,
+          "regret_vs_oracle_reward": 0.00487
+        },
+        "single_react_llm_agent": {
+          "success": true,
+          "model_calls": 1,
+          "total_tokens": 450,
+          "latency_ms": 794,
+          "route_reward": 0.88162,
+          "cost_normalized_success": 1.0,
+          "regret_vs_oracle_reward": 0.0
+        }
+      }
+    },
+    {
+      "task_id": "phase1_code_json_001",
+      "any_route_success": true,
+      "oracle_success": 1,
+      "cheapest_successful_route": "fixed_workflow_llm_agent",
+      "cheapest_successful_model_calls": 1,
+      "best_reward_route": "single_react_llm_agent",
+      "oracle_route_reward": 0.87502,
+      "oracle_cost_normalized_success": 1.0,
+      "solo_success_baselines": [],
+      "baselines": {
+        "agent_attention_llm_tuned": {
+          "success": true,
+          "model_calls": 2,
+          "total_tokens": 1001,
+          "latency_ms": 5602,
+          "route_reward": 0.67791,
+          "cost_normalized_success": 0.5,
+          "regret_vs_oracle_reward": 0.19711
+        },
+        "fixed_workflow_llm_agent": {
+          "success": true,
+          "model_calls": 1,
+          "total_tokens": 445,
+          "latency_ms": 1190,
+          "route_reward": 0.87395,
+          "cost_normalized_success": 1.0,
+          "regret_vs_oracle_reward": 0.00107
+        },
+        "moa_style_llm_agent": {
+          "success": true,
+          "model_calls": 2,
+          "total_tokens": 898,
+          "latency_ms": 2119,
+          "route_reward": 0.75272,
+          "cost_normalized_success": 0.5,
+          "regret_vs_oracle_reward": 0.1223
+        },
+        "retrieval_memory_llm_agent": {
+          "success": true,
+          "model_calls": 1,
+          "total_tokens": 467,
+          "latency_ms": 1228,
+          "route_reward": 0.87209,
+          "cost_normalized_success": 1.0,
+          "regret_vs_oracle_reward": 0.00293
+        },
+        "single_react_llm_agent": {
+          "success": true,
+          "model_calls": 1,
+          "total_tokens": 448,
+          "latency_ms": 1129,
+          "route_reward": 0.87502,
+          "cost_normalized_success": 1.0,
+          "regret_vs_oracle_reward": 0.0
+        }
+      }
+    },
+    {
+      "task_id": "phase1_code_mean_001",
+      "any_route_success": true,
+      "oracle_success": 1,
+      "cheapest_successful_route": "fixed_workflow_llm_agent",
+      "cheapest_successful_model_calls": 1,
+      "best_reward_route": "retrieval_memory_llm_agent",
+      "oracle_route_reward": 0.88304,
+      "oracle_cost_normalized_success": 1.0,
+      "solo_success_baselines": [],
+      "baselines": {
+        "agent_attention_llm_tuned": {
+          "success": true,
+          "model_calls": 2,
+          "total_tokens": 991,
+          "latency_ms": 1941,
+          "route_reward": 0.75163,
+          "cost_normalized_success": 0.5,
+          "regret_vs_oracle_reward": 0.13141
+        },
+        "fixed_workflow_llm_agent": {
+          "success": true,
+          "model_calls": 1,
+          "total_tokens": 442,
+          "latency_ms": 807,
+          "route_reward": 0.88176,
+          "cost_normalized_success": 1.0,
+          "regret_vs_oracle_reward": 0.00128
+        },
+        "moa_style_llm_agent": {
+          "success": true,
+          "model_calls": 2,
+          "total_tokens": 883,
+          "latency_ms": 4597,
+          "route_reward": 0.70391,
+          "cost_normalized_success": 0.5,
+          "regret_vs_oracle_reward": 0.17913
+        },
+        "retrieval_memory_llm_agent": {
+          "success": true,
+          "model_calls": 1,
+          "total_tokens": 464,
+          "latency_ms": 688,
+          "route_reward": 0.88304,
+          "cost_normalized_success": 1.0,
+          "regret_vs_oracle_reward": 0.0
+        },
+        "single_react_llm_agent": {
+          "success": true,
+          "model_calls": 1,
+          "total_tokens": 445,
+          "latency_ms": 959,
+          "route_reward": 0.87857,
+          "cost_normalized_success": 1.0,
+          "regret_vs_oracle_reward": 0.00447
+        }
+      }
+    },
+    {
+      "task_id": "phase1_code_merge_001",
+      "any_route_success": true,
+      "oracle_success": 1,
+      "cheapest_successful_route": "fixed_workflow_llm_agent",
+      "cheapest_successful_model_calls": 1,
+      "best_reward_route": "fixed_workflow_llm_agent",
+      "oracle_route_reward": 0.87157,
+      "oracle_cost_normalized_success": 1.0,
+      "solo_success_baselines": [],
+      "baselines": {
+        "agent_attention_llm_tuned": {
+          "success": true,
+          "model_calls": 2,
+          "total_tokens": 1249,
+          "latency_ms": 2486,
+          "route_reward": 0.72783,
+          "cost_normalized_success": 0.5,
+          "regret_vs_oracle_reward": 0.14374
+        },
+        "fixed_workflow_llm_agent": {
+          "success": true,
+          "model_calls": 1,
+          "total_tokens": 569,
+          "latency_ms": 999,
+          "route_reward": 0.87157,
+          "cost_normalized_success": 1.0,
+          "regret_vs_oracle_reward": 0.0
+        },
+        "moa_style_llm_agent": {
+          "success": true,
+          "model_calls": 2,
+          "total_tokens": 1141,
+          "latency_ms": 6830,
+          "route_reward": 0.64635,
+          "cost_normalized_success": 0.5,
+          "regret_vs_oracle_reward": 0.22522
+        },
+        "retrieval_memory_llm_agent": {
+          "success": true,
+          "model_calls": 1,
+          "total_tokens": 591,
+          "latency_ms": 1288,
+          "route_reward": 0.86469,
+          "cost_normalized_success": 1.0,
+          "regret_vs_oracle_reward": 0.00688
+        },
+        "single_react_llm_agent": {
+          "success": true,
+          "model_calls": 1,
+          "total_tokens": 572,
+          "latency_ms": 3748,
+          "route_reward": 0.81644,
+          "cost_normalized_success": 1.0,
+          "regret_vs_oracle_reward": 0.05513
+        }
+      }
+    },
+    {
+      "task_id": "phase1_code_palindrome_001",
+      "any_route_success": true,
+      "oracle_success": 1,
+      "cheapest_successful_route": "single_react_llm_agent",
+      "cheapest_successful_model_calls": 1,
+      "best_reward_route": "single_react_llm_agent",
+      "oracle_route_reward": 0.87853,
+      "oracle_cost_normalized_success": 1.0,
+      "solo_success_baselines": [],
+      "baselines": {
+        "agent_attention_llm_tuned": {
+          "success": true,
+          "model_calls": 2,
+          "total_tokens": 919,
+          "latency_ms": 1672,
+          "route_reward": 0.76061,
+          "cost_normalized_success": 0.5,
+          "regret_vs_oracle_reward": 0.11792
+        },
+        "fixed_workflow_llm_agent": {
+          "success": true,
+          "model_calls": 2,
+          "total_tokens": 844,
+          "latency_ms": 1714,
+          "route_reward": 0.76352,
+          "cost_normalized_success": 0.5,
+          "regret_vs_oracle_reward": 0.11501
+        },
+        "moa_style_llm_agent": {
+          "success": true,
+          "model_calls": 2,
+          "total_tokens": 811,
+          "latency_ms": 1386,
+          "route_reward": 0.77173,
+          "cost_normalized_success": 0.5,
+          "regret_vs_oracle_reward": 0.1068
+        },
+        "retrieval_memory_llm_agent": {
+          "success": true,
+          "model_calls": 2,
+          "total_tokens": 916,
+          "latency_ms": 2505,
+          "route_reward": 0.7441,
+          "cost_normalized_success": 0.5,
+          "regret_vs_oracle_reward": 0.13443
+        },
+        "single_react_llm_agent": {
+          "success": true,
+          "model_calls": 1,
+          "total_tokens": 409,
+          "latency_ms": 1051,
+          "route_reward": 0.87853,
+          "cost_normalized_success": 1.0,
+          "regret_vs_oracle_reward": 0.0
+        }
+      }
+    },
+    {
+      "task_id": "phase1_code_parse_int_001",
+      "any_route_success": true,
+      "oracle_success": 1,
+      "cheapest_successful_route": "single_react_llm_agent",
+      "cheapest_successful_model_calls": 1,
+      "best_reward_route": "single_react_llm_agent",
+      "oracle_route_reward": 0.82519,
+      "oracle_cost_normalized_success": 1.0,
+      "solo_success_baselines": [],
+      "baselines": {
+        "agent_attention_llm_tuned": {
+          "success": true,
+          "model_calls": 2,
+          "total_tokens": 1015,
+          "latency_ms": 2009,
+          "route_reward": 0.74907,
+          "cost_normalized_success": 0.5,
+          "regret_vs_oracle_reward": 0.07612
+        },
+        "fixed_workflow_llm_agent": {
+          "success": false,
+          "model_calls": 1,
+          "total_tokens": 452,
+          "latency_ms": 764,
+          "route_reward": -0.11788,
+          "cost_normalized_success": 0.0,
+          "regret_vs_oracle_reward": 0.94307
+        },
+        "moa_style_llm_agent": {
+          "success": true,
+          "model_calls": 2,
+          "total_tokens": 907,
+          "latency_ms": 1488,
+          "route_reward": 0.76489,
+          "cost_normalized_success": 0.5,
+          "regret_vs_oracle_reward": 0.0603
+        },
+        "retrieval_memory_llm_agent": {
+          "success": false,
+          "model_calls": 1,
+          "total_tokens": 474,
+          "latency_ms": 1002,
+          "route_reward": -0.12374,
+          "cost_normalized_success": 0.0,
+          "regret_vs_oracle_reward": 0.94893
+        },
+        "single_react_llm_agent": {
+          "success": true,
+          "model_calls": 1,
+          "total_tokens": 455,
+          "latency_ms": 3603,
+          "route_reward": 0.82519,
+          "cost_normalized_success": 1.0,
+          "regret_vs_oracle_reward": 0.0
+        }
+      }
+    },
+    {
+      "task_id": "phase1_code_pkg_helper_001",
+      "any_route_success": true,
+      "oracle_success": 1,
+      "cheapest_successful_route": "fixed_workflow_llm_agent",
+      "cheapest_successful_model_calls": 1,
+      "best_reward_route": "fixed_workflow_llm_agent",
+      "oracle_route_reward": 0.87721,
+      "oracle_cost_normalized_success": 1.0,
+      "solo_success_baselines": [],
+      "baselines": {
+        "agent_attention_llm_tuned": {
+          "success": true,
+          "model_calls": 2,
+          "total_tokens": 1025,
+          "latency_ms": 1421,
+          "route_reward": 0.76033,
+          "cost_normalized_success": 0.5,
+          "regret_vs_oracle_reward": 0.11688
+        },
+        "fixed_workflow_llm_agent": {
+          "success": true,
+          "model_calls": 1,
+          "total_tokens": 459,
+          "latency_ms": 992,
+          "route_reward": 0.87721,
+          "cost_normalized_success": 1.0,
+          "regret_vs_oracle_reward": 0.0
+        },
+        "moa_style_llm_agent": {
+          "success": true,
+          "model_calls": 2,
+          "total_tokens": 917,
+          "latency_ms": 1330,
+          "route_reward": 0.76755,
+          "cost_normalized_success": 0.5,
+          "regret_vs_oracle_reward": 0.10966
+        },
+        "retrieval_memory_llm_agent": {
+          "success": true,
+          "model_calls": 3,
+          "total_tokens": 1586,
+          "latency_ms": 2566,
+          "route_reward": 0.62938,
+          "cost_normalized_success": 0.333333,
+          "regret_vs_oracle_reward": 0.24783
+        },
+        "single_react_llm_agent": {
+          "success": true,
+          "model_calls": 3,
+          "total_tokens": 1457,
+          "latency_ms": 2339,
+          "route_reward": 0.64037,
+          "cost_normalized_success": 0.333333,
+          "regret_vs_oracle_reward": 0.23684
+        }
+      }
+    },
+    {
+      "task_id": "phase1_code_refactor_001",
+      "any_route_success": true,
+      "oracle_success": 1,
+      "cheapest_successful_route": "fixed_workflow_llm_agent",
+      "cheapest_successful_model_calls": 1,
+      "best_reward_route": "single_react_llm_agent",
+      "oracle_route_reward": 0.87865,
+      "oracle_cost_normalized_success": 1.0,
+      "solo_success_baselines": [],
+      "baselines": {
+        "agent_attention_llm_tuned": {
+          "success": true,
+          "model_calls": 2,
+          "total_tokens": 1139,
+          "latency_ms": 1447,
+          "route_reward": 0.75411,
+          "cost_normalized_success": 0.5,
+          "regret_vs_oracle_reward": 0.12454
+        },
+        "fixed_workflow_llm_agent": {
+          "success": true,
+          "model_calls": 1,
+          "total_tokens": 514,
+          "latency_ms": 910,
+          "route_reward": 0.8761,
+          "cost_normalized_success": 1.0,
+          "regret_vs_oracle_reward": 0.00255
+        },
+        "moa_style_llm_agent": {
+          "success": true,
+          "model_calls": 2,
+          "total_tokens": 1031,
+          "latency_ms": 1569,
+          "route_reward": 0.75707,
+          "cost_normalized_success": 0.5,
+          "regret_vs_oracle_reward": 0.12158
+        },
+        "retrieval_memory_llm_agent": {
+          "success": true,
+          "model_calls": 1,
+          "total_tokens": 536,
+          "latency_ms": 1255,
+          "route_reward": 0.8681,
+          "cost_normalized_success": 1.0,
+          "regret_vs_oracle_reward": 0.01055
+        },
+        "single_react_llm_agent": {
+          "success": true,
+          "model_calls": 1,
+          "total_tokens": 517,
+          "latency_ms": 775,
+          "route_reward": 0.87865,
+          "cost_normalized_success": 1.0,
+          "regret_vs_oracle_reward": 0.0
+        }
+      }
+    },
+    {
+      "task_id": "phase1_code_sanitize_001",
+      "any_route_success": true,
+      "oracle_success": 1,
+      "cheapest_successful_route": "single_react_llm_agent",
+      "cheapest_successful_model_calls": 1,
+      "best_reward_route": "single_react_llm_agent",
+      "oracle_route_reward": 0.88189,
+      "oracle_cost_normalized_success": 1.0,
+      "solo_success_baselines": [],
+      "baselines": {
+        "agent_attention_llm_tuned": {
+          "success": true,
+          "model_calls": 2,
+          "total_tokens": 1018,
+          "latency_ms": 5083,
+          "route_reward": 0.68744,
+          "cost_normalized_success": 0.5,
+          "regret_vs_oracle_reward": 0.19445
+        },
+        "fixed_workflow_llm_agent": {
+          "success": false,
+          "model_calls": 1,
+          "total_tokens": 485,
+          "latency_ms": 1143,
+          "route_reward": -0.12711,
+          "cost_normalized_success": 0.0,
+          "regret_vs_oracle_reward": 1.009
+        },
+        "moa_style_llm_agent": {
+          "success": false,
+          "model_calls": 2,
+          "total_tokens": 929,
+          "latency_ms": 2078,
+          "route_reward": -0.24801,
+          "cost_normalized_success": 0.0,
+          "regret_vs_oracle_reward": 1.1299
+        },
+        "retrieval_memory_llm_agent": {
+          "success": false,
+          "model_calls": 1,
+          "total_tokens": 468,
+          "latency_ms": 1484,
+          "route_reward": -0.13308,
+          "cost_normalized_success": 0.0,
+          "regret_vs_oracle_reward": 1.01497
+        },
+        "single_react_llm_agent": {
+          "success": true,
+          "model_calls": 1,
+          "total_tokens": 449,
+          "latency_ms": 783,
+          "route_reward": 0.88189,
+          "cost_normalized_success": 1.0,
+          "regret_vs_oracle_reward": 0.0
+        }
+      }
+    },
+    {
+      "task_id": "phase1_code_slugify_001",
+      "any_route_success": true,
+      "oracle_success": 1,
+      "cheapest_successful_route": "single_react_llm_agent",
+      "cheapest_successful_model_calls": 1,
+      "best_reward_route": "retrieval_memory_llm_agent",
+      "oracle_route_reward": 0.88321,
+      "oracle_cost_normalized_success": 1.0,
+      "solo_success_baselines": [],
+      "baselines": {
+        "agent_attention_llm_tuned": {
+          "success": false,
+          "model_calls": 2,
+          "total_tokens": 945,
+          "latency_ms": 2443,
+          "route_reward": -0.25611,
+          "cost_normalized_success": 0.0,
+          "regret_vs_oracle_reward": 1.13932
+        },
+        "fixed_workflow_llm_agent": {
+          "success": false,
+          "model_calls": 1,
+          "total_tokens": 421,
+          "latency_ms": 759,
+          "route_reward": -0.11623,
+          "cost_normalized_success": 0.0,
+          "regret_vs_oracle_reward": 0.99944
+        },
+        "moa_style_llm_agent": {
+          "success": true,
+          "model_calls": 3,
+          "total_tokens": 1323,
+          "latency_ms": 3802,
+          "route_reward": 0.61781,
+          "cost_normalized_success": 0.333333,
+          "regret_vs_oracle_reward": 0.2654
+        },
+        "retrieval_memory_llm_agent": {
+          "success": true,
+          "model_calls": 1,
+          "total_tokens": 443,
+          "latency_ms": 732,
+          "route_reward": 0.88321,
+          "cost_normalized_success": 1.0,
+          "regret_vs_oracle_reward": 0.0
+        },
+        "single_react_llm_agent": {
+          "success": true,
+          "model_calls": 1,
+          "total_tokens": 424,
+          "latency_ms": 1410,
+          "route_reward": 0.8706,
+          "cost_normalized_success": 1.0,
+          "regret_vs_oracle_reward": 0.01261
+        }
+      }
+    },
+    {
+      "task_id": "phase1_code_strip_tags_001",
+      "any_route_success": true,
+      "oracle_success": 1,
+      "cheapest_successful_route": "single_react_llm_agent",
+      "cheapest_successful_model_calls": 1,
+      "best_reward_route": "single_react_llm_agent",
+      "oracle_route_reward": 0.88456,
+      "oracle_cost_normalized_success": 1.0,
+      "solo_success_baselines": [],
+      "baselines": {
+        "agent_attention_llm_tuned": {
+          "success": false,
+          "model_calls": 2,
+          "total_tokens": 985,
+          "latency_ms": 1794,
+          "route_reward": -0.24513,
+          "cost_normalized_success": 0.0,
+          "regret_vs_oracle_reward": 1.12969
+        },
+        "fixed_workflow_llm_agent": {
+          "success": false,
+          "model_calls": 1,
+          "total_tokens": 437,
+          "latency_ms": 751,
+          "route_reward": -0.11687,
+          "cost_normalized_success": 0.0,
+          "regret_vs_oracle_reward": 1.00143
+        },
+        "moa_style_llm_agent": {
+          "success": true,
+          "model_calls": 2,
+          "total_tokens": 877,
+          "latency_ms": 5710,
+          "route_reward": 0.68195,
+          "cost_normalized_success": 0.5,
+          "regret_vs_oracle_reward": 0.20261
+        },
+        "retrieval_memory_llm_agent": {
+          "success": true,
+          "model_calls": 1,
+          "total_tokens": 459,
+          "latency_ms": 747,
+          "route_reward": 0.88211,
+          "cost_normalized_success": 1.0,
+          "regret_vs_oracle_reward": 0.00245
+        },
+        "single_react_llm_agent": {
+          "success": true,
+          "model_calls": 1,
+          "total_tokens": 440,
+          "latency_ms": 672,
+          "route_reward": 0.88456,
+          "cost_normalized_success": 1.0,
+          "regret_vs_oracle_reward": 0.0
+        }
+      }
+    },
+    {
+      "task_id": "phase1_code_trim_lines_001",
+      "any_route_success": true,
+      "oracle_success": 1,
+      "cheapest_successful_route": "fixed_workflow_llm_agent",
+      "cheapest_successful_model_calls": 1,
+      "best_reward_route": "retrieval_memory_llm_agent",
+      "oracle_route_reward": 0.88041,
+      "oracle_cost_normalized_success": 1.0,
+      "solo_success_baselines": [],
+      "baselines": {
+        "agent_attention_llm_tuned": {
+          "success": true,
+          "model_calls": 2,
+          "total_tokens": 1095,
+          "latency_ms": 2667,
+          "route_reward": 0.73191,
+          "cost_normalized_success": 0.5,
+          "regret_vs_oracle_reward": 0.1485
+        },
+        "fixed_workflow_llm_agent": {
+          "success": true,
+          "model_calls": 1,
+          "total_tokens": 459,
+          "latency_ms": 880,
+          "route_reward": 0.87945,
+          "cost_normalized_success": 1.0,
+          "regret_vs_oracle_reward": 0.00096
+        },
+        "moa_style_llm_agent": {
+          "success": true,
+          "model_calls": 2,
+          "total_tokens": 921,
+          "latency_ms": 1952,
+          "route_reward": 0.75491,
+          "cost_normalized_success": 0.5,
+          "regret_vs_oracle_reward": 0.1255
+        },
+        "retrieval_memory_llm_agent": {
+          "success": true,
+          "model_calls": 1,
+          "total_tokens": 481,
+          "latency_ms": 777,
+          "route_reward": 0.88041,
+          "cost_normalized_success": 1.0,
+          "regret_vs_oracle_reward": 0.0
+        },
+        "single_react_llm_agent": {
+          "success": true,
+          "model_calls": 3,
+          "total_tokens": 1511,
+          "latency_ms": 4331,
+          "route_reward": 0.59783,
+          "cost_normalized_success": 0.333333,
+          "regret_vs_oracle_reward": 0.28258
+        }
+      }
+    },
+    {
+      "task_id": "phase1_code_url_001",
+      "any_route_success": true,
+      "oracle_success": 1,
+      "cheapest_successful_route": "single_react_llm_agent",
+      "cheapest_successful_model_calls": 1,
+      "best_reward_route": "single_react_llm_agent",
+      "oracle_route_reward": 0.87524,
+      "oracle_cost_normalized_success": 1.0,
+      "solo_success_baselines": [],
+      "baselines": {
+        "agent_attention_llm_tuned": {
+          "success": true,
+          "model_calls": 2,
+          "total_tokens": 1121,
+          "latency_ms": 2566,
+          "route_reward": 0.73263,
+          "cost_normalized_success": 0.5,
+          "regret_vs_oracle_reward": 0.14261
+        },
+        "fixed_workflow_llm_agent": {
+          "success": false,
+          "model_calls": 1,
+          "total_tokens": 512,
+          "latency_ms": 1399,
+          "route_reward": -0.13358,
+          "cost_normalized_success": 0.0,
+          "regret_vs_oracle_reward": 1.00882
+        },
+        "moa_style_llm_agent": {
+          "success": true,
+          "model_calls": 2,
+          "total_tokens": 1015,
+          "latency_ms": 5919,
+          "route_reward": 0.67087,
+          "cost_normalized_success": 0.5,
+          "regret_vs_oracle_reward": 0.20437
+        },
+        "retrieval_memory_llm_agent": {
+          "success": true,
+          "model_calls": 1,
+          "total_tokens": 530,
+          "latency_ms": 1152,
+          "route_reward": 0.87046,
+          "cost_normalized_success": 1.0,
+          "regret_vs_oracle_reward": 0.00478
+        },
+        "single_react_llm_agent": {
+          "success": true,
+          "model_calls": 1,
+          "total_tokens": 496,
+          "latency_ms": 998,
+          "route_reward": 0.87524,
+          "cost_normalized_success": 1.0,
+          "regret_vs_oracle_reward": 0.0
+        }
+      }
+    }
+  ]
+}

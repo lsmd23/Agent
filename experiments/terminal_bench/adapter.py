@@ -551,6 +551,67 @@ def run_adapter_smoke(*, prefer_tb: bool = True, fallback_limit: int = 1) -> dic
     )
 
 
+def compress_observation(text: str, *, max_chars: int = 2400, tail_lines: int = 40) -> str:
+    """Tail-preserving compression for terminal observations (SWE-agent-style)."""
+    if not text or len(text) <= max_chars:
+        return text
+    lines = text.splitlines()
+    error_lines = [ln for ln in lines if re.search(r"(?i)error|failed|traceback|permission denied|not found", ln)]
+    tail = lines[-tail_lines:] if len(lines) > tail_lines else lines
+    head_budget = max(200, max_chars // 4)
+    tail_text = "\n".join(tail)
+    if len(tail_text) > max_chars - head_budget:
+        tail_text = tail_text[-(max_chars - head_budget) :]
+    parts = [f"[observation truncated: {len(lines)} lines total]"]
+    if error_lines:
+        err_text = "\n".join(error_lines[-8:])
+        parts.append(f"[recent errors]\n{err_text}")
+    parts.append(f"[tail]\n{tail_text}")
+    merged = "\n".join(parts)
+    return merged[:max_chars]
+
+
+def extract_file_patch_commands(text: str) -> list[str]:
+    """Convert `# file: path` code blocks into shell heredoc write commands."""
+    commands: list[str] = []
+    for match in re.finditer(
+        r"```(?:python|py|bash|sh|text)?\s*\n(.*?)```",
+        text,
+        flags=re.DOTALL | re.IGNORECASE,
+    ):
+        block = match.group(1)
+        file_match = re.match(r"^\s*#\s*file:\s*(\S+)\s*\n", block)
+        if not file_match:
+            continue
+        rel_path = file_match.group(1)
+        body = block[file_match.end() :].rstrip("\n")
+        if not body:
+            continue
+        parent = str(Path(rel_path).parent)
+        if parent and parent not in {".", ""}:
+            commands.append(f"mkdir -p {shlex.quote(parent)}")
+        delimiter = "EOF_PATCH"
+        while delimiter in body:
+            delimiter = f"EOF_{delimiter}"
+        commands.append(f"cat > {shlex.quote(rel_path)} <<'{delimiter}'\n{body}\n{delimiter}")
+    return _sanitize_shell_commands(commands)
+
+
+def _extract_commands_from_partial_json(text: str) -> list[str]:
+    """Recover commands when model output truncates mid-JSON (common at max_tokens=512)."""
+    match = re.search(r'"commands"\s*:\s*\[(.*?)(?:\]|$)', text, flags=re.DOTALL)
+    if not match:
+        return []
+    inner = match.group(1)
+    recovered: list[str] = []
+    for item in re.finditer(r'"((?:\\.|[^"\\])*)"', inner):
+        try:
+            recovered.append(json.loads(f'"{item.group(1)}"'))
+        except json.JSONDecodeError:
+            continue
+    return _sanitize_shell_commands(recovered)
+
+
 def extract_shell_commands(text: str) -> list[str]:
     commands: list[str] = []
     for match in re.finditer(
@@ -565,17 +626,31 @@ def extract_shell_commands(text: str) -> list[str]:
                 commands.append(line)
     if commands:
         return _sanitize_shell_commands(commands)
+
+    patch_cmds = extract_file_patch_commands(text)
+    if patch_cmds:
+        return patch_cmds
+
+    cleaned = text.strip()
+    if cleaned.startswith("```"):
+        cleaned = re.sub(r"^```(?:json|bash|sh|shell)?\s*", "", cleaned)
+        cleaned = re.sub(r"\s*```$", "", cleaned)
     try:
-        payload = json.loads(text)
+        payload = json.loads(cleaned)
         if isinstance(payload, dict) and isinstance(payload.get("commands"), list):
             return _sanitize_shell_commands([str(item) for item in payload["commands"]])
     except json.JSONDecodeError:
-        pass
+        partial = _extract_commands_from_partial_json(cleaned)
+        if partial:
+            return partial
     return []
 
 
 _SHELL_CMD_RE = re.compile(
-    r"^(?:[a-zA-Z0-9_./-]+(?:\s|$)|sudo\s|chmod\s|ls\s|cat\s|echo\s|python3?\s|bash\s|sh\s|grep\s|find\s|sed\s|awk\s|curl\s|wget\s|mkdir\s|rm\s|cp\s|mv\s|touch\s|head\s|tail\s|cd\s|export\s|./)"
+    r"^(?:[a-zA-Z0-9_./-]+(?:\s|$)|sudo\s|chmod\s|ls\s|cat\s|echo\s|python3?\s|bash\s|sh\s|"
+    r"grep\s|find\s|sed\s|awk\s|curl\s|wget\s|mkdir\s|rm\s|cp\s|mv\s|touch\s|head\s|tail\s|"
+    r"cd\s|export\s|git\s|tee\s|pip3?\s|uv\s|npm\s|nohup\s|systemctl\s|service\s|"
+    r"apt-get\s|apt\s|pip\s|kill\s|ps\s|sleep\s|test\s|which\s|file\s|./)"
 )
 
 

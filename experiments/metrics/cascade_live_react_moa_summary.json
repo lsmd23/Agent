@@ -1,0 +1,42 @@
+{
+  "scope": "Live cascade pilot (Brief B).",
+  "mode": "live",
+  "policy_id": "react_moa",
+  "tasks": 26,
+  "provider": "openai",
+  "model": "Qwen3-30B-A3B-Instruct-2507",
+  "summary": {
+    "runs": 26,
+    "correct": 25,
+    "accuracy": 0.9615384615384616,
+    "mean_model_calls": 1.3846,
+    "mean_total_tokens": 652.35,
+    "mean_latency_ms": 2045.69,
+    "cost_normalized_success": 0.6944,
+    "escalation_rate": 0.1154,
+    "rescued_task_count": 2
+  },
+  "escalation_trigger_table": [
+    {
+      "stage": "1 → 2",
+      "from": "single_react_llm_agent",
+      "to": "agent_attention_llm_tuned",
+      "trigger": "executable_pytest end-task label == fail",
+      "future": "verifier confidence < threshold OR repeated patch apply failure"
+    },
+    {
+      "stage": "2 → 3",
+      "from": "agent_attention_llm_tuned",
+      "to": "moa_style_llm_agent",
+      "trigger": "executable_pytest end-task label == fail after AA attempt",
+      "future": "low aggregator confidence OR critic failure signal"
+    },
+    {
+      "stage": "1 → 2 (react_moa only)",
+      "from": "single_react_llm_agent",
+      "to": "moa_style_llm_agent",
+      "trigger": "executable_pytest end-task label == fail",
+      "future": "same as react_aa_moa stage-1 trigger"
+    }
+  ]
+}

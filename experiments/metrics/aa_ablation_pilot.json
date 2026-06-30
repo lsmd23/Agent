@@ -1,0 +1,2040 @@
+{
+  "scope": "AA component ablation replay (Brief C, zero new LLM calls where possible).",
+  "source_summary": "experiments/metrics/code_full_matrix_summary.json",
+  "suite": "code_all",
+  "tasks": 26,
+  "model": "Qwen3-30B-A3B-Instruct-2507",
+  "provider": "openai",
+  "control_id": "aa_tuned_control",
+  "variants": {
+    "aa_tuned_control": {
+      "ablation_id": "aa_tuned_control",
+      "label": "P2 tuned control",
+      "evidence_tier": "direct",
+      "evidence_source": "agent_attention_llm_tuned",
+      "tasks": 26,
+      "correct": 22,
+      "accuracy": 0.8462,
+      "mean_model_calls": 2.0,
+      "mean_total_tokens": 1037.58,
+      "mean_latency_ms": 2587.5,
+      "cost_normalized_success": 0.4231,
+      "per_task": [
+        {
+          "task_id": "phase0_seed_code_fix_001",
+          "success": true,
+          "final_success_label": "pass",
+          "model_calls": 2,
+          "total_tokens": 885,
+          "latency_ms": 4961,
+          "cost_normalized_success": 0.5,
+          "evidence_source": "agent_attention_llm_tuned"
+        },
+        {
+          "task_id": "phase0_seed_negative_memory_001",
+          "success": true,
+          "final_success_label": "pass",
+          "model_calls": 2,
+          "total_tokens": 889,
+          "latency_ms": 1758,
+          "cost_normalized_success": 0.5,
+          "evidence_source": "agent_attention_llm_tuned"
+        },
+        {
+          "task_id": "phase1_code_binary_search_001",
+          "success": true,
+          "final_success_label": "pass",
+          "model_calls": 2,
+          "total_tokens": 1267,
+          "latency_ms": 3018,
+          "cost_normalized_success": 0.5,
+          "evidence_source": "agent_attention_llm_tuned"
+        },
+        {
+          "task_id": "phase1_code_clamp_001",
+          "success": true,
+          "final_success_label": "pass",
+          "model_calls": 2,
+          "total_tokens": 982,
+          "latency_ms": 4045,
+          "cost_normalized_success": 0.5,
+          "evidence_source": "agent_attention_llm_tuned"
+        },
+        {
+          "task_id": "phase1_code_config_001",
+          "success": false,
+          "final_success_label": "fail",
+          "model_calls": 2,
+          "total_tokens": 1152,
+          "latency_ms": 3084,
+          "cost_normalized_success": 0.0,
+          "evidence_source": "agent_attention_llm_tuned"
+        },
+        {
+          "task_id": "phase1_code_config_get_001",
+          "success": true,
+          "final_success_label": "pass",
+          "model_calls": 2,
+          "total_tokens": 987,
+          "latency_ms": 1477,
+          "cost_normalized_success": 0.5,
+          "evidence_source": "agent_attention_llm_tuned"
+        },
+        {
+          "task_id": "phase1_code_csv_001",
+          "success": true,
+          "final_success_label": "pass",
+          "model_calls": 2,
+          "total_tokens": 1273,
+          "latency_ms": 2618,
+          "cost_normalized_success": 0.5,
+          "evidence_source": "agent_attention_llm_tuned"
+        },
+        {
+          "task_id": "phase1_code_doc_001",
+          "success": true,
+          "final_success_label": "pass",
+          "model_calls": 2,
+          "total_tokens": 931,
+          "latency_ms": 1600,
+          "cost_normalized_success": 0.5,
+          "evidence_source": "agent_attention_llm_tuned"
+        },
+        {
+          "task_id": "phase1_code_edge_001",
+          "success": true,
+          "final_success_label": "pass",
+          "model_calls": 2,
+          "total_tokens": 1135,
+          "latency_ms": 1623,
+          "cost_normalized_success": 0.5,
+          "evidence_source": "agent_attention_llm_tuned"
+        },
+        {
+          "task_id": "phase1_code_email_001",
+          "success": true,
+          "final_success_label": "pass",
+          "model_calls": 2,
+          "total_tokens": 970,
+          "latency_ms": 2746,
+          "cost_normalized_success": 0.5,
+          "evidence_source": "agent_attention_llm_tuned"
+        },
+        {
+          "task_id": "phase1_code_env_flag_001",
+          "success": false,
+          "final_success_label": "fail",
+          "model_calls": 2,
+          "total_tokens": 925,
+          "latency_ms": 2506,
+          "cost_normalized_success": 0.0,
+          "evidence_source": "agent_attention_llm_tuned"
+        },
+        {
+          "task_id": "phase1_code_flatten_001",
+          "success": true,
+          "final_success_label": "pass",
+          "model_calls": 2,
+          "total_tokens": 1167,
+          "latency_ms": 2031,
+          "cost_normalized_success": 0.5,
+          "evidence_source": "agent_attention_llm_tuned"
+        },
+        {
+          "task_id": "phase1_code_hash_001",
+          "success": true,
+          "final_success_label": "pass",
+          "model_calls": 2,
+          "total_tokens": 911,
+          "latency_ms": 3267,
+          "cost_normalized_success": 0.5,
+          "evidence_source": "agent_attention_llm_tuned"
+        },
+        {
+          "task_id": "phase1_code_import_001",
+          "success": true,
+          "final_success_label": "pass",
+          "model_calls": 2,
+          "total_tokens": 1000,
+          "latency_ms": 1410,
+          "cost_normalized_success": 0.5,
+          "evidence_source": "agent_attention_llm_tuned"
+        },
+        {
+          "task_id": "phase1_code_json_001",
+          "success": true,
+          "final_success_label": "pass",
+          "model_calls": 2,
+          "total_tokens": 1001,
+          "latency_ms": 5602,
+          "cost_normalized_success": 0.5,
+          "evidence_source": "agent_attention_llm_tuned"
+        },
+        {
+          "task_id": "phase1_code_mean_001",
+          "success": true,
+          "final_success_label": "pass",
+          "model_calls": 2,
+          "total_tokens": 991,
+          "latency_ms": 1941,
+          "cost_normalized_success": 0.5,
+          "evidence_source": "agent_attention_llm_tuned"
+        },
+        {
+          "task_id": "phase1_code_merge_001",
+          "success": true,
+          "final_success_label": "pass",
+          "model_calls": 2,
+          "total_tokens": 1249,
+          "latency_ms": 2486,
+          "cost_normalized_success": 0.5,
+          "evidence_source": "agent_attention_llm_tuned"
+        },
+        {
+          "task_id": "phase1_code_palindrome_001",
+          "success": true,
+          "final_success_label": "pass",
+          "model_calls": 2,
+          "total_tokens": 919,
+          "latency_ms": 1672,
+          "cost_normalized_success": 0.5,
+          "evidence_source": "agent_attention_llm_tuned"
+        },
+        {
+          "task_id": "phase1_code_parse_int_001",
+          "success": true,
+          "final_success_label": "pass",
+          "model_calls": 2,
+          "total_tokens": 1015,
+          "latency_ms": 2009,
+          "cost_normalized_success": 0.5,
+          "evidence_source": "agent_attention_llm_tuned"
+        },
+        {
+          "task_id": "phase1_code_pkg_helper_001",
+          "success": true,
+          "final_success_label": "pass",
+          "model_calls": 2,
+          "total_tokens": 1025,
+          "latency_ms": 1421,
+          "cost_normalized_success": 0.5,
+          "evidence_source": "agent_attention_llm_tuned"
+        },
+        {
+          "task_id": "phase1_code_refactor_001",
+          "success": true,
+          "final_success_label": "pass",
+          "model_calls": 2,
+          "total_tokens": 1139,
+          "latency_ms": 1447,
+          "cost_normalized_success": 0.5,
+          "evidence_source": "agent_attention_llm_tuned"
+        },
+        {
+          "task_id": "phase1_code_sanitize_001",
+          "success": true,
+          "final_success_label": "pass",
+          "model_calls": 2,
+          "total_tokens": 1018,
+          "latency_ms": 5083,
+          "cost_normalized_success": 0.5,
+          "evidence_source": "agent_attention_llm_tuned"
+        },
+        {
+          "task_id": "phase1_code_slugify_001",
+          "success": false,
+          "final_success_label": "fail",
+          "model_calls": 2,
+          "total_tokens": 945,
+          "latency_ms": 2443,
+          "cost_normalized_success": 0.0,
+          "evidence_source": "agent_attention_llm_tuned"
+        },
+        {
+          "task_id": "phase1_code_strip_tags_001",
+          "success": false,
+          "final_success_label": "fail",
+          "model_calls": 2,
+          "total_tokens": 985,
+          "latency_ms": 1794,
+          "cost_normalized_success": 0.0,
+          "evidence_source": "agent_attention_llm_tuned"
+        },
+        {
+          "task_id": "phase1_code_trim_lines_001",
+          "success": true,
+          "final_success_label": "pass",
+          "model_calls": 2,
+          "total_tokens": 1095,
+          "latency_ms": 2667,
+          "cost_normalized_success": 0.5,
+          "evidence_source": "agent_attention_llm_tuned"
+        },
+        {
+          "task_id": "phase1_code_url_001",
+          "success": true,
+          "final_success_label": "pass",
+          "model_calls": 2,
+          "total_tokens": 1121,
+          "latency_ms": 2566,
+          "cost_normalized_success": 0.5,
+          "evidence_source": "agent_attention_llm_tuned"
+        }
+      ]
+    },
+    "aa_top1": {
+      "ablation_id": "aa_top1",
+      "label": "top-k = 1",
+      "evidence_tier": "live_required",
+      "evidence_source": "live_required",
+      "tasks": 26,
+      "correct": null,
+      "accuracy": null,
+      "mean_model_calls": null,
+      "note": "Requires live ablation run; no matrix row available."
+    },
+    "aa_no_adaptive_topk": {
+      "ablation_id": "aa_no_adaptive_topk",
+      "label": "adaptive top-k off",
+      "evidence_tier": "live_required",
+      "evidence_source": "live_required",
+      "tasks": 26,
+      "correct": null,
+      "accuracy": null,
+      "mean_model_calls": null,
+      "note": "Requires live ablation run; no matrix row available."
+    },
+    "aa_no_memory": {
+      "ablation_id": "aa_no_memory",
+      "label": "memory off",
+      "evidence_tier": "proxy",
+      "evidence_source": "proxy:single_react_llm_agent",
+      "proxy_note": "No-memory ReAct proxy; Phase2 toy shows +8.3pp success without memory.",
+      "tasks": 26,
+      "correct": 23,
+      "accuracy": 0.8846,
+      "mean_model_calls": 1.2308,
+      "mean_total_tokens": 582.0,
+      "mean_latency_ms": 1512.58,
+      "cost_normalized_success": 0.7187,
+      "per_task": [
+        {
+          "task_id": "phase0_seed_code_fix_001",
+          "success": true,
+          "final_success_label": "pass",
+          "model_calls": 1,
+          "total_tokens": 390,
+          "latency_ms": 954,
+          "cost_normalized_success": 1.0,
+          "evidence_source": "single_react_llm_agent"
+        },
+        {
+          "task_id": "phase0_seed_negative_memory_001",
+          "success": true,
+          "final_success_label": "pass",
+          "model_calls": 1,
+          "total_tokens": 392,
+          "latency_ms": 650,
+          "cost_normalized_success": 1.0,
+          "evidence_source": "single_react_llm_agent"
+        },
+        {
+          "task_id": "phase1_code_binary_search_001",
+          "success": true,
+          "final_success_label": "pass",
+          "model_calls": 1,
+          "total_tokens": 575,
+          "latency_ms": 2692,
+          "cost_normalized_success": 1.0,
+          "evidence_source": "single_react_llm_agent"
+        },
+        {
+          "task_id": "phase1_code_clamp_001",
+          "success": true,
+          "final_success_label": "pass",
+          "model_calls": 1,
+          "total_tokens": 441,
+          "latency_ms": 693,
+          "cost_normalized_success": 1.0,
+          "evidence_source": "single_react_llm_agent"
+        },
+        {
+          "task_id": "phase1_code_config_001",
+          "success": true,
+          "final_success_label": "pass",
+          "model_calls": 1,
+          "total_tokens": 498,
+          "latency_ms": 1211,
+          "cost_normalized_success": 1.0,
+          "evidence_source": "single_react_llm_agent"
+        },
+        {
+          "task_id": "phase1_code_config_get_001",
+          "success": true,
+          "final_success_label": "pass",
+          "model_calls": 1,
+          "total_tokens": 441,
+          "latency_ms": 979,
+          "cost_normalized_success": 1.0,
+          "evidence_source": "single_react_llm_agent"
+        },
+        {
+          "task_id": "phase1_code_csv_001",
+          "success": false,
+          "final_success_label": "fail",
+          "model_calls": 1,
+          "total_tokens": 698,
+          "latency_ms": 2208,
+          "cost_normalized_success": 0.0,
+          "evidence_source": "single_react_llm_agent"
+        },
+        {
+          "task_id": "phase1_code_doc_001",
+          "success": true,
+          "final_success_label": "pass",
+          "model_calls": 1,
+          "total_tokens": 413,
+          "latency_ms": 549,
+          "cost_normalized_success": 1.0,
+          "evidence_source": "single_react_llm_agent"
+        },
+        {
+          "task_id": "phase1_code_edge_001",
+          "success": true,
+          "final_success_label": "pass",
+          "model_calls": 1,
+          "total_tokens": 515,
+          "latency_ms": 1006,
+          "cost_normalized_success": 1.0,
+          "evidence_source": "single_react_llm_agent"
+        },
+        {
+          "task_id": "phase1_code_email_001",
+          "success": false,
+          "final_success_label": "fail",
+          "model_calls": 1,
+          "total_tokens": 435,
+          "latency_ms": 1237,
+          "cost_normalized_success": 0.0,
+          "evidence_source": "single_react_llm_agent"
+        },
+        {
+          "task_id": "phase1_code_env_flag_001",
+          "success": false,
+          "final_success_label": "fail",
+          "model_calls": 3,
+          "total_tokens": 1331,
+          "latency_ms": 2627,
+          "cost_normalized_success": 0.0,
+          "evidence_source": "single_react_llm_agent"
+        },
+        {
+          "task_id": "phase1_code_flatten_001",
+          "success": true,
+          "final_success_label": "pass",
+          "model_calls": 1,
+          "total_tokens": 527,
+          "latency_ms": 1180,
+          "cost_normalized_success": 1.0,
+          "evidence_source": "single_react_llm_agent"
+        },
+        {
+          "task_id": "phase1_code_hash_001",
+          "success": true,
+          "final_success_label": "pass",
+          "model_calls": 1,
+          "total_tokens": 403,
+          "latency_ms": 749,
+          "cost_normalized_success": 1.0,
+          "evidence_source": "single_react_llm_agent"
+        },
+        {
+          "task_id": "phase1_code_import_001",
+          "success": true,
+          "final_success_label": "pass",
+          "model_calls": 1,
+          "total_tokens": 450,
+          "latency_ms": 794,
+          "cost_normalized_success": 1.0,
+          "evidence_source": "single_react_llm_agent"
+        },
+        {
+          "task_id": "phase1_code_json_001",
+          "success": true,
+          "final_success_label": "pass",
+          "model_calls": 1,
+          "total_tokens": 448,
+          "latency_ms": 1129,
+          "cost_normalized_success": 1.0,
+          "evidence_source": "single_react_llm_agent"
+        },
+        {
+          "task_id": "phase1_code_mean_001",
+          "success": true,
+          "final_success_label": "pass",
+          "model_calls": 1,
+          "total_tokens": 445,
+          "latency_ms": 959,
+          "cost_normalized_success": 1.0,
+          "evidence_source": "single_react_llm_agent"
+        },
+        {
+          "task_id": "phase1_code_merge_001",
+          "success": true,
+          "final_success_label": "pass",
+          "model_calls": 1,
+          "total_tokens": 572,
+          "latency_ms": 3748,
+          "cost_normalized_success": 1.0,
+          "evidence_source": "single_react_llm_agent"
+        },
+        {
+          "task_id": "phase1_code_palindrome_001",
+          "success": true,
+          "final_success_label": "pass",
+          "model_calls": 1,
+          "total_tokens": 409,
+          "latency_ms": 1051,
+          "cost_normalized_success": 1.0,
+          "evidence_source": "single_react_llm_agent"
+        },
+        {
+          "task_id": "phase1_code_parse_int_001",
+          "success": true,
+          "final_success_label": "pass",
+          "model_calls": 1,
+          "total_tokens": 455,
+          "latency_ms": 3603,
+          "cost_normalized_success": 1.0,
+          "evidence_source": "single_react_llm_agent"
+        },
+        {
+          "task_id": "phase1_code_pkg_helper_001",
+          "success": true,
+          "final_success_label": "pass",
+          "model_calls": 3,
+          "total_tokens": 1457,
+          "latency_ms": 2339,
+          "cost_normalized_success": 0.333333,
+          "evidence_source": "single_react_llm_agent"
+        },
+        {
+          "task_id": "phase1_code_refactor_001",
+          "success": true,
+          "final_success_label": "pass",
+          "model_calls": 1,
+          "total_tokens": 517,
+          "latency_ms": 775,
+          "cost_normalized_success": 1.0,
+          "evidence_source": "single_react_llm_agent"
+        },
+        {
+          "task_id": "phase1_code_sanitize_001",
+          "success": true,
+          "final_success_label": "pass",
+          "model_calls": 1,
+          "total_tokens": 449,
+          "latency_ms": 783,
+          "cost_normalized_success": 1.0,
+          "evidence_source": "single_react_llm_agent"
+        },
+        {
+          "task_id": "phase1_code_slugify_001",
+          "success": true,
+          "final_success_label": "pass",
+          "model_calls": 1,
+          "total_tokens": 424,
+          "latency_ms": 1410,
+          "cost_normalized_success": 1.0,
+          "evidence_source": "single_react_llm_agent"
+        },
+        {
+          "task_id": "phase1_code_strip_tags_001",
+          "success": true,
+          "final_success_label": "pass",
+          "model_calls": 1,
+          "total_tokens": 440,
+          "latency_ms": 672,
+          "cost_normalized_success": 1.0,
+          "evidence_source": "single_react_llm_agent"
+        },
+        {
+          "task_id": "phase1_code_trim_lines_001",
+          "success": true,
+          "final_success_label": "pass",
+          "model_calls": 3,
+          "total_tokens": 1511,
+          "latency_ms": 4331,
+          "cost_normalized_success": 0.333333,
+          "evidence_source": "single_react_llm_agent"
+        },
+        {
+          "task_id": "phase1_code_url_001",
+          "success": true,
+          "final_success_label": "pass",
+          "model_calls": 1,
+          "total_tokens": 496,
+          "latency_ms": 998,
+          "cost_normalized_success": 1.0,
+          "evidence_source": "single_react_llm_agent"
+        }
+      ]
+    },
+    "aa_no_verifier": {
+      "ablation_id": "aa_no_verifier",
+      "label": "verifier off",
+      "evidence_tier": "live_required",
+      "evidence_source": "live_required",
+      "tasks": 26,
+      "correct": null,
+      "accuracy": null,
+      "mean_model_calls": null,
+      "note": "Requires live ablation run; no matrix row available."
+    },
+    "aa_no_budget_gate": {
+      "ablation_id": "aa_no_budget_gate",
+      "label": "no strong budget gate",
+      "evidence_tier": "proxy",
+      "evidence_source": "proxy:moa_style_llm_agent",
+      "proxy_note": "MoA proxy for higher fan-out when budget gate relaxed.",
+      "tasks": 26,
+      "correct": 25,
+      "accuracy": 0.9615,
+      "mean_model_calls": 2.0769,
+      "mean_total_tokens": 963.69,
+      "mean_latency_ms": 3149.81,
+      "cost_normalized_success": 0.463,
+      "per_task": [
+        {
+          "task_id": "phase0_seed_code_fix_001",
+          "success": true,
+          "final_success_label": "pass",
+          "model_calls": 2,
+          "total_tokens": 772,
+          "latency_ms": 1658,
+          "cost_normalized_success": 0.5,
+          "evidence_source": "moa_style_llm_agent"
+        },
+        {
+          "task_id": "phase0_seed_negative_memory_001",
+          "success": true,
+          "final_success_label": "pass",
+          "model_calls": 3,
+          "total_tokens": 1146,
+          "latency_ms": 2494,
+          "cost_normalized_success": 0.333333,
+          "evidence_source": "moa_style_llm_agent"
+        },
+        {
+          "task_id": "phase1_code_binary_search_001",
+          "success": true,
+          "final_success_label": "pass",
+          "model_calls": 2,
+          "total_tokens": 1147,
+          "latency_ms": 3436,
+          "cost_normalized_success": 0.5,
+          "evidence_source": "moa_style_llm_agent"
+        },
+        {
+          "task_id": "phase1_code_clamp_001",
+          "success": true,
+          "final_success_label": "pass",
+          "model_calls": 2,
+          "total_tokens": 879,
+          "latency_ms": 5373,
+          "cost_normalized_success": 0.5,
+          "evidence_source": "moa_style_llm_agent"
+        },
+        {
+          "task_id": "phase1_code_config_001",
+          "success": true,
+          "final_success_label": "pass",
+          "model_calls": 2,
+          "total_tokens": 1052,
+          "latency_ms": 2720,
+          "cost_normalized_success": 0.5,
+          "evidence_source": "moa_style_llm_agent"
+        },
+        {
+          "task_id": "phase1_code_config_get_001",
+          "success": true,
+          "final_success_label": "pass",
+          "model_calls": 2,
+          "total_tokens": 879,
+          "latency_ms": 2688,
+          "cost_normalized_success": 0.5,
+          "evidence_source": "moa_style_llm_agent"
+        },
+        {
+          "task_id": "phase1_code_csv_001",
+          "success": true,
+          "final_success_label": "pass",
+          "model_calls": 2,
+          "total_tokens": 1243,
+          "latency_ms": 3614,
+          "cost_normalized_success": 0.5,
+          "evidence_source": "moa_style_llm_agent"
+        },
+        {
+          "task_id": "phase1_code_doc_001",
+          "success": true,
+          "final_success_label": "pass",
+          "model_calls": 2,
+          "total_tokens": 823,
+          "latency_ms": 1693,
+          "cost_normalized_success": 0.5,
+          "evidence_source": "moa_style_llm_agent"
+        },
+        {
+          "task_id": "phase1_code_edge_001",
+          "success": true,
+          "final_success_label": "pass",
+          "model_calls": 2,
+          "total_tokens": 1027,
+          "latency_ms": 5490,
+          "cost_normalized_success": 0.5,
+          "evidence_source": "moa_style_llm_agent"
+        },
+        {
+          "task_id": "phase1_code_email_001",
+          "success": true,
+          "final_success_label": "pass",
+          "model_calls": 2,
+          "total_tokens": 863,
+          "latency_ms": 2119,
+          "cost_normalized_success": 0.5,
+          "evidence_source": "moa_style_llm_agent"
+        },
+        {
+          "task_id": "phase1_code_env_flag_001",
+          "success": true,
+          "final_success_label": "pass",
+          "model_calls": 2,
+          "total_tokens": 813,
+          "latency_ms": 1814,
+          "cost_normalized_success": 0.5,
+          "evidence_source": "moa_style_llm_agent"
+        },
+        {
+          "task_id": "phase1_code_flatten_001",
+          "success": true,
+          "final_success_label": "pass",
+          "model_calls": 2,
+          "total_tokens": 1059,
+          "latency_ms": 5610,
+          "cost_normalized_success": 0.5,
+          "evidence_source": "moa_style_llm_agent"
+        },
+        {
+          "task_id": "phase1_code_hash_001",
+          "success": true,
+          "final_success_label": "pass",
+          "model_calls": 2,
+          "total_tokens": 803,
+          "latency_ms": 3162,
+          "cost_normalized_success": 0.5,
+          "evidence_source": "moa_style_llm_agent"
+        },
+        {
+          "task_id": "phase1_code_import_001",
+          "success": true,
+          "final_success_label": "pass",
+          "model_calls": 2,
+          "total_tokens": 897,
+          "latency_ms": 1244,
+          "cost_normalized_success": 0.5,
+          "evidence_source": "moa_style_llm_agent"
+        },
+        {
+          "task_id": "phase1_code_json_001",
+          "success": true,
+          "final_success_label": "pass",
+          "model_calls": 2,
+          "total_tokens": 898,
+          "latency_ms": 2119,
+          "cost_normalized_success": 0.5,
+          "evidence_source": "moa_style_llm_agent"
+        },
+        {
+          "task_id": "phase1_code_mean_001",
+          "success": true,
+          "final_success_label": "pass",
+          "model_calls": 2,
+          "total_tokens": 883,
+          "latency_ms": 4597,
+          "cost_normalized_success": 0.5,
+          "evidence_source": "moa_style_llm_agent"
+        },
+        {
+          "task_id": "phase1_code_merge_001",
+          "success": true,
+          "final_success_label": "pass",
+          "model_calls": 2,
+          "total_tokens": 1141,
+          "latency_ms": 6830,
+          "cost_normalized_success": 0.5,
+          "evidence_source": "moa_style_llm_agent"
+        },
+        {
+          "task_id": "phase1_code_palindrome_001",
+          "success": true,
+          "final_success_label": "pass",
+          "model_calls": 2,
+          "total_tokens": 811,
+          "latency_ms": 1386,
+          "cost_normalized_success": 0.5,
+          "evidence_source": "moa_style_llm_agent"
+        },
+        {
+          "task_id": "phase1_code_parse_int_001",
+          "success": true,
+          "final_success_label": "pass",
+          "model_calls": 2,
+          "total_tokens": 907,
+          "latency_ms": 1488,
+          "cost_normalized_success": 0.5,
+          "evidence_source": "moa_style_llm_agent"
+        },
+        {
+          "task_id": "phase1_code_pkg_helper_001",
+          "success": true,
+          "final_success_label": "pass",
+          "model_calls": 2,
+          "total_tokens": 917,
+          "latency_ms": 1330,
+          "cost_normalized_success": 0.5,
+          "evidence_source": "moa_style_llm_agent"
+        },
+        {
+          "task_id": "phase1_code_refactor_001",
+          "success": true,
+          "final_success_label": "pass",
+          "model_calls": 2,
+          "total_tokens": 1031,
+          "latency_ms": 1569,
+          "cost_normalized_success": 0.5,
+          "evidence_source": "moa_style_llm_agent"
+        },
+        {
+          "task_id": "phase1_code_sanitize_001",
+          "success": false,
+          "final_success_label": "fail",
+          "model_calls": 2,
+          "total_tokens": 929,
+          "latency_ms": 2078,
+          "cost_normalized_success": 0.0,
+          "evidence_source": "moa_style_llm_agent"
+        },
+        {
+          "task_id": "phase1_code_slugify_001",
+          "success": true,
+          "final_success_label": "pass",
+          "model_calls": 3,
+          "total_tokens": 1323,
+          "latency_ms": 3802,
+          "cost_normalized_success": 0.333333,
+          "evidence_source": "moa_style_llm_agent"
+        },
+        {
+          "task_id": "phase1_code_strip_tags_001",
+          "success": true,
+          "final_success_label": "pass",
+          "model_calls": 2,
+          "total_tokens": 877,
+          "latency_ms": 5710,
+          "cost_normalized_success": 0.5,
+          "evidence_source": "moa_style_llm_agent"
+        },
+        {
+          "task_id": "phase1_code_trim_lines_001",
+          "success": true,
+          "final_success_label": "pass",
+          "model_calls": 2,
+          "total_tokens": 921,
+          "latency_ms": 1952,
+          "cost_normalized_success": 0.5,
+          "evidence_source": "moa_style_llm_agent"
+        },
+        {
+          "task_id": "phase1_code_url_001",
+          "success": true,
+          "final_success_label": "pass",
+          "model_calls": 2,
+          "total_tokens": 1015,
+          "latency_ms": 5919,
+          "cost_normalized_success": 0.5,
+          "evidence_source": "moa_style_llm_agent"
+        }
+      ]
+    },
+    "aa_no_cost_penalty": {
+      "ablation_id": "aa_no_cost_penalty",
+      "label": "no cost-quality frontier",
+      "evidence_tier": "live_required",
+      "evidence_source": "live_required",
+      "tasks": 26,
+      "correct": null,
+      "accuracy": null,
+      "mean_model_calls": null,
+      "note": "Requires live ablation run; no matrix row available."
+    },
+    "aa_direct_first": {
+      "ablation_id": "aa_direct_first",
+      "label": "direct-first (ReAct then AA)",
+      "evidence_tier": "direct",
+      "evidence_source": "cascade_replay:single_react_llm_agent->agent_attention_llm_tuned",
+      "tasks": 26,
+      "correct": 25,
+      "accuracy": 0.9615,
+      "mean_model_calls": 1.4615,
+      "mean_total_tokens": 703.85,
+      "mean_latency_ms": 1815.27,
+      "cost_normalized_success": 0.6579,
+      "per_task": [
+        {
+          "task_id": "phase0_seed_code_fix_001",
+          "success": true,
+          "final_success_label": "pass",
+          "halt_stage": "single_react_llm_agent",
+          "stages_run": 1,
+          "escalated": false,
+          "rescued_by": null,
+          "model_calls": 1,
+          "total_tokens": 390,
+          "latency_ms": 954,
+          "cost_normalized_success": 1.0,
+          "stage_details": [
+            {
+              "baseline_id": "single_react_llm_agent",
+              "success": true,
+              "model_calls": 1,
+              "total_tokens": 390,
+              "latency_ms": 954
+            }
+          ]
+        },
+        {
+          "task_id": "phase0_seed_negative_memory_001",
+          "success": true,
+          "final_success_label": "pass",
+          "halt_stage": "single_react_llm_agent",
+          "stages_run": 1,
+          "escalated": false,
+          "rescued_by": null,
+          "model_calls": 1,
+          "total_tokens": 392,
+          "latency_ms": 650,
+          "cost_normalized_success": 1.0,
+          "stage_details": [
+            {
+              "baseline_id": "single_react_llm_agent",
+              "success": true,
+              "model_calls": 1,
+              "total_tokens": 392,
+              "latency_ms": 650
+            }
+          ]
+        },
+        {
+          "task_id": "phase1_code_binary_search_001",
+          "success": true,
+          "final_success_label": "pass",
+          "halt_stage": "single_react_llm_agent",
+          "stages_run": 1,
+          "escalated": false,
+          "rescued_by": null,
+          "model_calls": 1,
+          "total_tokens": 575,
+          "latency_ms": 2692,
+          "cost_normalized_success": 1.0,
+          "stage_details": [
+            {
+              "baseline_id": "single_react_llm_agent",
+              "success": true,
+              "model_calls": 1,
+              "total_tokens": 575,
+              "latency_ms": 2692
+            }
+          ]
+        },
+        {
+          "task_id": "phase1_code_clamp_001",
+          "success": true,
+          "final_success_label": "pass",
+          "halt_stage": "single_react_llm_agent",
+          "stages_run": 1,
+          "escalated": false,
+          "rescued_by": null,
+          "model_calls": 1,
+          "total_tokens": 441,
+          "latency_ms": 693,
+          "cost_normalized_success": 1.0,
+          "stage_details": [
+            {
+              "baseline_id": "single_react_llm_agent",
+              "success": true,
+              "model_calls": 1,
+              "total_tokens": 441,
+              "latency_ms": 693
+            }
+          ]
+        },
+        {
+          "task_id": "phase1_code_config_001",
+          "success": true,
+          "final_success_label": "pass",
+          "halt_stage": "single_react_llm_agent",
+          "stages_run": 1,
+          "escalated": false,
+          "rescued_by": null,
+          "model_calls": 1,
+          "total_tokens": 498,
+          "latency_ms": 1211,
+          "cost_normalized_success": 1.0,
+          "stage_details": [
+            {
+              "baseline_id": "single_react_llm_agent",
+              "success": true,
+              "model_calls": 1,
+              "total_tokens": 498,
+              "latency_ms": 1211
+            }
+          ]
+        },
+        {
+          "task_id": "phase1_code_config_get_001",
+          "success": true,
+          "final_success_label": "pass",
+          "halt_stage": "single_react_llm_agent",
+          "stages_run": 1,
+          "escalated": false,
+          "rescued_by": null,
+          "model_calls": 1,
+          "total_tokens": 441,
+          "latency_ms": 979,
+          "cost_normalized_success": 1.0,
+          "stage_details": [
+            {
+              "baseline_id": "single_react_llm_agent",
+              "success": true,
+              "model_calls": 1,
+              "total_tokens": 441,
+              "latency_ms": 979
+            }
+          ]
+        },
+        {
+          "task_id": "phase1_code_csv_001",
+          "success": true,
+          "final_success_label": "pass",
+          "halt_stage": "agent_attention_llm_tuned",
+          "stages_run": 2,
+          "escalated": true,
+          "rescued_by": "agent_attention_llm_tuned",
+          "model_calls": 3,
+          "total_tokens": 1971,
+          "latency_ms": 4826,
+          "cost_normalized_success": 0.333333,
+          "stage_details": [
+            {
+              "baseline_id": "single_react_llm_agent",
+              "success": false,
+              "model_calls": 1,
+              "total_tokens": 698,
+              "latency_ms": 2208
+            },
+            {
+              "baseline_id": "agent_attention_llm_tuned",
+              "success": true,
+              "model_calls": 2,
+              "total_tokens": 1273,
+              "latency_ms": 2618
+            }
+          ]
+        },
+        {
+          "task_id": "phase1_code_doc_001",
+          "success": true,
+          "final_success_label": "pass",
+          "halt_stage": "single_react_llm_agent",
+          "stages_run": 1,
+          "escalated": false,
+          "rescued_by": null,
+          "model_calls": 1,
+          "total_tokens": 413,
+          "latency_ms": 549,
+          "cost_normalized_success": 1.0,
+          "stage_details": [
+            {
+              "baseline_id": "single_react_llm_agent",
+              "success": true,
+              "model_calls": 1,
+              "total_tokens": 413,
+              "latency_ms": 549
+            }
+          ]
+        },
+        {
+          "task_id": "phase1_code_edge_001",
+          "success": true,
+          "final_success_label": "pass",
+          "halt_stage": "single_react_llm_agent",
+          "stages_run": 1,
+          "escalated": false,
+          "rescued_by": null,
+          "model_calls": 1,
+          "total_tokens": 515,
+          "latency_ms": 1006,
+          "cost_normalized_success": 1.0,
+          "stage_details": [
+            {
+              "baseline_id": "single_react_llm_agent",
+              "success": true,
+              "model_calls": 1,
+              "total_tokens": 515,
+              "latency_ms": 1006
+            }
+          ]
+        },
+        {
+          "task_id": "phase1_code_email_001",
+          "success": true,
+          "final_success_label": "pass",
+          "halt_stage": "agent_attention_llm_tuned",
+          "stages_run": 2,
+          "escalated": true,
+          "rescued_by": "agent_attention_llm_tuned",
+          "model_calls": 3,
+          "total_tokens": 1405,
+          "latency_ms": 3983,
+          "cost_normalized_success": 0.333333,
+          "stage_details": [
+            {
+              "baseline_id": "single_react_llm_agent",
+              "success": false,
+              "model_calls": 1,
+              "total_tokens": 435,
+              "latency_ms": 1237
+            },
+            {
+              "baseline_id": "agent_attention_llm_tuned",
+              "success": true,
+              "model_calls": 2,
+              "total_tokens": 970,
+              "latency_ms": 2746
+            }
+          ]
+        },
+        {
+          "task_id": "phase1_code_env_flag_001",
+          "success": false,
+          "final_success_label": "fail",
+          "halt_stage": "agent_attention_llm_tuned",
+          "stages_run": 2,
+          "escalated": true,
+          "rescued_by": null,
+          "model_calls": 5,
+          "total_tokens": 2256,
+          "latency_ms": 5133,
+          "cost_normalized_success": 0.0,
+          "stage_details": [
+            {
+              "baseline_id": "single_react_llm_agent",
+              "success": false,
+              "model_calls": 3,
+              "total_tokens": 1331,
+              "latency_ms": 2627
+            },
+            {
+              "baseline_id": "agent_attention_llm_tuned",
+              "success": false,
+              "model_calls": 2,
+              "total_tokens": 925,
+              "latency_ms": 2506
+            }
+          ]
+        },
+        {
+          "task_id": "phase1_code_flatten_001",
+          "success": true,
+          "final_success_label": "pass",
+          "halt_stage": "single_react_llm_agent",
+          "stages_run": 1,
+          "escalated": false,
+          "rescued_by": null,
+          "model_calls": 1,
+          "total_tokens": 527,
+          "latency_ms": 1180,
+          "cost_normalized_success": 1.0,
+          "stage_details": [
+            {
+              "baseline_id": "single_react_llm_agent",
+              "success": true,
+              "model_calls": 1,
+              "total_tokens": 527,
+              "latency_ms": 1180
+            }
+          ]
+        },
+        {
+          "task_id": "phase1_code_hash_001",
+          "success": true,
+          "final_success_label": "pass",
+          "halt_stage": "single_react_llm_agent",
+          "stages_run": 1,
+          "escalated": false,
+          "rescued_by": null,
+          "model_calls": 1,
+          "total_tokens": 403,
+          "latency_ms": 749,
+          "cost_normalized_success": 1.0,
+          "stage_details": [
+            {
+              "baseline_id": "single_react_llm_agent",
+              "success": true,
+              "model_calls": 1,
+              "total_tokens": 403,
+              "latency_ms": 749
+            }
+          ]
+        },
+        {
+          "task_id": "phase1_code_import_001",
+          "success": true,
+          "final_success_label": "pass",
+          "halt_stage": "single_react_llm_agent",
+          "stages_run": 1,
+          "escalated": false,
+          "rescued_by": null,
+          "model_calls": 1,
+          "total_tokens": 450,
+          "latency_ms": 794,
+          "cost_normalized_success": 1.0,
+          "stage_details": [
+            {
+              "baseline_id": "single_react_llm_agent",
+              "success": true,
+              "model_calls": 1,
+              "total_tokens": 450,
+              "latency_ms": 794
+            }
+          ]
+        },
+        {
+          "task_id": "phase1_code_json_001",
+          "success": true,
+          "final_success_label": "pass",
+          "halt_stage": "single_react_llm_agent",
+          "stages_run": 1,
+          "escalated": false,
+          "rescued_by": null,
+          "model_calls": 1,
+          "total_tokens": 448,
+          "latency_ms": 1129,
+          "cost_normalized_success": 1.0,
+          "stage_details": [
+            {
+              "baseline_id": "single_react_llm_agent",
+              "success": true,
+              "model_calls": 1,
+              "total_tokens": 448,
+              "latency_ms": 1129
+            }
+          ]
+        },
+        {
+          "task_id": "phase1_code_mean_001",
+          "success": true,
+          "final_success_label": "pass",
+          "halt_stage": "single_react_llm_agent",
+          "stages_run": 1,
+          "escalated": false,
+          "rescued_by": null,
+          "model_calls": 1,
+          "total_tokens": 445,
+          "latency_ms": 959,
+          "cost_normalized_success": 1.0,
+          "stage_details": [
+            {
+              "baseline_id": "single_react_llm_agent",
+              "success": true,
+              "model_calls": 1,
+              "total_tokens": 445,
+              "latency_ms": 959
+            }
+          ]
+        },
+        {
+          "task_id": "phase1_code_merge_001",
+          "success": true,
+          "final_success_label": "pass",
+          "halt_stage": "single_react_llm_agent",
+          "stages_run": 1,
+          "escalated": false,
+          "rescued_by": null,
+          "model_calls": 1,
+          "total_tokens": 572,
+          "latency_ms": 3748,
+          "cost_normalized_success": 1.0,
+          "stage_details": [
+            {
+              "baseline_id": "single_react_llm_agent",
+              "success": true,
+              "model_calls": 1,
+              "total_tokens": 572,
+              "latency_ms": 3748
+            }
+          ]
+        },
+        {
+          "task_id": "phase1_code_palindrome_001",
+          "success": true,
+          "final_success_label": "pass",
+          "halt_stage": "single_react_llm_agent",
+          "stages_run": 1,
+          "escalated": false,
+          "rescued_by": null,
+          "model_calls": 1,
+          "total_tokens": 409,
+          "latency_ms": 1051,
+          "cost_normalized_success": 1.0,
+          "stage_details": [
+            {
+              "baseline_id": "single_react_llm_agent",
+              "success": true,
+              "model_calls": 1,
+              "total_tokens": 409,
+              "latency_ms": 1051
+            }
+          ]
+        },
+        {
+          "task_id": "phase1_code_parse_int_001",
+          "success": true,
+          "final_success_label": "pass",
+          "halt_stage": "single_react_llm_agent",
+          "stages_run": 1,
+          "escalated": false,
+          "rescued_by": null,
+          "model_calls": 1,
+          "total_tokens": 455,
+          "latency_ms": 3603,
+          "cost_normalized_success": 1.0,
+          "stage_details": [
+            {
+              "baseline_id": "single_react_llm_agent",
+              "success": true,
+              "model_calls": 1,
+              "total_tokens": 455,
+              "latency_ms": 3603
+            }
+          ]
+        },
+        {
+          "task_id": "phase1_code_pkg_helper_001",
+          "success": true,
+          "final_success_label": "pass",
+          "halt_stage": "single_react_llm_agent",
+          "stages_run": 1,
+          "escalated": false,
+          "rescued_by": null,
+          "model_calls": 3,
+          "total_tokens": 1457,
+          "latency_ms": 2339,
+          "cost_normalized_success": 0.333333,
+          "stage_details": [
+            {
+              "baseline_id": "single_react_llm_agent",
+              "success": true,
+              "model_calls": 3,
+              "total_tokens": 1457,
+              "latency_ms": 2339
+            }
+          ]
+        },
+        {
+          "task_id": "phase1_code_refactor_001",
+          "success": true,
+          "final_success_label": "pass",
+          "halt_stage": "single_react_llm_agent",
+          "stages_run": 1,
+          "escalated": false,
+          "rescued_by": null,
+          "model_calls": 1,
+          "total_tokens": 517,
+          "latency_ms": 775,
+          "cost_normalized_success": 1.0,
+          "stage_details": [
+            {
+              "baseline_id": "single_react_llm_agent",
+              "success": true,
+              "model_calls": 1,
+              "total_tokens": 517,
+              "latency_ms": 775
+            }
+          ]
+        },
+        {
+          "task_id": "phase1_code_sanitize_001",
+          "success": true,
+          "final_success_label": "pass",
+          "halt_stage": "single_react_llm_agent",
+          "stages_run": 1,
+          "escalated": false,
+          "rescued_by": null,
+          "model_calls": 1,
+          "total_tokens": 449,
+          "latency_ms": 783,
+          "cost_normalized_success": 1.0,
+          "stage_details": [
+            {
+              "baseline_id": "single_react_llm_agent",
+              "success": true,
+              "model_calls": 1,
+              "total_tokens": 449,
+              "latency_ms": 783
+            }
+          ]
+        },
+        {
+          "task_id": "phase1_code_slugify_001",
+          "success": true,
+          "final_success_label": "pass",
+          "halt_stage": "single_react_llm_agent",
+          "stages_run": 1,
+          "escalated": false,
+          "rescued_by": null,
+          "model_calls": 1,
+          "total_tokens": 424,
+          "latency_ms": 1410,
+          "cost_normalized_success": 1.0,
+          "stage_details": [
+            {
+              "baseline_id": "single_react_llm_agent",
+              "success": true,
+              "model_calls": 1,
+              "total_tokens": 424,
+              "latency_ms": 1410
+            }
+          ]
+        },
+        {
+          "task_id": "phase1_code_strip_tags_001",
+          "success": true,
+          "final_success_label": "pass",
+          "halt_stage": "single_react_llm_agent",
+          "stages_run": 1,
+          "escalated": false,
+          "rescued_by": null,
+          "model_calls": 1,
+          "total_tokens": 440,
+          "latency_ms": 672,
+          "cost_normalized_success": 1.0,
+          "stage_details": [
+            {
+              "baseline_id": "single_react_llm_agent",
+              "success": true,
+              "model_calls": 1,
+              "total_tokens": 440,
+              "latency_ms": 672
+            }
+          ]
+        },
+        {
+          "task_id": "phase1_code_trim_lines_001",
+          "success": true,
+          "final_success_label": "pass",
+          "halt_stage": "single_react_llm_agent",
+          "stages_run": 1,
+          "escalated": false,
+          "rescued_by": null,
+          "model_calls": 3,
+          "total_tokens": 1511,
+          "latency_ms": 4331,
+          "cost_normalized_success": 0.333333,
+          "stage_details": [
+            {
+              "baseline_id": "single_react_llm_agent",
+              "success": true,
+              "model_calls": 3,
+              "total_tokens": 1511,
+              "latency_ms": 4331
+            }
+          ]
+        },
+        {
+          "task_id": "phase1_code_url_001",
+          "success": true,
+          "final_success_label": "pass",
+          "halt_stage": "single_react_llm_agent",
+          "stages_run": 1,
+          "escalated": false,
+          "rescued_by": null,
+          "model_calls": 1,
+          "total_tokens": 496,
+          "latency_ms": 998,
+          "cost_normalized_success": 1.0,
+          "stage_details": [
+            {
+              "baseline_id": "single_react_llm_agent",
+              "success": true,
+              "model_calls": 1,
+              "total_tokens": 496,
+              "latency_ms": 998
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "ablation_matrix": [
+    {
+      "ablation_id": "aa_tuned_control",
+      "control_id": "aa_tuned_control",
+      "baseline_id": "agent_attention_agent_tuned",
+      "label": "P2 tuned control",
+      "evidence_tier": "direct",
+      "matrix_baseline_id": "agent_attention_llm_tuned",
+      "note": "Adaptive top-k, strong budget gate, memory on, verifier on.",
+      "overrides": {},
+      "recommendation_hint": "keep_as_control",
+      "metrics": {
+        "accuracy": 0.8462,
+        "mean_model_calls": 2.0,
+        "cost_normalized_success": 0.4231
+      },
+      "delta_vs_control": {
+        "accuracy_delta": 0.0,
+        "calls_delta": 0.0,
+        "cost_norm_delta": 0.0
+      },
+      "evidence_source": "agent_attention_llm_tuned"
+    },
+    {
+      "ablation_id": "aa_top1",
+      "control_id": "aa_tuned_control",
+      "baseline_id": "agent_attention_agent_tuned",
+      "label": "top-k = 1",
+      "evidence_tier": "live_required",
+      "matrix_baseline_id": null,
+      "overrides": {
+        "top_k": 1,
+        "max_top_k": 1,
+        "adaptive_top_k_enabled": false
+      },
+      "recommendation_hint": "gate_if_escalation_only",
+      "metrics": {
+        "accuracy": null,
+        "mean_model_calls": null,
+        "cost_normalized_success": null
+      },
+      "delta_vs_control": {},
+      "evidence_source": "live_required"
+    },
+    {
+      "ablation_id": "aa_no_adaptive_topk",
+      "control_id": "aa_tuned_control",
+      "baseline_id": "agent_attention_agent_tuned",
+      "label": "adaptive top-k off",
+      "evidence_tier": "live_required",
+      "matrix_baseline_id": null,
+      "overrides": {
+        "adaptive_top_k_enabled": false,
+        "top_k": 2,
+        "max_top_k": 2
+      },
+      "recommendation_hint": "keep_fixed_top2",
+      "metrics": {
+        "accuracy": null,
+        "mean_model_calls": null,
+        "cost_normalized_success": null
+      },
+      "delta_vs_control": {},
+      "evidence_source": "live_required"
+    },
+    {
+      "ablation_id": "aa_no_memory",
+      "control_id": "aa_tuned_control",
+      "baseline_id": "agent_attention_agent_tuned",
+      "label": "memory off",
+      "evidence_tier": "proxy",
+      "matrix_baseline_id": null,
+      "proxy_baseline_id": "single_react_llm_agent",
+      "proxy_note": "No-memory ReAct proxy; Phase2 toy shows +8.3pp success without memory.",
+      "overrides": {
+        "memory_enabled": false,
+        "memory_write_enabled": false
+      },
+      "recommendation_hint": "remove_or_gate",
+      "metrics": {
+        "accuracy": 0.8846,
+        "mean_model_calls": 1.2308,
+        "cost_normalized_success": 0.7187
+      },
+      "delta_vs_control": {
+        "accuracy_delta": 0.0384,
+        "calls_delta": -0.7692,
+        "cost_norm_delta": 0.2956
+      },
+      "evidence_source": "proxy:single_react_llm_agent"
+    },
+    {
+      "ablation_id": "aa_no_verifier",
+      "control_id": "aa_tuned_control",
+      "baseline_id": "agent_attention_agent_tuned",
+      "label": "verifier off",
+      "evidence_tier": "live_required",
+      "matrix_baseline_id": null,
+      "overrides": {
+        "verifier_enabled": false
+      },
+      "recommendation_hint": "keep_in_escalation",
+      "metrics": {
+        "accuracy": null,
+        "mean_model_calls": null,
+        "cost_normalized_success": null
+      },
+      "delta_vs_control": {},
+      "evidence_source": "live_required"
+    },
+    {
+      "ablation_id": "aa_no_budget_gate",
+      "control_id": "aa_tuned_control",
+      "baseline_id": "agent_attention_agent_tuned",
+      "label": "no strong budget gate",
+      "evidence_tier": "proxy",
+      "matrix_baseline_id": null,
+      "proxy_baseline_id": "moa_style_llm_agent",
+      "proxy_note": "MoA proxy for higher fan-out when budget gate relaxed.",
+      "overrides": {
+        "strong_budget_gate": false,
+        "budget_cost_fraction": 0.0
+      },
+      "recommendation_hint": "keep_gate",
+      "metrics": {
+        "accuracy": 0.9615,
+        "mean_model_calls": 2.0769,
+        "cost_normalized_success": 0.463
+      },
+      "delta_vs_control": {
+        "accuracy_delta": 0.1153,
+        "calls_delta": 0.0769,
+        "cost_norm_delta": 0.0399
+      },
+      "evidence_source": "proxy:moa_style_llm_agent"
+    },
+    {
+      "ablation_id": "aa_no_cost_penalty",
+      "control_id": "aa_tuned_control",
+      "baseline_id": "agent_attention_agent_tuned",
+      "label": "no cost-quality frontier",
+      "evidence_tier": "live_required",
+      "matrix_baseline_id": null,
+      "overrides": {
+        "cost_quality_epsilon": 0.0,
+        "budget_cost_fraction": 0.0
+      },
+      "recommendation_hint": "keep_cost_penalty",
+      "metrics": {
+        "accuracy": null,
+        "mean_model_calls": null,
+        "cost_normalized_success": null
+      },
+      "delta_vs_control": {},
+      "evidence_source": "live_required"
+    },
+    {
+      "ablation_id": "aa_direct_first",
+      "control_id": "aa_tuned_control",
+      "baseline_id": "agent_attention_agent_tuned",
+      "label": "direct-first (ReAct then AA)",
+      "evidence_tier": "direct",
+      "matrix_baseline_id": null,
+      "cascade_stages": [
+        "single_react_llm_agent",
+        "agent_attention_llm_tuned"
+      ],
+      "note": "Deployment policy: AA only after cheap ReAct failure.",
+      "overrides": {},
+      "recommendation_hint": "keep_as_default_route",
+      "metrics": {
+        "accuracy": 0.9615,
+        "mean_model_calls": 1.4615,
+        "cost_normalized_success": 0.6579
+      },
+      "delta_vs_control": {
+        "accuracy_delta": 0.1153,
+        "calls_delta": -0.5385,
+        "cost_norm_delta": 0.2348
+      },
+      "evidence_source": "cascade_replay:single_react_llm_agent->agent_attention_llm_tuned"
+    }
+  ],
+  "component_recommendations": [
+    {
+      "component": "tuned_control",
+      "action": "keep",
+      "confidence": "high",
+      "rationale": "Reference configuration for delta comparisons; replace with direct-first deployment policy."
+    },
+    {
+      "component": "top1",
+      "action": "gate",
+      "confidence": "low",
+      "rationale": "No matrix replay; schedule live ablation before remove/keep decision."
+    },
+    {
+      "component": "no_adaptive_topk",
+      "action": "gate",
+      "confidence": "low",
+      "rationale": "No matrix replay; schedule live ablation before remove/keep decision."
+    },
+    {
+      "component": "memory",
+      "action": "gate",
+      "confidence": "medium",
+      "rationale": "Proxy ReAct (no memory) beats always-AA on cost-norm; Phase2 toy shows aa_no_memory +8.3pp success. Gate memory to escalation-only or outcome-memory pilot."
+    },
+    {
+      "component": "no_verifier",
+      "action": "gate",
+      "confidence": "low",
+      "rationale": "No matrix replay; schedule live ablation before remove/keep decision."
+    },
+    {
+      "component": "strong_budget_gate",
+      "action": "keep",
+      "confidence": "medium",
+      "rationale": "MoA proxy (relaxed fan-out) has higher accuracy but worse cost-norm than control; budget gate limits over-activation on easy tasks."
+    },
+    {
+      "component": "no_cost_penalty",
+      "action": "gate",
+      "confidence": "low",
+      "rationale": "No matrix replay; schedule live ablation before remove/keep decision."
+    },
+    {
+      "component": "direct_first_escalation",
+      "action": "keep",
+      "confidence": "high",
+      "rationale": "Direct-first improves cost-norm by +0.2348 vs always-AA with accuracy delta +0.1153 (matrix replay)."
+    }
+  ],
+  "rescue_trajectory_analysis": {
+    "rescue_tasks": [
+      {
+        "task_id": "phase1_code_csv_001",
+        "react": {
+          "run_id": "real_llm__single_react_llm_agent__openai__Qwen3-30B-A3B-Instruct-2507__phase1_code_csv_001",
+          "baseline_id": "single_react_llm_agent",
+          "task_id": "phase1_code_csv_001",
+          "success": false,
+          "model_calls": 1,
+          "total_tokens": 698,
+          "route_steps": 1,
+          "selected_modules": [
+            "code_agent"
+          ],
+          "unique_modules": [
+            "code_agent"
+          ],
+          "effective_top_k_values": [
+            1
+          ],
+          "empty_route_steps": 0,
+          "verifier_runs": 1,
+          "memory_reads": 0,
+          "confidence_final": 0.873,
+          "halt_reason": null,
+          "failure_signals": []
+        },
+        "aa_tuned": {
+          "run_id": "real_llm__agent_attention_llm_tuned__openai__Qwen3-30B-A3B-Instruct-2507__phase1_code_csv_001",
+          "baseline_id": "agent_attention_llm_tuned",
+          "task_id": "phase1_code_csv_001",
+          "success": true,
+          "model_calls": 2,
+          "total_tokens": 1273,
+          "route_steps": 2,
+          "selected_modules": [
+            "critic_agent",
+            "code_agent"
+          ],
+          "unique_modules": [
+            "code_agent",
+            "critic_agent"
+          ],
+          "effective_top_k_values": [
+            2,
+            2
+          ],
+          "empty_route_steps": 1,
+          "verifier_runs": 2,
+          "memory_reads": 2,
+          "confidence_final": 0.873,
+          "halt_reason": null,
+          "failure_signals": [
+            "no_module_activated"
+          ]
+        },
+        "moa": {
+          "run_id": "real_llm__moa_style_llm_agent__openai__Qwen3-30B-A3B-Instruct-2507__phase1_code_csv_001",
+          "baseline_id": "moa_style_llm_agent",
+          "task_id": "phase1_code_csv_001",
+          "success": true,
+          "model_calls": 2,
+          "total_tokens": 1243,
+          "route_steps": 1,
+          "selected_modules": [
+            "code_agent",
+            "critic_agent"
+          ],
+          "unique_modules": [
+            "code_agent",
+            "critic_agent"
+          ],
+          "effective_top_k_values": [
+            4
+          ],
+          "empty_route_steps": 0,
+          "verifier_runs": 1,
+          "memory_reads": 0,
+          "confidence_final": 0.873,
+          "halt_reason": null,
+          "failure_signals": []
+        },
+        "aa_rescue": true,
+        "aa_failed_needs_moa": false,
+        "interpretation": "AA rescued via extra modules ['critic_agent'] (2 calls vs ReAct 1). Step-1 empty routes: 1; critic+code on retry drove fix."
+      },
+      {
+        "task_id": "phase1_code_email_001",
+        "react": {
+          "run_id": "real_llm__single_react_llm_agent__openai__Qwen3-30B-A3B-Instruct-2507__phase1_code_email_001",
+          "baseline_id": "single_react_llm_agent",
+          "task_id": "phase1_code_email_001",
+          "success": false,
+          "model_calls": 1,
+          "total_tokens": 435,
+          "route_steps": 1,
+          "selected_modules": [
+            "code_agent"
+          ],
+          "unique_modules": [
+            "code_agent"
+          ],
+          "effective_top_k_values": [
+            1
+          ],
+          "empty_route_steps": 0,
+          "verifier_runs": 1,
+          "memory_reads": 0,
+          "confidence_final": 0.873,
+          "halt_reason": null,
+          "failure_signals": []
+        },
+        "aa_tuned": {
+          "run_id": "real_llm__agent_attention_llm_tuned__openai__Qwen3-30B-A3B-Instruct-2507__phase1_code_email_001",
+          "baseline_id": "agent_attention_llm_tuned",
+          "task_id": "phase1_code_email_001",
+          "success": true,
+          "model_calls": 2,
+          "total_tokens": 970,
+          "route_steps": 2,
+          "selected_modules": [
+            "critic_agent",
+            "code_agent"
+          ],
+          "unique_modules": [
+            "code_agent",
+            "critic_agent"
+          ],
+          "effective_top_k_values": [
+            2,
+            2
+          ],
+          "empty_route_steps": 1,
+          "verifier_runs": 2,
+          "memory_reads": 2,
+          "confidence_final": 0.873,
+          "halt_reason": null,
+          "failure_signals": [
+            "no_module_activated"
+          ]
+        },
+        "moa": {
+          "run_id": "real_llm__moa_style_llm_agent__openai__Qwen3-30B-A3B-Instruct-2507__phase1_code_email_001",
+          "baseline_id": "moa_style_llm_agent",
+          "task_id": "phase1_code_email_001",
+          "success": true,
+          "model_calls": 2,
+          "total_tokens": 863,
+          "route_steps": 1,
+          "selected_modules": [
+            "code_agent",
+            "critic_agent"
+          ],
+          "unique_modules": [
+            "code_agent",
+            "critic_agent"
+          ],
+          "effective_top_k_values": [
+            4
+          ],
+          "empty_route_steps": 0,
+          "verifier_runs": 1,
+          "memory_reads": 0,
+          "confidence_final": 0.873,
+          "halt_reason": null,
+          "failure_signals": []
+        },
+        "aa_rescue": true,
+        "aa_failed_needs_moa": false,
+        "interpretation": "AA rescued via extra modules ['critic_agent'] (2 calls vs ReAct 1). Step-1 empty routes: 1; critic+code on retry drove fix."
+      },
+      {
+        "task_id": "phase1_code_env_flag_001",
+        "react": {
+          "run_id": "real_llm__single_react_llm_agent__openai__Qwen3-30B-A3B-Instruct-2507__phase1_code_env_flag_001",
+          "baseline_id": "single_react_llm_agent",
+          "task_id": "phase1_code_env_flag_001",
+          "success": false,
+          "model_calls": 3,
+          "total_tokens": 1331,
+          "route_steps": 3,
+          "selected_modules": [
+            "code_agent",
+            "aggregator",
+            "critic_agent"
+          ],
+          "unique_modules": [
+            "aggregator",
+            "code_agent",
+            "critic_agent"
+          ],
+          "effective_top_k_values": [
+            1,
+            1,
+            1
+          ],
+          "empty_route_steps": 0,
+          "verifier_runs": 3,
+          "memory_reads": 0,
+          "confidence_final": 0.6835,
+          "halt_reason": null,
+          "failure_signals": [
+            "verifier_budget_rejected"
+          ]
+        },
+        "aa_tuned": {
+          "run_id": "real_llm__agent_attention_llm_tuned__openai__Qwen3-30B-A3B-Instruct-2507__phase1_code_env_flag_001",
+          "baseline_id": "agent_attention_llm_tuned",
+          "task_id": "phase1_code_env_flag_001",
+          "success": false,
+          "model_calls": 2,
+          "total_tokens": 925,
+          "route_steps": 2,
+          "selected_modules": [
+            "critic_agent",
+            "code_agent"
+          ],
+          "unique_modules": [
+            "code_agent",
+            "critic_agent"
+          ],
+          "effective_top_k_values": [
+            2,
+            2
+          ],
+          "empty_route_steps": 1,
+          "verifier_runs": 2,
+          "memory_reads": 2,
+          "confidence_final": 0.873,
+          "halt_reason": null,
+          "failure_signals": [
+            "no_module_activated"
+          ]
+        },
+        "moa": {
+          "run_id": "real_llm__moa_style_llm_agent__openai__Qwen3-30B-A3B-Instruct-2507__phase1_code_env_flag_001",
+          "baseline_id": "moa_style_llm_agent",
+          "task_id": "phase1_code_env_flag_001",
+          "success": true,
+          "model_calls": 2,
+          "total_tokens": 813,
+          "route_steps": 1,
+          "selected_modules": [
+            "code_agent",
+            "critic_agent"
+          ],
+          "unique_modules": [
+            "code_agent",
+            "critic_agent"
+          ],
+          "effective_top_k_values": [
+            4
+          ],
+          "empty_route_steps": 0,
+          "verifier_runs": 1,
+          "memory_reads": 0,
+          "confidence_final": 0.873,
+          "halt_reason": null,
+          "failure_signals": []
+        },
+        "aa_rescue": false,
+        "aa_failed_needs_moa": true,
+        "interpretation": "AA failed after activating ['code_agent', 'critic_agent'] (empty route steps=1); MoA succeeded with parallel proposers."
+      }
+    ],
+    "task_count": 3
+  },
+  "phase2_memory_hint": {
+    "toy_success_delta_no_memory": 0.0833,
+    "toy_cost_norm_delta_no_memory": 0.0351
+  },
+  "comparison_vs_control": {
+    "always_aa_accuracy": 0.8462,
+    "always_aa_cost_norm": 0.4231,
+    "direct_first_accuracy": 0.9615,
+    "direct_first_cost_norm": 0.6579,
+    "direct_first_gain_cost_norm": 0.2348
+  },
+  "evidence_outcome": "supports_direction",
+  "live_pilot": {
+    "scope": "Live AA component ablation pilot (Brief C).",
+    "mode": "live",
+    "subset": "rescue",
+    "tasks": 3,
+    "ablations": [
+      "aa_no_verifier",
+      "aa_no_adaptive_topk",
+      "aa_top1"
+    ],
+    "runs": 9,
+    "summary_by_ablation": {
+      "aa_no_verifier_llm": {
+        "runs": 3,
+        "correct": 3,
+        "accuracy": 1.0,
+        "mean_model_calls": 1.0,
+        "cost_normalized_success": 1.0
+      },
+      "aa_no_adaptive_topk_llm": {
+        "runs": 3,
+        "correct": 1,
+        "accuracy": 0.3333,
+        "mean_model_calls": 2.0,
+        "cost_normalized_success": 0.1667
+      },
+      "aa_top1_llm": {
+        "runs": 3,
+        "correct": 0,
+        "accuracy": 0.0,
+        "mean_model_calls": 1.0,
+        "cost_normalized_success": 0.0
+      }
+    },
+    "provider": "openai",
+    "model": "Qwen3-30B-A3B-Instruct-2507"
+  }
+}

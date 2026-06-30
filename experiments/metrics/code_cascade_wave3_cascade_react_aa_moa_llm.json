@@ -1,0 +1,307 @@
+{
+  "scope": "Unified real LLM evaluation.",
+  "baselines": {
+    "cascade_react_aa_moa_llm": {
+      "runs": 26,
+      "accuracy": 1.0,
+      "partial_rate": 0.0,
+      "correct": 26,
+      "mean_latency_ms": 2282.92,
+      "mean_model_calls": 1.69,
+      "mean_total_tokens": 824.42,
+      "cost_normalized_success": 0.5909
+    }
+  },
+  "per_task": [
+    {
+      "baseline_id": "cascade_react_aa_moa_llm",
+      "task_id": "phase0_seed_code_fix_001",
+      "success": true,
+      "final_success_label": "pass",
+      "model_calls": 3,
+      "latency_ms": 3093,
+      "total_tokens": 1232,
+      "oracle_type": "executable_pytest",
+      "run_id": "real_llm__cascade_react_aa_moa_llm__openai__Qwen3-30B-A3B-Instruct-2507__phase0_seed_code_fix_001"
+    },
+    {
+      "baseline_id": "cascade_react_aa_moa_llm",
+      "task_id": "phase0_seed_negative_memory_001",
+      "success": true,
+      "final_success_label": "pass",
+      "model_calls": 1,
+      "latency_ms": 647,
+      "total_tokens": 392,
+      "oracle_type": "executable_pytest",
+      "run_id": "real_llm__cascade_react_aa_moa_llm__openai__Qwen3-30B-A3B-Instruct-2507__phase0_seed_negative_memory_001"
+    },
+    {
+      "baseline_id": "cascade_react_aa_moa_llm",
+      "task_id": "phase1_code_config_001",
+      "success": true,
+      "final_success_label": "pass",
+      "model_calls": 3,
+      "latency_ms": 3872,
+      "total_tokens": 1662,
+      "oracle_type": "executable_pytest",
+      "run_id": "real_llm__cascade_react_aa_moa_llm__openai__Qwen3-30B-A3B-Instruct-2507__phase1_code_config_001"
+    },
+    {
+      "baseline_id": "cascade_react_aa_moa_llm",
+      "task_id": "phase1_code_doc_001",
+      "success": true,
+      "final_success_label": "pass",
+      "model_calls": 1,
+      "latency_ms": 482,
+      "total_tokens": 413,
+      "oracle_type": "executable_pytest",
+      "run_id": "real_llm__cascade_react_aa_moa_llm__openai__Qwen3-30B-A3B-Instruct-2507__phase1_code_doc_001"
+    },
+    {
+      "baseline_id": "cascade_react_aa_moa_llm",
+      "task_id": "phase1_code_import_001",
+      "success": true,
+      "final_success_label": "pass",
+      "model_calls": 1,
+      "latency_ms": 608,
+      "total_tokens": 450,
+      "oracle_type": "executable_pytest",
+      "run_id": "real_llm__cascade_react_aa_moa_llm__openai__Qwen3-30B-A3B-Instruct-2507__phase1_code_import_001"
+    },
+    {
+      "baseline_id": "cascade_react_aa_moa_llm",
+      "task_id": "phase1_code_edge_001",
+      "success": true,
+      "final_success_label": "pass",
+      "model_calls": 3,
+      "latency_ms": 3651,
+      "total_tokens": 1674,
+      "oracle_type": "executable_pytest",
+      "run_id": "real_llm__cascade_react_aa_moa_llm__openai__Qwen3-30B-A3B-Instruct-2507__phase1_code_edge_001"
+    },
+    {
+      "baseline_id": "cascade_react_aa_moa_llm",
+      "task_id": "phase1_code_sanitize_001",
+      "success": true,
+      "final_success_label": "pass",
+      "model_calls": 5,
+      "latency_ms": 7857,
+      "total_tokens": 2514,
+      "oracle_type": "executable_pytest",
+      "run_id": "real_llm__cascade_react_aa_moa_llm__openai__Qwen3-30B-A3B-Instruct-2507__phase1_code_sanitize_001"
+    },
+    {
+      "baseline_id": "cascade_react_aa_moa_llm",
+      "task_id": "phase1_code_strip_tags_001",
+      "success": true,
+      "final_success_label": "pass",
+      "model_calls": 1,
+      "latency_ms": 991,
+      "total_tokens": 440,
+      "oracle_type": "executable_pytest",
+      "run_id": "real_llm__cascade_react_aa_moa_llm__openai__Qwen3-30B-A3B-Instruct-2507__phase1_code_strip_tags_001"
+    },
+    {
+      "baseline_id": "cascade_react_aa_moa_llm",
+      "task_id": "phase1_code_parse_int_001",
+      "success": true,
+      "final_success_label": "pass",
+      "model_calls": 1,
+      "latency_ms": 697,
+      "total_tokens": 455,
+      "oracle_type": "executable_pytest",
+      "run_id": "real_llm__cascade_react_aa_moa_llm__openai__Qwen3-30B-A3B-Instruct-2507__phase1_code_parse_int_001"
+    },
+    {
+      "baseline_id": "cascade_react_aa_moa_llm",
+      "task_id": "phase1_code_csv_001",
+      "success": true,
+      "final_success_label": "pass",
+      "model_calls": 1,
+      "latency_ms": 1492,
+      "total_tokens": 650,
+      "oracle_type": "executable_pytest",
+      "run_id": "real_llm__cascade_react_aa_moa_llm__openai__Qwen3-30B-A3B-Instruct-2507__phase1_code_csv_001"
+    },
+    {
+      "baseline_id": "cascade_react_aa_moa_llm",
+      "task_id": "phase1_code_json_001",
+      "success": true,
+      "final_success_label": "pass",
+      "model_calls": 3,
+      "latency_ms": 3525,
+      "total_tokens": 1521,
+      "oracle_type": "executable_pytest",
+      "run_id": "real_llm__cascade_react_aa_moa_llm__openai__Qwen3-30B-A3B-Instruct-2507__phase1_code_json_001"
+    },
+    {
+      "baseline_id": "cascade_react_aa_moa_llm",
+      "task_id": "phase1_code_url_001",
+      "success": true,
+      "final_success_label": "pass",
+      "model_calls": 1,
+      "latency_ms": 1166,
+      "total_tokens": 510,
+      "oracle_type": "executable_pytest",
+      "run_id": "real_llm__cascade_react_aa_moa_llm__openai__Qwen3-30B-A3B-Instruct-2507__phase1_code_url_001"
+    },
+    {
+      "baseline_id": "cascade_react_aa_moa_llm",
+      "task_id": "phase1_code_pkg_helper_001",
+      "success": true,
+      "final_success_label": "pass",
+      "model_calls": 1,
+      "latency_ms": 1803,
+      "total_tokens": 462,
+      "oracle_type": "executable_pytest",
+      "run_id": "real_llm__cascade_react_aa_moa_llm__openai__Qwen3-30B-A3B-Instruct-2507__phase1_code_pkg_helper_001"
+    },
+    {
+      "baseline_id": "cascade_react_aa_moa_llm",
+      "task_id": "phase1_code_refactor_001",
+      "success": true,
+      "final_success_label": "pass",
+      "model_calls": 3,
+      "latency_ms": 3092,
+      "total_tokens": 1623,
+      "oracle_type": "executable_pytest",
+      "run_id": "real_llm__cascade_react_aa_moa_llm__openai__Qwen3-30B-A3B-Instruct-2507__phase1_code_refactor_001"
+    },
+    {
+      "baseline_id": "cascade_react_aa_moa_llm",
+      "task_id": "phase1_code_clamp_001",
+      "success": true,
+      "final_success_label": "pass",
+      "model_calls": 1,
+      "latency_ms": 886,
+      "total_tokens": 441,
+      "oracle_type": "executable_pytest",
+      "run_id": "real_llm__cascade_react_aa_moa_llm__openai__Qwen3-30B-A3B-Instruct-2507__phase1_code_clamp_001"
+    },
+    {
+      "baseline_id": "cascade_react_aa_moa_llm",
+      "task_id": "phase1_code_mean_001",
+      "success": true,
+      "final_success_label": "pass",
+      "model_calls": 1,
+      "latency_ms": 680,
+      "total_tokens": 445,
+      "oracle_type": "executable_pytest",
+      "run_id": "real_llm__cascade_react_aa_moa_llm__openai__Qwen3-30B-A3B-Instruct-2507__phase1_code_mean_001"
+    },
+    {
+      "baseline_id": "cascade_react_aa_moa_llm",
+      "task_id": "phase1_code_palindrome_001",
+      "success": true,
+      "final_success_label": "pass",
+      "model_calls": 1,
+      "latency_ms": 1257,
+      "total_tokens": 409,
+      "oracle_type": "executable_pytest",
+      "run_id": "real_llm__cascade_react_aa_moa_llm__openai__Qwen3-30B-A3B-Instruct-2507__phase1_code_palindrome_001"
+    },
+    {
+      "baseline_id": "cascade_react_aa_moa_llm",
+      "task_id": "phase1_code_slugify_001",
+      "success": true,
+      "final_success_label": "pass",
+      "model_calls": 1,
+      "latency_ms": 3305,
+      "total_tokens": 424,
+      "oracle_type": "executable_pytest",
+      "run_id": "real_llm__cascade_react_aa_moa_llm__openai__Qwen3-30B-A3B-Instruct-2507__phase1_code_slugify_001"
+    },
+    {
+      "baseline_id": "cascade_react_aa_moa_llm",
+      "task_id": "phase1_code_merge_001",
+      "success": true,
+      "final_success_label": "pass",
+      "model_calls": 1,
+      "latency_ms": 3543,
+      "total_tokens": 572,
+      "oracle_type": "executable_pytest",
+      "run_id": "real_llm__cascade_react_aa_moa_llm__openai__Qwen3-30B-A3B-Instruct-2507__phase1_code_merge_001"
+    },
+    {
+      "baseline_id": "cascade_react_aa_moa_llm",
+      "task_id": "phase1_code_flatten_001",
+      "success": true,
+      "final_success_label": "pass",
+      "model_calls": 1,
+      "latency_ms": 1753,
+      "total_tokens": 527,
+      "oracle_type": "executable_pytest",
+      "run_id": "real_llm__cascade_react_aa_moa_llm__openai__Qwen3-30B-A3B-Instruct-2507__phase1_code_flatten_001"
+    },
+    {
+      "baseline_id": "cascade_react_aa_moa_llm",
+      "task_id": "phase1_code_email_001",
+      "success": true,
+      "final_success_label": "pass",
+      "model_calls": 3,
+      "latency_ms": 6818,
+      "total_tokens": 1406,
+      "oracle_type": "executable_pytest",
+      "run_id": "real_llm__cascade_react_aa_moa_llm__openai__Qwen3-30B-A3B-Instruct-2507__phase1_code_email_001"
+    },
+    {
+      "baseline_id": "cascade_react_aa_moa_llm",
+      "task_id": "phase1_code_trim_lines_001",
+      "success": true,
+      "final_success_label": "pass",
+      "model_calls": 1,
+      "latency_ms": 844,
+      "total_tokens": 462,
+      "oracle_type": "executable_pytest",
+      "run_id": "real_llm__cascade_react_aa_moa_llm__openai__Qwen3-30B-A3B-Instruct-2507__phase1_code_trim_lines_001"
+    },
+    {
+      "baseline_id": "cascade_react_aa_moa_llm",
+      "task_id": "phase1_code_config_get_001",
+      "success": true,
+      "final_success_label": "pass",
+      "model_calls": 1,
+      "latency_ms": 904,
+      "total_tokens": 441,
+      "oracle_type": "executable_pytest",
+      "run_id": "real_llm__cascade_react_aa_moa_llm__openai__Qwen3-30B-A3B-Instruct-2507__phase1_code_config_get_001"
+    },
+    {
+      "baseline_id": "cascade_react_aa_moa_llm",
+      "task_id": "phase1_code_hash_001",
+      "success": true,
+      "final_success_label": "pass",
+      "model_calls": 1,
+      "latency_ms": 769,
+      "total_tokens": 403,
+      "oracle_type": "executable_pytest",
+      "run_id": "real_llm__cascade_react_aa_moa_llm__openai__Qwen3-30B-A3B-Instruct-2507__phase1_code_hash_001"
+    },
+    {
+      "baseline_id": "cascade_react_aa_moa_llm",
+      "task_id": "phase1_code_env_flag_001",
+      "success": true,
+      "final_success_label": "pass",
+      "model_calls": 3,
+      "latency_ms": 3934,
+      "total_tokens": 1332,
+      "oracle_type": "executable_pytest",
+      "run_id": "real_llm__cascade_react_aa_moa_llm__openai__Qwen3-30B-A3B-Instruct-2507__phase1_code_env_flag_001"
+    },
+    {
+      "baseline_id": "cascade_react_aa_moa_llm",
+      "task_id": "phase1_code_binary_search_001",
+      "success": true,
+      "final_success_label": "pass",
+      "model_calls": 1,
+      "latency_ms": 1687,
+      "total_tokens": 575,
+      "oracle_type": "executable_pytest",
+      "run_id": "real_llm__cascade_react_aa_moa_llm__openai__Qwen3-30B-A3B-Instruct-2507__phase1_code_binary_search_001"
+    }
+  ],
+  "suite": "code_all",
+  "provider": "openai",
+  "model": "Qwen3-30B-A3B-Instruct-2507",
+  "tasks": 26
+}
