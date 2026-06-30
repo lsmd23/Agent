@@ -22,6 +22,7 @@ Every dispatched agent must read these files before doing task work:
 For exploratory direction-setting rather than strict task execution, use:
 
 - `docs/next_iteration/research_directions/README.md`
+- `docs/next_iteration/reports/W1_wave3_exploration_synthesis.md` (wave 3 outcomes, 2026-06-30)
 
 ## Current Local Environment
 

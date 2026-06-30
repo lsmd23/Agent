@@ -4,6 +4,21 @@
 
 These briefs are assignable direction cards for future agents. They are intentionally exploratory. Each agent should be allowed to return a negative result.
 
+## Wave 3 Completion Status (2026-06-30)
+
+| Brief | Status | Outcome | Report |
+|-------|--------|---------|--------|
+| A Route Opportunity Auditor | Complete | `supports_direction` | `experiments/analysis/oracle_route_audit.md` |
+| B Cascade Controller Designer | Complete | `supports_direction` | `experiments/analysis/cascade_pilot_audit.md` |
+| C AA Component Surgeon | Complete | `supports_direction` | `experiments/analysis/aa_ablation_audit.md` |
+| D Outcome Memory Engineer | Complete | `weak_or_inconclusive` | `experiments/analysis/outcome_memory_audit.md` |
+| E Lightweight Router Learner | Complete | `weak_or_inconclusive` | `experiments/analysis/route_selector_audit.md` |
+| F Terminal ACI Mechanic | Complete + rerun | `supports_direction` | `experiments/analysis/tb_aci_audit.md`, `t3_aci_rerun_comparison.md` |
+| G Executable Backprop Evaluator | Complete | `falsified_or_blocked` | `experiments/analysis/real_task_backprop_audit.md` |
+| H Expert Specialization Auditor | Complete | `falsified_or_blocked` | `experiments/analysis/expert_specialization_audit.md` |
+
+Synthesis: `docs/next_iteration/reports/W1_wave3_exploration_synthesis.md`, completion checklist: `W2_complete_iteration_goals.md`
+
 ## Brief A: Route Opportunity Auditor
 
 ### Question
@@ -24,6 +39,8 @@ Does the current 26-task code suite contain enough task-level variation for rout
 - conclusion: suite supports routing / suite too easy / suite dominated by one policy
 
 ### Evidence Outcome
+
+**Complete (2026-06-30):** `supports_direction`. Oracle gap +3.8% success, +0.24 cost-normalized; winner entropy 1.51/2.32. See `experiments/analysis/oracle_route_audit.md`.
 
 If oracle routing barely improves over ReAct or MoA, do not train a router on this suite.
 
@@ -47,6 +64,8 @@ Can direct-first escalation recover AA's cost problem?
 - cost per rescued task
 
 ### Evidence Outcome
+
+**Complete (2026-06-30):** `supports_direction`. Replay cascade 100% @ 1.46 calls; live `cascade_react_aa_lite_llm` 100% @ 1.50 calls. See `experiments/analysis/cascade_pilot_audit.md`, `wave3_cascade_comparison.md`.
 
 Useful if success approaches MoA while cost approaches ReAct.
 

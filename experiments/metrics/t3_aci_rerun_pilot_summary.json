@@ -1,0 +1,235 @@
+{
+  "total_runs": 15,
+  "baselines": {
+    "agent_attention_llm_tuned": {
+      "runs": 3,
+      "correct": 1,
+      "success_rate": 0.3333333333333333,
+      "mean_steps": 0.0,
+      "invalid_shell_steps": 0,
+      "empty_parse_steps": 0
+    },
+    "fixed_workflow_llm_agent": {
+      "runs": 3,
+      "correct": 0,
+      "success_rate": 0.0,
+      "mean_steps": 0.0,
+      "invalid_shell_steps": 0,
+      "empty_parse_steps": 0
+    },
+    "moa_style_llm_agent": {
+      "runs": 3,
+      "correct": 1,
+      "success_rate": 0.3333333333333333,
+      "mean_steps": 0.0,
+      "invalid_shell_steps": 0,
+      "empty_parse_steps": 0
+    },
+    "retrieval_memory_llm_agent": {
+      "runs": 3,
+      "correct": 1,
+      "success_rate": 0.3333333333333333,
+      "mean_steps": 0.0,
+      "invalid_shell_steps": 0,
+      "empty_parse_steps": 0
+    },
+    "single_react_llm_agent": {
+      "runs": 3,
+      "correct": 1,
+      "success_rate": 0.3333333333333333,
+      "mean_steps": 0.0,
+      "invalid_shell_steps": 0,
+      "empty_parse_steps": 0
+    }
+  },
+  "failure_categories": {
+    "none": 4,
+    "environment_failure": 3,
+    "agent_failure": 8
+  },
+  "invalid_shell_step_rate": null,
+  "per_task": [
+    {
+      "baseline_id": "agent_attention_llm_tuned",
+      "task_id": "fix-permissions",
+      "success": true,
+      "final_success_label": "pass",
+      "failure_category": "none",
+      "end_task_success": true,
+      "total_steps": 0,
+      "invalid_shell_steps": 0,
+      "empty_parse_steps": 0,
+      "envelope_path": "experiments/llm_runs/terminal_bench/t3_aci_rerun_pilot/tb_smoke__agent_attention_llm_tuned__1782813363__envelope.json"
+    },
+    {
+      "baseline_id": "agent_attention_llm_tuned",
+      "task_id": "fibonacci-server",
+      "success": false,
+      "final_success_label": "fail",
+      "failure_category": "environment_failure",
+      "end_task_success": false,
+      "total_steps": 0,
+      "invalid_shell_steps": 0,
+      "empty_parse_steps": 0,
+      "envelope_path": "experiments/llm_runs/terminal_bench/t3_aci_rerun_pilot/tb_smoke__agent_attention_llm_tuned__1782813436__envelope.json"
+    },
+    {
+      "baseline_id": "agent_attention_llm_tuned",
+      "task_id": "configure-git-webserver",
+      "success": false,
+      "final_success_label": "fail",
+      "failure_category": "agent_failure",
+      "end_task_success": false,
+      "total_steps": 0,
+      "invalid_shell_steps": 0,
+      "empty_parse_steps": 0,
+      "envelope_path": "experiments/llm_runs/terminal_bench/t3_aci_rerun_pilot/tb_smoke__agent_attention_llm_tuned__1782813648__envelope.json"
+    },
+    {
+      "baseline_id": "fixed_workflow_llm_agent",
+      "task_id": "fix-permissions",
+      "success": false,
+      "final_success_label": "fail",
+      "failure_category": "environment_failure",
+      "end_task_success": false,
+      "total_steps": 0,
+      "invalid_shell_steps": 0,
+      "empty_parse_steps": 0,
+      "envelope_path": "experiments/llm_runs/terminal_bench/t3_aci_rerun_pilot/tb_smoke__fixed_workflow_llm_agent__1782811803__envelope.json"
+    },
+    {
+      "baseline_id": "fixed_workflow_llm_agent",
+      "task_id": "fibonacci-server",
+      "success": false,
+      "final_success_label": "fail",
+      "failure_category": "environment_failure",
+      "end_task_success": false,
+      "total_steps": 0,
+      "invalid_shell_steps": 0,
+      "empty_parse_steps": 0,
+      "envelope_path": "experiments/llm_runs/terminal_bench/t3_aci_rerun_pilot/tb_smoke__fixed_workflow_llm_agent__1782811867__envelope.json"
+    },
+    {
+      "baseline_id": "fixed_workflow_llm_agent",
+      "task_id": "configure-git-webserver",
+      "success": false,
+      "final_success_label": "fail",
+      "failure_category": "agent_failure",
+      "end_task_success": false,
+      "total_steps": 0,
+      "invalid_shell_steps": 0,
+      "empty_parse_steps": 0,
+      "envelope_path": "experiments/llm_runs/terminal_bench/t3_aci_rerun_pilot/tb_smoke__fixed_workflow_llm_agent__1782812078__envelope.json"
+    },
+    {
+      "baseline_id": "moa_style_llm_agent",
+      "task_id": "fix-permissions",
+      "success": true,
+      "final_success_label": "pass",
+      "failure_category": "none",
+      "end_task_success": true,
+      "total_steps": 0,
+      "invalid_shell_steps": 0,
+      "empty_parse_steps": 0,
+      "envelope_path": "experiments/llm_runs/terminal_bench/t3_aci_rerun_pilot/tb_smoke__moa_style_llm_agent__1782812948__envelope.json"
+    },
+    {
+      "baseline_id": "moa_style_llm_agent",
+      "task_id": "fibonacci-server",
+      "success": false,
+      "final_success_label": "fail",
+      "failure_category": "agent_failure",
+      "end_task_success": false,
+      "total_steps": 0,
+      "invalid_shell_steps": 0,
+      "empty_parse_steps": 0,
+      "envelope_path": "experiments/llm_runs/terminal_bench/t3_aci_rerun_pilot/tb_smoke__moa_style_llm_agent__1782813009__envelope.json"
+    },
+    {
+      "baseline_id": "moa_style_llm_agent",
+      "task_id": "configure-git-webserver",
+      "success": false,
+      "final_success_label": "fail",
+      "failure_category": "agent_failure",
+      "end_task_success": false,
+      "total_steps": 0,
+      "invalid_shell_steps": 0,
+      "empty_parse_steps": 0,
+      "envelope_path": "experiments/llm_runs/terminal_bench/t3_aci_rerun_pilot/tb_smoke__moa_style_llm_agent__1782813253__envelope.json"
+    },
+    {
+      "baseline_id": "retrieval_memory_llm_agent",
+      "task_id": "fix-permissions",
+      "success": true,
+      "final_success_label": "pass",
+      "failure_category": "none",
+      "end_task_success": true,
+      "total_steps": 0,
+      "invalid_shell_steps": 0,
+      "empty_parse_steps": 0,
+      "envelope_path": "experiments/llm_runs/terminal_bench/t3_aci_rerun_pilot/tb_smoke__retrieval_memory_llm_agent__1782812381__envelope.json"
+    },
+    {
+      "baseline_id": "retrieval_memory_llm_agent",
+      "task_id": "fibonacci-server",
+      "success": false,
+      "final_success_label": "fail",
+      "failure_category": "agent_failure",
+      "end_task_success": false,
+      "total_steps": 0,
+      "invalid_shell_steps": 0,
+      "empty_parse_steps": 0,
+      "envelope_path": "experiments/llm_runs/terminal_bench/t3_aci_rerun_pilot/tb_smoke__retrieval_memory_llm_agent__1782812453__envelope.json"
+    },
+    {
+      "baseline_id": "retrieval_memory_llm_agent",
+      "task_id": "configure-git-webserver",
+      "success": false,
+      "final_success_label": "fail",
+      "failure_category": "agent_failure",
+      "end_task_success": false,
+      "total_steps": 0,
+      "invalid_shell_steps": 0,
+      "empty_parse_steps": 0,
+      "envelope_path": "experiments/llm_runs/terminal_bench/t3_aci_rerun_pilot/tb_smoke__retrieval_memory_llm_agent__1782812636__envelope.json"
+    },
+    {
+      "baseline_id": "single_react_llm_agent",
+      "task_id": "fix-permissions",
+      "success": true,
+      "final_success_label": "pass",
+      "failure_category": "none",
+      "end_task_success": true,
+      "total_steps": 0,
+      "invalid_shell_steps": 0,
+      "empty_parse_steps": 0,
+      "envelope_path": "experiments/llm_runs/terminal_bench/t3_aci_rerun_pilot/tb_smoke__single_react_llm_agent__1782811181__envelope.json"
+    },
+    {
+      "baseline_id": "single_react_llm_agent",
+      "task_id": "fibonacci-server",
+      "success": false,
+      "final_success_label": "fail",
+      "failure_category": "agent_failure",
+      "end_task_success": false,
+      "total_steps": 0,
+      "invalid_shell_steps": 0,
+      "empty_parse_steps": 0,
+      "envelope_path": "experiments/llm_runs/terminal_bench/t3_aci_rerun_pilot/tb_smoke__single_react_llm_agent__1782811247__envelope.json"
+    },
+    {
+      "baseline_id": "single_react_llm_agent",
+      "task_id": "configure-git-webserver",
+      "success": false,
+      "final_success_label": "fail",
+      "failure_category": "agent_failure",
+      "end_task_success": false,
+      "total_steps": 0,
+      "invalid_shell_steps": 0,
+      "empty_parse_steps": 0,
+      "envelope_path": "experiments/llm_runs/terminal_bench/t3_aci_rerun_pilot/tb_smoke__single_react_llm_agent__1782811485__envelope.json"
+    }
+  ],
+  "scope": "T3 ACI rerun pilot (envelope scan)",
+  "source_dir": "experiments/llm_runs/terminal_bench/t3_aci_rerun_pilot"
+}

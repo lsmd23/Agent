@@ -279,3 +279,25 @@ Risk: Training includes same-task oracle labels (in-distribution). Proxy regret 
 Rollback: Revert to `aa_lexical_router` as default proposed row if held-out task families regress.
 
 Affected files: `src/agent_attention_runtime.py`, `experiments/phase4/*`, `tests/test_learned_routing.py`, `docs/deliverables/07/scoring_script.py`, `experiments/phase4/phase4_learned_routing_memo.md`
+
+## Decision: Wave 3 Default Policy — Cascade With AA Lite Escalation
+Date: 2026-06-30
+Status: accepted (pilot N=26 code suite)
+
+Chosen: Default real-LLM routing policy is `cascade_react_aa_lite_llm` (ReAct → AA lite without verifier/memory → MoA rescue), not always-on `agent_attention_llm_tuned`. Register cascade baselines in `run_real_llm_eval.py --family cascade`. Defer Terminal-Bench architecture claims until env failure < 10% on T3 pilot; ACI patches (observation compression, truncated-JSON recovery, re-prompt) are prerequisite, not optional.
+
+Alternatives:
+- Continue optimizing always-on AA tuned lexical top-k.
+- MoA as default baseline for all tasks.
+- Expand TB to 20+ tasks before ACI rerun validation.
+- Train learned router (Brief E) before cascade live eval.
+
+Reason: Brief A confirms oracle route opportunity (+0.24 cost-normalized gap). Brief B/C live eval shows cascade beats always-on AA (100% @ 1.50 vs 84.6% @ 2.00). Brief H falsifies current expert heterogeneity (96% redundant activation). T3 ACI rerun fixes invalid-shell (0%) and reduces env failures (33%→20%) but pass count unchanged — bottleneck is agent capability on hard TB tasks, not shell parsing.
+
+Result: `experiments/metrics/code_cascade_wave3_with_ci.json`; T3 rerun `t3_aci_rerun_pilot_summary.json` (4/15 pass). Synthesis: `docs/next_iteration/reports/W1_wave3_exploration_synthesis.md`.
+
+Risk: N=26 local fixtures; cascade may not transfer to TB/SWE-bench. AA lite is a hand-tuned ablation, not learned routing.
+
+Rollback: Revert default recommendation to `single_react_llm_agent` if cascade regresses on held-out task families or TB re-pilot.
+
+Affected files: `experiments/cascade/*`, `experiments/ablations/*`, `experiments/real_benchmarks/run_real_llm_eval.py`, `experiments/terminal_bench/{adapter,tb_shell_loop,t3_aci_comparison}.py`, `docs/next_iteration/research_directions/*`, `docs/project_status.md`

@@ -1,81 +1,51 @@
 # Claim Evidence Matrix
 
+Date: 2026-06-30 (updated post Wave 3 / T4 / T7)
+
 ## scope
 
-This document classifies project claims by evidence level: literature-supported, prototype-validated, experiment-observed, planned experiment, or conjecture. It prevents speculative architecture claims from being reported as conclusions.
+Classifies project claims by evidence level. Prevents overclaiming.
 
-## claims
-
-The matrix itself is the deliverable claim: every major project assertion must be traceable to evidence or explicitly marked as conjecture.
-
-## design
-
-### minimal version
+## claim table (2026-06-30)
 
 | Claim | Evidence level | Evidence | Status |
 | --- | --- | --- | --- |
-| ReAct-style single agents are required baselines. | 文献支持 | Subtask 01 literature table; ReAct and SWE-agent entries. | accepted |
-| Fixed planner/executor/critic workflows are required baselines. | 文献支持 | HuggingGPT, MetaGPT, planner workflow comparators in Subtasks 01 and 08. | accepted |
-| MoA-style aggregation is a required comparator but not the same as sparse routing. | 文献支持 | Subtask 01 MoA and LLM-Blender analysis; Subtask 08 baseline specs. | accepted |
-| Memory must be evaluated for both positive transfer and negative transfer. | 文献支持 / 需实验 | Reflexion, Voyager, Memory Networks; Subtasks 04 and 07 metrics. | accepted as design, not result |
-| Agent-Attention can be formalized as state, module pool, router, gates, memory, verifier, halt, reflection, and textual update. | 原型可验证 | Subtask 02 schemas; Subtasks 03-05 designs. | accepted |
-| A deterministic toy runtime can log route/gate/memory/verifier/halt/reflection events. | 实验 | Subtask 06 tests and trajectories. | accepted for Phase 0 |
-| Phase 0 runtime obeys budget limits in smoke checks. | 实验 | Main-agent smoke trajectories and Subtask 06 budget tests. | accepted for toy runs |
-| Existing trajectories can be scored for a Phase 0 metric subset. | 实验 | Subtask 07 scoring script scored 5 trajectories. | accepted |
-| The current runtime improves over fixed workflows. | 需实验 | No baseline runners or baseline results yet. | not claimed |
-| The current runtime improves over retrieval-memory baselines. | 需实验 | Requires Phase 1/2 ablations. | not claimed |
-| Textual backprop improves replay or held-out tasks. | 需实验 | Subtask 05 protocol only; no runs yet. | not claimed |
-| Learned routing can reduce regret relative to lexical routing. | 猜想 / 需实验 | Phase 4 plan only. | not claimed |
+| ReAct-style agents are required baselines. | literature-supported | Subtask 01; ReAct, SWE-agent | accepted |
+| MoA-style aggregation is required comparator. | literature-supported | Subtask 01, 08 | accepted |
+| Runtime logs route/cost/memory/verifier signals. | prototype-validated | Subtask 06–07; real LLM envelopes | accepted |
+| Executable pytest oracles score code tasks. | experiment-observed | 26-task code suite, `code_verifier.py` | accepted |
+| Always-on AA tuned beats ReAct/MoA on code suite. | experiment-observed | `code_full_matrix_summary.json`, T4 Pareto | **refuted** |
+| Cascade AA lite improves cost-quality vs always-on AA. | experiment-observed | `code_cascade_wave3_with_ci.json`, T4 | **accepted (N=26 pilot)** |
+| Oracle route opportunity gap exists. | experiment-observed | `oracle_route_matrix.json`, Brief A | accepted |
+| Current AA modules are heterogeneous experts. | experiment-observed | Brief H audit | **refuted** |
+| Learned route selector beats static routing held-out. | experiment-observed | Brief E, `route_selector_diagnostic.json` | **weak / inconclusive** |
+| Outcome memory reduces route regret. | experiment-observed | Brief D, Δ regret +0.001 | **weak / inconclusive** |
+| Textual backprop fixes real AA code failures. | experiment-observed | Brief G, 0/4 accept | **refuted** |
+| TB shows AA architecture advantage. | experiment-observed | T3 pilot 4/15 pass | **not claimed** |
+| Sparse routing is universal agent principle. | conjecture | — | not claimed |
 
-### enhanced version
+## safe abstract wording
 
-Use four report labels:
+See `docs/paper_outline.md` abstract skeleton.
 
-- `literature-supported`: cite paper/system/benchmark; no local empirical claim.
-- `prototype-validated`: implemented and tested in toy runtime.
-- `experiment-observed`: supported by trajectory/scoring outputs.
-- `conjecture`: plausible mechanism or hypothesis awaiting experiment.
+## negative results (preserve)
 
-### counterexamples
-
-- A passing runtime test is not evidence that the architecture beats ReAct.
-- A high route score is not evidence of a correct route without oracle/proxy outcome.
-- Memory reads labeled useful in toy runs are not evidence of robust transfer without no-memory counterfactuals.
-- Verifier pass in toy runtime is not evidence of real-world correctness.
+1. Always-on AA tuned: 84.6% @ 2.00 calls vs cascade lite 100% @ 1.50.
+2. Expert redundant activation 96%.
+3. Learned router +0.004 regret vs static at N=26 — not deployable.
+4. TB agent failures 53% post-ACI — architecture comparison blocked.
 
 ## interfaces
 
-Every report claim should include:
-
-```yaml
-claim:
-  id: string
-  statement: string
-  evidence_level: literature_supported | prototype_validated | experiment_observed | planned_experiment | conjecture
-  evidence_refs: [string]
-  required_metrics: [string]
-  caveats: [string]
-  allowed_report_wording: string
-```
-
-## experiments
-
-1. `claim_audit_before_public_report`
-   - Review every conclusion sentence and assign one evidence level.
-   - Fail the audit if any proposed improvement claim lacks baseline or ablation evidence.
-
-2. `metric_traceability_check`
-   - For every experiment-observed claim, identify scorer output fields and trajectory paths.
-   - Fail if the claim requires unavailable oracle fields without marking a deviation.
+Report claims using `docs/next_iteration/research_directions/06_claim_governance.md` levels 0–6.
 
 ## risks
 
-- The architecture vocabulary can make conjectures sound more mature than they are.
-- Phase 0 instrumentation success can be mistaken for task-performance success.
-- Baseline design can be mistaken for baseline execution.
+- N=26 code suite still below main-track threshold.
+- Single model/provider.
+- TB pilot too small.
 
 ## open_questions
 
-- What evidence threshold is required for a claim to move from planned experiment to experiment-observed?
-- Should literature-supported claims include exact source versions or commit hashes for code-based comparators?
-- How should human-rubric claims be labeled before inter-annotator agreement is measured?
+- Does 7-task TB steps=12 change pass rate enough to mention in abstract?
+- When to promote cascade claim from pilot (N=26) to benchmark (N≥50)?

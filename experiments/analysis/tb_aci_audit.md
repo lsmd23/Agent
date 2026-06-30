@@ -109,11 +109,11 @@ Unit tests: **13/13 pass** (2 skipped without TB package).
 
 ## next_questions
 
-1. Re-run T3 pilot (3 tasks × 5 baselines) with patched ACI to measure invalid-shell step rate before/after (≈15 min, not full 7×5 matrix).
+1. ~~Re-run T3 pilot (3 tasks × 5 baselines) with patched ACI~~ **Done** — `experiments/analysis/t3_aci_rerun_comparison.md`.
 2. Increase `max_shell_steps` to 12 for server/git tasks; log `parse_status` and `invalid_shell` in trajectory envelopes.
 3. Pin no-apt task manifest and exclude tasks with flaky `setup-uv-pytest.sh` until env stable.
 4. Defer full ≥20-task TB matrix until env failure rate <10% on pilot reruns.
 
 ## evidence_outcome
 
-Per Brief F: **Useful** — environment failure and invalid/no-op shell behavior are quantified; two minimal patches implemented. Larger TB matrix is **partially justified** for infrastructure validation on the 7-task no-apt manifest, but **not yet for architecture claims** until env flakes drop and ACI patch smoke rerun confirms truncated-JSON recovery.
+Per Brief F: **Useful** — environment failure and invalid/no-op shell behavior are quantified; two minimal patches implemented. **T3 ACI rerun (2026-06-30):** invalid-shell 0%, env 33%→20%, pass unchanged 4/15. Larger TB matrix is **partially justified** for infrastructure validation on the 7-task no-apt manifest, but **not yet for architecture claims** until env flakes drop below 10%.

@@ -62,7 +62,21 @@ Required evidence:
 - winner entropy
 - oracle vs best single-policy frontier
 
-Current status: not yet established.
+Current status: **supported** (Brief A, 2026-06-30; `oracle_route_matrix.json`).
+
+### Level 3b: Cascade Policy Claim (code suite, pilot N)
+
+Allowed wording:
+
+> A direct-first cascade with lite AA escalation improves cost-quality vs always-on AA tuned on the current fixture-aware code suite.
+
+Required evidence:
+
+- matched tasks and model
+- cascade vs always-on AA table
+- bootstrap CI if available
+
+Current status: **supported** by `code_cascade_wave3_with_ci.json` (N=26, pilot only — not Level 5).
 
 ### Level 4: Router Improvement Claim
 
@@ -115,11 +129,11 @@ Current status: conjecture only.
 
 Safe:
 
-> We study whether sparse module routing can improve modular language agents under cost constraints. We build an instrumented runtime and evaluate it on local executable code tasks and Terminal-Bench pilots. Initial results show that naive lexical top-k routing is not sufficient: it underperforms strong ReAct and MoA baselines on the current suite. This motivates a reframing toward feedback-updated cascade routing and oracle-regret evaluation.
+> We study whether sparse module routing can improve modular language agents under cost constraints. On a 26-task executable code suite, direct-first cascade with lite AA escalation reaches 100% success at 1.50 mean calls, beating always-on AA tuned (84.6% @ 2.00) and approaching MoA accuracy at lower cost. Oracle route analysis confirms a meaningful opportunity gap. Terminal-Bench pilots remain too small for architecture claims; ACI patches stabilized shell parsing but hard tasks still fail for agent-capability reasons.
 
 Unsafe:
 
-> Agent-Attention improves over ReAct and MoA.
+> Always-on Agent-Attention improves over ReAct and MoA.
 
 ## Red Flags
 

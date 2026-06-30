@@ -2,7 +2,7 @@
 
 Future agents should write their task reports here.
 
-Use one file per task:
+## Task reports
 
 - `T0_environment_report.md`
 - `T0_benchmark_recon.md`
@@ -13,5 +13,10 @@ Use one file per task:
 - `T5_local_code_suite_expansion.md`
 - `T6_paper_artifact_packaging.md`
 - `T7_real_task_ablations.md`
+
+## Synthesis
+
+- `W1_wave3_exploration_synthesis.md`
+- `W2_complete_iteration_goals.md`
 
 Reports must include commands run, artifacts created, results, blockers, and the next recommended action.

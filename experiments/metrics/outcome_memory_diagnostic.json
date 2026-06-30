@@ -1,0 +1,1964 @@
+{
+  "scope": "Outcome-memory router replay on 26-task code matrix (Brief D, zero new LLM calls).",
+  "schema_version": "agent_attention.outcome_memory.v0.1",
+  "source_summary": "experiments/metrics/code_full_matrix_summary.json",
+  "source_oracle_matrix": "experiments/metrics/oracle_route_matrix.json",
+  "source_tasks": "experiments/tasks/phase1_code_all.jsonl",
+  "source_trajectories": "experiments/llm_runs/code_full_matrix/code_all",
+  "suite": "code_all",
+  "tasks": 26,
+  "model": "Qwen3-30B-A3B-Instruct-2507",
+  "provider": "openai",
+  "memory_schema": {
+    "key_fields": [
+      "task_family",
+      "error_signature"
+    ],
+    "value_fields": [
+      "route_outcomes"
+    ],
+    "forbidden_in_value": [
+      "answer",
+      "applied_files",
+      "code_block",
+      "content",
+      "final_answer",
+      "goal",
+      "patch",
+      "patch_body",
+      "prompt",
+      "pytest_stderr",
+      "pytest_stdout",
+      "trajectory",
+      "trajectory_summary"
+    ],
+    "retrieval_policy": [
+      "exact match on task_family + error_signature",
+      "static override only when memory attempts>=2 and success_rate>=0.5 beats default reward",
+      "cascade escalation ranks rescue routes by observed success_rate then route_reward"
+    ],
+    "write_policy": [
+      "aggregate verified route stats only",
+      "cascade mode writes only from react-failure contexts",
+      "never store patch bodies, answers, or raw pytest output"
+    ]
+  },
+  "aggregate": {
+    "primary_eval_mode": "loo_cascade",
+    "baseline_policy": "fixed_cascade_react_aa_moa_no_memory",
+    "baseline_mean_regret": 0.06493,
+    "baseline_accuracy": 1.0,
+    "react_only_mean_regret": 0.139622,
+    "delta_regret_vs_fixed_cascade": 0.000972,
+    "delta_regret_vs_react_only": 0.075664,
+    "transcript_memory_baseline_route": "retrieval_memory_llm_agent",
+    "transcript_memory_mean_regret": 0.194492,
+    "outcome_memory_mean_regret": 0.063958,
+    "outcome_memory_accuracy": 1.0,
+    "delta_regret_vs_no_memory": 0.000972,
+    "delta_regret_vs_transcript_memory": 0.130534,
+    "memory_hit_rate": 0.153846,
+    "unique_error_signatures": 12,
+    "leakage_audit": {
+      "passed": true,
+      "violations": [],
+      "forbidden_value_keys": [
+        "answer",
+        "applied_files",
+        "code_block",
+        "content",
+        "final_answer",
+        "goal",
+        "patch",
+        "patch_body",
+        "prompt",
+        "pytest_stderr",
+        "pytest_stdout",
+        "trajectory",
+        "trajectory_summary"
+      ],
+      "forbidden_key_substrings": [
+        "benchmark_answer",
+        "fixture_id",
+        "run_id",
+        "task_id"
+      ]
+    },
+    "evidence_outcome": "weak_or_inconclusive"
+  },
+  "evaluations": {
+    "baseline_react": {
+      "baseline_route": "single_react_llm_agent",
+      "tasks": 26,
+      "accuracy": 0.884615,
+      "mean_regret_vs_oracle_reward": 0.139622,
+      "per_task": [
+        {
+          "task_id": "phase0_seed_code_fix_001",
+          "selected_route": "single_react_llm_agent",
+          "success": true,
+          "regret_vs_oracle_reward": 0.00261
+        },
+        {
+          "task_id": "phase0_seed_negative_memory_001",
+          "selected_route": "single_react_llm_agent",
+          "success": true,
+          "regret_vs_oracle_reward": 9e-05
+        },
+        {
+          "task_id": "phase1_code_binary_search_001",
+          "selected_route": "single_react_llm_agent",
+          "success": true,
+          "regret_vs_oracle_reward": 0.01981
+        },
+        {
+          "task_id": "phase1_code_clamp_001",
+          "selected_route": "single_react_llm_agent",
+          "success": true,
+          "regret_vs_oracle_reward": 0.0
+        },
+        {
+          "task_id": "phase1_code_config_001",
+          "selected_route": "single_react_llm_agent",
+          "success": true,
+          "regret_vs_oracle_reward": 0.0
+        },
+        {
+          "task_id": "phase1_code_config_get_001",
+          "selected_route": "single_react_llm_agent",
+          "success": true,
+          "regret_vs_oracle_reward": 0.00397
+        },
+        {
+          "task_id": "phase1_code_csv_001",
+          "selected_route": "single_react_llm_agent",
+          "success": false,
+          "regret_vs_oracle_reward": 0.88305
+        },
+        {
+          "task_id": "phase1_code_doc_001",
+          "selected_route": "single_react_llm_agent",
+          "success": true,
+          "regret_vs_oracle_reward": -0.0
+        },
+        {
+          "task_id": "phase1_code_edge_001",
+          "selected_route": "single_react_llm_agent",
+          "success": true,
+          "regret_vs_oracle_reward": 0.00049
+        },
+        {
+          "task_id": "phase1_code_email_001",
+          "selected_route": "single_react_llm_agent",
+          "success": false,
+          "regret_vs_oracle_reward": 1.00343
+        },
+        {
+          "task_id": "phase1_code_env_flag_001",
+          "selected_route": "single_react_llm_agent",
+          "success": false,
+          "regret_vs_oracle_reward": 1.12216
+        },
+        {
+          "task_id": "phase1_code_flatten_001",
+          "selected_route": "single_react_llm_agent",
+          "success": true,
+          "regret_vs_oracle_reward": 0.00293
+        },
+        {
+          "task_id": "phase1_code_hash_001",
+          "selected_route": "single_react_llm_agent",
+          "success": true,
+          "regret_vs_oracle_reward": 0.0
+        },
+        {
+          "task_id": "phase1_code_import_001",
+          "selected_route": "single_react_llm_agent",
+          "success": true,
+          "regret_vs_oracle_reward": -0.0
+        },
+        {
+          "task_id": "phase1_code_json_001",
+          "selected_route": "single_react_llm_agent",
+          "success": true,
+          "regret_vs_oracle_reward": 0.0
+        },
+        {
+          "task_id": "phase1_code_mean_001",
+          "selected_route": "single_react_llm_agent",
+          "success": true,
+          "regret_vs_oracle_reward": 0.00447
+        },
+        {
+          "task_id": "phase1_code_merge_001",
+          "selected_route": "single_react_llm_agent",
+          "success": true,
+          "regret_vs_oracle_reward": 0.05513
+        },
+        {
+          "task_id": "phase1_code_palindrome_001",
+          "selected_route": "single_react_llm_agent",
+          "success": true,
+          "regret_vs_oracle_reward": 0.0
+        },
+        {
+          "task_id": "phase1_code_parse_int_001",
+          "selected_route": "single_react_llm_agent",
+          "success": true,
+          "regret_vs_oracle_reward": 0.0
+        },
+        {
+          "task_id": "phase1_code_pkg_helper_001",
+          "selected_route": "single_react_llm_agent",
+          "success": true,
+          "regret_vs_oracle_reward": 0.23684
+        },
+        {
+          "task_id": "phase1_code_refactor_001",
+          "selected_route": "single_react_llm_agent",
+          "success": true,
+          "regret_vs_oracle_reward": 0.0
+        },
+        {
+          "task_id": "phase1_code_sanitize_001",
+          "selected_route": "single_react_llm_agent",
+          "success": true,
+          "regret_vs_oracle_reward": -0.0
+        },
+        {
+          "task_id": "phase1_code_slugify_001",
+          "selected_route": "single_react_llm_agent",
+          "success": true,
+          "regret_vs_oracle_reward": 0.01261
+        },
+        {
+          "task_id": "phase1_code_strip_tags_001",
+          "selected_route": "single_react_llm_agent",
+          "success": true,
+          "regret_vs_oracle_reward": 0.0
+        },
+        {
+          "task_id": "phase1_code_trim_lines_001",
+          "selected_route": "single_react_llm_agent",
+          "success": true,
+          "regret_vs_oracle_reward": 0.28258
+        },
+        {
+          "task_id": "phase1_code_url_001",
+          "selected_route": "single_react_llm_agent",
+          "success": true,
+          "regret_vs_oracle_reward": 0.0
+        }
+      ]
+    },
+    "baseline_fixed_cascade": {
+      "mode": "cascade",
+      "tasks": 26,
+      "accuracy": 1.0,
+      "mean_regret_vs_oracle_reward": 0.06493,
+      "memory_hit_rate": 0.230769,
+      "per_task": [
+        {
+          "task_id": "phase0_seed_code_fix_001",
+          "memory_key": {
+            "task_family": "code_agent_task",
+            "error_signature": "tag:pytest"
+          },
+          "selection_reason": "default_cascade",
+          "selected_route": "single_react_llm_agent",
+          "success": true,
+          "model_calls": 1,
+          "route_reward": 0.88142,
+          "regret_vs_oracle_reward": 0.00261
+        },
+        {
+          "task_id": "phase0_seed_negative_memory_001",
+          "memory_key": {
+            "task_family": "code_agent_task",
+            "error_signature": "tag:memory"
+          },
+          "selection_reason": "default_cascade",
+          "selected_route": "single_react_llm_agent",
+          "success": true,
+          "model_calls": 1,
+          "route_reward": 0.8874,
+          "regret_vs_oracle_reward": 9e-05
+        },
+        {
+          "task_id": "phase1_code_binary_search_001",
+          "memory_key": {
+            "task_family": "code_agent_task",
+            "error_signature": "tag:edge_case"
+          },
+          "selection_reason": "default_cascade",
+          "selected_route": "single_react_llm_agent",
+          "success": true,
+          "model_calls": 1,
+          "route_reward": 0.83741,
+          "regret_vs_oracle_reward": 0.01981
+        },
+        {
+          "task_id": "phase1_code_clamp_001",
+          "memory_key": {
+            "task_family": "code_agent_task",
+            "error_signature": "tag:edge_case"
+          },
+          "selection_reason": "default_cascade",
+          "selected_route": "single_react_llm_agent",
+          "success": true,
+          "model_calls": 1,
+          "route_reward": 0.88409,
+          "regret_vs_oracle_reward": 0.0
+        },
+        {
+          "task_id": "phase1_code_config_001",
+          "memory_key": {
+            "task_family": "code_agent_task",
+            "error_signature": "tag:config"
+          },
+          "selection_reason": "memory_escalation",
+          "selected_route": "single_react_llm_agent",
+          "success": true,
+          "model_calls": 1,
+          "route_reward": 0.87088,
+          "regret_vs_oracle_reward": 0.0
+        },
+        {
+          "task_id": "phase1_code_config_get_001",
+          "memory_key": {
+            "task_family": "code_agent_task",
+            "error_signature": "tag:config"
+          },
+          "selection_reason": "memory_escalation",
+          "selected_route": "single_react_llm_agent",
+          "success": true,
+          "model_calls": 1,
+          "route_reward": 0.87837,
+          "regret_vs_oracle_reward": 0.00397
+        },
+        {
+          "task_id": "phase1_code_csv_001",
+          "memory_key": {
+            "task_family": "code_agent_task",
+            "error_signature": "tag:parsing"
+          },
+          "selection_reason": "memory_escalation",
+          "selected_route": "retrieval_memory_llm_agent",
+          "success": true,
+          "model_calls": 3,
+          "route_reward": 0.53966,
+          "regret_vs_oracle_reward": 0.18433
+        },
+        {
+          "task_id": "phase1_code_doc_001",
+          "memory_key": {
+            "task_family": "code_agent_task",
+            "error_signature": "tag:docs"
+          },
+          "selection_reason": "default_cascade",
+          "selected_route": "single_react_llm_agent",
+          "success": true,
+          "model_calls": 1,
+          "route_reward": 0.88837,
+          "regret_vs_oracle_reward": -0.0
+        },
+        {
+          "task_id": "phase1_code_edge_001",
+          "memory_key": {
+            "task_family": "code_agent_task",
+            "error_signature": "tag:edge_case"
+          },
+          "selection_reason": "default_cascade",
+          "selected_route": "single_react_llm_agent",
+          "success": true,
+          "model_calls": 1,
+          "route_reward": 0.87413,
+          "regret_vs_oracle_reward": 0.00049
+        },
+        {
+          "task_id": "phase1_code_email_001",
+          "memory_key": {
+            "task_family": "code_agent_task",
+            "error_signature": "tag:parsing"
+          },
+          "selection_reason": "memory_escalation",
+          "selected_route": "agent_attention_llm_tuned",
+          "success": true,
+          "model_calls": 3,
+          "route_reward": 0.61009,
+          "regret_vs_oracle_reward": 0.26685
+        },
+        {
+          "task_id": "phase1_code_env_flag_001",
+          "memory_key": {
+            "task_family": "code_agent_task",
+            "error_signature": "tag:config"
+          },
+          "selection_reason": "default_cascade",
+          "selected_route": "moa_style_llm_agent",
+          "success": true,
+          "model_calls": 7,
+          "route_reward": 0.14761,
+          "regret_vs_oracle_reward": 0.61546
+        },
+        {
+          "task_id": "phase1_code_flatten_001",
+          "memory_key": {
+            "task_family": "code_agent_task",
+            "error_signature": "tag:edge_case"
+          },
+          "selection_reason": "default_cascade",
+          "selected_route": "single_react_llm_agent",
+          "success": true,
+          "model_calls": 1,
+          "route_reward": 0.87005,
+          "regret_vs_oracle_reward": 0.00293
+        },
+        {
+          "task_id": "phase1_code_hash_001",
+          "memory_key": {
+            "task_family": "code_agent_task",
+            "error_signature": "tag:security"
+          },
+          "selection_reason": "default_cascade",
+          "selected_route": "single_react_llm_agent",
+          "success": true,
+          "model_calls": 1,
+          "route_reward": 0.88487,
+          "regret_vs_oracle_reward": 0.0
+        },
+        {
+          "task_id": "phase1_code_import_001",
+          "memory_key": {
+            "task_family": "code_agent_task",
+            "error_signature": "tag:import"
+          },
+          "selection_reason": "default_cascade",
+          "selected_route": "single_react_llm_agent",
+          "success": true,
+          "model_calls": 1,
+          "route_reward": 0.88162,
+          "regret_vs_oracle_reward": -0.0
+        },
+        {
+          "task_id": "phase1_code_json_001",
+          "memory_key": {
+            "task_family": "code_agent_task",
+            "error_signature": "tag:parsing"
+          },
+          "selection_reason": "memory_escalation",
+          "selected_route": "single_react_llm_agent",
+          "success": true,
+          "model_calls": 1,
+          "route_reward": 0.87502,
+          "regret_vs_oracle_reward": 0.0
+        },
+        {
+          "task_id": "phase1_code_mean_001",
+          "memory_key": {
+            "task_family": "code_agent_task",
+            "error_signature": "tag:edge_case"
+          },
+          "selection_reason": "default_cascade",
+          "selected_route": "single_react_llm_agent",
+          "success": true,
+          "model_calls": 1,
+          "route_reward": 0.87857,
+          "regret_vs_oracle_reward": 0.00447
+        },
+        {
+          "task_id": "phase1_code_merge_001",
+          "memory_key": {
+            "task_family": "code_agent_task",
+            "error_signature": "tag:refactor"
+          },
+          "selection_reason": "default_cascade",
+          "selected_route": "single_react_llm_agent",
+          "success": true,
+          "model_calls": 1,
+          "route_reward": 0.81644,
+          "regret_vs_oracle_reward": 0.05513
+        },
+        {
+          "task_id": "phase1_code_palindrome_001",
+          "memory_key": {
+            "task_family": "code_agent_task",
+            "error_signature": "tag:string"
+          },
+          "selection_reason": "default_cascade",
+          "selected_route": "single_react_llm_agent",
+          "success": true,
+          "model_calls": 1,
+          "route_reward": 0.87853,
+          "regret_vs_oracle_reward": 0.0
+        },
+        {
+          "task_id": "phase1_code_parse_int_001",
+          "memory_key": {
+            "task_family": "code_agent_task",
+            "error_signature": "tag:parsing"
+          },
+          "selection_reason": "memory_escalation",
+          "selected_route": "single_react_llm_agent",
+          "success": true,
+          "model_calls": 1,
+          "route_reward": 0.82519,
+          "regret_vs_oracle_reward": 0.0
+        },
+        {
+          "task_id": "phase1_code_pkg_helper_001",
+          "memory_key": {
+            "task_family": "code_agent_task",
+            "error_signature": "tag:import"
+          },
+          "selection_reason": "default_cascade",
+          "selected_route": "single_react_llm_agent",
+          "success": true,
+          "model_calls": 3,
+          "route_reward": 0.64037,
+          "regret_vs_oracle_reward": 0.23684
+        },
+        {
+          "task_id": "phase1_code_refactor_001",
+          "memory_key": {
+            "task_family": "code_agent_task",
+            "error_signature": "tag:refactor"
+          },
+          "selection_reason": "default_cascade",
+          "selected_route": "single_react_llm_agent",
+          "success": true,
+          "model_calls": 1,
+          "route_reward": 0.87865,
+          "regret_vs_oracle_reward": 0.0
+        },
+        {
+          "task_id": "phase1_code_sanitize_001",
+          "memory_key": {
+            "task_family": "code_agent_task",
+            "error_signature": "tag:security"
+          },
+          "selection_reason": "default_cascade",
+          "selected_route": "single_react_llm_agent",
+          "success": true,
+          "model_calls": 1,
+          "route_reward": 0.88189,
+          "regret_vs_oracle_reward": -0.0
+        },
+        {
+          "task_id": "phase1_code_slugify_001",
+          "memory_key": {
+            "task_family": "code_agent_task",
+            "error_signature": "tag:string"
+          },
+          "selection_reason": "default_cascade",
+          "selected_route": "single_react_llm_agent",
+          "success": true,
+          "model_calls": 1,
+          "route_reward": 0.8706,
+          "regret_vs_oracle_reward": 0.01261
+        },
+        {
+          "task_id": "phase1_code_strip_tags_001",
+          "memory_key": {
+            "task_family": "code_agent_task",
+            "error_signature": "tag:security"
+          },
+          "selection_reason": "default_cascade",
+          "selected_route": "single_react_llm_agent",
+          "success": true,
+          "model_calls": 1,
+          "route_reward": 0.88456,
+          "regret_vs_oracle_reward": 0.0
+        },
+        {
+          "task_id": "phase1_code_trim_lines_001",
+          "memory_key": {
+            "task_family": "code_agent_task",
+            "error_signature": "tag:docs"
+          },
+          "selection_reason": "default_cascade",
+          "selected_route": "single_react_llm_agent",
+          "success": true,
+          "model_calls": 3,
+          "route_reward": 0.59783,
+          "regret_vs_oracle_reward": 0.28258
+        },
+        {
+          "task_id": "phase1_code_url_001",
+          "memory_key": {
+            "task_family": "code_agent_task",
+            "error_signature": "tag:path"
+          },
+          "selection_reason": "default_cascade",
+          "selected_route": "single_react_llm_agent",
+          "success": true,
+          "model_calls": 1,
+          "route_reward": 0.87524,
+          "regret_vs_oracle_reward": 0.0
+        }
+      ]
+    },
+    "baseline_transcript_memory": {
+      "baseline_route": "retrieval_memory_llm_agent",
+      "tasks": 26,
+      "accuracy": 0.846154,
+      "mean_regret_vs_oracle_reward": 0.194492,
+      "per_task": [
+        {
+          "task_id": "phase0_seed_code_fix_001",
+          "selected_route": "retrieval_memory_llm_agent",
+          "success": true,
+          "regret_vs_oracle_reward": -0.0
+        },
+        {
+          "task_id": "phase0_seed_negative_memory_001",
+          "selected_route": "retrieval_memory_llm_agent",
+          "success": true,
+          "regret_vs_oracle_reward": 0.002
+        },
+        {
+          "task_id": "phase1_code_binary_search_001",
+          "selected_route": "retrieval_memory_llm_agent",
+          "success": true,
+          "regret_vs_oracle_reward": -0.0
+        },
+        {
+          "task_id": "phase1_code_clamp_001",
+          "selected_route": "retrieval_memory_llm_agent",
+          "success": true,
+          "regret_vs_oracle_reward": 0.00661
+        },
+        {
+          "task_id": "phase1_code_config_001",
+          "selected_route": "retrieval_memory_llm_agent",
+          "success": false,
+          "regret_vs_oracle_reward": 1.01345
+        },
+        {
+          "task_id": "phase1_code_config_get_001",
+          "selected_route": "retrieval_memory_llm_agent",
+          "success": true,
+          "regret_vs_oracle_reward": 0.0
+        },
+        {
+          "task_id": "phase1_code_csv_001",
+          "selected_route": "retrieval_memory_llm_agent",
+          "success": true,
+          "regret_vs_oracle_reward": 0.02527
+        },
+        {
+          "task_id": "phase1_code_doc_001",
+          "selected_route": "retrieval_memory_llm_agent",
+          "success": true,
+          "regret_vs_oracle_reward": 0.20813
+        },
+        {
+          "task_id": "phase1_code_edge_001",
+          "selected_route": "retrieval_memory_llm_agent",
+          "success": true,
+          "regret_vs_oracle_reward": 0.30034
+        },
+        {
+          "task_id": "phase1_code_email_001",
+          "selected_route": "retrieval_memory_llm_agent",
+          "success": true,
+          "regret_vs_oracle_reward": 0.0
+        },
+        {
+          "task_id": "phase1_code_env_flag_001",
+          "selected_route": "retrieval_memory_llm_agent",
+          "success": false,
+          "regret_vs_oracle_reward": 1.12085
+        },
+        {
+          "task_id": "phase1_code_flatten_001",
+          "selected_route": "retrieval_memory_llm_agent",
+          "success": true,
+          "regret_vs_oracle_reward": -0.0
+        },
+        {
+          "task_id": "phase1_code_hash_001",
+          "selected_route": "retrieval_memory_llm_agent",
+          "success": true,
+          "regret_vs_oracle_reward": 0.00153
+        },
+        {
+          "task_id": "phase1_code_import_001",
+          "selected_route": "retrieval_memory_llm_agent",
+          "success": true,
+          "regret_vs_oracle_reward": 0.00487
+        },
+        {
+          "task_id": "phase1_code_json_001",
+          "selected_route": "retrieval_memory_llm_agent",
+          "success": true,
+          "regret_vs_oracle_reward": 0.00293
+        },
+        {
+          "task_id": "phase1_code_mean_001",
+          "selected_route": "retrieval_memory_llm_agent",
+          "success": true,
+          "regret_vs_oracle_reward": 0.0
+        },
+        {
+          "task_id": "phase1_code_merge_001",
+          "selected_route": "retrieval_memory_llm_agent",
+          "success": true,
+          "regret_vs_oracle_reward": 0.00688
+        },
+        {
+          "task_id": "phase1_code_palindrome_001",
+          "selected_route": "retrieval_memory_llm_agent",
+          "success": true,
+          "regret_vs_oracle_reward": 0.13443
+        },
+        {
+          "task_id": "phase1_code_parse_int_001",
+          "selected_route": "retrieval_memory_llm_agent",
+          "success": false,
+          "regret_vs_oracle_reward": 0.94893
+        },
+        {
+          "task_id": "phase1_code_pkg_helper_001",
+          "selected_route": "retrieval_memory_llm_agent",
+          "success": true,
+          "regret_vs_oracle_reward": 0.24783
+        },
+        {
+          "task_id": "phase1_code_refactor_001",
+          "selected_route": "retrieval_memory_llm_agent",
+          "success": true,
+          "regret_vs_oracle_reward": 0.01055
+        },
+        {
+          "task_id": "phase1_code_sanitize_001",
+          "selected_route": "retrieval_memory_llm_agent",
+          "success": false,
+          "regret_vs_oracle_reward": 1.01497
+        },
+        {
+          "task_id": "phase1_code_slugify_001",
+          "selected_route": "retrieval_memory_llm_agent",
+          "success": true,
+          "regret_vs_oracle_reward": 0.0
+        },
+        {
+          "task_id": "phase1_code_strip_tags_001",
+          "selected_route": "retrieval_memory_llm_agent",
+          "success": true,
+          "regret_vs_oracle_reward": 0.00245
+        },
+        {
+          "task_id": "phase1_code_trim_lines_001",
+          "selected_route": "retrieval_memory_llm_agent",
+          "success": true,
+          "regret_vs_oracle_reward": 0.0
+        },
+        {
+          "task_id": "phase1_code_url_001",
+          "selected_route": "retrieval_memory_llm_agent",
+          "success": true,
+          "regret_vs_oracle_reward": 0.00478
+        }
+      ]
+    },
+    "loo_static": {
+      "mode": "static",
+      "tasks": 26,
+      "accuracy": 0.846154,
+      "mean_regret_vs_oracle_reward": 0.202893,
+      "memory_hit_rate": 0.192308,
+      "per_task": [
+        {
+          "task_id": "phase0_seed_code_fix_001",
+          "memory_key": {
+            "task_family": "code_agent_task",
+            "error_signature": "tag:pytest"
+          },
+          "selection_reason": "default_no_memory",
+          "selected_route": "single_react_llm_agent",
+          "success": true,
+          "model_calls": 1,
+          "route_reward": 0.88142,
+          "regret_vs_oracle_reward": 0.00261
+        },
+        {
+          "task_id": "phase0_seed_negative_memory_001",
+          "memory_key": {
+            "task_family": "code_agent_task",
+            "error_signature": "tag:memory"
+          },
+          "selection_reason": "default_no_memory",
+          "selected_route": "single_react_llm_agent",
+          "success": true,
+          "model_calls": 1,
+          "route_reward": 0.8874,
+          "regret_vs_oracle_reward": 9e-05
+        },
+        {
+          "task_id": "phase1_code_binary_search_001",
+          "memory_key": {
+            "task_family": "code_agent_task",
+            "error_signature": "tag:edge_case"
+          },
+          "selection_reason": "default_beats_memory",
+          "selected_route": "single_react_llm_agent",
+          "success": true,
+          "model_calls": 1,
+          "route_reward": 0.83741,
+          "regret_vs_oracle_reward": 0.01981
+        },
+        {
+          "task_id": "phase1_code_clamp_001",
+          "memory_key": {
+            "task_family": "code_agent_task",
+            "error_signature": "tag:edge_case"
+          },
+          "selection_reason": "default_beats_memory",
+          "selected_route": "single_react_llm_agent",
+          "success": true,
+          "model_calls": 1,
+          "route_reward": 0.88409,
+          "regret_vs_oracle_reward": 0.0
+        },
+        {
+          "task_id": "phase1_code_config_001",
+          "memory_key": {
+            "task_family": "code_agent_task",
+            "error_signature": "tag:config"
+          },
+          "selection_reason": "memory_override",
+          "selected_route": "moa_style_llm_agent",
+          "success": true,
+          "model_calls": 2,
+          "route_reward": 0.733,
+          "regret_vs_oracle_reward": 0.13788
+        },
+        {
+          "task_id": "phase1_code_config_get_001",
+          "memory_key": {
+            "task_family": "code_agent_task",
+            "error_signature": "tag:config"
+          },
+          "selection_reason": "memory_override",
+          "selected_route": "moa_style_llm_agent",
+          "success": true,
+          "model_calls": 2,
+          "route_reward": 0.74229,
+          "regret_vs_oracle_reward": 0.14005
+        },
+        {
+          "task_id": "phase1_code_csv_001",
+          "memory_key": {
+            "task_family": "code_agent_task",
+            "error_signature": "AssertionError|test_quoted_comma"
+          },
+          "selection_reason": "default_no_memory",
+          "selected_route": "single_react_llm_agent",
+          "success": false,
+          "model_calls": 1,
+          "route_reward": -0.15906,
+          "regret_vs_oracle_reward": 0.88305
+        },
+        {
+          "task_id": "phase1_code_doc_001",
+          "memory_key": {
+            "task_family": "code_agent_task",
+            "error_signature": "tag:docs"
+          },
+          "selection_reason": "default_insufficient_memory",
+          "selected_route": "single_react_llm_agent",
+          "success": true,
+          "model_calls": 1,
+          "route_reward": 0.88837,
+          "regret_vs_oracle_reward": -0.0
+        },
+        {
+          "task_id": "phase1_code_edge_001",
+          "memory_key": {
+            "task_family": "code_agent_task",
+            "error_signature": "tag:edge_case"
+          },
+          "selection_reason": "memory_override",
+          "selected_route": "retrieval_memory_llm_agent",
+          "success": true,
+          "model_calls": 3,
+          "route_reward": 0.57428,
+          "regret_vs_oracle_reward": 0.30034
+        },
+        {
+          "task_id": "phase1_code_email_001",
+          "memory_key": {
+            "task_family": "code_agent_task",
+            "error_signature": "tag:parsing"
+          },
+          "selection_reason": "default_beats_memory",
+          "selected_route": "single_react_llm_agent",
+          "success": false,
+          "model_calls": 1,
+          "route_reward": -0.12649,
+          "regret_vs_oracle_reward": 1.00343
+        },
+        {
+          "task_id": "phase1_code_env_flag_001",
+          "memory_key": {
+            "task_family": "code_agent_task",
+            "error_signature": "tag:config"
+          },
+          "selection_reason": "default_beats_memory",
+          "selected_route": "single_react_llm_agent",
+          "success": false,
+          "model_calls": 3,
+          "route_reward": -0.35909,
+          "regret_vs_oracle_reward": 1.12216
+        },
+        {
+          "task_id": "phase1_code_flatten_001",
+          "memory_key": {
+            "task_family": "code_agent_task",
+            "error_signature": "tag:edge_case"
+          },
+          "selection_reason": "default_beats_memory",
+          "selected_route": "single_react_llm_agent",
+          "success": true,
+          "model_calls": 1,
+          "route_reward": 0.87005,
+          "regret_vs_oracle_reward": 0.00293
+        },
+        {
+          "task_id": "phase1_code_hash_001",
+          "memory_key": {
+            "task_family": "code_agent_task",
+            "error_signature": "tag:security"
+          },
+          "selection_reason": "default_beats_memory",
+          "selected_route": "single_react_llm_agent",
+          "success": true,
+          "model_calls": 1,
+          "route_reward": 0.88487,
+          "regret_vs_oracle_reward": 0.0
+        },
+        {
+          "task_id": "phase1_code_import_001",
+          "memory_key": {
+            "task_family": "code_agent_task",
+            "error_signature": "tag:import"
+          },
+          "selection_reason": "default_insufficient_memory",
+          "selected_route": "single_react_llm_agent",
+          "success": true,
+          "model_calls": 1,
+          "route_reward": 0.88162,
+          "regret_vs_oracle_reward": -0.0
+        },
+        {
+          "task_id": "phase1_code_json_001",
+          "memory_key": {
+            "task_family": "code_agent_task",
+            "error_signature": "tag:parsing"
+          },
+          "selection_reason": "memory_override",
+          "selected_route": "moa_style_llm_agent",
+          "success": true,
+          "model_calls": 2,
+          "route_reward": 0.75272,
+          "regret_vs_oracle_reward": 0.1223
+        },
+        {
+          "task_id": "phase1_code_mean_001",
+          "memory_key": {
+            "task_family": "code_agent_task",
+            "error_signature": "tag:edge_case"
+          },
+          "selection_reason": "default_beats_memory",
+          "selected_route": "single_react_llm_agent",
+          "success": true,
+          "model_calls": 1,
+          "route_reward": 0.87857,
+          "regret_vs_oracle_reward": 0.00447
+        },
+        {
+          "task_id": "phase1_code_merge_001",
+          "memory_key": {
+            "task_family": "code_agent_task",
+            "error_signature": "tag:refactor"
+          },
+          "selection_reason": "default_insufficient_memory",
+          "selected_route": "single_react_llm_agent",
+          "success": true,
+          "model_calls": 1,
+          "route_reward": 0.81644,
+          "regret_vs_oracle_reward": 0.05513
+        },
+        {
+          "task_id": "phase1_code_palindrome_001",
+          "memory_key": {
+            "task_family": "code_agent_task",
+            "error_signature": "tag:string"
+          },
+          "selection_reason": "default_insufficient_memory",
+          "selected_route": "single_react_llm_agent",
+          "success": true,
+          "model_calls": 1,
+          "route_reward": 0.87853,
+          "regret_vs_oracle_reward": 0.0
+        },
+        {
+          "task_id": "phase1_code_parse_int_001",
+          "memory_key": {
+            "task_family": "code_agent_task",
+            "error_signature": "tag:parsing"
+          },
+          "selection_reason": "memory_override",
+          "selected_route": "retrieval_memory_llm_agent",
+          "success": false,
+          "model_calls": 1,
+          "route_reward": -0.12374,
+          "regret_vs_oracle_reward": 0.94893
+        },
+        {
+          "task_id": "phase1_code_pkg_helper_001",
+          "memory_key": {
+            "task_family": "code_agent_task",
+            "error_signature": "tag:import"
+          },
+          "selection_reason": "default_insufficient_memory",
+          "selected_route": "single_react_llm_agent",
+          "success": true,
+          "model_calls": 3,
+          "route_reward": 0.64037,
+          "regret_vs_oracle_reward": 0.23684
+        },
+        {
+          "task_id": "phase1_code_refactor_001",
+          "memory_key": {
+            "task_family": "code_agent_task",
+            "error_signature": "tag:refactor"
+          },
+          "selection_reason": "default_insufficient_memory",
+          "selected_route": "single_react_llm_agent",
+          "success": true,
+          "model_calls": 1,
+          "route_reward": 0.87865,
+          "regret_vs_oracle_reward": 0.0
+        },
+        {
+          "task_id": "phase1_code_sanitize_001",
+          "memory_key": {
+            "task_family": "code_agent_task",
+            "error_signature": "tag:security"
+          },
+          "selection_reason": "default_beats_memory",
+          "selected_route": "single_react_llm_agent",
+          "success": true,
+          "model_calls": 1,
+          "route_reward": 0.88189,
+          "regret_vs_oracle_reward": -0.0
+        },
+        {
+          "task_id": "phase1_code_slugify_001",
+          "memory_key": {
+            "task_family": "code_agent_task",
+            "error_signature": "tag:string"
+          },
+          "selection_reason": "default_insufficient_memory",
+          "selected_route": "single_react_llm_agent",
+          "success": true,
+          "model_calls": 1,
+          "route_reward": 0.8706,
+          "regret_vs_oracle_reward": 0.01261
+        },
+        {
+          "task_id": "phase1_code_strip_tags_001",
+          "memory_key": {
+            "task_family": "code_agent_task",
+            "error_signature": "tag:security"
+          },
+          "selection_reason": "default_beats_memory",
+          "selected_route": "single_react_llm_agent",
+          "success": true,
+          "model_calls": 1,
+          "route_reward": 0.88456,
+          "regret_vs_oracle_reward": 0.0
+        },
+        {
+          "task_id": "phase1_code_trim_lines_001",
+          "memory_key": {
+            "task_family": "code_agent_task",
+            "error_signature": "tag:docs"
+          },
+          "selection_reason": "default_insufficient_memory",
+          "selected_route": "single_react_llm_agent",
+          "success": true,
+          "model_calls": 3,
+          "route_reward": 0.59783,
+          "regret_vs_oracle_reward": 0.28258
+        },
+        {
+          "task_id": "phase1_code_url_001",
+          "memory_key": {
+            "task_family": "code_agent_task",
+            "error_signature": "tag:path"
+          },
+          "selection_reason": "default_no_memory",
+          "selected_route": "single_react_llm_agent",
+          "success": true,
+          "model_calls": 1,
+          "route_reward": 0.87524,
+          "regret_vs_oracle_reward": 0.0
+        }
+      ]
+    },
+    "loo_cascade": {
+      "mode": "cascade",
+      "tasks": 26,
+      "accuracy": 1.0,
+      "mean_regret_vs_oracle_reward": 0.063958,
+      "memory_hit_rate": 0.153846,
+      "per_task": [
+        {
+          "task_id": "phase0_seed_code_fix_001",
+          "memory_key": {
+            "task_family": "code_agent_task",
+            "error_signature": "tag:pytest"
+          },
+          "selection_reason": "default_cascade",
+          "selected_route": "single_react_llm_agent",
+          "success": true,
+          "model_calls": 1,
+          "route_reward": 0.88142,
+          "regret_vs_oracle_reward": 0.00261
+        },
+        {
+          "task_id": "phase0_seed_negative_memory_001",
+          "memory_key": {
+            "task_family": "code_agent_task",
+            "error_signature": "tag:memory"
+          },
+          "selection_reason": "default_cascade",
+          "selected_route": "single_react_llm_agent",
+          "success": true,
+          "model_calls": 1,
+          "route_reward": 0.8874,
+          "regret_vs_oracle_reward": 9e-05
+        },
+        {
+          "task_id": "phase1_code_binary_search_001",
+          "memory_key": {
+            "task_family": "code_agent_task",
+            "error_signature": "tag:edge_case"
+          },
+          "selection_reason": "default_cascade",
+          "selected_route": "single_react_llm_agent",
+          "success": true,
+          "model_calls": 1,
+          "route_reward": 0.83741,
+          "regret_vs_oracle_reward": 0.01981
+        },
+        {
+          "task_id": "phase1_code_clamp_001",
+          "memory_key": {
+            "task_family": "code_agent_task",
+            "error_signature": "tag:edge_case"
+          },
+          "selection_reason": "default_cascade",
+          "selected_route": "single_react_llm_agent",
+          "success": true,
+          "model_calls": 1,
+          "route_reward": 0.88409,
+          "regret_vs_oracle_reward": 0.0
+        },
+        {
+          "task_id": "phase1_code_config_001",
+          "memory_key": {
+            "task_family": "code_agent_task",
+            "error_signature": "tag:config"
+          },
+          "selection_reason": "memory_escalation",
+          "selected_route": "single_react_llm_agent",
+          "success": true,
+          "model_calls": 1,
+          "route_reward": 0.87088,
+          "regret_vs_oracle_reward": 0.0
+        },
+        {
+          "task_id": "phase1_code_config_get_001",
+          "memory_key": {
+            "task_family": "code_agent_task",
+            "error_signature": "tag:config"
+          },
+          "selection_reason": "memory_escalation",
+          "selected_route": "single_react_llm_agent",
+          "success": true,
+          "model_calls": 1,
+          "route_reward": 0.87837,
+          "regret_vs_oracle_reward": 0.00397
+        },
+        {
+          "task_id": "phase1_code_csv_001",
+          "memory_key": {
+            "task_family": "code_agent_task",
+            "error_signature": "AssertionError|test_quoted_comma"
+          },
+          "selection_reason": "default_cascade",
+          "selected_route": "agent_attention_llm_tuned",
+          "success": true,
+          "model_calls": 3,
+          "route_reward": 0.56493,
+          "regret_vs_oracle_reward": 0.15906
+        },
+        {
+          "task_id": "phase1_code_doc_001",
+          "memory_key": {
+            "task_family": "code_agent_task",
+            "error_signature": "tag:docs"
+          },
+          "selection_reason": "default_cascade",
+          "selected_route": "single_react_llm_agent",
+          "success": true,
+          "model_calls": 1,
+          "route_reward": 0.88837,
+          "regret_vs_oracle_reward": -0.0
+        },
+        {
+          "task_id": "phase1_code_edge_001",
+          "memory_key": {
+            "task_family": "code_agent_task",
+            "error_signature": "tag:edge_case"
+          },
+          "selection_reason": "default_cascade",
+          "selected_route": "single_react_llm_agent",
+          "success": true,
+          "model_calls": 1,
+          "route_reward": 0.87413,
+          "regret_vs_oracle_reward": 0.00049
+        },
+        {
+          "task_id": "phase1_code_email_001",
+          "memory_key": {
+            "task_family": "code_agent_task",
+            "error_signature": "tag:parsing"
+          },
+          "selection_reason": "default_cascade",
+          "selected_route": "agent_attention_llm_tuned",
+          "success": true,
+          "model_calls": 3,
+          "route_reward": 0.61009,
+          "regret_vs_oracle_reward": 0.26685
+        },
+        {
+          "task_id": "phase1_code_env_flag_001",
+          "memory_key": {
+            "task_family": "code_agent_task",
+            "error_signature": "tag:config"
+          },
+          "selection_reason": "default_cascade",
+          "selected_route": "moa_style_llm_agent",
+          "success": true,
+          "model_calls": 7,
+          "route_reward": 0.14761,
+          "regret_vs_oracle_reward": 0.61546
+        },
+        {
+          "task_id": "phase1_code_flatten_001",
+          "memory_key": {
+            "task_family": "code_agent_task",
+            "error_signature": "tag:edge_case"
+          },
+          "selection_reason": "default_cascade",
+          "selected_route": "single_react_llm_agent",
+          "success": true,
+          "model_calls": 1,
+          "route_reward": 0.87005,
+          "regret_vs_oracle_reward": 0.00293
+        },
+        {
+          "task_id": "phase1_code_hash_001",
+          "memory_key": {
+            "task_family": "code_agent_task",
+            "error_signature": "tag:security"
+          },
+          "selection_reason": "default_cascade",
+          "selected_route": "single_react_llm_agent",
+          "success": true,
+          "model_calls": 1,
+          "route_reward": 0.88487,
+          "regret_vs_oracle_reward": 0.0
+        },
+        {
+          "task_id": "phase1_code_import_001",
+          "memory_key": {
+            "task_family": "code_agent_task",
+            "error_signature": "tag:import"
+          },
+          "selection_reason": "default_cascade",
+          "selected_route": "single_react_llm_agent",
+          "success": true,
+          "model_calls": 1,
+          "route_reward": 0.88162,
+          "regret_vs_oracle_reward": -0.0
+        },
+        {
+          "task_id": "phase1_code_json_001",
+          "memory_key": {
+            "task_family": "code_agent_task",
+            "error_signature": "tag:parsing"
+          },
+          "selection_reason": "memory_escalation",
+          "selected_route": "single_react_llm_agent",
+          "success": true,
+          "model_calls": 1,
+          "route_reward": 0.87502,
+          "regret_vs_oracle_reward": 0.0
+        },
+        {
+          "task_id": "phase1_code_mean_001",
+          "memory_key": {
+            "task_family": "code_agent_task",
+            "error_signature": "tag:edge_case"
+          },
+          "selection_reason": "default_cascade",
+          "selected_route": "single_react_llm_agent",
+          "success": true,
+          "model_calls": 1,
+          "route_reward": 0.87857,
+          "regret_vs_oracle_reward": 0.00447
+        },
+        {
+          "task_id": "phase1_code_merge_001",
+          "memory_key": {
+            "task_family": "code_agent_task",
+            "error_signature": "tag:refactor"
+          },
+          "selection_reason": "default_cascade",
+          "selected_route": "single_react_llm_agent",
+          "success": true,
+          "model_calls": 1,
+          "route_reward": 0.81644,
+          "regret_vs_oracle_reward": 0.05513
+        },
+        {
+          "task_id": "phase1_code_palindrome_001",
+          "memory_key": {
+            "task_family": "code_agent_task",
+            "error_signature": "tag:string"
+          },
+          "selection_reason": "default_cascade",
+          "selected_route": "single_react_llm_agent",
+          "success": true,
+          "model_calls": 1,
+          "route_reward": 0.87853,
+          "regret_vs_oracle_reward": 0.0
+        },
+        {
+          "task_id": "phase1_code_parse_int_001",
+          "memory_key": {
+            "task_family": "code_agent_task",
+            "error_signature": "tag:parsing"
+          },
+          "selection_reason": "memory_escalation",
+          "selected_route": "single_react_llm_agent",
+          "success": true,
+          "model_calls": 1,
+          "route_reward": 0.82519,
+          "regret_vs_oracle_reward": 0.0
+        },
+        {
+          "task_id": "phase1_code_pkg_helper_001",
+          "memory_key": {
+            "task_family": "code_agent_task",
+            "error_signature": "tag:import"
+          },
+          "selection_reason": "default_cascade",
+          "selected_route": "single_react_llm_agent",
+          "success": true,
+          "model_calls": 3,
+          "route_reward": 0.64037,
+          "regret_vs_oracle_reward": 0.23684
+        },
+        {
+          "task_id": "phase1_code_refactor_001",
+          "memory_key": {
+            "task_family": "code_agent_task",
+            "error_signature": "tag:refactor"
+          },
+          "selection_reason": "default_cascade",
+          "selected_route": "single_react_llm_agent",
+          "success": true,
+          "model_calls": 1,
+          "route_reward": 0.87865,
+          "regret_vs_oracle_reward": 0.0
+        },
+        {
+          "task_id": "phase1_code_sanitize_001",
+          "memory_key": {
+            "task_family": "code_agent_task",
+            "error_signature": "tag:security"
+          },
+          "selection_reason": "default_cascade",
+          "selected_route": "single_react_llm_agent",
+          "success": true,
+          "model_calls": 1,
+          "route_reward": 0.88189,
+          "regret_vs_oracle_reward": -0.0
+        },
+        {
+          "task_id": "phase1_code_slugify_001",
+          "memory_key": {
+            "task_family": "code_agent_task",
+            "error_signature": "tag:string"
+          },
+          "selection_reason": "default_cascade",
+          "selected_route": "single_react_llm_agent",
+          "success": true,
+          "model_calls": 1,
+          "route_reward": 0.8706,
+          "regret_vs_oracle_reward": 0.01261
+        },
+        {
+          "task_id": "phase1_code_strip_tags_001",
+          "memory_key": {
+            "task_family": "code_agent_task",
+            "error_signature": "tag:security"
+          },
+          "selection_reason": "default_cascade",
+          "selected_route": "single_react_llm_agent",
+          "success": true,
+          "model_calls": 1,
+          "route_reward": 0.88456,
+          "regret_vs_oracle_reward": 0.0
+        },
+        {
+          "task_id": "phase1_code_trim_lines_001",
+          "memory_key": {
+            "task_family": "code_agent_task",
+            "error_signature": "tag:docs"
+          },
+          "selection_reason": "default_cascade",
+          "selected_route": "single_react_llm_agent",
+          "success": true,
+          "model_calls": 3,
+          "route_reward": 0.59783,
+          "regret_vs_oracle_reward": 0.28258
+        },
+        {
+          "task_id": "phase1_code_url_001",
+          "memory_key": {
+            "task_family": "code_agent_task",
+            "error_signature": "tag:path"
+          },
+          "selection_reason": "default_cascade",
+          "selected_route": "single_react_llm_agent",
+          "success": true,
+          "model_calls": 1,
+          "route_reward": 0.87524,
+          "regret_vs_oracle_reward": 0.0
+        }
+      ]
+    },
+    "streaming_cascade": {
+      "mode": "cascade",
+      "tasks": 26,
+      "mean_regret_vs_oracle_reward": 0.063958,
+      "memory_hit_rate": 0.076923,
+      "per_task": [
+        {
+          "task_id": "phase0_seed_code_fix_001",
+          "memory_key": {
+            "task_family": "code_agent_task",
+            "error_signature": "tag:pytest"
+          },
+          "selection_reason": "default_cascade",
+          "selected_route": "single_react_llm_agent",
+          "success": true,
+          "regret_vs_oracle_reward": 0.00261
+        },
+        {
+          "task_id": "phase0_seed_negative_memory_001",
+          "memory_key": {
+            "task_family": "code_agent_task",
+            "error_signature": "tag:memory"
+          },
+          "selection_reason": "default_cascade",
+          "selected_route": "single_react_llm_agent",
+          "success": true,
+          "regret_vs_oracle_reward": 9e-05
+        },
+        {
+          "task_id": "phase1_code_binary_search_001",
+          "memory_key": {
+            "task_family": "code_agent_task",
+            "error_signature": "tag:edge_case"
+          },
+          "selection_reason": "default_cascade",
+          "selected_route": "single_react_llm_agent",
+          "success": true,
+          "regret_vs_oracle_reward": 0.01981
+        },
+        {
+          "task_id": "phase1_code_clamp_001",
+          "memory_key": {
+            "task_family": "code_agent_task",
+            "error_signature": "tag:edge_case"
+          },
+          "selection_reason": "default_cascade",
+          "selected_route": "single_react_llm_agent",
+          "success": true,
+          "regret_vs_oracle_reward": 0.0
+        },
+        {
+          "task_id": "phase1_code_config_001",
+          "memory_key": {
+            "task_family": "code_agent_task",
+            "error_signature": "tag:config"
+          },
+          "selection_reason": "default_cascade",
+          "selected_route": "single_react_llm_agent",
+          "success": true,
+          "regret_vs_oracle_reward": 0.0
+        },
+        {
+          "task_id": "phase1_code_config_get_001",
+          "memory_key": {
+            "task_family": "code_agent_task",
+            "error_signature": "tag:config"
+          },
+          "selection_reason": "default_cascade",
+          "selected_route": "single_react_llm_agent",
+          "success": true,
+          "regret_vs_oracle_reward": 0.00397
+        },
+        {
+          "task_id": "phase1_code_csv_001",
+          "memory_key": {
+            "task_family": "code_agent_task",
+            "error_signature": "AssertionError|test_quoted_comma"
+          },
+          "selection_reason": "default_cascade",
+          "selected_route": "agent_attention_llm_tuned",
+          "success": true,
+          "regret_vs_oracle_reward": 0.15906
+        },
+        {
+          "task_id": "phase1_code_doc_001",
+          "memory_key": {
+            "task_family": "code_agent_task",
+            "error_signature": "tag:docs"
+          },
+          "selection_reason": "default_cascade",
+          "selected_route": "single_react_llm_agent",
+          "success": true,
+          "regret_vs_oracle_reward": -0.0
+        },
+        {
+          "task_id": "phase1_code_edge_001",
+          "memory_key": {
+            "task_family": "code_agent_task",
+            "error_signature": "tag:edge_case"
+          },
+          "selection_reason": "default_cascade",
+          "selected_route": "single_react_llm_agent",
+          "success": true,
+          "regret_vs_oracle_reward": 0.00049
+        },
+        {
+          "task_id": "phase1_code_email_001",
+          "memory_key": {
+            "task_family": "code_agent_task",
+            "error_signature": "tag:parsing"
+          },
+          "selection_reason": "default_cascade",
+          "selected_route": "agent_attention_llm_tuned",
+          "success": true,
+          "regret_vs_oracle_reward": 0.26685
+        },
+        {
+          "task_id": "phase1_code_env_flag_001",
+          "memory_key": {
+            "task_family": "code_agent_task",
+            "error_signature": "tag:config"
+          },
+          "selection_reason": "default_cascade",
+          "selected_route": "moa_style_llm_agent",
+          "success": true,
+          "regret_vs_oracle_reward": 0.61546
+        },
+        {
+          "task_id": "phase1_code_flatten_001",
+          "memory_key": {
+            "task_family": "code_agent_task",
+            "error_signature": "tag:edge_case"
+          },
+          "selection_reason": "default_cascade",
+          "selected_route": "single_react_llm_agent",
+          "success": true,
+          "regret_vs_oracle_reward": 0.00293
+        },
+        {
+          "task_id": "phase1_code_hash_001",
+          "memory_key": {
+            "task_family": "code_agent_task",
+            "error_signature": "tag:security"
+          },
+          "selection_reason": "default_cascade",
+          "selected_route": "single_react_llm_agent",
+          "success": true,
+          "regret_vs_oracle_reward": 0.0
+        },
+        {
+          "task_id": "phase1_code_import_001",
+          "memory_key": {
+            "task_family": "code_agent_task",
+            "error_signature": "tag:import"
+          },
+          "selection_reason": "default_cascade",
+          "selected_route": "single_react_llm_agent",
+          "success": true,
+          "regret_vs_oracle_reward": -0.0
+        },
+        {
+          "task_id": "phase1_code_json_001",
+          "memory_key": {
+            "task_family": "code_agent_task",
+            "error_signature": "tag:parsing"
+          },
+          "selection_reason": "memory_escalation",
+          "selected_route": "single_react_llm_agent",
+          "success": true,
+          "regret_vs_oracle_reward": 0.0
+        },
+        {
+          "task_id": "phase1_code_mean_001",
+          "memory_key": {
+            "task_family": "code_agent_task",
+            "error_signature": "tag:edge_case"
+          },
+          "selection_reason": "default_cascade",
+          "selected_route": "single_react_llm_agent",
+          "success": true,
+          "regret_vs_oracle_reward": 0.00447
+        },
+        {
+          "task_id": "phase1_code_merge_001",
+          "memory_key": {
+            "task_family": "code_agent_task",
+            "error_signature": "tag:refactor"
+          },
+          "selection_reason": "default_cascade",
+          "selected_route": "single_react_llm_agent",
+          "success": true,
+          "regret_vs_oracle_reward": 0.05513
+        },
+        {
+          "task_id": "phase1_code_palindrome_001",
+          "memory_key": {
+            "task_family": "code_agent_task",
+            "error_signature": "tag:string"
+          },
+          "selection_reason": "default_cascade",
+          "selected_route": "single_react_llm_agent",
+          "success": true,
+          "regret_vs_oracle_reward": 0.0
+        },
+        {
+          "task_id": "phase1_code_parse_int_001",
+          "memory_key": {
+            "task_family": "code_agent_task",
+            "error_signature": "tag:parsing"
+          },
+          "selection_reason": "memory_escalation",
+          "selected_route": "single_react_llm_agent",
+          "success": true,
+          "regret_vs_oracle_reward": 0.0
+        },
+        {
+          "task_id": "phase1_code_pkg_helper_001",
+          "memory_key": {
+            "task_family": "code_agent_task",
+            "error_signature": "tag:import"
+          },
+          "selection_reason": "default_cascade",
+          "selected_route": "single_react_llm_agent",
+          "success": true,
+          "regret_vs_oracle_reward": 0.23684
+        },
+        {
+          "task_id": "phase1_code_refactor_001",
+          "memory_key": {
+            "task_family": "code_agent_task",
+            "error_signature": "tag:refactor"
+          },
+          "selection_reason": "default_cascade",
+          "selected_route": "single_react_llm_agent",
+          "success": true,
+          "regret_vs_oracle_reward": 0.0
+        },
+        {
+          "task_id": "phase1_code_sanitize_001",
+          "memory_key": {
+            "task_family": "code_agent_task",
+            "error_signature": "tag:security"
+          },
+          "selection_reason": "default_cascade",
+          "selected_route": "single_react_llm_agent",
+          "success": true,
+          "regret_vs_oracle_reward": -0.0
+        },
+        {
+          "task_id": "phase1_code_slugify_001",
+          "memory_key": {
+            "task_family": "code_agent_task",
+            "error_signature": "tag:string"
+          },
+          "selection_reason": "default_cascade",
+          "selected_route": "single_react_llm_agent",
+          "success": true,
+          "regret_vs_oracle_reward": 0.01261
+        },
+        {
+          "task_id": "phase1_code_strip_tags_001",
+          "memory_key": {
+            "task_family": "code_agent_task",
+            "error_signature": "tag:security"
+          },
+          "selection_reason": "default_cascade",
+          "selected_route": "single_react_llm_agent",
+          "success": true,
+          "regret_vs_oracle_reward": 0.0
+        },
+        {
+          "task_id": "phase1_code_trim_lines_001",
+          "memory_key": {
+            "task_family": "code_agent_task",
+            "error_signature": "tag:docs"
+          },
+          "selection_reason": "default_cascade",
+          "selected_route": "single_react_llm_agent",
+          "success": true,
+          "regret_vs_oracle_reward": 0.28258
+        },
+        {
+          "task_id": "phase1_code_url_001",
+          "memory_key": {
+            "task_family": "code_agent_task",
+            "error_signature": "tag:path"
+          },
+          "selection_reason": "default_cascade",
+          "selected_route": "single_react_llm_agent",
+          "success": true,
+          "regret_vs_oracle_reward": 0.0
+        }
+      ],
+      "final_store_entry_count": 3
+    }
+  },
+  "memory_store_snapshot": {
+    "schema_version": "agent_attention.outcome_memory.v0.1",
+    "entry_count": 3,
+    "entries": [
+      {
+        "schema_version": "agent_attention.outcome_memory.v0.1",
+        "memory_profile": "behavior_kv",
+        "memory_type": "behavior_kv",
+        "write_reason": "success",
+        "key": {
+          "task_family": "code_agent_task",
+          "error_signature": "AssertionError|test_quoted_comma"
+        },
+        "value": {
+          "route_outcomes": {
+            "agent_attention_llm_tuned": {
+              "attempts": 1,
+              "successes": 1,
+              "success_rate": 1.0,
+              "mean_model_calls": 2.0,
+              "mean_total_tokens": 1273.0,
+              "mean_latency_ms": 2618.0,
+              "mean_route_reward": 0.72399
+            },
+            "fixed_workflow_llm_agent": {
+              "attempts": 1,
+              "successes": 0,
+              "success_rate": 0.0,
+              "mean_model_calls": 1.0,
+              "mean_total_tokens": 617.0,
+              "mean_latency_ms": 1595.0,
+              "mean_route_reward": -0.14275
+            },
+            "moa_style_llm_agent": {
+              "attempts": 1,
+              "successes": 1,
+              "success_rate": 1.0,
+              "mean_model_calls": 2.0,
+              "mean_total_tokens": 1243.0,
+              "mean_latency_ms": 3614.0,
+              "mean_route_reward": 0.70557
+            },
+            "retrieval_memory_llm_agent": {
+              "attempts": 1,
+              "successes": 1,
+              "success_rate": 1.0,
+              "mean_model_calls": 2.0,
+              "mean_total_tokens": 1446.0,
+              "mean_latency_ms": 3449.0,
+              "mean_route_reward": 0.69872
+            },
+            "single_react_llm_agent": {
+              "attempts": 1,
+              "successes": 0,
+              "success_rate": 0.0,
+              "mean_model_calls": 1.0,
+              "mean_total_tokens": 698.0,
+              "mean_latency_ms": 2208.0,
+              "mean_route_reward": -0.15906
+            }
+          }
+        },
+        "provenance": {
+          "source_task_count": 1,
+          "source_task_ids_hash": "62c294b88807f2cf"
+        }
+      },
+      {
+        "schema_version": "agent_attention.outcome_memory.v0.1",
+        "memory_profile": "behavior_kv",
+        "memory_type": "behavior_kv",
+        "write_reason": "success",
+        "key": {
+          "task_family": "code_agent_task",
+          "error_signature": "tag:parsing"
+        },
+        "value": {
+          "route_outcomes": {
+            "agent_attention_llm_tuned": {
+              "attempts": 1,
+              "successes": 1,
+              "success_rate": 1.0,
+              "mean_model_calls": 2.0,
+              "mean_total_tokens": 970.0,
+              "mean_latency_ms": 2746.0,
+              "mean_route_reward": 0.73658
+            },
+            "fixed_workflow_llm_agent": {
+              "attempts": 1,
+              "successes": 0,
+              "success_rate": 0.0,
+              "mean_model_calls": 1.0,
+              "mean_total_tokens": 432.0,
+              "mean_latency_ms": 841.0,
+              "mean_route_reward": -0.11842
+            },
+            "moa_style_llm_agent": {
+              "attempts": 1,
+              "successes": 1,
+              "success_rate": 1.0,
+              "mean_model_calls": 2.0,
+              "mean_total_tokens": 863.0,
+              "mean_latency_ms": 2119.0,
+              "mean_route_reward": 0.75447
+            },
+            "retrieval_memory_llm_agent": {
+              "attempts": 1,
+              "successes": 1,
+              "success_rate": 1.0,
+              "mean_model_calls": 1.0,
+              "mean_total_tokens": 454.0,
+              "mean_latency_ms": 1018.0,
+              "mean_route_reward": 0.87694
+            },
+            "single_react_llm_agent": {
+              "attempts": 1,
+              "successes": 0,
+              "success_rate": 0.0,
+              "mean_model_calls": 1.0,
+              "mean_total_tokens": 435.0,
+              "mean_latency_ms": 1237.0,
+              "mean_route_reward": -0.12649
+            }
+          }
+        },
+        "provenance": {
+          "source_task_count": 1,
+          "source_task_ids_hash": "c7f7ca0fd2806a48"
+        }
+      },
+      {
+        "schema_version": "agent_attention.outcome_memory.v0.1",
+        "memory_profile": "behavior_kv",
+        "memory_type": "behavior_kv",
+        "write_reason": "success",
+        "key": {
+          "task_family": "code_agent_task",
+          "error_signature": "tag:config"
+        },
+        "value": {
+          "route_outcomes": {
+            "agent_attention_llm_tuned": {
+              "attempts": 1,
+              "successes": 0,
+              "success_rate": 0.0,
+              "mean_model_calls": 2.0,
+              "mean_total_tokens": 925.0,
+              "mean_latency_ms": 2506.0,
+              "mean_route_reward": -0.25637
+            },
+            "fixed_workflow_llm_agent": {
+              "attempts": 1,
+              "successes": 0,
+              "success_rate": 0.0,
+              "mean_model_calls": 1.0,
+              "mean_total_tokens": 447.0,
+              "mean_latency_ms": 1248.0,
+              "mean_route_reward": -0.12731
+            },
+            "moa_style_llm_agent": {
+              "attempts": 1,
+              "successes": 1,
+              "success_rate": 1.0,
+              "mean_model_calls": 2.0,
+              "mean_total_tokens": 813.0,
+              "mean_latency_ms": 1814.0,
+              "mean_route_reward": 0.76307
+            },
+            "retrieval_memory_llm_agent": {
+              "attempts": 1,
+              "successes": 0,
+              "success_rate": 0.0,
+              "mean_model_calls": 3.0,
+              "mean_total_tokens": 1460.0,
+              "mean_latency_ms": 2239.0,
+              "mean_route_reward": -0.35778
+            },
+            "single_react_llm_agent": {
+              "attempts": 1,
+              "successes": 0,
+              "success_rate": 0.0,
+              "mean_model_calls": 3.0,
+              "mean_total_tokens": 1331.0,
+              "mean_latency_ms": 2627.0,
+              "mean_route_reward": -0.35909
+            }
+          }
+        },
+        "provenance": {
+          "source_task_count": 1,
+          "source_task_ids_hash": "94873df93ee8d6c4"
+        }
+      }
+    ]
+  },
+  "error_signature_counts": {
+    "tag:edge_case": 5,
+    "tag:config": 3,
+    "tag:parsing": 3,
+    "tag:security": 3,
+    "tag:docs": 2,
+    "tag:import": 2,
+    "tag:refactor": 2,
+    "tag:string": 2,
+    "AssertionError|test_quoted_comma": 1,
+    "tag:memory": 1,
+    "tag:path": 1,
+    "tag:pytest": 1
+  }
+}

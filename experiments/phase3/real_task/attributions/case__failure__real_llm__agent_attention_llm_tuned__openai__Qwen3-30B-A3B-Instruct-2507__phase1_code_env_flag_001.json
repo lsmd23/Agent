@@ -1,0 +1,62 @@
+{
+  "case_id": "case__failure__real_llm__agent_attention_llm_tuned__openai__Qwen3-30B-A3B-Instruct-2507__phase1_code_env_flag_001",
+  "failure_id": "failure__real_llm__agent_attention_llm_tuned__openai__Qwen3-30B-A3B-Instruct-2507__phase1_code_env_flag_001",
+  "trigger_failure_ids": [
+    "failure__real_llm__agent_attention_llm_tuned__openai__Qwen3-30B-A3B-Instruct-2507__phase1_code_env_flag_001"
+  ],
+  "symptom": "confidence_threshold_met",
+  "root_cause_hypothesis": "Task ended without required success signal; tighten halt criteria or add verifier before answer_ready.",
+  "blamed_component": "halt",
+  "blame_candidates": [
+    {
+      "candidate_id": "failure__real_llm__agent_attention_llm_tuned__openai__Qwen3-30B-A3B-Instruct-2507__phase1_code_env_flag_001__primary",
+      "component_type": "halt",
+      "component_id": "halt_gate",
+      "hypothesis": "Task ended without required success signal; tighten halt criteria or add verifier before answer_ready.",
+      "causal_link_score": 0.55,
+      "temporal_proximity_score": 0.6,
+      "counterfactual_plausibility_score": 0.5,
+      "evidence_event_ids": [
+        "10"
+      ],
+      "evidence_refs": [
+        {
+          "ref_id": "10",
+          "source_type": "trajectory_event"
+        }
+      ],
+      "label": "primary",
+      "validation_outcome": "not_tested"
+    }
+  ],
+  "evidence_event_ids": [
+    "10"
+  ],
+  "evidence_refs": [
+    {
+      "ref_id": "10",
+      "source_type": "trajectory_event"
+    }
+  ],
+  "local_gradient": "Task ended without required success signal; tighten halt criteria or add verifier before answer_ready.",
+  "proposed_update": {
+    "target": "halt_threshold",
+    "target_id": "default",
+    "before": "verifier_threshold=0.64",
+    "after": "require_verifier_on_code_tasks=true",
+    "bounded_scope": "halt/verifier gate",
+    "expected_effect": "premature_halt reduction",
+    "rollback_condition": "step_exhaustion rate increases by >0.15",
+    "patch_parameters": {
+      "require_verifier_on_code_tasks": true,
+      "verifier_threshold_cap": 0.5
+    }
+  },
+  "rollback_condition": "step_exhaustion rate increases by >0.15",
+  "confidence": 0.55,
+  "failure_signals": [
+    "no_module_activated",
+    "no_module_activated",
+    "no_module_activated"
+  ]
+}

@@ -1,0 +1,125 @@
+{
+  "scope": "T4 cost-quality Pareto on merged 26-task code suite.",
+  "model": "Qwen3-30B-A3B-Instruct-2507",
+  "tasks": 26,
+  "pareto_frontier": [
+    "cascade_react_aa_lite_llm",
+    "fixed_workflow_llm_agent",
+    "single_react_llm_agent"
+  ],
+  "baselines": {
+    "single_react_llm_agent": {
+      "success_rate": 0.8846153846153846,
+      "success_ci": [
+        0.7692307692307693,
+        1.0
+      ],
+      "mean_model_calls": 1.23,
+      "cost_norm_ci": [
+        0.6923076923076923,
+        0.9615384615384616
+      ],
+      "on_frontier": true
+    },
+    "fixed_workflow_llm_agent": {
+      "success_rate": 0.6538461538461539,
+      "success_ci": [
+        0.46153846153846156,
+        0.8076923076923077
+      ],
+      "mean_model_calls": 1.19,
+      "cost_norm_ci": [
+        0.391025641025641,
+        0.7435897435897437
+      ],
+      "on_frontier": true
+    },
+    "retrieval_memory_llm_agent": {
+      "success_rate": 0.8461538461538461,
+      "success_ci": [
+        0.6923076923076923,
+        0.9615384615384616
+      ],
+      "mean_model_calls": 1.35,
+      "cost_norm_ci": [
+        0.5833333333333333,
+        0.8846153846153846
+      ],
+      "on_frontier": false
+    },
+    "moa_style_llm_agent": {
+      "success_rate": 0.9615384615384616,
+      "success_ci": [
+        0.8846153846153846,
+        1.0
+      ],
+      "mean_model_calls": 2.08,
+      "cost_norm_ci": [
+        0.4230769230769231,
+        0.5
+      ],
+      "on_frontier": false
+    },
+    "agent_attention_llm_tuned": {
+      "success_rate": 0.8461538461538461,
+      "success_ci": [
+        0.6923076923076923,
+        0.9615384615384616
+      ],
+      "mean_model_calls": 2.0,
+      "cost_norm_ci": [
+        0.34615384615384615,
+        0.4807692307692308
+      ],
+      "on_frontier": false
+    },
+    "cascade_react_moa_llm": {
+      "success_rate": 0.9230769230769231,
+      "success_ci": [
+        0.8076923076923077,
+        1.0
+      ],
+      "mean_model_calls": 1.65,
+      "cost_norm_ci": [
+        0.6666666666666666,
+        0.9230769230769229
+      ],
+      "on_frontier": false
+    },
+    "cascade_react_aa_lite_llm": {
+      "success_rate": 1.0,
+      "success_ci": [
+        1.0,
+        1.0
+      ],
+      "mean_model_calls": 1.5,
+      "cost_norm_ci": [
+        0.7564102564102565,
+        0.967948717948718
+      ],
+      "on_frontier": true
+    },
+    "cascade_react_aa_moa_llm": {
+      "success_rate": 1.0,
+      "success_ci": [
+        1.0,
+        1.0
+      ],
+      "mean_model_calls": 1.69,
+      "cost_norm_ci": [
+        0.6615384615384616,
+        0.8974358974358976
+      ],
+      "on_frontier": false
+    }
+  },
+  "verdicts": {
+    "always_on_aa_vs_react": "inconclusive",
+    "always_on_aa_vs_moa": "inconclusive",
+    "cascade_aa_lite_vs_always_on_aa": "win",
+    "cascade_aa_lite_vs_react": "inconclusive",
+    "cascade_aa_lite_vs_moa": "inconclusive",
+    "cascade_aa_lite_on_pareto_frontier": "yes",
+    "note": "Task-bootstrap CIs on N=26 local fixtures; not publication-grade alone."
+  }
+}

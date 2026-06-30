@@ -1,0 +1,10 @@
+{
+  "scope": "Real-task outcome-memory ablation (Brief D, replay only).",
+  "tasks": 26,
+  "baseline_regret": 0.06493,
+  "outcome_memory_regret": 0.063958,
+  "delta_regret": 0.000972,
+  "memory_hit_rate": 0.153846,
+  "leakage_audit_passed": true,
+  "evidence_outcome": "weak_or_inconclusive"
+}

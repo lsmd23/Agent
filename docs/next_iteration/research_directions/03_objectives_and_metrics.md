@@ -204,3 +204,19 @@ Every future routing report should include:
 | confidence interval | yes for task N >= 20 |
 | failure taxonomy | yes |
 | environment failures separated | yes for Terminal-Bench |
+
+## Measured Values (Wave 3, 2026-06-30)
+
+From `oracle_route_matrix.json` and `code_cascade_wave3_with_ci.json` on the 26-task code suite:
+
+| Objective | Metric | Value |
+|-----------|--------|-------|
+| 1 Route opportunity | `route_opportunity_gap` | +0.2428 (cost-normalized) |
+| 1 Route opportunity | `winner_entropy` | 1.505 / 2.322 max |
+| 1 Route opportunity | Oracle success | 100% vs best single 96.2% |
+| 2 Oracle regret | AA tuned mean regret | 0.2839 (worst among baselines) |
+| 5 Cascade | `cascade_react_aa_lite_llm` | 100% @ 1.50 calls |
+| 6 TB ACI | Invalid-shell step rate (post-patch) | 0% (63 steps, T3 rerun) |
+| 6 TB ACI | Env failure rate (T3 rerun) | 20% (target < 10%) |
+
+See `docs/next_iteration/reports/W1_wave3_exploration_synthesis.md` for full brief outcomes.

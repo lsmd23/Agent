@@ -1,78 +1,61 @@
 # Project Status
 
-Last updated: 2026-06-26
+Last updated: 2026-06-30
 
-## Milestone: Executable Code Verifier (Phase A)
+## Milestone: Iteration Goals Complete (Workshop Tier)
 
-Phase1 **code tasks** now have pytest fixtures + end-task scoring. Real-LLM matrix from prior milestone remains on route-proxy for non-code tasks.
+All `docs/next_iteration` tasks T0–T7 and research briefs A–H executed. Completion checklist: `docs/next_iteration/reports/W2_complete_iteration_goals.md`.
+
+**Default routing policy:** `cascade_react_aa_lite_llm` (100% @ 1.50 mean calls, N=26 code suite).
 
 ## What Works
 
-### Runtime & toy experiments
+### Code suite (26 tasks, real LLM + replay analysis)
 
-| Phase | Scope | Key result |
-|-------|-------|------------|
-| Phase 1 | 6 faithful baselines × 12 tasks | ReAct 91.7%; AA default 25% → tuned 66.7% |
-| Phase 2 | 6 memory ablations | no-memory 75% > control 66.7% |
-| Phase 3 | 4 failure attributions | 3/4 replay fix, all quarantined |
-| Phase 4 | 4 router variants | learned replay 75% > lexical 66.7% |
+| Component | Result |
+|-----------|--------|
+| Cascade AA lite | 100% @ 1.50 calls — **Pareto frontier** |
+| Oracle route gap | +0.24 cost-normalized |
+| Always-on AA tuned | 84.6% — refuted as default |
+| T4 bootstrap CI | `t4_code_suite_with_ci.json` |
+| Brief E router | weak — 50% held-out route accuracy |
+| Brief D memory | weak — Δ regret +0.001 |
+| Brief G backprop | 0/4 accept |
 
-Metrics: `experiments/metrics/phase{1,2,3,4}_*_summary.json`
+### Terminal-Bench
 
-### Executable code verifier (new)
+| Run | Status |
+|-----|--------|
+| T3 pilot + ACI rerun | 4/15 pass; invalid-shell 0% |
+| Full 7×5 steps=12 | **Running** in tmux `tb_full` |
 
-| Component | Path |
-|-----------|------|
-| 5 fixtures (6 code tasks) | `experiments/fixtures/code/` |
-| Verifier | `experiments/real_benchmarks/code_verifier.py` |
-| Task oracles | `experiments/real_benchmarks/task_oracles.py` |
-| Fixture validator | `experiments/real_benchmarks/validate_code_fixtures.py` |
-
-Code tasks in `experiments/tasks/phase1_tasks.jsonl` use `success_oracle.oracle_type: pytest_passes`. Real-LLM code prompts inject fixture repo snapshot + failing unittest output; models must return a `# file:` python block.
-
-Latest executable eval (6 code tasks × 7 baselines): `experiments/metrics/real_llm_phase1_code_executable_v2.json` — end-task accuracy 0% → **88–100%** per baseline after fixture-aware prompts (prior v1: all 0%).
+### Tests
 
 ```bash
-python3 experiments/real_benchmarks/validate_code_fixtures.py
-python3 -m unittest tests.test_code_verifier -v
-```
-
-### Real LLM (Qwen3-30B via Paratera)
-
-| Suite | Runs | Primary metric |
-|-------|------|----------------|
-| GSM8K multi-baseline | 60 | exact-match (direct 95%, ReAct/AA-tuned 100%) |
-| GSM8K faithful full | 140 | exact-match (AA-tuned 90%, MoA 100%) |
-| Phase1 faithful/memory/router | 204 | route-proxy (AA-tuned pass 75%) |
-
-Comparison vs toy: `experiments/metrics/real_vs_toy_comparison.json`
-
-## Known Limitations
-
-1. Phase1 **search/research** tasks still use route-proxy or rubric placeholders.
-2. GSM8K does not stress routing; good sanity check only.
-3. Real-LLM Phase1 code runs scored with executable oracle v2 (88–100% end-task pass); v1 trajectories lacked fixture context.
-4. Trajectories gitignored; regenerate with `run_real_llm_eval.py`.
-
-## Next Iteration
-
-1. Re-run real LLM on 6 code tasks with executable end-task scoring. **Done (v2): fixture-aware prompts; see `real_llm_phase1_code_executable_v2.json`.**
-2. Expand task count per family (≥50) + bootstrap CI.
-3. **Cost–quality Pareto** figure (matched token budget).
-4. Search/research rubric oracles.
-5. Publication gap audit: `docs/publication_gap_assessment.md`.
-6. Next-iteration agent handbook: `docs/next_iteration/README.md`.
-7. Research directions guidance pack: `docs/next_iteration/research_directions/README.md`.
-
-## Tests
-
-```bash
-python3 -m unittest discover -s tests   # 57 passing
+python3 -m unittest discover -s tests   # 120 pass, 2 skip
 ```
 
 ## Key Docs
 
-- `docs/decision_log.md` — decisions
-- `docs/deliverables/08/result_table_real_vs_toy.md` — toy vs real LLM
-- `docs/deliverables/08/result_table_real_llm_eval.md` — baseline registry
-- `.env.example` — API config template (never commit `.env`)
+| Doc | Purpose |
+|-----|---------|
+| `W2_complete_iteration_goals.md` | Full checklist |
+| `T4_statistics_and_pareto.md` | CI + Pareto |
+| `T6_paper_artifact_packaging.md` | Paper pack |
+| `T7_real_task_ablations.md` | Router/memory/backprop |
+| `docs/paper_outline.md` | Draft paper |
+| `docs/artifact_reproducibility.md` | Reproduce results |
+| `research_directions/07_expert_redesign_proposal.md` | Next code sprint |
+
+## Blocked / Deferred
+
+- Main-track paper (need ≥50 public tasks).
+- Expert v2 implementation (Brief H redesign doc only).
+- ADAS workflow search (track 10).
+
+## Async
+
+```bash
+tmux attach -t tb_full
+find experiments/llm_runs/terminal_bench/t3_full_steps12 -name '*envelope.json' | wc -l  # target 35
+```

@@ -6,18 +6,18 @@ This document ranks exploration tracks by implementation cost and expected infor
 
 ## Ranking Summary
 
-| Rank | Track | Cost | Expected Information Gain | Why It Matters |
-|------|-------|------|---------------------------|----------------|
-| 1 | Direct-first cascade | Low | High | Tests whether AA's cost problem is mostly over-activation. |
-| 2 | AA ablation sweep | Low | High | Identifies which AA components hurt cost or accuracy. |
-| 3 | Oracle route matrix | Low-Medium | Very High | Tests whether routing opportunity exists at all. |
-| 4 | Uncertainty-triggered MoA fallback | Low-Medium | High | Tries to approach MoA accuracy with less cost. |
-| 5 | Outcome-memory router | Medium | High | Moves memory from transcripts to verified route statistics. |
-| 6 | Lightweight learned router | Medium | High | Replaces lexical routing with outcome-trained routing. |
-| 7 | Executable textual-backprop | Medium | Medium-High | Tests whether failures can produce useful local updates. |
-| 8 | Terminal-Bench ACI upgrade | Medium-High | High | Separates interface failure from architecture failure. |
-| 9 | Terminal-Bench 20+ task matrix | High | High | Needed for external benchmark evidence, but only after ACI improves. |
-| 10 | Workflow search / ADAS-style optimization | High | Medium for now | Powerful later, premature before evaluation stabilizes. |
+| Rank | Track | Cost | Info gain | Wave 3 | Why it matters |
+|------|-------|------|-----------|--------|----------------|
+| 1 | Direct-first cascade | Low | High | **Done** | AA cost problem is mostly over-activation; `cascade_react_aa_lite_llm` wins |
+| 2 | AA ablation sweep | Low | High | **Done** | Verifier/memory gated; lite escalation preferred |
+| 3 | Oracle route matrix | Low-Med | Very High | **Done** | Route opportunity gap +0.24 cost-normalized |
+| 4 | Uncertainty-triggered MoA fallback | Low-Med | High | Partial | Embedded in cascade MoA rescue stage |
+| 5 | Outcome-memory router | Medium | High | **Done (weak)** | Brief D — guards OK, Δ regret ≈ 0 |
+| 6 | Lightweight learned router | Medium | High | **Done (weak)** | Brief E — beats lexical, ~ties static |
+| 7 | Executable textual-backprop | Medium | Med-High | **Done (blocked)** | Brief G — 0/4 accept |
+| 8 | Terminal-Bench ACI upgrade | Med-High | High | **Done** | Invalid-shell 0%; env 33%→20%; pass flat |
+| 9 | Terminal-Bench 7×5 steps=12 | High | High | **Running** | tmux `tb_full`; 20+ deferred |
+| 10 | Workflow search / ADAS-style | High | Medium | Premature | After eval stabilizes |
 
 ## Track 1: Direct-First Cascade
 

@@ -1,0 +1,2024 @@
+{
+  "schema_version": "agent_attention.benchmark_trajectory.v0.1",
+  "run_id": "phase3_replay__aa_tuned_control__phase1_code_strip_tags_001",
+  "task_id": "phase1_code_strip_tags_001",
+  "benchmark_id": "phase1_code_expanded",
+  "baseline_id": "agent_attention_agent_tuned",
+  "ablation_id": "aa_tuned_control",
+  "runtime_config": {
+    "baseline_config": {
+      "ablation_id": "aa_tuned_control",
+      "control_id": "aa_tuned_control",
+      "baseline_id": "agent_attention_agent_tuned",
+      "memory_enabled": true,
+      "memory_write_enabled": true,
+      "memory_write_policy": "success_plus_failure",
+      "quarantine_at_load": true,
+      "quarantine_aware": false,
+      "note": "P2 tuned control with default load-time quarantine."
+    },
+    "budget": {
+      "max_steps": 4,
+      "max_module_calls": 8,
+      "max_tool_calls": 3,
+      "max_verifier_calls": 2,
+      "max_tokens": 6000,
+      "max_latency_ms": 120000,
+      "max_activation_cost": 3.0
+    },
+    "simulation": false,
+    "faithful_baseline": true
+  },
+  "task_family": "code_agent_task",
+  "module_registry_snapshot": [],
+  "events": [
+    {
+      "event_id": 1,
+      "step": 0,
+      "kind": "start",
+      "payload": {
+        "goal": "strip_tags should remove HTML tags, not just spaces. Fix the failing unit test with a minimal patch.",
+        "config": {
+          "top_k": 2,
+          "max_steps": 4,
+          "memory_enabled": true,
+          "verifier_enabled": true,
+          "router_strategy": "lexical",
+          "adaptive_top_k_enabled": true,
+          "max_top_k": 3,
+          "strong_budget_gate": true,
+          "budget_cost_fraction": 0.3,
+          "cost_quality_epsilon": 0.05,
+          "memory_write_enabled": true,
+          "memory_write_policy": "success_plus_failure",
+          "quarantine_aware": false,
+          "memory_bonus_cap": 0.2,
+          "memory_bonus_floor": -0.4
+        }
+      },
+      "timestamp": 1782830343.863698
+    },
+    {
+      "event_id": 2,
+      "step": 1,
+      "kind": "memory_retrieval",
+      "payload": {
+        "enabled": true,
+        "items": [
+          {
+            "key": "python failing test inspect edit run tests code route",
+            "value_summary": "For code fixes, use inspect -> minimal edit -> test -> verifier; avoid broad refactors.",
+            "memory_type": "skill_memory",
+            "usefulness_label": "useful",
+            "retrieval_score": 0.2033,
+            "route_signature": "memory -> code_agent -> verifier",
+            "evidence_refs": [
+              "seed:code_route"
+            ],
+            "negative_transfer_count": 0,
+            "memory_bonus": 0.0056
+          }
+        ]
+      },
+      "timestamp": 1782830343.8637578
+    },
+    {
+      "event_id": 3,
+      "step": 1,
+      "kind": "memory_read",
+      "payload": {
+        "key": "python failing test inspect edit run tests code route",
+        "value_summary": "For code fixes, use inspect -> minimal edit -> test -> verifier; avoid broad refactors.",
+        "memory_type": "skill_memory",
+        "usefulness_label": "useful",
+        "retrieval_score": 0.2033,
+        "route_signature": "memory -> code_agent -> verifier",
+        "evidence_refs": [
+          "seed:code_route"
+        ],
+        "negative_transfer_count": 0,
+        "memory_bonus": 0.0056
+      },
+      "timestamp": 1782830343.8637676
+    },
+    {
+      "event_id": 4,
+      "step": 1,
+      "kind": "gates",
+      "payload": {
+        "decisions": [
+          {
+            "gate": "ToolGate",
+            "status": "open",
+            "reason": "tool_or_code_terms"
+          },
+          {
+            "gate": "SearchGate",
+            "status": "closed",
+            "reason": "no_external_evidence_need"
+          },
+          {
+            "gate": "MemoryGate",
+            "status": "open_read",
+            "reason": "memory_enabled"
+          },
+          {
+            "gate": "VerifierGate",
+            "status": "closed",
+            "reason": "not_required_or_disabled"
+          },
+          {
+            "gate": "HaltGate",
+            "status": "evaluate",
+            "reason": "checked_every_step"
+          },
+          {
+            "gate": "BudgetGate",
+            "status": "allow",
+            "reason": "remaining_budget_positive",
+            "remaining_budget": 3.0
+          },
+          {
+            "gate": "SafetyGate",
+            "status": "allow",
+            "reason": "read_only_toy_runtime"
+          }
+        ],
+        "budget_snapshot": {
+          "max_budget": 3.0,
+          "budget_used": 0.0,
+          "remaining_budget": 3.0
+        }
+      },
+      "timestamp": 1782830343.8637822
+    },
+    {
+      "event_id": 5,
+      "step": 1,
+      "kind": "route",
+      "payload": {
+        "decision_id": "route-1",
+        "routing_policy": "lexical",
+        "top_k": 2,
+        "effective_top_k": 2,
+        "adaptive_top_k_enabled": true,
+        "strong_budget_gate": true,
+        "query": "strip_tags should remove HTML tags, not just spaces. Fix the failing unit test with a minimal patch.   ",
+        "selected_modules": [
+          "code_agent",
+          "memory"
+        ],
+        "candidates": [
+          {
+            "module_id": "code_agent",
+            "score": 0.5424,
+            "score_terms": {
+              "semantic_match": 0.3733,
+              "reliability": 0.75,
+              "historical_success": 0.64,
+              "cost": 0.8,
+              "latency": 0.9,
+              "risk": 0.4,
+              "repetition": 0,
+              "memory_bonus": 0.0056
+            },
+            "score_weights": {
+              "semantic_match": 1.0,
+              "reliability": 0.45,
+              "historical_success": 0.25,
+              "cost": -0.18,
+              "latency": -0.1,
+              "risk": -0.25,
+              "repetition": -0.14,
+              "memory_bonus": 1.0
+            },
+            "selected": true,
+            "schema_valid": true,
+            "budget_valid": true,
+            "risk_valid": true,
+            "reject_reason": null
+          },
+          {
+            "module_id": "memory",
+            "score": 0.4631,
+            "score_terms": {
+              "semantic_match": 0.08,
+              "reliability": 0.66,
+              "historical_success": 0.62,
+              "cost": 0.15,
+              "latency": 0.1,
+              "risk": 0.15,
+              "repetition": 0,
+              "memory_bonus": 0.0056
+            },
+            "score_weights": {
+              "semantic_match": 1.0,
+              "reliability": 0.45,
+              "historical_success": 0.25,
+              "cost": -0.18,
+              "latency": -0.1,
+              "risk": -0.25,
+              "repetition": -0.14,
+              "memory_bonus": 1.0
+            },
+            "selected": true,
+            "schema_valid": true,
+            "budget_valid": true,
+            "risk_valid": true,
+            "reject_reason": null
+          },
+          {
+            "module_id": "critic_agent",
+            "score": 0.289,
+            "score_terms": {
+              "semantic_match": 0.0,
+              "reliability": 0.7,
+              "historical_success": 0.58,
+              "cost": 0.45,
+              "latency": 0.4,
+              "risk": 0.2,
+              "repetition": 0,
+              "memory_bonus": 0.0
+            },
+            "score_weights": {
+              "semantic_match": 1.0,
+              "reliability": 0.45,
+              "historical_success": 0.25,
+              "cost": -0.18,
+              "latency": -0.1,
+              "risk": -0.25,
+              "repetition": -0.14,
+              "memory_bonus": 1.0
+            },
+            "selected": false,
+            "schema_valid": true,
+            "budget_valid": true,
+            "risk_valid": true,
+            "reject_reason": "below_top_k"
+          },
+          {
+            "module_id": "search_agent",
+            "score": 0.1805,
+            "score_terms": {
+              "semantic_match": 0.0,
+              "reliability": 0.72,
+              "historical_success": 0.6,
+              "cost": 0.7,
+              "latency": 0.8,
+              "risk": 0.35,
+              "repetition": 0,
+              "memory_bonus": 0.0
+            },
+            "score_weights": {
+              "semantic_match": 1.0,
+              "reliability": 0.45,
+              "historical_success": 0.25,
+              "cost": -0.18,
+              "latency": -0.1,
+              "risk": -0.25,
+              "repetition": -0.14,
+              "memory_bonus": 1.0
+            },
+            "selected": false,
+            "schema_valid": true,
+            "budget_valid": true,
+            "risk_valid": true,
+            "reject_reason": "gate_closed"
+          }
+        ],
+        "route_scores": {
+          "code_agent": {
+            "semantic_match": 0.3733,
+            "reliability": 0.75,
+            "historical_success": 0.64,
+            "cost": 0.8,
+            "latency": 0.9,
+            "risk": 0.4,
+            "repetition": 0,
+            "memory_bonus": 0.0056,
+            "score_total": 0.5424,
+            "reject_reason": null
+          },
+          "memory": {
+            "semantic_match": 0.08,
+            "reliability": 0.66,
+            "historical_success": 0.62,
+            "cost": 0.15,
+            "latency": 0.1,
+            "risk": 0.15,
+            "repetition": 0,
+            "memory_bonus": 0.0056,
+            "score_total": 0.4631,
+            "reject_reason": null
+          },
+          "critic_agent": {
+            "semantic_match": 0.0,
+            "reliability": 0.7,
+            "historical_success": 0.58,
+            "cost": 0.45,
+            "latency": 0.4,
+            "risk": 0.2,
+            "repetition": 0,
+            "memory_bonus": 0.0,
+            "score_total": 0.289,
+            "reject_reason": "below_top_k"
+          },
+          "search_agent": {
+            "semantic_match": 0.0,
+            "reliability": 0.72,
+            "historical_success": 0.6,
+            "cost": 0.7,
+            "latency": 0.8,
+            "risk": 0.35,
+            "repetition": 0,
+            "memory_bonus": 0.0,
+            "score_total": 0.1805,
+            "reject_reason": "gate_closed"
+          }
+        },
+        "budget_snapshot": {
+          "max_budget": 3.0,
+          "budget_used": 0.0,
+          "remaining_budget": 3.0
+        },
+        "oracle": {
+          "oracle_available": true,
+          "proxy_available": true,
+          "oracle_best_module_id": "code_agent",
+          "selected_score": 0.5424,
+          "oracle_best_score": 0.5424,
+          "oracle_regret": null,
+          "proxy_regret": 0.0,
+          "missing_required_modules": [],
+          "selected_discouraged_modules": [],
+          "rationale": "Executable code fix (security)."
+        }
+      },
+      "timestamp": 1782830343.863974
+    },
+    {
+      "event_id": 6,
+      "step": 1,
+      "kind": "budget_gate",
+      "payload": {
+        "module_id": "code_agent",
+        "decision": "allow",
+        "reason": "within_budget",
+        "module_cost": 0.8,
+        "budget_snapshot": {
+          "max_budget": 3.0,
+          "budget_used": 0.0,
+          "remaining_budget": 3.0
+        }
+      },
+      "timestamp": 1782830343.8639781
+    },
+    {
+      "event_id": 7,
+      "step": 1,
+      "kind": "budget_gate",
+      "payload": {
+        "module_id": "memory",
+        "decision": "allow",
+        "reason": "within_budget",
+        "module_cost": 0.15,
+        "budget_snapshot": {
+          "max_budget": 3.0,
+          "budget_used": 0.8,
+          "remaining_budget": 2.2
+        }
+      },
+      "timestamp": 1782830343.8639877
+    },
+    {
+      "event_id": 8,
+      "step": 1,
+      "kind": "module_execution",
+      "payload": {
+        "outputs": [
+          {
+            "module_id": "code_agent",
+            "content": "Proposed inspect-edit-test loop for code task.",
+            "confidence": 0.76,
+            "evidence": [
+              "code_path_required",
+              "test_verification_required"
+            ],
+            "failure_signal": null
+          },
+          {
+            "module_id": "memory",
+            "content": "Reused 1 retrieved trajectory memories.",
+            "confidence": 0.68,
+            "evidence": [
+              "python failing test inspect edit run tests code route"
+            ],
+            "failure_signal": null
+          }
+        ]
+      },
+      "timestamp": 1782830343.8640022
+    },
+    {
+      "event_id": 9,
+      "step": 1,
+      "kind": "state_update",
+      "payload": {
+        "action_type": "aggregate",
+        "state": {
+          "goal": "strip_tags should remove HTML tags, not just spaces. Fix the failing unit test with a minimal patch.",
+          "step": 1,
+          "confidence": 0.342,
+          "risk": 0.1258,
+          "budget_used": 0.95,
+          "max_budget": 3.0,
+          "selected_modules": [
+            "code_agent",
+            "memory",
+            "aggregator",
+            "memory",
+            "aggregator",
+            "memory",
+            "aggregator",
+            "verifier"
+          ],
+          "failure_signals": [],
+          "memory_reads": [
+            "python failing test inspect edit run tests code route",
+            "python failing test inspect edit run tests code route",
+            "python failing test inspect edit run tests code route",
+            "python failing test inspect edit run tests code route"
+          ],
+          "memory_writes": [
+            "strip_tags should remove HTML tags, not just spaces. Fix the failing unit test with a minimal patch. route code_agent -> memory -> aggregator -> memory -> aggregator -> memory -> aggregator -> verifier"
+          ],
+          "verifier_status": "skipped",
+          "final_answer": null
+        }
+      },
+      "timestamp": 1782830343.8640077
+    },
+    {
+      "event_id": 10,
+      "step": 1,
+      "kind": "verifier_result",
+      "payload": {
+        "enabled": true,
+        "required": false,
+        "status": "skipped",
+        "reason": "threshold_not_met",
+        "budget_snapshot": {
+          "max_budget": 3.0,
+          "budget_used": 0.95,
+          "remaining_budget": 2.05
+        }
+      },
+      "timestamp": 1782830343.864011
+    },
+    {
+      "event_id": 11,
+      "step": 1,
+      "kind": "halt_gate",
+      "payload": {
+        "halt": false,
+        "reason": "continue",
+        "success_signal": "unknown",
+        "verifier_status": "skipped",
+        "budget_snapshot": {
+          "max_budget": 3.0,
+          "budget_used": 0.95,
+          "remaining_budget": 2.05
+        }
+      },
+      "timestamp": 1782830343.8640149
+    },
+    {
+      "event_id": 12,
+      "step": 2,
+      "kind": "memory_retrieval",
+      "payload": {
+        "enabled": true,
+        "items": [
+          {
+            "key": "python failing test inspect edit run tests code route",
+            "value_summary": "For code fixes, use inspect -> minimal edit -> test -> verifier; avoid broad refactors.",
+            "memory_type": "skill_memory",
+            "usefulness_label": "useful",
+            "retrieval_score": 0.2629,
+            "route_signature": "memory -> code_agent -> verifier",
+            "evidence_refs": [
+              "seed:code_route"
+            ],
+            "negative_transfer_count": 0,
+            "memory_bonus": 0.0163
+          }
+        ]
+      },
+      "timestamp": 1782830343.864042
+    },
+    {
+      "event_id": 13,
+      "step": 2,
+      "kind": "memory_read",
+      "payload": {
+        "key": "python failing test inspect edit run tests code route",
+        "value_summary": "For code fixes, use inspect -> minimal edit -> test -> verifier; avoid broad refactors.",
+        "memory_type": "skill_memory",
+        "usefulness_label": "useful",
+        "retrieval_score": 0.2629,
+        "route_signature": "memory -> code_agent -> verifier",
+        "evidence_refs": [
+          "seed:code_route"
+        ],
+        "negative_transfer_count": 0,
+        "memory_bonus": 0.0163
+      },
+      "timestamp": 1782830343.8640497
+    },
+    {
+      "event_id": 14,
+      "step": 2,
+      "kind": "gates",
+      "payload": {
+        "decisions": [
+          {
+            "gate": "ToolGate",
+            "status": "open",
+            "reason": "tool_or_code_terms"
+          },
+          {
+            "gate": "SearchGate",
+            "status": "closed",
+            "reason": "no_external_evidence_need"
+          },
+          {
+            "gate": "MemoryGate",
+            "status": "open_read",
+            "reason": "memory_enabled"
+          },
+          {
+            "gate": "VerifierGate",
+            "status": "closed",
+            "reason": "not_required_or_disabled"
+          },
+          {
+            "gate": "HaltGate",
+            "status": "evaluate",
+            "reason": "checked_every_step"
+          },
+          {
+            "gate": "BudgetGate",
+            "status": "allow",
+            "reason": "remaining_budget_positive",
+            "remaining_budget": 2.05
+          },
+          {
+            "gate": "SafetyGate",
+            "status": "allow",
+            "reason": "read_only_toy_runtime"
+          }
+        ],
+        "budget_snapshot": {
+          "max_budget": 3.0,
+          "budget_used": 0.95,
+          "remaining_budget": 2.05
+        }
+      },
+      "timestamp": 1782830343.8640568
+    },
+    {
+      "event_id": 15,
+      "step": 2,
+      "kind": "route",
+      "payload": {
+        "decision_id": "route-2",
+        "routing_policy": "lexical",
+        "top_k": 2,
+        "effective_top_k": 2,
+        "adaptive_top_k_enabled": true,
+        "strong_budget_gate": true,
+        "query": "strip_tags should remove HTML tags, not just spaces. Fix the failing unit test with a minimal patch. code_agent: Proposed inspect-edit-test loop for code task. memory: Reused 1 retrieved trajectory memories.  Proposed inspect-edit-test loop for code task. Reused 1 retrieved trajectory memories.",
+        "selected_modules": [
+          "aggregator",
+          "memory"
+        ],
+        "candidates": [
+          {
+            "module_id": "aggregator",
+            "score": 0.5813,
+            "score_terms": {
+              "semantic_match": 0.2038,
+              "reliability": 0.7,
+              "historical_success": 0.61,
+              "cost": 0.25,
+              "latency": 0.2,
+              "risk": 0.1,
+              "repetition": 0,
+              "memory_bonus": 0.0
+            },
+            "score_weights": {
+              "semantic_match": 1.0,
+              "reliability": 0.45,
+              "historical_success": 0.25,
+              "cost": -0.18,
+              "latency": -0.1,
+              "risk": -0.25,
+              "repetition": -0.14,
+              "memory_bonus": 1.0
+            },
+            "selected": true,
+            "schema_valid": true,
+            "budget_valid": true,
+            "risk_valid": true,
+            "reject_reason": null
+          },
+          {
+            "module_id": "code_agent",
+            "score": 0.5048,
+            "score_terms": {
+              "semantic_match": 0.465,
+              "reliability": 0.75,
+              "historical_success": 0.64,
+              "cost": 0.8,
+              "latency": 0.9,
+              "risk": 0.4,
+              "repetition": 1,
+              "memory_bonus": 0.0163
+            },
+            "score_weights": {
+              "semantic_match": 1.0,
+              "reliability": 0.45,
+              "historical_success": 0.25,
+              "cost": -0.18,
+              "latency": -0.1,
+              "risk": -0.25,
+              "repetition": -0.14,
+              "memory_bonus": 1.0
+            },
+            "selected": false,
+            "schema_valid": true,
+            "budget_valid": false,
+            "risk_valid": true,
+            "reject_reason": "budget_high_cost_fraction"
+          },
+          {
+            "module_id": "critic_agent",
+            "score": 0.409,
+            "score_terms": {
+              "semantic_match": 0.12,
+              "reliability": 0.7,
+              "historical_success": 0.58,
+              "cost": 0.45,
+              "latency": 0.4,
+              "risk": 0.2,
+              "repetition": 0,
+              "memory_bonus": 0.0
+            },
+            "score_weights": {
+              "semantic_match": 1.0,
+              "reliability": 0.45,
+              "historical_success": 0.25,
+              "cost": -0.18,
+              "latency": -0.1,
+              "risk": -0.25,
+              "repetition": -0.14,
+              "memory_bonus": 1.0
+            },
+            "selected": false,
+            "schema_valid": true,
+            "budget_valid": true,
+            "risk_valid": true,
+            "reject_reason": "below_top_k"
+          },
+          {
+            "module_id": "memory",
+            "score": 0.3582,
+            "score_terms": {
+              "semantic_match": 0.1044,
+              "reliability": 0.66,
+              "historical_success": 0.62,
+              "cost": 0.15,
+              "latency": 0.1,
+              "risk": 0.15,
+              "repetition": 1,
+              "memory_bonus": 0.0163
+            },
+            "score_weights": {
+              "semantic_match": 1.0,
+              "reliability": 0.45,
+              "historical_success": 0.25,
+              "cost": -0.18,
+              "latency": -0.1,
+              "risk": -0.25,
+              "repetition": -0.14,
+              "memory_bonus": 1.0
+            },
+            "selected": true,
+            "schema_valid": true,
+            "budget_valid": true,
+            "risk_valid": true,
+            "reject_reason": null
+          },
+          {
+            "module_id": "search_agent",
+            "score": 0.1805,
+            "score_terms": {
+              "semantic_match": 0.0,
+              "reliability": 0.72,
+              "historical_success": 0.6,
+              "cost": 0.7,
+              "latency": 0.8,
+              "risk": 0.35,
+              "repetition": 0,
+              "memory_bonus": 0.0
+            },
+            "score_weights": {
+              "semantic_match": 1.0,
+              "reliability": 0.45,
+              "historical_success": 0.25,
+              "cost": -0.18,
+              "latency": -0.1,
+              "risk": -0.25,
+              "repetition": -0.14,
+              "memory_bonus": 1.0
+            },
+            "selected": false,
+            "schema_valid": true,
+            "budget_valid": false,
+            "risk_valid": true,
+            "reject_reason": "budget_high_cost_fraction"
+          }
+        ],
+        "route_scores": {
+          "aggregator": {
+            "semantic_match": 0.2038,
+            "reliability": 0.7,
+            "historical_success": 0.61,
+            "cost": 0.25,
+            "latency": 0.2,
+            "risk": 0.1,
+            "repetition": 0,
+            "memory_bonus": 0.0,
+            "score_total": 0.5813,
+            "reject_reason": null
+          },
+          "code_agent": {
+            "semantic_match": 0.465,
+            "reliability": 0.75,
+            "historical_success": 0.64,
+            "cost": 0.8,
+            "latency": 0.9,
+            "risk": 0.4,
+            "repetition": 1,
+            "memory_bonus": 0.0163,
+            "score_total": 0.5048,
+            "reject_reason": "budget_high_cost_fraction"
+          },
+          "critic_agent": {
+            "semantic_match": 0.12,
+            "reliability": 0.7,
+            "historical_success": 0.58,
+            "cost": 0.45,
+            "latency": 0.4,
+            "risk": 0.2,
+            "repetition": 0,
+            "memory_bonus": 0.0,
+            "score_total": 0.409,
+            "reject_reason": "below_top_k"
+          },
+          "memory": {
+            "semantic_match": 0.1044,
+            "reliability": 0.66,
+            "historical_success": 0.62,
+            "cost": 0.15,
+            "latency": 0.1,
+            "risk": 0.15,
+            "repetition": 1,
+            "memory_bonus": 0.0163,
+            "score_total": 0.3582,
+            "reject_reason": null
+          },
+          "search_agent": {
+            "semantic_match": 0.0,
+            "reliability": 0.72,
+            "historical_success": 0.6,
+            "cost": 0.7,
+            "latency": 0.8,
+            "risk": 0.35,
+            "repetition": 0,
+            "memory_bonus": 0.0,
+            "score_total": 0.1805,
+            "reject_reason": "budget_high_cost_fraction"
+          }
+        },
+        "budget_snapshot": {
+          "max_budget": 3.0,
+          "budget_used": 0.95,
+          "remaining_budget": 2.05
+        },
+        "oracle": {
+          "oracle_available": true,
+          "proxy_available": true,
+          "oracle_best_module_id": "code_agent",
+          "selected_score": 0.5813,
+          "oracle_best_score": 0.5048,
+          "oracle_regret": null,
+          "proxy_regret": 0.35,
+          "missing_required_modules": [
+            "code_agent"
+          ],
+          "selected_discouraged_modules": [],
+          "rationale": "Executable code fix (security)."
+        }
+      },
+      "timestamp": 1782830343.8642697
+    },
+    {
+      "event_id": 16,
+      "step": 2,
+      "kind": "budget_gate",
+      "payload": {
+        "module_id": "aggregator",
+        "decision": "allow",
+        "reason": "within_budget",
+        "module_cost": 0.25,
+        "budget_snapshot": {
+          "max_budget": 3.0,
+          "budget_used": 0.95,
+          "remaining_budget": 2.05
+        }
+      },
+      "timestamp": 1782830343.8642724
+    },
+    {
+      "event_id": 17,
+      "step": 2,
+      "kind": "budget_gate",
+      "payload": {
+        "module_id": "memory",
+        "decision": "allow",
+        "reason": "within_budget",
+        "module_cost": 0.15,
+        "budget_snapshot": {
+          "max_budget": 3.0,
+          "budget_used": 1.2,
+          "remaining_budget": 1.8
+        }
+      },
+      "timestamp": 1782830343.8642755
+    },
+    {
+      "event_id": 18,
+      "step": 2,
+      "kind": "module_execution",
+      "payload": {
+        "outputs": [
+          {
+            "module_id": "aggregator",
+            "content": "Aggregated active module outputs into a concise state update.",
+            "confidence": 0.7,
+            "evidence": [],
+            "failure_signal": null
+          },
+          {
+            "module_id": "memory",
+            "content": "Reused 2 retrieved trajectory memories.",
+            "confidence": 0.68,
+            "evidence": [
+              "python failing test inspect edit run tests code route",
+              "python failing test inspect edit run tests code route"
+            ],
+            "failure_signal": null
+          }
+        ]
+      },
+      "timestamp": 1782830343.864288
+    },
+    {
+      "event_id": 19,
+      "step": 2,
+      "kind": "state_update",
+      "payload": {
+        "action_type": "aggregate",
+        "state": {
+          "goal": "strip_tags should remove HTML tags, not just spaces. Fix the failing unit test with a minimal patch.",
+          "step": 2,
+          "confidence": 0.5031,
+          "risk": 0.0503,
+          "budget_used": 1.35,
+          "max_budget": 3.0,
+          "selected_modules": [
+            "code_agent",
+            "memory",
+            "aggregator",
+            "memory",
+            "aggregator",
+            "memory",
+            "aggregator",
+            "verifier"
+          ],
+          "failure_signals": [],
+          "memory_reads": [
+            "python failing test inspect edit run tests code route",
+            "python failing test inspect edit run tests code route",
+            "python failing test inspect edit run tests code route",
+            "python failing test inspect edit run tests code route"
+          ],
+          "memory_writes": [
+            "strip_tags should remove HTML tags, not just spaces. Fix the failing unit test with a minimal patch. route code_agent -> memory -> aggregator -> memory -> aggregator -> memory -> aggregator -> verifier"
+          ],
+          "verifier_status": "skipped",
+          "final_answer": null
+        }
+      },
+      "timestamp": 1782830343.8642917
+    },
+    {
+      "event_id": 20,
+      "step": 2,
+      "kind": "verifier_result",
+      "payload": {
+        "enabled": true,
+        "required": false,
+        "status": "skipped",
+        "reason": "threshold_not_met",
+        "budget_snapshot": {
+          "max_budget": 3.0,
+          "budget_used": 1.35,
+          "remaining_budget": 1.65
+        }
+      },
+      "timestamp": 1782830343.8642938
+    },
+    {
+      "event_id": 21,
+      "step": 2,
+      "kind": "halt_gate",
+      "payload": {
+        "halt": false,
+        "reason": "continue",
+        "success_signal": "unknown",
+        "verifier_status": "skipped",
+        "budget_snapshot": {
+          "max_budget": 3.0,
+          "budget_used": 1.35,
+          "remaining_budget": 1.65
+        }
+      },
+      "timestamp": 1782830343.8642962
+    },
+    {
+      "event_id": 22,
+      "step": 3,
+      "kind": "memory_retrieval",
+      "payload": {
+        "enabled": true,
+        "items": [
+          {
+            "key": "python failing test inspect edit run tests code route",
+            "value_summary": "For code fixes, use inspect -> minimal edit -> test -> verifier; avoid broad refactors.",
+            "memory_type": "skill_memory",
+            "usefulness_label": "useful",
+            "retrieval_score": 0.2311,
+            "route_signature": "memory -> code_agent -> verifier",
+            "evidence_refs": [
+              "seed:code_route"
+            ],
+            "negative_transfer_count": 0,
+            "memory_bonus": 0.0099
+          }
+        ]
+      },
+      "timestamp": 1782830343.864329
+    },
+    {
+      "event_id": 23,
+      "step": 3,
+      "kind": "memory_read",
+      "payload": {
+        "key": "python failing test inspect edit run tests code route",
+        "value_summary": "For code fixes, use inspect -> minimal edit -> test -> verifier; avoid broad refactors.",
+        "memory_type": "skill_memory",
+        "usefulness_label": "useful",
+        "retrieval_score": 0.2311,
+        "route_signature": "memory -> code_agent -> verifier",
+        "evidence_refs": [
+          "seed:code_route"
+        ],
+        "negative_transfer_count": 0,
+        "memory_bonus": 0.0099
+      },
+      "timestamp": 1782830343.8643365
+    },
+    {
+      "event_id": 24,
+      "step": 3,
+      "kind": "gates",
+      "payload": {
+        "decisions": [
+          {
+            "gate": "ToolGate",
+            "status": "open",
+            "reason": "tool_or_code_terms"
+          },
+          {
+            "gate": "SearchGate",
+            "status": "closed",
+            "reason": "no_external_evidence_need"
+          },
+          {
+            "gate": "MemoryGate",
+            "status": "open_read",
+            "reason": "memory_enabled"
+          },
+          {
+            "gate": "VerifierGate",
+            "status": "closed",
+            "reason": "not_required_or_disabled"
+          },
+          {
+            "gate": "HaltGate",
+            "status": "evaluate",
+            "reason": "checked_every_step"
+          },
+          {
+            "gate": "BudgetGate",
+            "status": "allow",
+            "reason": "remaining_budget_positive",
+            "remaining_budget": 1.65
+          },
+          {
+            "gate": "SafetyGate",
+            "status": "allow",
+            "reason": "read_only_toy_runtime"
+          }
+        ],
+        "budget_snapshot": {
+          "max_budget": 3.0,
+          "budget_used": 1.35,
+          "remaining_budget": 1.65
+        }
+      },
+      "timestamp": 1782830343.8643436
+    },
+    {
+      "event_id": 25,
+      "step": 3,
+      "kind": "route",
+      "payload": {
+        "decision_id": "route-3",
+        "routing_policy": "lexical",
+        "top_k": 2,
+        "effective_top_k": 2,
+        "adaptive_top_k_enabled": true,
+        "strong_budget_gate": true,
+        "query": "strip_tags should remove HTML tags, not just spaces. Fix the failing unit test with a minimal patch. code_agent: Proposed inspect-edit-test loop for code task. memory: Reused 1 retrieved trajectory memories. aggregator: Aggregated active module outputs into a concise state update. memory: Reused 2 retrieved trajectory memories.  Reused 1 retrieved trajectory memories. Aggregated active module outputs into a concise state update. Reused 2 retrieved trajectory memories.",
+        "selected_modules": [
+          "aggregator",
+          "memory"
+        ],
+        "candidates": [
+          {
+            "module_id": "aggregator",
+            "score": 0.5452,
+            "score_terms": {
+              "semantic_match": 0.3077,
+              "reliability": 0.7,
+              "historical_success": 0.61,
+              "cost": 0.25,
+              "latency": 0.2,
+              "risk": 0.1,
+              "repetition": 1,
+              "memory_bonus": 0.0
+            },
+            "score_weights": {
+              "semantic_match": 1.0,
+              "reliability": 0.45,
+              "historical_success": 0.25,
+              "cost": -0.18,
+              "latency": -0.1,
+              "risk": -0.25,
+              "repetition": -0.14,
+              "memory_bonus": 1.0
+            },
+            "selected": true,
+            "schema_valid": true,
+            "budget_valid": true,
+            "risk_valid": true,
+            "reject_reason": null
+          },
+          {
+            "module_id": "code_agent",
+            "score": 0.4734,
+            "score_terms": {
+              "semantic_match": 0.44,
+              "reliability": 0.75,
+              "historical_success": 0.64,
+              "cost": 0.8,
+              "latency": 0.9,
+              "risk": 0.4,
+              "repetition": 1,
+              "memory_bonus": 0.0099
+            },
+            "score_weights": {
+              "semantic_match": 1.0,
+              "reliability": 0.45,
+              "historical_success": 0.25,
+              "cost": -0.18,
+              "latency": -0.1,
+              "risk": -0.25,
+              "repetition": -0.14,
+              "memory_bonus": 1.0
+            },
+            "selected": false,
+            "schema_valid": true,
+            "budget_valid": false,
+            "risk_valid": true,
+            "reject_reason": "budget_high_cost_fraction"
+          },
+          {
+            "module_id": "critic_agent",
+            "score": 0.409,
+            "score_terms": {
+              "semantic_match": 0.12,
+              "reliability": 0.7,
+              "historical_success": 0.58,
+              "cost": 0.45,
+              "latency": 0.4,
+              "risk": 0.2,
+              "repetition": 0,
+              "memory_bonus": 0.0
+            },
+            "score_weights": {
+              "semantic_match": 1.0,
+              "reliability": 0.45,
+              "historical_success": 0.25,
+              "cost": -0.18,
+              "latency": -0.1,
+              "risk": -0.25,
+              "repetition": -0.14,
+              "memory_bonus": 1.0
+            },
+            "selected": false,
+            "schema_valid": true,
+            "budget_valid": true,
+            "risk_valid": true,
+            "reject_reason": "below_top_k"
+          },
+          {
+            "module_id": "memory",
+            "score": 0.207,
+            "score_terms": {
+              "semantic_match": 0.0996,
+              "reliability": 0.66,
+              "historical_success": 0.62,
+              "cost": 0.15,
+              "latency": 0.1,
+              "risk": 0.15,
+              "repetition": 2,
+              "memory_bonus": 0.0099
+            },
+            "score_weights": {
+              "semantic_match": 1.0,
+              "reliability": 0.45,
+              "historical_success": 0.25,
+              "cost": -0.18,
+              "latency": -0.1,
+              "risk": -0.25,
+              "repetition": -0.14,
+              "memory_bonus": 1.0
+            },
+            "selected": true,
+            "schema_valid": true,
+            "budget_valid": true,
+            "risk_valid": true,
+            "reject_reason": null
+          },
+          {
+            "module_id": "search_agent",
+            "score": 0.1805,
+            "score_terms": {
+              "semantic_match": 0.0,
+              "reliability": 0.72,
+              "historical_success": 0.6,
+              "cost": 0.7,
+              "latency": 0.8,
+              "risk": 0.35,
+              "repetition": 0,
+              "memory_bonus": 0.0
+            },
+            "score_weights": {
+              "semantic_match": 1.0,
+              "reliability": 0.45,
+              "historical_success": 0.25,
+              "cost": -0.18,
+              "latency": -0.1,
+              "risk": -0.25,
+              "repetition": -0.14,
+              "memory_bonus": 1.0
+            },
+            "selected": false,
+            "schema_valid": true,
+            "budget_valid": false,
+            "risk_valid": true,
+            "reject_reason": "budget_high_cost_fraction"
+          }
+        ],
+        "route_scores": {
+          "aggregator": {
+            "semantic_match": 0.3077,
+            "reliability": 0.7,
+            "historical_success": 0.61,
+            "cost": 0.25,
+            "latency": 0.2,
+            "risk": 0.1,
+            "repetition": 1,
+            "memory_bonus": 0.0,
+            "score_total": 0.5452,
+            "reject_reason": null
+          },
+          "code_agent": {
+            "semantic_match": 0.44,
+            "reliability": 0.75,
+            "historical_success": 0.64,
+            "cost": 0.8,
+            "latency": 0.9,
+            "risk": 0.4,
+            "repetition": 1,
+            "memory_bonus": 0.0099,
+            "score_total": 0.4734,
+            "reject_reason": "budget_high_cost_fraction"
+          },
+          "critic_agent": {
+            "semantic_match": 0.12,
+            "reliability": 0.7,
+            "historical_success": 0.58,
+            "cost": 0.45,
+            "latency": 0.4,
+            "risk": 0.2,
+            "repetition": 0,
+            "memory_bonus": 0.0,
+            "score_total": 0.409,
+            "reject_reason": "below_top_k"
+          },
+          "memory": {
+            "semantic_match": 0.0996,
+            "reliability": 0.66,
+            "historical_success": 0.62,
+            "cost": 0.15,
+            "latency": 0.1,
+            "risk": 0.15,
+            "repetition": 2,
+            "memory_bonus": 0.0099,
+            "score_total": 0.207,
+            "reject_reason": null
+          },
+          "search_agent": {
+            "semantic_match": 0.0,
+            "reliability": 0.72,
+            "historical_success": 0.6,
+            "cost": 0.7,
+            "latency": 0.8,
+            "risk": 0.35,
+            "repetition": 0,
+            "memory_bonus": 0.0,
+            "score_total": 0.1805,
+            "reject_reason": "budget_high_cost_fraction"
+          }
+        },
+        "budget_snapshot": {
+          "max_budget": 3.0,
+          "budget_used": 1.35,
+          "remaining_budget": 1.65
+        },
+        "oracle": {
+          "oracle_available": true,
+          "proxy_available": true,
+          "oracle_best_module_id": "code_agent",
+          "selected_score": 0.5452,
+          "oracle_best_score": 0.4734,
+          "oracle_regret": null,
+          "proxy_regret": 0.35,
+          "missing_required_modules": [
+            "code_agent"
+          ],
+          "selected_discouraged_modules": [],
+          "rationale": "Executable code fix (security)."
+        }
+      },
+      "timestamp": 1782830343.8645322
+    },
+    {
+      "event_id": 26,
+      "step": 3,
+      "kind": "budget_gate",
+      "payload": {
+        "module_id": "aggregator",
+        "decision": "allow",
+        "reason": "within_budget",
+        "module_cost": 0.25,
+        "budget_snapshot": {
+          "max_budget": 3.0,
+          "budget_used": 1.35,
+          "remaining_budget": 1.65
+        }
+      },
+      "timestamp": 1782830343.8645344
+    },
+    {
+      "event_id": 27,
+      "step": 3,
+      "kind": "budget_gate",
+      "payload": {
+        "module_id": "memory",
+        "decision": "allow",
+        "reason": "within_budget",
+        "module_cost": 0.15,
+        "budget_snapshot": {
+          "max_budget": 3.0,
+          "budget_used": 1.6,
+          "remaining_budget": 1.4
+        }
+      },
+      "timestamp": 1782830343.8645365
+    },
+    {
+      "event_id": 28,
+      "step": 3,
+      "kind": "module_execution",
+      "payload": {
+        "outputs": [
+          {
+            "module_id": "aggregator",
+            "content": "Aggregated active module outputs into a concise state update.",
+            "confidence": 0.7,
+            "evidence": [],
+            "failure_signal": null
+          },
+          {
+            "module_id": "memory",
+            "content": "Reused 3 retrieved trajectory memories.",
+            "confidence": 0.68,
+            "evidence": [
+              "python failing test inspect edit run tests code route",
+              "python failing test inspect edit run tests code route"
+            ],
+            "failure_signal": null
+          }
+        ]
+      },
+      "timestamp": 1782830343.8645475
+    },
+    {
+      "event_id": 29,
+      "step": 3,
+      "kind": "state_update",
+      "payload": {
+        "action_type": "aggregate",
+        "state": {
+          "goal": "strip_tags should remove HTML tags, not just spaces. Fix the failing unit test with a minimal patch.",
+          "step": 3,
+          "confidence": 0.5917,
+          "risk": 0.02,
+          "budget_used": 1.75,
+          "max_budget": 3.0,
+          "selected_modules": [
+            "code_agent",
+            "memory",
+            "aggregator",
+            "memory",
+            "aggregator",
+            "memory",
+            "aggregator",
+            "verifier"
+          ],
+          "failure_signals": [],
+          "memory_reads": [
+            "python failing test inspect edit run tests code route",
+            "python failing test inspect edit run tests code route",
+            "python failing test inspect edit run tests code route",
+            "python failing test inspect edit run tests code route"
+          ],
+          "memory_writes": [
+            "strip_tags should remove HTML tags, not just spaces. Fix the failing unit test with a minimal patch. route code_agent -> memory -> aggregator -> memory -> aggregator -> memory -> aggregator -> verifier"
+          ],
+          "verifier_status": "skipped",
+          "final_answer": null
+        }
+      },
+      "timestamp": 1782830343.8645508
+    },
+    {
+      "event_id": 30,
+      "step": 3,
+      "kind": "verifier_result",
+      "payload": {
+        "enabled": true,
+        "required": false,
+        "status": "skipped",
+        "reason": "threshold_not_met",
+        "budget_snapshot": {
+          "max_budget": 3.0,
+          "budget_used": 1.75,
+          "remaining_budget": 1.25
+        }
+      },
+      "timestamp": 1782830343.8645527
+    },
+    {
+      "event_id": 31,
+      "step": 3,
+      "kind": "halt_gate",
+      "payload": {
+        "halt": false,
+        "reason": "continue",
+        "success_signal": "unknown",
+        "verifier_status": "skipped",
+        "budget_snapshot": {
+          "max_budget": 3.0,
+          "budget_used": 1.75,
+          "remaining_budget": 1.25
+        }
+      },
+      "timestamp": 1782830343.8645551
+    },
+    {
+      "event_id": 32,
+      "step": 4,
+      "kind": "memory_retrieval",
+      "payload": {
+        "enabled": true,
+        "items": [
+          {
+            "key": "python failing test inspect edit run tests code route",
+            "value_summary": "For code fixes, use inspect -> minimal edit -> test -> verifier; avoid broad refactors.",
+            "memory_type": "skill_memory",
+            "usefulness_label": "useful",
+            "retrieval_score": 0.17,
+            "route_signature": "memory -> code_agent -> verifier",
+            "evidence_refs": [
+              "seed:code_route"
+            ],
+            "negative_transfer_count": 0,
+            "memory_bonus": 0.002
+          }
+        ]
+      },
+      "timestamp": 1782830343.864583
+    },
+    {
+      "event_id": 33,
+      "step": 4,
+      "kind": "memory_read",
+      "payload": {
+        "key": "python failing test inspect edit run tests code route",
+        "value_summary": "For code fixes, use inspect -> minimal edit -> test -> verifier; avoid broad refactors.",
+        "memory_type": "skill_memory",
+        "usefulness_label": "useful",
+        "retrieval_score": 0.17,
+        "route_signature": "memory -> code_agent -> verifier",
+        "evidence_refs": [
+          "seed:code_route"
+        ],
+        "negative_transfer_count": 0,
+        "memory_bonus": 0.002
+      },
+      "timestamp": 1782830343.8645904
+    },
+    {
+      "event_id": 34,
+      "step": 4,
+      "kind": "gates",
+      "payload": {
+        "decisions": [
+          {
+            "gate": "ToolGate",
+            "status": "open",
+            "reason": "tool_or_code_terms"
+          },
+          {
+            "gate": "SearchGate",
+            "status": "closed",
+            "reason": "no_external_evidence_need"
+          },
+          {
+            "gate": "MemoryGate",
+            "status": "open_read",
+            "reason": "memory_enabled"
+          },
+          {
+            "gate": "VerifierGate",
+            "status": "closed",
+            "reason": "not_required_or_disabled"
+          },
+          {
+            "gate": "HaltGate",
+            "status": "evaluate",
+            "reason": "checked_every_step"
+          },
+          {
+            "gate": "BudgetGate",
+            "status": "allow",
+            "reason": "remaining_budget_positive",
+            "remaining_budget": 1.25
+          },
+          {
+            "gate": "SafetyGate",
+            "status": "allow",
+            "reason": "read_only_toy_runtime"
+          }
+        ],
+        "budget_snapshot": {
+          "max_budget": 3.0,
+          "budget_used": 1.75,
+          "remaining_budget": 1.25
+        }
+      },
+      "timestamp": 1782830343.8645964
+    },
+    {
+      "event_id": 35,
+      "step": 4,
+      "kind": "route",
+      "payload": {
+        "decision_id": "route-4",
+        "routing_policy": "lexical",
+        "top_k": 2,
+        "effective_top_k": 1,
+        "adaptive_top_k_enabled": true,
+        "strong_budget_gate": true,
+        "query": "strip_tags should remove HTML tags, not just spaces. Fix the failing unit test with a minimal patch. aggregator: Aggregated active module outputs into a concise state update. memory: Reused 2 retrieved trajectory memories. aggregator: Aggregated active module outputs into a concise state update. memory: Reused 3 retrieved trajectory memories.  Reused 2 retrieved trajectory memories. Aggregated active module outputs into a concise state update. Reused 3 retrieved trajectory memories.",
+        "selected_modules": [
+          "aggregator"
+        ],
+        "candidates": [
+          {
+            "module_id": "aggregator",
+            "score": 0.6113,
+            "score_terms": {
+              "semantic_match": 0.5138,
+              "reliability": 0.7,
+              "historical_success": 0.61,
+              "cost": 0.25,
+              "latency": 0.2,
+              "risk": 0.1,
+              "repetition": 2,
+              "memory_bonus": 0.0
+            },
+            "score_weights": {
+              "semantic_match": 1.0,
+              "reliability": 0.45,
+              "historical_success": 0.25,
+              "cost": -0.18,
+              "latency": -0.1,
+              "risk": -0.25,
+              "repetition": -0.14,
+              "memory_bonus": 1.0
+            },
+            "selected": true,
+            "schema_valid": true,
+            "budget_valid": true,
+            "risk_valid": true,
+            "reject_reason": null
+          },
+          {
+            "module_id": "critic_agent",
+            "score": 0.589,
+            "score_terms": {
+              "semantic_match": 0.3,
+              "reliability": 0.7,
+              "historical_success": 0.58,
+              "cost": 0.45,
+              "latency": 0.4,
+              "risk": 0.2,
+              "repetition": 0,
+              "memory_bonus": 0.0
+            },
+            "score_weights": {
+              "semantic_match": 1.0,
+              "reliability": 0.45,
+              "historical_success": 0.25,
+              "cost": -0.18,
+              "latency": -0.1,
+              "risk": -0.25,
+              "repetition": -0.14,
+              "memory_bonus": 1.0
+            },
+            "selected": false,
+            "schema_valid": true,
+            "budget_valid": false,
+            "risk_valid": true,
+            "reject_reason": "budget_high_cost_fraction"
+          },
+          {
+            "module_id": "code_agent",
+            "score": 0.3872,
+            "score_terms": {
+              "semantic_match": 0.3617,
+              "reliability": 0.75,
+              "historical_success": 0.64,
+              "cost": 0.8,
+              "latency": 0.9,
+              "risk": 0.4,
+              "repetition": 1,
+              "memory_bonus": 0.002
+            },
+            "score_weights": {
+              "semantic_match": 1.0,
+              "reliability": 0.45,
+              "historical_success": 0.25,
+              "cost": -0.18,
+              "latency": -0.1,
+              "risk": -0.25,
+              "repetition": -0.14,
+              "memory_bonus": 1.0
+            },
+            "selected": false,
+            "schema_valid": true,
+            "budget_valid": false,
+            "risk_valid": true,
+            "reject_reason": "budget_high_cost_fraction"
+          },
+          {
+            "module_id": "search_agent",
+            "score": 0.1805,
+            "score_terms": {
+              "semantic_match": 0.0,
+              "reliability": 0.72,
+              "historical_success": 0.6,
+              "cost": 0.7,
+              "latency": 0.8,
+              "risk": 0.35,
+              "repetition": 0,
+              "memory_bonus": 0.0
+            },
+            "score_weights": {
+              "semantic_match": 1.0,
+              "reliability": 0.45,
+              "historical_success": 0.25,
+              "cost": -0.18,
+              "latency": -0.1,
+              "risk": -0.25,
+              "repetition": -0.14,
+              "memory_bonus": 1.0
+            },
+            "selected": false,
+            "schema_valid": true,
+            "budget_valid": false,
+            "risk_valid": true,
+            "reject_reason": "budget_high_cost_fraction"
+          },
+          {
+            "module_id": "memory",
+            "score": 0.0628,
+            "score_terms": {
+              "semantic_match": 0.1033,
+              "reliability": 0.66,
+              "historical_success": 0.62,
+              "cost": 0.15,
+              "latency": 0.1,
+              "risk": 0.15,
+              "repetition": 3,
+              "memory_bonus": 0.002
+            },
+            "score_weights": {
+              "semantic_match": 1.0,
+              "reliability": 0.45,
+              "historical_success": 0.25,
+              "cost": -0.18,
+              "latency": -0.1,
+              "risk": -0.25,
+              "repetition": -0.14,
+              "memory_bonus": 1.0
+            },
+            "selected": false,
+            "schema_valid": true,
+            "budget_valid": true,
+            "risk_valid": true,
+            "reject_reason": "below_top_k"
+          }
+        ],
+        "route_scores": {
+          "aggregator": {
+            "semantic_match": 0.5138,
+            "reliability": 0.7,
+            "historical_success": 0.61,
+            "cost": 0.25,
+            "latency": 0.2,
+            "risk": 0.1,
+            "repetition": 2,
+            "memory_bonus": 0.0,
+            "score_total": 0.6113,
+            "reject_reason": null
+          },
+          "critic_agent": {
+            "semantic_match": 0.3,
+            "reliability": 0.7,
+            "historical_success": 0.58,
+            "cost": 0.45,
+            "latency": 0.4,
+            "risk": 0.2,
+            "repetition": 0,
+            "memory_bonus": 0.0,
+            "score_total": 0.589,
+            "reject_reason": "budget_high_cost_fraction"
+          },
+          "code_agent": {
+            "semantic_match": 0.3617,
+            "reliability": 0.75,
+            "historical_success": 0.64,
+            "cost": 0.8,
+            "latency": 0.9,
+            "risk": 0.4,
+            "repetition": 1,
+            "memory_bonus": 0.002,
+            "score_total": 0.3872,
+            "reject_reason": "budget_high_cost_fraction"
+          },
+          "search_agent": {
+            "semantic_match": 0.0,
+            "reliability": 0.72,
+            "historical_success": 0.6,
+            "cost": 0.7,
+            "latency": 0.8,
+            "risk": 0.35,
+            "repetition": 0,
+            "memory_bonus": 0.0,
+            "score_total": 0.1805,
+            "reject_reason": "budget_high_cost_fraction"
+          },
+          "memory": {
+            "semantic_match": 0.1033,
+            "reliability": 0.66,
+            "historical_success": 0.62,
+            "cost": 0.15,
+            "latency": 0.1,
+            "risk": 0.15,
+            "repetition": 3,
+            "memory_bonus": 0.002,
+            "score_total": 0.0628,
+            "reject_reason": "below_top_k"
+          }
+        },
+        "budget_snapshot": {
+          "max_budget": 3.0,
+          "budget_used": 1.75,
+          "remaining_budget": 1.25
+        },
+        "oracle": {
+          "oracle_available": true,
+          "proxy_available": true,
+          "oracle_best_module_id": "code_agent",
+          "selected_score": 0.6113,
+          "oracle_best_score": 0.3872,
+          "oracle_regret": null,
+          "proxy_regret": 0.35,
+          "missing_required_modules": [
+            "code_agent"
+          ],
+          "selected_discouraged_modules": [],
+          "rationale": "Executable code fix (security)."
+        }
+      },
+      "timestamp": 1782830343.8647747
+    },
+    {
+      "event_id": 36,
+      "step": 4,
+      "kind": "budget_gate",
+      "payload": {
+        "module_id": "aggregator",
+        "decision": "allow",
+        "reason": "within_budget",
+        "module_cost": 0.25,
+        "budget_snapshot": {
+          "max_budget": 3.0,
+          "budget_used": 1.75,
+          "remaining_budget": 1.25
+        }
+      },
+      "timestamp": 1782830343.8647764
+    },
+    {
+      "event_id": 37,
+      "step": 4,
+      "kind": "module_execution",
+      "payload": {
+        "outputs": [
+          {
+            "module_id": "aggregator",
+            "content": "Aggregated active module outputs into a concise state update.",
+            "confidence": 0.7,
+            "evidence": [],
+            "failure_signal": null
+          }
+        ]
+      },
+      "timestamp": 1782830343.864782
+    },
+    {
+      "event_id": 38,
+      "step": 4,
+      "kind": "state_update",
+      "payload": {
+        "action_type": "aggregate",
+        "state": {
+          "goal": "strip_tags should remove HTML tags, not just spaces. Fix the failing unit test with a minimal patch.",
+          "step": 4,
+          "confidence": 0.6404,
+          "risk": 0.02,
+          "budget_used": 2.0,
+          "max_budget": 3.0,
+          "selected_modules": [
+            "code_agent",
+            "memory",
+            "aggregator",
+            "memory",
+            "aggregator",
+            "memory",
+            "aggregator",
+            "verifier"
+          ],
+          "failure_signals": [],
+          "memory_reads": [
+            "python failing test inspect edit run tests code route",
+            "python failing test inspect edit run tests code route",
+            "python failing test inspect edit run tests code route",
+            "python failing test inspect edit run tests code route"
+          ],
+          "memory_writes": [
+            "strip_tags should remove HTML tags, not just spaces. Fix the failing unit test with a minimal patch. route code_agent -> memory -> aggregator -> memory -> aggregator -> memory -> aggregator -> verifier"
+          ],
+          "verifier_status": "skipped",
+          "final_answer": null
+        }
+      },
+      "timestamp": 1782830343.8647847
+    },
+    {
+      "event_id": 39,
+      "step": 4,
+      "kind": "budget_gate",
+      "payload": {
+        "module_id": "verifier",
+        "decision": "allow",
+        "reason": "within_budget",
+        "module_cost": 0.35,
+        "budget_snapshot": {
+          "max_budget": 3.0,
+          "budget_used": 2.0,
+          "remaining_budget": 1.0
+        }
+      },
+      "timestamp": 1782830343.8647869
+    },
+    {
+      "event_id": 40,
+      "step": 4,
+      "kind": "verifier_result",
+      "payload": {
+        "enabled": true,
+        "required": true,
+        "status": "pass",
+        "output": {
+          "module_id": "verifier",
+          "content": "Verifier found no blocking inconsistency in the trajectory.",
+          "confidence": 0.84,
+          "evidence": [
+            "trajectory_consistent"
+          ],
+          "failure_signal": null
+        },
+        "budget_snapshot": {
+          "max_budget": 3.0,
+          "budget_used": 2.35,
+          "remaining_budget": 0.65
+        }
+      },
+      "timestamp": 1782830343.8648002
+    },
+    {
+      "event_id": 41,
+      "step": 4,
+      "kind": "halt_gate",
+      "payload": {
+        "halt": true,
+        "reason": "answer_ready",
+        "success_signal": "pass",
+        "verifier_status": "pass",
+        "budget_snapshot": {
+          "max_budget": 3.0,
+          "budget_used": 2.35,
+          "remaining_budget": 0.65
+        }
+      },
+      "timestamp": 1782830343.8648021
+    },
+    {
+      "event_id": 42,
+      "step": 4,
+      "kind": "reflection",
+      "payload": {
+        "key": "strip_tags should remove HTML tags, not just spaces. Fix the failing unit test with a minimal patch. route code_agent -> memory -> aggregator -> memory -> aggregator -> memory -> aggregator -> verifier",
+        "value": "Task 'strip_tags should remove HTML tags, not just spaces. Fix the failing unit test with a minimal patch.' reached confidence 0.7302; route code_agent -> memory -> aggregator -> memory -> aggregator -> memory -> aggregator -> verifier was useful under budget 2.35.",
+        "usefulness": 0.75,
+        "failures": 0,
+        "memory_type": "behavior_kv",
+        "usefulness_label": "useful",
+        "route_signature": "code_agent -> memory -> aggregator -> memory -> aggregator -> memory -> aggregator -> verifier",
+        "evidence_refs": [
+          "event:38",
+          "event:39",
+          "event:40",
+          "event:41"
+        ],
+        "negative_transfer_count": 0,
+        "value_summary": "Task 'strip_tags should remove HTML tags, not just spaces. Fix the failing unit test with a minimal patch.' reached confidence 0.7302; route code_agent -> memory -> aggregator -> memory -> aggregator -> memory -> aggregator -> verifier was ",
+        "write_reason": "success"
+      },
+      "timestamp": 1782830343.8648217
+    },
+    {
+      "event_id": 43,
+      "step": 4,
+      "kind": "memory_write",
+      "payload": {
+        "key": "strip_tags should remove HTML tags, not just spaces. Fix the failing unit test with a minimal patch. route code_agent -> memory -> aggregator -> memory -> aggregator -> memory -> aggregator -> verifier",
+        "value": "Task 'strip_tags should remove HTML tags, not just spaces. Fix the failing unit test with a minimal patch.' reached confidence 0.7302; route code_agent -> memory -> aggregator -> memory -> aggregator -> memory -> aggregator -> verifier was useful under budget 2.35.",
+        "usefulness": 0.75,
+        "failures": 0,
+        "memory_type": "behavior_kv",
+        "usefulness_label": "useful",
+        "route_signature": "code_agent -> memory -> aggregator -> memory -> aggregator -> memory -> aggregator -> verifier",
+        "evidence_refs": [
+          "event:38",
+          "event:39",
+          "event:40",
+          "event:41"
+        ],
+        "negative_transfer_count": 0,
+        "value_summary": "Task 'strip_tags should remove HTML tags, not just spaces. Fix the failing unit test with a minimal patch.' reached confidence 0.7302; route code_agent -> memory -> aggregator -> memory -> aggregator -> memory -> aggregator -> verifier was ",
+        "write_reason": "success"
+      },
+      "timestamp": 1782830343.8648224
+    },
+    {
+      "event_id": 44,
+      "step": 4,
+      "kind": "finish",
+      "payload": {
+        "goal": "strip_tags should remove HTML tags, not just spaces. Fix the failing unit test with a minimal patch.",
+        "step": 4,
+        "confidence": 0.7302,
+        "risk": 0.02,
+        "budget_used": 2.35,
+        "max_budget": 3.0,
+        "selected_modules": [
+          "code_agent",
+          "memory",
+          "aggregator",
+          "memory",
+          "aggregator",
+          "memory",
+          "aggregator",
+          "verifier"
+        ],
+        "failure_signals": [],
+        "memory_reads": [
+          "python failing test inspect edit run tests code route",
+          "python failing test inspect edit run tests code route",
+          "python failing test inspect edit run tests code route",
+          "python failing test inspect edit run tests code route"
+        ],
+        "memory_writes": [
+          "strip_tags should remove HTML tags, not just spaces. Fix the failing unit test with a minimal patch. route code_agent -> memory -> aggregator -> memory -> aggregator -> memory -> aggregator -> verifier"
+        ],
+        "verifier_status": "pass",
+        "final_answer": "Finalized because confidence_threshold_met. Selected modules: code_agent, memory, aggregator, memory, aggregator, memory, aggregator, verifier. Latest evidence: aggregator: Aggregated active module outputs into a concise state update. | memory: Reused 3 retrieved trajectory memories. | aggregator: Aggregated active module outputs into a concise state update. | verifier: Verifier found no blocking inconsistency in the trajectory.."
+      },
+      "timestamp": 1782830343.8648236
+    }
+  ],
+  "final_answer": "Finalized because confidence_threshold_met. Selected modules: code_agent, memory, aggregator, memory, aggregator, memory, aggregator, verifier. Latest evidence: aggregator: Aggregated active module outputs into a concise state update. | memory: Reused 3 retrieved trajectory memories. | aggregator: Aggregated active module outputs into a concise state update. | verifier: Verifier found no blocking inconsistency in the trajectory..",
+  "final_success_label": "fail",
+  "failure_reason": "confidence_threshold_met",
+  "known_deviations": [
+    "faithful_toy_runtime_not_real_llm",
+    "toy_scalar_activation_cost_not_full_cost_delta",
+    "oracle_route_regret_unavailable",
+    "executable_pytest_end_task_label",
+    "route_proxy_reported_in_metrics_summary"
+  ],
+  "metrics_summary": {
+    "oracle_type": "executable_pytest",
+    "end_task_success": false,
+    "fixture_id": "strip_tags_001",
+    "pytest_returncode": 1,
+    "applied_files": [],
+    "patch_apply_mode": "none",
+    "pytest_stdout": "",
+    "pytest_stderr": "No patch applied from agent output.",
+    "route_oracle_label": "pass",
+    "route_aligned": true
+  }
+}

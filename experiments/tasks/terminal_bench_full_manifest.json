@@ -1,0 +1,33 @@
+{
+  "schema_version": "terminal_bench_subset.v1",
+  "name": "t3_full_no_apt_steps12",
+  "description": "Full 7-task no-apt manifest with max_shell_steps=12 for server/git tasks.",
+  "dataset_path": "external/terminal-bench-core",
+  "selection_criteria": [
+    "Dockerfile has no apt-get",
+    "max_shell_steps raised to 12 post-ACI rerun"
+  ],
+  "matched_budget": {
+    "max_shell_steps": 12,
+    "max_tokens_per_call": 512,
+    "n_concurrent": 1,
+    "timeout_s": 900,
+    "n_attempts": 1
+  },
+  "baselines": [
+    "single_react_llm_agent",
+    "fixed_workflow_llm_agent",
+    "retrieval_memory_llm_agent",
+    "moa_style_llm_agent",
+    "agent_attention_llm_tuned"
+  ],
+  "task_ids": [
+    "fix-permissions",
+    "fibonacci-server",
+    "configure-git-webserver",
+    "count-dataset-tokens",
+    "download-youtube",
+    "blind-maze-explorer-5x5",
+    "cartpole-rl-training"
+  ]
+}

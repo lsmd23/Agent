@@ -1,0 +1,89 @@
+{
+  "scope": "Real-task router ablation (Brief E diagnostic, replay only).",
+  "tasks": 26,
+  "split": {
+    "strategy": "split_field",
+    "train_tasks": 6,
+    "test_tasks": 20,
+    "train_task_ids": [
+      "phase0_seed_code_fix_001",
+      "phase0_seed_negative_memory_001",
+      "phase1_code_config_001",
+      "phase1_code_doc_001",
+      "phase1_code_edge_001",
+      "phase1_code_import_001"
+    ],
+    "test_task_ids": [
+      "phase1_code_binary_search_001",
+      "phase1_code_clamp_001",
+      "phase1_code_config_get_001",
+      "phase1_code_csv_001",
+      "phase1_code_email_001",
+      "phase1_code_env_flag_001",
+      "phase1_code_flatten_001",
+      "phase1_code_hash_001",
+      "phase1_code_json_001",
+      "phase1_code_mean_001",
+      "phase1_code_merge_001",
+      "phase1_code_palindrome_001",
+      "phase1_code_parse_int_001",
+      "phase1_code_pkg_helper_001",
+      "phase1_code_refactor_001",
+      "phase1_code_sanitize_001",
+      "phase1_code_slugify_001",
+      "phase1_code_strip_tags_001",
+      "phase1_code_trim_lines_001",
+      "phase1_code_url_001"
+    ]
+  },
+  "policies": {
+    "static_dominant": {
+      "tasks": 20,
+      "route_accuracy": 0.45,
+      "mean_regret_vs_oracle_reward": 0.181349,
+      "mean_cost_normalized_success": 0.783333,
+      "success_rate": 0.85,
+      "confusion": {
+        "fixed_workflow_llm_agent->single_react_llm_agent": 8,
+        "moa_style_llm_agent->single_react_llm_agent": 2,
+        "retrieval_memory_llm_agent->single_react_llm_agent": 1,
+        "single_react_llm_agent->single_react_llm_agent": 9
+      }
+    },
+    "lexical_rules": {
+      "tasks": 20,
+      "route_accuracy": 0.3,
+      "mean_regret_vs_oracle_reward": 0.344979,
+      "mean_cost_normalized_success": 0.525,
+      "success_rate": 0.7,
+      "confusion": {
+        "fixed_workflow_llm_agent->fixed_workflow_llm_agent": 3,
+        "fixed_workflow_llm_agent->moa_style_llm_agent": 4,
+        "fixed_workflow_llm_agent->single_react_llm_agent": 1,
+        "moa_style_llm_agent->fixed_workflow_llm_agent": 1,
+        "moa_style_llm_agent->single_react_llm_agent": 1,
+        "retrieval_memory_llm_agent->single_react_llm_agent": 1,
+        "single_react_llm_agent->fixed_workflow_llm_agent": 3,
+        "single_react_llm_agent->moa_style_llm_agent": 3,
+        "single_react_llm_agent->single_react_llm_agent": 3
+      }
+    },
+    "learned_logistic": {
+      "tasks": 20,
+      "route_accuracy": 0.5,
+      "mean_regret_vs_oracle_reward": 0.177142,
+      "mean_cost_normalized_success": 0.766667,
+      "success_rate": 0.85,
+      "confusion": {
+        "fixed_workflow_llm_agent->fixed_workflow_llm_agent": 5,
+        "fixed_workflow_llm_agent->single_react_llm_agent": 3,
+        "moa_style_llm_agent->single_react_llm_agent": 2,
+        "retrieval_memory_llm_agent->single_react_llm_agent": 1,
+        "single_react_llm_agent->fixed_workflow_llm_agent": 4,
+        "single_react_llm_agent->single_react_llm_agent": 5
+      }
+    },
+    "static_route": "single_react_llm_agent"
+  },
+  "evidence_outcome": "weak_or_inconclusive"
+}

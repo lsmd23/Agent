@@ -21,16 +21,19 @@ The project now supports these claims:
 These claims have partial support:
 
 - Sparse routing is a useful experimental frame for comparing ReAct, fixed workflows, retrieval memory, MoA, and adaptive activation.
+- **Direct-first cascade with AA lite escalation** improves cost-quality on the 26-task code suite (100% @ 1.50 calls vs always-on AA 84.6% @ 2.00).
 - Fixed workflow is a weak baseline on the current code suite.
 - MoA improves raw accuracy on small code tasks but spends more.
+- **Oracle routing would beat any single static baseline** on the current suite (Brief A; gap +3.8% success, +0.24 cost-normalized).
 
 ### Not Currently Supported
 
 These claims are not supported by the latest data:
 
-- Current `agent_attention_llm_tuned` beats ReAct.
-- Current `agent_attention_llm_tuned` beats MoA on raw accuracy.
-- Current `agent_attention_llm_tuned` beats ReAct on cost-normalized success.
+- Current **always-on** `agent_attention_llm_tuned` beats ReAct.
+- Current **always-on** `agent_attention_llm_tuned` beats MoA on raw accuracy.
+- Current **always-on** `agent_attention_llm_tuned` beats ReAct on cost-normalized success.
+- Current AA modules are heterogeneous experts (Brief H: 96% redundant activation).
 - Memory improves the local executable code suite.
 - Terminal-Bench already shows an AA advantage.
 
@@ -98,3 +101,5 @@ Use these labels in future reports:
 - `claim_ready`: enough evidence to support a paper claim.
 
 Current AA performance is mostly `pilot_end_task` and `diagnostic_signal`, not `claim_ready`.
+
+**Exception (code suite only):** `cascade_react_aa_lite_llm` reaches `pilot_end_task` with a credible cost-quality win (100% @ 1.50 calls, bootstrap CI in `code_cascade_wave3_with_ci.json`). Still below Level 5 threshold (N=26, no public benchmark).

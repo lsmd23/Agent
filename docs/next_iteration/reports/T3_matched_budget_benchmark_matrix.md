@@ -76,9 +76,25 @@ python3 experiments/terminal_bench/run_t3_matrix.py
 
 ## next
 
-1. Run full 7-task manifest (`run_t3_matrix.py` without `--limit-tasks`).
-2. **T4:** bootstrap CIs from `per_task` rows in summary JSON.
-3. Increase `max_shell_steps` to 12 for server tasks; add step-level model_call logging to envelope.
+1. ~~Re-run T3 pilot with ACI patches~~ **Done** — see `experiments/analysis/t3_aci_rerun_comparison.md` (4/15 pass, env 33%→20%, invalid-shell 0%).
+2. Run full 7-task manifest after env failure < 10% on pilot.
+3. **T4:** bootstrap CIs from `per_task` rows in summary JSON.
+4. Increase `max_shell_steps` to 12 for server tasks; log `parse_status` in envelopes.
+5. **Brief E/D:** learned router diagnostic + outcome memory (next wave).
+
+## aci_rerun (2026-06-30)
+
+Post-patch 3×5 matrix (`experiments/metrics/t3_aci_rerun_pilot_summary.json`):
+
+| Metric | Before | After |
+|--------|--------|-------|
+| Pass | 4/15 | 4/15 |
+| Env failure | 5/15 | 3/15 |
+| Agent failure | 6/15 | 8/15 |
+| Invalid-shell step rate | ~4% | 0% |
+| AA tuned | 0/3 | 1/3 |
+
+Async rerun: `bash experiments/terminal_bench/run_t3_pilot_async.sh`
 
 ## acceptance vs T3 criteria
 

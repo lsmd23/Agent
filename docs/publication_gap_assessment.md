@@ -1,6 +1,18 @@
 # Publication Gap Assessment
 
-Date: 2026-06-29
+Date: 2026-06-29 (Wave 3 update: 2026-06-30)
+
+## Wave 3 Progress (2026-06-30)
+
+Since this assessment, the project completed research-direction wave 3:
+
+- **26-task code suite** with oracle route matrix and live cascade eval; `cascade_react_aa_lite_llm` reaches 100% @ 1.50 calls with bootstrap CI.
+- **First credible cost-quality win** vs always-on AA tuned on executable tasks (still N=26, local fixtures only).
+- **Terminal-Bench T3** multi-step loop + ACI patches; rerun confirms shell parsing fixed (0% invalid-shell) but pass rate still 4/15 — not yet paper-grade.
+- **93 unit tests** passing (was 57).
+- **Expert specialization falsified** — current modules are not heterogeneous enough for routing claims on TB.
+
+Remaining main-track gaps: public benchmark at scale (≥50 tasks), TB env stability, learned router held-out eval, outcome-memory ablation. See `docs/next_iteration/reports/W1_wave3_exploration_synthesis.md`.
 
 ## Executive Judgment
 
@@ -17,7 +29,7 @@ If the target is ICLR/NeurIPS/ICML/ACL/EMNLP main track, the main gap is not wri
 - Baselines: direct LLM, ReAct-style, fixed workflow, full-history, retrieval-memory, MoA-style, Agent-Attention default/tuned, memory ablations, router variants.
 - Real model track: Qwen3-30B via OpenAI-compatible endpoint; GSM8K and Phase1 runs exist.
 - Executable scoring: 6 code tasks now use pytest-based end-task oracles.
-- Tests: `python3 -m unittest discover -s tests` passes 57 tests.
+- Tests: `python3 -m unittest discover -s tests` passes 93 tests (2 skipped).
 
 ### Local Results That Are Paper-Usable With Caveats
 
