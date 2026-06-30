@@ -1,0 +1,33 @@
+{
+  "schema_version": "terminal_bench_subset.v1",
+  "name": "t3_pilot_no_apt",
+  "description": "Pre-registered Terminal-Bench subset without apt-get in Dockerfile (stable on flaky mirrors).",
+  "dataset_path": "external/terminal-bench-core",
+  "selection_criteria": [
+    "Dockerfile has no apt-get (build does not hit Ubuntu mirrors)",
+    "mix of easy/medium difficulty from T2 smoke set"
+  ],
+  "matched_budget": {
+    "max_shell_steps": 8,
+    "max_tokens_per_call": 512,
+    "n_concurrent": 1,
+    "timeout_s": 900,
+    "n_attempts": 1
+  },
+  "baselines": [
+    "single_react_llm_agent",
+    "fixed_workflow_llm_agent",
+    "retrieval_memory_llm_agent",
+    "moa_style_llm_agent",
+    "agent_attention_llm_tuned"
+  ],
+  "task_ids": [
+    "fix-permissions",
+    "fibonacci-server",
+    "configure-git-webserver",
+    "count-dataset-tokens",
+    "download-youtube",
+    "blind-maze-explorer-5x5",
+    "cartpole-rl-training"
+  ]
+}

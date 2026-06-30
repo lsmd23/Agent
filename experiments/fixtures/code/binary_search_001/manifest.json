@@ -1,0 +1,20 @@
+{
+  "fixture_id": "binary_search_001",
+  "task_ids": [
+    "phase1_code_binary_search_001"
+  ],
+  "description": "binary_search off-by-one on exact match at mid.",
+  "fix_files": [
+    {
+      "path": "lib/algos.py",
+      "golden": "golden/lib/algos.py",
+      "markers": [
+        "return mid\n"
+      ]
+    }
+  ],
+  "tags": [
+    "edge_case",
+    "algorithm"
+  ]
+}

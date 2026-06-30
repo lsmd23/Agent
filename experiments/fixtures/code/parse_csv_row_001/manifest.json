@@ -1,0 +1,19 @@
+{
+  "fixture_id": "parse_csv_row_001",
+  "task_ids": [
+    "phase1_code_csv_001"
+  ],
+  "description": "split_csv_row mishandles quoted commas.",
+  "fix_files": [
+    {
+      "path": "lib/csvutil.py",
+      "golden": "golden/lib/csvutil.py",
+      "markers": [
+        "csv.reader"
+      ]
+    }
+  ],
+  "tags": [
+    "parsing"
+  ]
+}

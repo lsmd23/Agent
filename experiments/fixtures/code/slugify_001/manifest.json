@@ -1,0 +1,19 @@
+{
+  "fixture_id": "slugify_001",
+  "task_ids": [
+    "phase1_code_slugify_001"
+  ],
+  "description": "slugify leaves spaces instead of hyphens.",
+  "fix_files": [
+    {
+      "path": "lib/strutil.py",
+      "golden": "golden/lib/strutil.py",
+      "markers": [
+        "re.sub"
+      ]
+    }
+  ],
+  "tags": [
+    "string"
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "fixture_id": "read_env_flag_001",
+  "task_ids": [
+    "phase1_code_env_flag_001"
+  ],
+  "description": "as_bool treats 'false' string as true.",
+  "fix_files": [
+    {
+      "path": "lib/envutil.py",
+      "golden": "golden/lib/envutil.py",
+      "markers": [
+        "value.strip().lower()"
+      ]
+    }
+  ],
+  "tags": [
+    "config",
+    "parsing"
+  ]
+}

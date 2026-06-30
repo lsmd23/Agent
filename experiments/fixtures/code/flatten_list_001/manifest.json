@@ -1,0 +1,19 @@
+{
+  "fixture_id": "flatten_list_001",
+  "task_ids": [
+    "phase1_code_flatten_001"
+  ],
+  "description": "flatten only handles one nesting level.",
+  "fix_files": [
+    {
+      "path": "lib/listutil.py",
+      "golden": "golden/lib/listutil.py",
+      "markers": [
+        "flatten(item)"
+      ]
+    }
+  ],
+  "tags": [
+    "edge_case"
+  ]
+}

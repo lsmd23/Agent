@@ -9,6 +9,8 @@ from experiments.real_benchmarks.code_verifier import (
     broken_repo_fails,
     build_fixture_context,
     golden_repo_passes,
+    list_fixture_dirs,
+    load_manifest,
     select_code_patch,
     verify_code_task,
 )
@@ -16,11 +18,8 @@ from experiments.real_benchmarks.task_oracles import evaluate_task_success
 
 
 FIXTURES = [
-    "add_fn_001",
-    "import_path_001",
-    "version_parse_001",
-    "doc_mismatch_001",
-    "edge_divide_001",
+    load_manifest(path).get("fixture_id", path.name)
+    for path in list_fixture_dirs()
 ]
 
 

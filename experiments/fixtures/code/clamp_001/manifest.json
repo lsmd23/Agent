@@ -1,0 +1,20 @@
+{
+  "fixture_id": "clamp_001",
+  "task_ids": [
+    "phase1_code_clamp_001"
+  ],
+  "description": "clamp ignores upper bound.",
+  "fix_files": [
+    {
+      "path": "lib/mathutil.py",
+      "golden": "golden/lib/mathutil.py",
+      "markers": [
+        "if value > high"
+      ]
+    }
+  ],
+  "tags": [
+    "edge_case",
+    "math"
+  ]
+}

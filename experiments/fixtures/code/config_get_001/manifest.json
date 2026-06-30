@@ -1,0 +1,19 @@
+{
+  "fixture_id": "config_get_001",
+  "task_ids": [
+    "phase1_code_config_get_001"
+  ],
+  "description": "Config loader ignores environment override.",
+  "fix_files": [
+    {
+      "path": "lib/config.py",
+      "golden": "golden/lib/config.py",
+      "markers": [
+        "os.environ.get"
+      ]
+    }
+  ],
+  "tags": [
+    "config"
+  ]
+}

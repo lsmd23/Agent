@@ -1,0 +1,46 @@
+{
+  "scope": "Real LLM benchmark environment check",
+  "cpu_count": 32,
+  "mem_total_gb": 7.6,
+  "gpu": {
+    "available": false,
+    "devices": []
+  },
+  "ollama": {
+    "base_url": "http://localhost:11434",
+    "reachable": true,
+    "models": [
+      "llama3.1:8b"
+    ],
+    "cli_in_path": false
+  },
+  "openai_compatible": {
+    "api_key_set": true,
+    "base_url": "https://llmapi.paratera.com/v1",
+    "default_model": "Qwen3-30B-A3B-Instruct-2507"
+  },
+  "recommendation": {
+    "recommended_provider": "ollama",
+    "recommended_model": "Qwen3-30B-A3B-Instruct-2507",
+    "recommended_limit": 5,
+    "notes": [
+      "No GPU detected — expect slow CPU inference.",
+      "System RAM 7.6GB is tight for 7B+ models; prefer Q4 quants and small batch sizes."
+    ]
+  },
+  "can_run_local_ollama": true,
+  "needs_remote_api": false,
+  "chat_probe": {
+    "ok": true,
+    "latency_ms": 515,
+    "output_preview": "OK",
+    "metadata": {
+      "provider_response_id": "as-026csyty7s",
+      "usage": {
+        "completion_tokens": 1,
+        "prompt_tokens": 13,
+        "total_tokens": 14
+      }
+    }
+  }
+}

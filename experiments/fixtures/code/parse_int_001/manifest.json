@@ -1,0 +1,19 @@
+{
+  "fixture_id": "parse_int_001",
+  "task_ids": [
+    "phase1_code_parse_int_001"
+  ],
+  "description": "safe_int treats empty strings as zero.",
+  "fix_files": [
+    {
+      "path": "lib/parseutil.py",
+      "golden": "golden/lib/parseutil.py",
+      "markers": [
+        "if not value.strip()"
+      ]
+    }
+  ],
+  "tags": [
+    "parsing"
+  ]
+}

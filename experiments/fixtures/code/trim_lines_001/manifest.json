@@ -1,0 +1,19 @@
+{
+  "fixture_id": "trim_lines_001",
+  "task_ids": [
+    "phase1_code_trim_lines_001"
+  ],
+  "description": "trim_lines doc says strip each line; implementation strips whole blob.",
+  "fix_files": [
+    {
+      "path": "lib/textutil.py",
+      "golden": "golden/lib/textutil.py",
+      "markers": [
+        "line.strip() for line"
+      ]
+    }
+  ],
+  "tags": [
+    "docs"
+  ]
+}

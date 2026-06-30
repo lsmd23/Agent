@@ -11,6 +11,21 @@ from experiments.real_benchmarks.llm_client import LLMClient
 from experiments.real_benchmarks.task_oracles import evaluate_task_success
 
 
+def total_tokens_from_calls(calls: list[dict[str, Any]]) -> int:
+    total = 0
+    for call in calls:
+        usage = call.get("usage") or {}
+        if isinstance(usage.get("usage"), dict):
+            usage = usage["usage"]
+        if not isinstance(usage, dict):
+            continue
+        if usage.get("total_tokens") is not None:
+            total += int(usage["total_tokens"])
+        else:
+            total += int(usage.get("prompt_tokens") or 0) + int(usage.get("completion_tokens") or 0)
+    return total
+
+
 def envelope_for_real_llm(
     task: dict[str, Any],
     baseline_id: str,
@@ -48,6 +63,7 @@ def envelope_for_real_llm(
     serialized_events = [asdict(event) for event in events]
     add_route_proxy_oracles(task, serialized_events)
     total_latency = sum(call["latency_ms"] for call in client.calls)
+    total_tokens = total_tokens_from_calls(client.calls)
 
     return {
         "schema_version": "agent_attention.benchmark_trajectory.v0.1",
@@ -75,6 +91,7 @@ def envelope_for_real_llm(
             **oracle_metrics,
             "model_calls": len(client.calls),
             "latency_ms": total_latency,
+            "total_tokens": total_tokens,
             "selected_modules": list(state.selected_modules),
         },
     }

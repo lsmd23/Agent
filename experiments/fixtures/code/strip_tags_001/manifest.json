@@ -1,0 +1,20 @@
+{
+  "fixture_id": "strip_tags_001",
+  "task_ids": [
+    "phase1_code_strip_tags_001"
+  ],
+  "description": "strip_tags should remove HTML tags, not just spaces.",
+  "fix_files": [
+    {
+      "path": "lib/htmlutil.py",
+      "golden": "golden/lib/htmlutil.py",
+      "markers": [
+        "_TAG_RE.sub"
+      ]
+    }
+  ],
+  "tags": [
+    "security",
+    "sanitization"
+  ]
+}

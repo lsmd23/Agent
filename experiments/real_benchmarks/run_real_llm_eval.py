@@ -49,17 +49,19 @@ ALL_REAL_LLM_BASELINES = (
 SUITE_TASKS = {
     "gsm8k": "experiments/tasks/gsm8k_test_sample.jsonl",
     "phase1": "experiments/tasks/phase1_tasks.jsonl",
+    "code_all": "experiments/tasks/phase1_code_all.jsonl",
 }
 
 
 def summarize_by_baseline(trajectories: dict[str, list[dict[str, Any]]]) -> dict[str, Any]:
-    summary: dict[str, Any] = {"scope": "Unified real LLM evaluation.", "baselines": {}}
+    summary: dict[str, Any] = {"scope": "Unified real LLM evaluation.", "baselines": {}, "per_task": []}
     for baseline_id, runs in trajectories.items():
         total = len(runs)
         correct = sum(1 for item in runs if item["final_success_label"] == "pass")
         partial = sum(1 for item in runs if item["final_success_label"] == "partial")
         latencies = [item["metrics_summary"]["latency_ms"] for item in runs]
         model_calls = [item["metrics_summary"].get("model_calls", 1) for item in runs]
+        tokens = [item["metrics_summary"].get("total_tokens", 0) for item in runs]
         summary["baselines"][baseline_id] = {
             "runs": total,
             "accuracy": (correct / total) if total else None,
@@ -67,7 +69,26 @@ def summarize_by_baseline(trajectories: dict[str, list[dict[str, Any]]]) -> dict
             "correct": correct,
             "mean_latency_ms": round(sum(latencies) / len(latencies), 2) if latencies else None,
             "mean_model_calls": round(sum(model_calls) / len(model_calls), 2) if model_calls else None,
+            "mean_total_tokens": round(sum(tokens) / len(tokens), 2) if tokens else None,
+            "cost_normalized_success": round((correct / total) / (sum(model_calls) / len(model_calls)), 4)
+            if total and model_calls and sum(model_calls) > 0
+            else None,
         }
+        for item in runs:
+            metrics = item["metrics_summary"]
+            summary["per_task"].append(
+                {
+                    "baseline_id": baseline_id,
+                    "task_id": item["task_id"],
+                    "success": item["final_success_label"] == "pass",
+                    "final_success_label": item["final_success_label"],
+                    "model_calls": metrics.get("model_calls"),
+                    "latency_ms": metrics.get("latency_ms"),
+                    "total_tokens": metrics.get("total_tokens", 0),
+                    "oracle_type": metrics.get("oracle_type"),
+                    "run_id": item.get("run_id"),
+                }
+            )
     return summary
 
 

@@ -1,0 +1,20 @@
+{
+  "fixture_id": "pkg_helper_001",
+  "task_ids": [
+    "phase1_code_pkg_helper_001"
+  ],
+  "description": "Missing helpers module after refactor.",
+  "fix_files": [
+    {
+      "path": "app/helpers.py",
+      "golden": "golden/app/helpers.py",
+      "markers": [
+        "def greet"
+      ]
+    }
+  ],
+  "tags": [
+    "import",
+    "refactor"
+  ]
+}

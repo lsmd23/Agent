@@ -1,0 +1,20 @@
+{
+  "fixture_id": "palindrome_001",
+  "task_ids": [
+    "phase1_code_palindrome_001"
+  ],
+  "description": "is_palindrome is case-sensitive incorrectly.",
+  "fix_files": [
+    {
+      "path": "lib/strutil.py",
+      "golden": "golden/lib/strutil.py",
+      "markers": [
+        "text.lower()"
+      ]
+    }
+  ],
+  "tags": [
+    "string",
+    "edge_case"
+  ]
+}

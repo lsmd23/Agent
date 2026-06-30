@@ -1,0 +1,19 @@
+{
+  "fixture_id": "refactor_rename_001",
+  "task_ids": [
+    "phase1_code_refactor_001"
+  ],
+  "description": "Function renamed in module but test expects new name.",
+  "fix_files": [
+    {
+      "path": "lib/legacy.py",
+      "golden": "golden/lib/legacy.py",
+      "markers": [
+        "def new_name"
+      ]
+    }
+  ],
+  "tags": [
+    "refactor"
+  ]
+}

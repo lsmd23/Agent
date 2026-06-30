@@ -1,0 +1,19 @@
+{
+  "fixture_id": "hash_password_001",
+  "task_ids": [
+    "phase1_code_hash_001"
+  ],
+  "description": "hash_password stores plain text instead of digest.",
+  "fix_files": [
+    {
+      "path": "lib/security.py",
+      "golden": "golden/lib/security.py",
+      "markers": [
+        "hashlib.sha256"
+      ]
+    }
+  ],
+  "tags": [
+    "security"
+  ]
+}

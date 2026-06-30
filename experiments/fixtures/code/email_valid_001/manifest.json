@@ -1,0 +1,19 @@
+{
+  "fixture_id": "email_valid_001",
+  "task_ids": [
+    "phase1_code_email_001"
+  ],
+  "description": "is_email accepts strings without domain.",
+  "fix_files": [
+    {
+      "path": "lib/validate.py",
+      "golden": "golden/lib/validate.py",
+      "markers": [
+        "_EMAIL_RE"
+      ]
+    }
+  ],
+  "tags": [
+    "parsing"
+  ]
+}

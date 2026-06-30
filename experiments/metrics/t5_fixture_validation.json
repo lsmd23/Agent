@@ -1,0 +1,130 @@
+{
+  "fixtures_root": "/home/myuser/Agent/experiments/fixtures/code",
+  "results": [
+    {
+      "fixture_id": "add_fn_001",
+      "broken_fails": true,
+      "golden_passes": true
+    },
+    {
+      "fixture_id": "binary_search_001",
+      "broken_fails": true,
+      "golden_passes": true
+    },
+    {
+      "fixture_id": "clamp_001",
+      "broken_fails": true,
+      "golden_passes": true
+    },
+    {
+      "fixture_id": "config_get_001",
+      "broken_fails": true,
+      "golden_passes": true
+    },
+    {
+      "fixture_id": "doc_mismatch_001",
+      "broken_fails": true,
+      "golden_passes": true
+    },
+    {
+      "fixture_id": "edge_divide_001",
+      "broken_fails": true,
+      "golden_passes": true
+    },
+    {
+      "fixture_id": "email_valid_001",
+      "broken_fails": true,
+      "golden_passes": true
+    },
+    {
+      "fixture_id": "flatten_list_001",
+      "broken_fails": true,
+      "golden_passes": true
+    },
+    {
+      "fixture_id": "hash_password_001",
+      "broken_fails": true,
+      "golden_passes": true
+    },
+    {
+      "fixture_id": "import_path_001",
+      "broken_fails": true,
+      "golden_passes": true
+    },
+    {
+      "fixture_id": "json_get_001",
+      "broken_fails": true,
+      "golden_passes": true
+    },
+    {
+      "fixture_id": "mean_001",
+      "broken_fails": true,
+      "golden_passes": true
+    },
+    {
+      "fixture_id": "merge_dict_001",
+      "broken_fails": true,
+      "golden_passes": true
+    },
+    {
+      "fixture_id": "palindrome_001",
+      "broken_fails": true,
+      "golden_passes": true
+    },
+    {
+      "fixture_id": "parse_csv_row_001",
+      "broken_fails": true,
+      "golden_passes": true
+    },
+    {
+      "fixture_id": "parse_int_001",
+      "broken_fails": true,
+      "golden_passes": true
+    },
+    {
+      "fixture_id": "pkg_helper_001",
+      "broken_fails": true,
+      "golden_passes": true
+    },
+    {
+      "fixture_id": "read_env_flag_001",
+      "broken_fails": true,
+      "golden_passes": true
+    },
+    {
+      "fixture_id": "refactor_rename_001",
+      "broken_fails": true,
+      "golden_passes": true
+    },
+    {
+      "fixture_id": "sanitize_html_001",
+      "broken_fails": true,
+      "golden_passes": true
+    },
+    {
+      "fixture_id": "slugify_001",
+      "broken_fails": true,
+      "golden_passes": true
+    },
+    {
+      "fixture_id": "strip_tags_001",
+      "broken_fails": true,
+      "golden_passes": true
+    },
+    {
+      "fixture_id": "trim_lines_001",
+      "broken_fails": true,
+      "golden_passes": true
+    },
+    {
+      "fixture_id": "url_join_001",
+      "broken_fails": true,
+      "golden_passes": true
+    },
+    {
+      "fixture_id": "version_parse_001",
+      "broken_fails": true,
+      "golden_passes": true
+    }
+  ]
+}

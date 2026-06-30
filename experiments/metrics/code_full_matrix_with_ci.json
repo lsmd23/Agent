@@ -1,0 +1,92 @@
+{
+  "scope": "Bootstrap task-level accuracy CIs and paired deltas.",
+  "tasks": 26,
+  "model": "Qwen3-30B-A3B-Instruct-2507",
+  "provider": "openai",
+  "baselines": {
+    "single_react_llm_agent": {
+      "mean": 0.8846153846153846,
+      "ci_low": 0.7692307692307693,
+      "ci_high": 1.0,
+      "mean_model_calls": 1.23,
+      "mean_total_tokens": 582.0,
+      "mean_latency_ms": 1512.58,
+      "cost_normalized_success": 0.7187
+    },
+    "fixed_workflow_llm_agent": {
+      "mean": 0.6538461538461539,
+      "ci_low": 0.46153846153846156,
+      "ci_high": 0.8076923076923077,
+      "mean_model_calls": 1.19,
+      "mean_total_tokens": 558.08,
+      "mean_latency_ms": 1416.73,
+      "cost_normalized_success": 0.5484
+    },
+    "retrieval_memory_llm_agent": {
+      "mean": 0.8461538461538461,
+      "ci_low": 0.6923076923076923,
+      "ci_high": 0.9615384615384616,
+      "mean_model_calls": 1.35,
+      "mean_total_tokens": 686.5,
+      "mean_latency_ms": 1610.23,
+      "cost_normalized_success": 0.6286
+    },
+    "moa_style_llm_agent": {
+      "mean": 0.9615384615384616,
+      "ci_low": 0.8846153846153846,
+      "ci_high": 1.0,
+      "mean_model_calls": 2.08,
+      "mean_total_tokens": 963.69,
+      "mean_latency_ms": 3149.81,
+      "cost_normalized_success": 0.463
+    },
+    "agent_attention_llm_tuned": {
+      "mean": 0.8461538461538461,
+      "ci_low": 0.6923076923076923,
+      "ci_high": 0.9615384615384616,
+      "mean_model_calls": 2.0,
+      "mean_total_tokens": 1037.58,
+      "mean_latency_ms": 2587.5,
+      "cost_normalized_success": 0.4231
+    }
+  },
+  "paired_comparisons": [
+    {
+      "baseline_a": "fixed_workflow_llm_agent",
+      "baseline_b": "single_react_llm_agent",
+      "paired_tasks": 26,
+      "wins_a": 0,
+      "wins_b": 6,
+      "ties": 20,
+      "mean_delta_success": -0.23076923076923078
+    },
+    {
+      "baseline_a": "retrieval_memory_llm_agent",
+      "baseline_b": "single_react_llm_agent",
+      "paired_tasks": 26,
+      "wins_a": 2,
+      "wins_b": 3,
+      "ties": 21,
+      "mean_delta_success": -0.038461538461538464
+    },
+    {
+      "baseline_a": "moa_style_llm_agent",
+      "baseline_b": "single_react_llm_agent",
+      "paired_tasks": 26,
+      "wins_a": 3,
+      "wins_b": 1,
+      "ties": 22,
+      "mean_delta_success": 0.07692307692307693
+    },
+    {
+      "baseline_a": "agent_attention_llm_tuned",
+      "baseline_b": "single_react_llm_agent",
+      "paired_tasks": 26,
+      "wins_a": 2,
+      "wins_b": 3,
+      "ties": 21,
+      "mean_delta_success": -0.038461538461538464
+    }
+  ],
+  "source_summary": "experiments/metrics/code_full_matrix_summary.json"
+}

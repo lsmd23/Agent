@@ -1,0 +1,20 @@
+{
+  "fixture_id": "mean_001",
+  "task_ids": [
+    "phase1_code_mean_001"
+  ],
+  "description": "mean crashes on empty input instead of returning 0.",
+  "fix_files": [
+    {
+      "path": "lib/stats.py",
+      "golden": "golden/lib/stats.py",
+      "markers": [
+        "if not values"
+      ]
+    }
+  ],
+  "tags": [
+    "edge_case",
+    "math"
+  ]
+}

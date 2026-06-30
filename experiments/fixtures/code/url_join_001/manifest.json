@@ -1,0 +1,19 @@
+{
+  "fixture_id": "url_join_001",
+  "task_ids": [
+    "phase1_code_url_001"
+  ],
+  "description": "join_url drops duplicate slashes incorrectly.",
+  "fix_files": [
+    {
+      "path": "lib/urlutil.py",
+      "golden": "golden/lib/urlutil.py",
+      "markers": [
+        "rstrip('/')"
+      ]
+    }
+  ],
+  "tags": [
+    "path"
+  ]
+}

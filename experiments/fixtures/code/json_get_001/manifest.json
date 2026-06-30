@@ -1,0 +1,19 @@
+{
+  "fixture_id": "json_get_001",
+  "task_ids": [
+    "phase1_code_json_001"
+  ],
+  "description": "get_path should traverse nested dict keys.",
+  "fix_files": [
+    {
+      "path": "lib/jsonutil.py",
+      "golden": "golden/lib/jsonutil.py",
+      "markers": [
+        "key.split('.')"
+      ]
+    }
+  ],
+  "tags": [
+    "parsing"
+  ]
+}

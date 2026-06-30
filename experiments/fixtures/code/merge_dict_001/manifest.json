@@ -1,0 +1,19 @@
+{
+  "fixture_id": "merge_dict_001",
+  "task_ids": [
+    "phase1_code_merge_001"
+  ],
+  "description": "deep_merge overwrites nested dicts shallowly.",
+  "fix_files": [
+    {
+      "path": "lib/dictutil.py",
+      "golden": "golden/lib/dictutil.py",
+      "markers": [
+        "isinstance(result[key], dict)"
+      ]
+    }
+  ],
+  "tags": [
+    "refactor"
+  ]
+}

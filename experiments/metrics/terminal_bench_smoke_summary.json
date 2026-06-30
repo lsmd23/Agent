@@ -1,0 +1,62 @@
+{
+  "scope": "Terminal-Bench smoke matrix (T2).",
+  "total_runs": 15,
+  "baselines": {
+    "single_react_llm_agent": {
+      "runs": 5,
+      "success_rate": 0.2,
+      "correct": 1,
+      "timeout_rate": 0.0,
+      "mean_latency_s": 90.85,
+      "mean_model_calls": null
+    },
+    "fixed_workflow_llm_agent": {
+      "runs": 5,
+      "success_rate": 0.2,
+      "correct": 1,
+      "timeout_rate": 0.0,
+      "mean_latency_s": 136.34,
+      "mean_model_calls": null
+    },
+    "agent_attention_llm_tuned": {
+      "runs": 5,
+      "success_rate": 0.0,
+      "correct": 0,
+      "timeout_rate": 0.0,
+      "mean_latency_s": 60.21,
+      "mean_model_calls": null
+    }
+  },
+  "failure_categories": {
+    "none": 2,
+    "agent_failure": 13
+  },
+  "preflight": {
+    "docker_cli": true,
+    "docker_python_sdk": true,
+    "tasks_requested": [
+      "fix-permissions",
+      "fibonacci-server",
+      "configure-git-webserver",
+      "count-dataset-tokens",
+      "download-youtube"
+    ],
+    "tasks_selected": [
+      "fix-permissions",
+      "fibonacci-server",
+      "configure-git-webserver",
+      "count-dataset-tokens",
+      "download-youtube"
+    ],
+    "tasks_missing": [],
+    "baselines": [
+      "single_react_llm_agent",
+      "fixed_workflow_llm_agent",
+      "agent_attention_llm_tuned"
+    ],
+    "model": "Qwen3-30B-A3B-Instruct-2507",
+    "provider": "openai"
+  },
+  "provider": "openai",
+  "model": "Qwen3-30B-A3B-Instruct-2507"
+}

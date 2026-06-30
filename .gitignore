@@ -12,3 +12,6 @@ __pycache__/
 experiments/llm_runs/
 experiments/trajectories/
 experiments/llm_runs/real_eval/logs/
+
+# External benchmark clones and caches (never commit)
+external/

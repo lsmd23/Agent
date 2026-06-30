@@ -61,6 +61,7 @@ Comparison vs toy: `experiments/metrics/real_vs_toy_comparison.json`
 3. **Cost–quality Pareto** figure (matched token budget).
 4. Search/research rubric oracles.
 5. Publication gap audit: `docs/publication_gap_assessment.md`.
+6. Next-iteration agent handbook: `docs/next_iteration/README.md`.
 
 ## Tests
 
