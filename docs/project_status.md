@@ -46,6 +46,7 @@ python3 -m unittest discover -s tests   # 120 pass, 2 skip
 | `docs/paper_outline.md` | Draft paper |
 | `docs/artifact_reproducibility.md` | Reproduce results |
 | `research_directions/07_expert_redesign_proposal.md` | Next code sprint |
+| `docs/direction_07_01/README.md` | Next subagent exploration pack |
 
 ## Blocked / Deferred
 
