@@ -13,3 +13,5 @@ Tasks: `fix-permissions`, `fibonacci-server`, `configure-git-webserver`.
 | agent_attention_llm_tuned | fail (env) | fail (env) | fail | 0/3 |
 
 Source: `experiments/metrics/terminal_bench_matrix_summary.json` (2026-06-30 pilot).
+
+**Full 7-task matrix (steps=12):** [`result_table_terminal_bench_full_steps12.md`](result_table_terminal_bench_full_steps12.md)

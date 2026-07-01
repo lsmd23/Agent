@@ -41,7 +41,7 @@ Status: **All documented exploration goals executed or explicitly closed**
 | 6 Learned router | Done (weak) |
 | 7 Textual backprop | Done (blocked) |
 | 8 TB ACI | Done |
-| 9 TB 20+ matrix | **In progress** — 7×5 steps=12 in tmux `tb_full` |
+| 9 TB 7×5 steps=12 | Done | 3/35 pass |
 | 10 ADAS search | Deferred (premature) |
 
 ## Expert redesign
@@ -50,11 +50,12 @@ Documented: `research_directions/07_expert_redesign_proposal.md` — implementat
 
 ## Async jobs
 
-| Session | Job | Expected |
-|---------|-----|----------|
-| `tb_full` | 7 tasks × 5 baselines, steps=12 | 35 envelopes |
+| Session | Job | Status |
+|---------|-----|--------|
+| `tb_full` | 7 tasks × 5 baselines, steps=12 | **Complete** — 35/35 envelopes |
 
-Monitor: `find experiments/llm_runs/terminal_bench/t3_full_steps12 -name '*envelope.json' | wc -l`
+Summary: `experiments/metrics/t3_full_steps12_summary.json`  
+Matrix: `docs/deliverables/08/result_table_terminal_bench_full_steps12.md`
 
 ## Main-track paper gate
 
